@@ -5,6 +5,7 @@ Android 4.2+
 
 Сам проект именно как BookTracker - где то с сентября 2014 (см заметки в Evernote по ***REMOVED***)
 
+текущий внешний репозиторий - private repository на https://bitbucket.org/intari/booktracker
 
 раньше - это было:
 ---
