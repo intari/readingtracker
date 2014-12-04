@@ -681,13 +681,6 @@ public class ***REMOVED***Service extends Service implements SensorEventListener
 
         Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO, "Runtime is " + runtimeName);
 
-        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO, "Camera storage dir " + deviceInfoManager.getCameraStorageDir());
-        //API level 19
-        //Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO, "Documents storage dir " + deviceInfoManager.getDocumentsStorageDir());
-        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO, "Downloads storage dir " + deviceInfoManager.getDownloadsStorageDir());
-        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO, "Movies storage dir " + deviceInfoManager.getMoviesStorageDir());
-        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO, "Music storage dir " + deviceInfoManager.getMusicStorageDir());
-
 
 
 
