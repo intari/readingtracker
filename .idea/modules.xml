@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file:///Volumes/OldSSD/AndroidSDK/android-sdk-macosx/add-ons/addon-sony_add-on_sdk_3_0-sony-19/samples/SmartExtensions/SmartExtensionAPI/SmartExtensionAPI.iml" filepath="/Volumes/OldSSD/AndroidSDK/android-sdk-macosx/add-ons/addon-sony_add-on_sdk_3_0-sony-19/samples/SmartExtensions/SmartExtensionAPI/SmartExtensionAPI.iml" />
+      <module fileurl="file:///Volumes/OldSSD/AndroidSDK/android-sdk-macosx/add-ons/addon-sony_add-on_sdk_3_0-sony-19/samples/SmartExtensions/SmartExtensionUtils/SmartExtensionUtils.iml" filepath="/Volumes/OldSSD/AndroidSDK/android-sdk-macosx/add-ons/addon-sony_add-on_sdk_3_0-sony-19/samples/SmartExtensions/SmartExtensionUtils/SmartExtensionUtils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dollmaster.iml" filepath="$PROJECT_DIR$/dollmaster.iml" />
+      <module fileurl="file://$PROJECT_DIR$/google-play-services_lib/google-play-services_lib.iml" filepath="$PROJECT_DIR$/google-play-services_lib/google-play-services_lib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../libsuperuser/libsuperuser/libsuperuser.iml" filepath="$PROJECT_DIR$/../libsuperuser/libsuperuser/libsuperuser.iml" />
+    </modules>
+  </component>
+</project>
+

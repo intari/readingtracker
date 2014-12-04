@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- SysMonitor Experimental Builds -->
+    <string name="app_name">Reading Tracker </string>
+    <string name="build_version">Build Version: </string>
+
+    <!-- Facebook Application ID -->
+    <string name="app_id">***REMOVED***</string>
+    <!-- GUI -->
+
+    <string name="GreetingsStranger">Greetings, unknown user</string>
+    <string name="defaultUserName">unknown user</string>
+    <string name="GreetingsMessage">Greetings, </string>
+
+
+    <string name="accessibilityDescription">Monitor your book reading habits</string>
+
+    <string name="accessGrantedOK">OK</string>
+    <string name="accessGrantedNotOk">None</string>
+
+    <string name="mantanoReaderInstalled">Installed</string>
+    <string name="mantanoReaderNotInstalled">Not installed</string>
+
+    <!-- Notification messages -->
+    <string name="app_started_notification">BookTracker started</string>
+    <string name="tap_me">Be careful what you wish for</string>
+    <string name="check_your_connection">Please, check your connection</string>
+    <string name="update_is_available">Update is available</string>
+    <string name="update_is_not_available">No updates found</string>
+
+
+    <!-- our custom permissions -->
+
+    <string name="permAccessSlaveControlHW">Use slave control hardware</string>
+    <string name="permMindControl">Brainwash user</string>
+
+    <!-- GUI strings -->
+    <string name="guiCurrentlyReadingShort">Reading %1$s by %2$s</string>
+    <string name="guiCurrentlyReadingLong">Reading %1$s by %2$s (page %3$s of %4$s) for %5$.2f minutes</string>
+
+
+
+    <!-- Build information -->
+    <string name="build_id">98</string>
+    <string name="TextVersion">v1.0 from 4 Dec 2014</string>
+</resources>

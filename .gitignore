@@ -1,0 +1,14 @@
+# OS X
+.DS_Store
+
+# Xcode
+build/
+*.pbxuser
+*.perspectivev3
+*.mode1v3
+*.mode2v3
+
+# Android builds
+gen/
+out/
+workspace.xml
