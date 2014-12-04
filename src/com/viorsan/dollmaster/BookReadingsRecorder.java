@@ -39,7 +39,7 @@ public class BookReadingsRecorder {
     public static final String BOOK_READING_PREFS="com.viorsan.LastReadBooks";
     public static final String TIME_PASSED = "TimePassed";
     public static final String TIME_PASSED_IN_SECONDS ="TimePassedInSeconds";
-    public static final String REPORT_TYPE_BOOK_READING_PROGRESS_REPORT = "BookReadingProgressReport";
+    public static final String REPORT_TYPE_BOOK_READING_PROGRESS_REPORT = "BookReadingProgressReportV2";//non-V2 used time in ms and not seconds
     public static final String DEVICE_TYPE = "deviceType";
     public static final double MIN_SECONDS_TO_READ_PAGE = 1.0;
     public static final double MAX_SECONDS_TO_READ_PAGE = 180.0;
@@ -301,9 +301,9 @@ public class BookReadingsRecorder {
             report.put(BOOK_TITLE,currentBookTitle);
             report.put(BOOK_AUTHOR,currentBookAuthor);
             report.put(BOOK_TAGS,currentBookTags);
-            //report.put(TIME_PASSED,timePassed);//in milliseconds! (this is due to my error but I cannot change data formats now
-            //as of build 98 we write time in seconds here too
-            report.put(TIME_PASSED_IN_SECONDS,timePassedInSeconds);//this is new field
+            report.put(TIME_PASSED,timePassedInSeconds);
+
+
 
 
             /* Current page.
