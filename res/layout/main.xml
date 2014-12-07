@@ -78,8 +78,8 @@
             </TableRow>
 
             <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent">
                 <TextView
                     android:id="@+id/currentlyReadingMessage"
                     android:layout_width="fill_parent"
@@ -87,7 +87,8 @@
                     android:layout_marginTop="25dip"
                     android:textSize="20dip"
                     android:gravity="center_horizontal"
-                    />
+
+                    android:layout_span="2"/>
 
             </TableRow>
 

@@ -41,6 +41,6 @@
 
 
     <!-- Build information -->
-    <string name="build_id">98</string>
-    <string name="TextVersion">v1.0 from 4 Dec 2014</string>
+    <string name="build_id">99</string>
+    <string name="TextVersion">v1.0 from 7 Dec 2014</string>
 </resources>
