@@ -760,16 +760,6 @@ public class ***REMOVED***Service extends Service implements SensorEventListener
         {
             mDetails.put("feautureNXPMifare",Boolean.FALSE);
         }
-        if (pm.hasSystemFeature(pm.FEATURE_WIFI_DIRECT)) {
-            mDetails.put("feautureWiFiDirect",Boolean.TRUE);
-        }
-        else
-        {
-            mDetails.put("feautureWiFiDirect ",Boolean.FALSE);
-        }
-
-
-
 
 
         if (pm.hasSystemFeature(pm.FEATURE_CAMERA_ANY)) {
