@@ -4,6 +4,7 @@ package com.viorsan.dollmaster;
 import android.accessibilityservice.AccessibilityService;
 import android.accessibilityservice.AccessibilityServiceInfo;
 import android.content.*;
+import android.os.CountDownTimer;
 import android.os.SystemClock;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
@@ -553,6 +554,21 @@ public class AccessibilityRecorderService extends AccessibilityService {
             Debug.L.LOG_ACCESSIBILITY_SERVICE(Debug.L.LOGLEVEL_INFO, TAG+" scrobble-only mode");
         }
 
+        //do periodic config updates in case we need them, preliminary version
+        new CountDownTimer(***REMOVED***Service.YEAR_IN_MS, ParseConfigHelper.configRefreshInterval) {
+            public void onTick(long msUntilFinish) {
+                ParseConfigHelper.refreshConfig();
+
+                if (ParseConfigHelper.isDevUser()) {
+                    Log.d(TAG,"Current user is dev user");
+                }
+                else {
+                    Log.d(TAG,"Current user is not dev user");
+                }
+            }
+
+            public  void  onFinish() {}
+        }.start();
 
     }
 

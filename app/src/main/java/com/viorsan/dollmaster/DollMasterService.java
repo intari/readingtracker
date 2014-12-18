@@ -876,6 +876,8 @@ public class ***REMOVED***Service extends Service implements SensorEventListener
         Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"Book reading tracker (***REMOVED***) main service starting up");
         ***REMOVED***Service.writeLogBanner("",getApplicationContext());
 
+        ParseConfigHelper.refreshConfig();
+        
         ourDeviceID = new DeviceInfoManager().getDeviceId(getBaseContext());
 
         reportDeviceInfo();
