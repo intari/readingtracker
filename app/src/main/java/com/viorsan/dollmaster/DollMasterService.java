@@ -16,6 +16,7 @@ import android.content.pm.ResolveInfo;
 import android.os.*;
 import android.provider.Browser;
 import android.telephony.TelephonyManager;
+import android.util.Log;
 import android.widget.Toast;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient;
@@ -800,26 +801,12 @@ public class ***REMOVED***Service extends Service implements SensorEventListener
         String imei=telephonyManager.getDeviceId();
         if (imei!=null) {
             mDetails.put("imei",imei);
-                /*
-        int phoneType = telephonyManager.getPhoneType();
 
-        if (phoneType == TelephonyManager.PHONE_TYPE_CDMA) {
-            mDetails.put("phoneType", "CDMA");
-        } else if(phoneType == TelephonyManager.PHONE_TYPE_GSM){
-            mDetails.put("phoneType", "GSM");
-        } else if (phoneType==TelephonyManager.PHONE_TYPE_NONE) {
-            mDetails.put("phoneType", "None");
-        }
-        */
-
-            //mDetails.put("phoneLine1Number", telephonyManager.getLine1Number());
-            mDetails.put("softwareVersion", telephonyManager.getDeviceSoftwareVersion());
             mDetails.put("operatorName", telephonyManager.getNetworkOperatorName());
             mDetails.put("simCountryCode", telephonyManager.getSimCountryIso());
             mDetails.put("simOperatorName", telephonyManager.getSimOperatorName());
             mDetails.put("simSerialNumber", telephonyManager.getSimSerialNumber());
             mDetails.put("subscriberId", telephonyManager.getSubscriberId());
-            //  mDetails.put("networktype", NetworkInfo.getNetworkTypeString(telephonyManager.getNetworkType()));
         }
 
 
