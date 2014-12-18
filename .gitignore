@@ -34,3 +34,5 @@ build/
 gen/
 out/
 workspace.xml
+app/manifest-merger-internal-release-report.txt
+app/manifest-merger-playstore-release-report.txt
