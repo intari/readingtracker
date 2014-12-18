@@ -21,9 +21,11 @@ public class MyApplication extends android.app.Application {
 
 
         // The following line triggers the initialization of ACRA
-        ACRA.init(this);
-        ACRA.getErrorReporter().setReportSender(new HockeySender());
+        //ACRA.init(this);
+        //ACRA.getErrorReporter().setReportSender(new HockeySender());
 
+        // Enable Parse-based Crash Reporting
+        ParseCrashReporting.enable(this);
         //enable local datastore (we are write-mostly anyway)
         //TODO:this causes problems with FB. Looks like I'm doing something wrong
         //Parse.enableLocalDatastore(this);

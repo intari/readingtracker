@@ -108,11 +108,13 @@
     <orderEntry type="library" exported="" name="acra-4.4.0" level="project" />
     <orderEntry type="library" exported="" name="support-annotations-21.0.0" level="project" />
     <orderEntry type="library" exported="" name="support-v4-21.0.0" level="project" />
-    <orderEntry type="library" exported="" name="Parse-1.5.0" level="project" />
+    <orderEntry type="library" exported="" name="ParseCrashReporting-1.8.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-6.5.87" level="project" />
     <orderEntry type="library" exported="" name="jmdns-3.4.1" level="project" />
     <orderEntry type="library" exported="" name="gson-2.2.2" level="project" />
     <orderEntry type="library" exported="" name="json-simple-1.1.1" level="project" />
+    <orderEntry type="library" exported="" name="Parse-1.8.0" level="project" />
+    <orderEntry type="library" exported="" name="bolts-android-1.1.4" level="project" />
   </component>
 </module>
 
