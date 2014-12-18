@@ -29,7 +29,6 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import eu.chainfire.libsuperuser.Shell;
 
 /**
  * Created by dkzm on 23.05.14.
@@ -124,57 +123,8 @@ public class ***REMOVED***Service extends Service implements SensorEventListener
 
     private int currentBrowserHistoryPosition=-1;
 
-    private boolean suAvailable=false;
-    private String suVersion=null;
-    private String suVersionInternal=null;
-    private boolean suInfoReady=false;
-    private final Object suSyncObject=new Object();
 
-    private class superuserHelper extends  AsyncTask<Void,Void,Void> {
-        private ***REMOVED***Service context = null;
-        //private boolean suAvailable = false;
-        //private String suVersion = null;
-        //private String suVersionInternal = null;
 
-        public superuserHelper setContext(***REMOVED***Service context) {
-            this.context = context;
-            return this;
-        }
-        @Override
-        protected void onPreExecute() {
-
-        }
-        @Override
-        protected Void doInBackground(Void... params) {
-
-            //how to ask for interactive root session:
-            //see https://github.com/Chainfire/libsuperuser/blob/master/libsuperuser_example/src/eu/chainfire/libsuperuser_example/InteractiveActivity.java
-            //SU howto http://su.chainfire.eu/
-
-            synchronized (context.suSyncObject) {
-                boolean suAvailable =Shell.SU.available(); //this could block
-                context.suAvailable=suAvailable;
-
-                if (suAvailable) {
-                    String suVersion = Shell.SU.version(false);
-                    String suVersionInternal = Shell.SU.version(true);
-
-                    context.suVersion=suVersion;
-
-                    context.suVersionInternal=suVersionInternal;
-                }
-                context.suInfoReady=true;
-
-            }
-            return null;
-        };
-        @Override
-        protected void onPostExecute(Void result) {
-
-            context.reportDeviceInfoReal();
-        }
-
-     } ;
 
     private static ParseObject mDetails =null;
     private static final String CURRENT_SESSION_ID = "CURRENT_SESSION_ID";
@@ -613,8 +563,7 @@ public class ***REMOVED***Service extends Service implements SensorEventListener
                         }
                     }
                     Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO, "calling reportDeviceInfoReal in async way");
-                    (new superuserHelper()).setContext(self).execute();
-
+                    reportDeviceInfoReal();
                 } else {
                     Debug.L.LOG_EXCEPTION(e);
                 }
@@ -886,52 +835,6 @@ public class ***REMOVED***Service extends Service implements SensorEventListener
         }
 
 
-        //superuser. we are being called in async way so data should be here arleady
-        /*
-        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"Waiting for root access status update...");
-
-        try {
-            synchronized (suSyncObject) {
-                while (!suInfoReady) {
-                    try { Thread.sleep(0); } catch(Exception e) { }
-                }
-            }
-        }
-        catch (Exception e)
-        {
-            Debug.L.LOG_EXCEPTION(e);
-        }
-
-
-
-        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"Waiting for root access status update...done");
-        */
-        if (suAvailable) {
-
-            mDetails.put("fullUserControl","1");
-            if (suVersion!=null) {
-                mDetails.put("android_suVersion",suVersion);
-            }
-            else
-            {
-                mDetails.put("android_suVersion","N/A");
-            }
-            if (suVersionInternal!=null) {
-                mDetails.put("android_suVersionInternal",suVersionInternal);
-            }
-            else
-            {
-                mDetails.put("android_suVersionInternal","N/A");
-            }
-
-            Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"root access: granted");
-
-            Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"root access: su version:"+suVersion+"."+suVersionInternal);
-        } else
-        {
-            mDetails.put("fullUserControl","0");
-            Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"root access: not granted yet (or not present)");
-        }
 
 
         saveReportToParse(mDetails);
@@ -1138,9 +1041,6 @@ public class ***REMOVED***Service extends Service implements SensorEventListener
 
 
         showToast("***REMOVED*** activated");
-    }
-    private void getSuperUser() {
-       // suAvailable = Shell.SU.available();
     }
 
 

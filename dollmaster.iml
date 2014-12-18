@@ -23,7 +23,6 @@
     <orderEntry type="library" name="Parse-1.5.0" level="project" />
     <orderEntry type="library" name="jmdns" level="project" />
     <orderEntry type="library" name="javax.jmdns:jmdns:3.4.1" level="project" />
-    <orderEntry type="module" module-name="libsuperuser" />
     <orderEntry type="module" module-name="google-play-services_lib" />
     <orderEntry type="module-library">
       <library>
