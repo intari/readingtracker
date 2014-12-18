@@ -836,13 +836,42 @@ public class ***REMOVED***Service extends Service implements SensorEventListener
         toast.show();
     }
 
+    private static String buildAuthority() {
+        String authority = BuildConfig.APPLICATION_ID+".";//"com.viorsan.";
+        authority += BuildConfig.FLAVOR;
+        //authority += ".dollmaster"; ??
+        if (BuildConfig.DEBUG) {
+            authority += ".debug";
+        }
+        return authority;
+    }
+
     static public void writeLogBanner(String tag, Context context) {
         Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,tag+" (c) Dmitriy Kazimirov 2013-2014");
         Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,tag+" e-mail: dmitriy.kazimirov@viorsan.com");
         String version=context.getResources().getString(R.string.build_version);
         String build=context.getResources().getString(R.string.build_id);
 
-        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,tag+" version "+version+" (build "+build+")");
+        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,tag+" (manual)version "+version+" (build "+build+")");
+
+        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,tag+" BuildAuthority:"+buildAuthority());
+        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,tag+" ApplicationId:"+BuildConfig.APPLICATION_ID);
+        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,tag+" BuildType:"+BuildConfig.BUILD_TYPE);
+        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,tag+" VersionCode:"+BuildConfig.VERSION_CODE);
+        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,tag+" VersionName:"+BuildConfig.VERSION_NAME);
+        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,tag+" Flavor:"+BuildConfig.FLAVOR);
+        if (BuildConfig.DEBUG) {
+            Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,tag+" BuildConfig:DEBUG");
+        }
+        else
+        {
+            Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,tag+" BuildConfig:RELEASE");
+        }
+
+
+
+
+
 
 
 
