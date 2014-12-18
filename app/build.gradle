@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat
  1.1 - initial versions of gradle-based booktracker
  */
 def myVersionName="1.1"
-def myVersionCode=110
+def myVersionCode=111
 
 
 //https://parse.com/apps/quickstart#analytics/crashreporting/android/existing
@@ -46,6 +46,10 @@ def gitSha() {
         res += "-dirty"
     }
     return res
+}
+
+def gitLastCommit() {
+    return 'git log -1 --no-merges --pretty=oneline --abbrev-commit'.execute().text.trim()
 }
 
 def buildTime() {
