@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- SysMonitor Experimental Builds -->
-    <string name="app_name">Reading Tracker </string>
-    <string name="build_version">Build Version: </string>
+    <string name="app_name" translatable="false">Reading Tracker </string>
+    <string name="build_version" translatable="false">Build Version: </string>
 
     <!-- Facebook Application ID -->
-    <string name="app_id">***REMOVED***</string>
+    <string name="app_id" translatable="false">***REMOVED***</string>
     <!-- GUI -->
 
     <string name="GreetingsStranger">Greetings, unknown user</string>
@@ -41,6 +41,7 @@
 
 
     <!-- Build information -->
-    <string name="build_id">102</string>
-    <string name="TextVersion">v1.0 from 18 Dec 2014</string>
+    <!-- Is is ever needed if we have BuildConfig ? -->
+    <string name="build_id" translatable="false">102</string>
+    <string name="TextVersion"  translatable="false">v1.0 from 18 Dec 2014</string>
 </resources>

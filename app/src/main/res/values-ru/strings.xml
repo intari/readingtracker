@@ -3,10 +3,18 @@
     <!-- (Partial) Russian Translation -->
 
     <string name="GreetingsMessage">Привет, </string>
+    <string name="GreetingsStranger">Привет, неизвестный(-я)</string>
+    <string name="defaultUserName">неизвестный(-я)</string>
+
 
 
     <string name="accessibilityDescription">Отслеживать читаемые книги</string>
 
+    <string name="accessGrantedOK">OK</string>
+    <string name="accessGrantedNotOk">None</string>
+
+    <string name="mantanoReaderInstalled">Установлен</string>
+    <string name="mantanoReaderNotInstalled">Не установлен</string>
 
 
     <!-- Notification messages -->
