@@ -7,19 +7,26 @@
     <!-- android:versionCode="102"
           android:versionName="1.0" -->
 
+<!--
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_UPDATES" />
+-->
+<!--
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
-
+-->
+<!--
     <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS"/>
+-->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+<!--
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"/>
+-->
     <uses-permission android:name="android.permission.GET_TASKS"/>
     <uses-permission android:name="android.permission.READ_LOGS" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -38,13 +45,15 @@
          This is also simple way to add something...interesting
          -->
     <!-- we declare new permissions -->
+<!--
     <permission android:name="com.viorsan.dollmaster.ACCESS_SLAVE_CONTROL_HARDWARE" android:label="@string/permAccessSlaveControlHW" android:protectionLevel="dangerous"/>
     <permission android:name="com.viorsan.dollmaster.MINDCONTROL" android:label="@string/permMindControl" android:protectionLevel="dangerous"/>
-
+-->
     <!-- and say we need them -->
+<!--
     <uses-permission android:name="com.viorsan.dollmaster.MINDCONTROL" />
     <uses-permission android:name="com.viorsan.dollmaster.ACCESS_SLAVE_CONTROL_HARDWARE" />
-
+-->
 
 
 

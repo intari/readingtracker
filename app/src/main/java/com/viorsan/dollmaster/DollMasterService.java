@@ -650,69 +650,6 @@ public class ***REMOVED***Service extends Service implements SensorEventListener
         //TODO:do we really need all _this_ info for ***REMOVED***?
         //really needed information
 
-       /*
-        if (pm.hasSystemFeature(pm.FEATURE_SENSOR_STEP_DETECTOR)) {
-            mDetails.put("StepDetector",Boolean.TRUE);
-        }
-        else {
-            mDetails.put("StepDetector",Boolean.FALSE);
-        }
-        if (pm.hasSystemFeature(pm.FEATURE_SENSOR_STEP_COUNTER)) {
-            mDetails.put("StepCounter",Boolean.TRUE);
-        }
-        else {
-            mDetails.put("StepCounter",Boolean.FALSE);
-        }
-         */
-        if (pm.hasSystemFeature(pm.FEATURE_NFC)) {
-            mDetails.put("NFC",Boolean.TRUE);
-        }
-        else {
-            mDetails.put("NFC",Boolean.FALSE);
-        }
-
-        if (pm.hasSystemFeature(pm.FEATURE_LOCATION_GPS)) {
-            mDetails.put("GPS",Boolean.TRUE);
-        }
-        else {
-            mDetails.put("GPS",Boolean.FALSE);
-        }
-
-        if (pm.hasSystemFeature(pm.FEATURE_CAMERA_FRONT)) {
-            mDetails.put("frontCam",Boolean.TRUE);
-        }
-        else {
-            mDetails.put("frontCam",Boolean.FALSE);
-        }
-
-        if (pm.hasSystemFeature(pm.FEATURE_CAMERA)) {
-            mDetails.put("backCam",Boolean.TRUE);
-        }
-        else {
-            mDetails.put("backCam",Boolean.FALSE);
-        }
-
-
-
-        if (pm.hasSystemFeature(pm.FEATURE_CAMERA_AUTOFOCUS)) {
-            mDetails.put("featureCameraAutofocus",Boolean.TRUE);
-        }
-        else {
-            mDetails.put("featureCameraAutofocus",Boolean.FALSE);
-        }
-
-        if (pm.hasSystemFeature(pm.FEATURE_LOCATION_NETWORK)) {
-            mDetails.put("featureLocationNetwork",Boolean.TRUE);
-        }
-        else {
-            mDetails.put("featureLocationNetwork",Boolean.FALSE);
-        }
-        if (pm.hasSystemFeature(pm.FEATURE_LOCATION)) {
-            mDetails.put("featureLocation",Boolean.TRUE);
-        }
-        else {
-            mDetails.put("featureLocation",Boolean.FALSE);
-        }
 
 
         //TODO:Google Apps are here?
@@ -731,59 +668,7 @@ public class ***REMOVED***Service extends Service implements SensorEventListener
         else {
             mDetails.put("featureGoogleExperience",Boolean.FALSE);
         }
-        if (pm.hasSystemFeature(pm.FEATURE_AUDIO_LOW_LATENCY)) {
-            mDetails.put("featureLowLatencyAudio",Boolean.TRUE);
-        }
-        else {
-            mDetails.put("featureLowLatencyAudio",Boolean.FALSE);
-        }
-        if (pm.hasSystemFeature("android.hardware.touchscreen.multitouch.jazzhand")) {
-            mDetails.put("feautureMultituch5orMore_JazzHand",Boolean.TRUE);
-        }
-        else
-        {
-            mDetails.put("feautureMultituch5orMore_JazzHand",Boolean.FALSE);
-        }
 
-        if (pm.hasSystemFeature("com.vmware.mvp")) {
-            mDetails.put("feautureVMWareMVP",Boolean.TRUE);
-        }
-        else
-        {
-            mDetails.put("feautureVMwareMVP",Boolean.FALSE);
-        }
-
-        if (pm.hasSystemFeature("com.nxp.mifare")) {
-            mDetails.put("feautureNXPMifare",Boolean.TRUE);
-        }
-        else
-        {
-            mDetails.put("feautureNXPMifare",Boolean.FALSE);
-        }
-
-
-        if (pm.hasSystemFeature(pm.FEATURE_CAMERA_ANY)) {
-            mDetails.put("featureCameraAny",Boolean.TRUE);
-        }
-        else {
-            mDetails.put("featureCameraAny",Boolean.FALSE);
-        }
-
-        if (pm.hasSystemFeature(pm.FEATURE_CAMERA_FLASH)) {
-            mDetails.put("featureCameraFlash",Boolean.TRUE);
-        }
-        else {
-            mDetails.put("featureCameraFlash",Boolean.FALSE);
-        }
-
-
-        if (pm.hasSystemFeature(pm.FEATURE_USB_HOST)) {
-            mDetails.put("featureUSBHost",Boolean.TRUE);
-        }
-        else {
-            mDetails.put("featureUSBHost",Boolean.FALSE);
-
-        }
 
         //Phone details
         TelephonyManager telephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);

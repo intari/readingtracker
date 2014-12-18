@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat
  1.1 - initial versions of gradle-based booktracker
  */
 def myVersionName="1.1"
-def myVersionCode=111
+def myVersionCode=112
 
 
 //https://parse.com/apps/quickstart#analytics/crashreporting/android/existing
