@@ -32,10 +32,6 @@
       -->
 
 
-    <!-- Play Services: we need to knew current activity -->
-    <uses-permission
-        android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION"/>
-
     <!-- experiment with permissions
          Yes, I knew this doesn't make technical sense
          For now.
