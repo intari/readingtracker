@@ -453,6 +453,15 @@ public class ***REMOVED***Service extends Service implements SensorEventListener
             return Boolean.FALSE;
         }
         report.put("user",currentUser);
+
+        /* originating app details  */
+        report.put("appBuildType",BuildConfig.BUILD_TYPE);
+        report.put("appBuildFlavor",BuildConfig.FLAVOR);
+        report.put("appBuildVersionCode",BuildConfig.VERSION_CODE);
+        report.put("appBuildVersionName",BuildConfig.VERSION_NAME);
+        report.put("appBuildApplicationID",BuildConfig.APPLICATION_ID);
+        report.put("appBuildAuthority",buildAuthority());
+
        /*
         String fbUserId=(String)currentUser.get(FieldIdentifiers.facebookId);
 

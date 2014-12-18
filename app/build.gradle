@@ -8,7 +8,7 @@ apply plugin: 'com.android.application'
  1.1 - initial versions of gradle-based booktracker
  */
 def myVersionName="1.1"
-def myVersionCode=104
+def myVersionCode=105
 
 def gitSha() {
     def res = 'git rev-parse HEAD'.execute([], project.rootDir).text.trim()
