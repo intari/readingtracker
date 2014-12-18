@@ -5,9 +5,13 @@ import android.content.*;
 import android.os.Build;
 import android.os.SystemClock;
 import android.support.v4.content.LocalBroadcastManager;
+
+import com.parse.ParseAnalytics;
 import com.parse.ParseObject;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -223,6 +227,7 @@ public class BookReadingsRecorder {
             intent.putExtra(TOTAL_PAGES,lastTotalPages);
 
             LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
+
         }
         else
         {
@@ -422,7 +427,19 @@ public class BookReadingsRecorder {
                 Debug.L.LOG_ACCESSIBILITY_SERVICE(Debug.L.LOGLEVEL_INFO,"BookReadingsRecorder:RecordSwitchAwayFromBooks:reading only "+totalTimeForCurrentBook+" seconds     is not really READING");
 
             }
+            //report analytics
 
+            Map<String, String> dimensions = new HashMap<String, String>();
+            dimensions.put(BOOK_TITLE,lastBookTitle);
+            dimensions.put(BOOK_AUTHOR,lastBookAuthor);
+            dimensions.put(BOOK_TAGS,lastBookTags);
+            dimensions.put(CURRENT_PAGE,lastCurrentPage);
+            Double totalReadingSessionTime=totalTimeForCurrentBook/MS_IN_SECOND;
+            dimensions.put(READING_SESSION_TIME,totalReadingSessionTime.toString());
+
+            ParseAnalytics.trackEvent("readingSessionCompleted", dimensions);
+
+            //clear data
 
             currentBookKnown = false;
             currentBookTitle = "Unknown";

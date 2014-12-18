@@ -54,7 +54,7 @@ public class MyActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        ParseAnalytics.trackAppOpened(getIntent());
         setContentView(R.layout.main);
         init();
         startService();
