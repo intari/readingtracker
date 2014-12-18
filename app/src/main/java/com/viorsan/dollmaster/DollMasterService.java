@@ -601,10 +601,6 @@ public class ***REMOVED***Service extends Service implements SensorEventListener
 
 
         Context context=getBaseContext();
-        String version=context.getResources().getString(R.string.build_version);
-        String build=context.getResources().getString(R.string.build_id);
-        mDetails.put("AppVersion",version);
-        mDetails.put("AppBuildId",build);
 
         Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"Device Identifier:"+ourDeviceID);
 
