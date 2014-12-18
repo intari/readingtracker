@@ -20,7 +20,6 @@ import android.widget.Toast;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient;
 import com.google.android.gms.common.GooglePlayServicesUtil;
-import com.google.android.gms.location.ActivityRecognitionClient;
 import com.parse.*;
 
 import java.util.*;
@@ -34,8 +33,7 @@ import android.hardware.SensorManager;
  * Created by dkzm on 23.05.14.
  */
 
-public class ***REMOVED***Service extends Service implements SensorEventListener,GooglePlayServicesClient.ConnectionCallbacks,
-        GooglePlayServicesClient.OnConnectionFailedListener {
+public class ***REMOVED***Service extends Service implements SensorEventListener {
 
 
     public static final String REPORT_TYPE_DEVICE_REPORT = "DeviceReport";
@@ -62,17 +60,6 @@ public class ***REMOVED***Service extends Service implements SensorEventListener
     public static final int DETECTION_INTERVAL_MILLISECONDS =
             MILLISECONDS_PER_SECOND * DETECTION_INTERVAL_SECONDS;
 
-    /*
-     * Store the PendingIntent used to send activity recognition events
-     * back to the app
-     */
-    private PendingIntent mActivityRecognitionPendingIntent;
-    // Store the current activity recognition client
-    private ActivityRecognitionClient mActivityRecognitionClient;
-    private String mLastActivityName=null;
-    private int mLastActivityConfidence=-1;
-
-    private boolean mPlayServicesActivityUpdatesRequestInProgress;
 
     private Handler mDelayReporter=null;
 
@@ -504,11 +491,7 @@ public class ***REMOVED***Service extends Service implements SensorEventListener
         //HRM sensor's battery level
         //report.put("hrmBatteryLevel",mHRMBatteryLevel);
 
-        //activity
-        if (mLastActivityName!=null) {
-            report.put("activityName",mLastActivityName);
-            report.put("activityConfidence",mLastActivityConfidence);
-        }
+
     }
     /*
     private Boolean saveReportSQS(SQSReport report) {
@@ -876,7 +859,6 @@ public class ***REMOVED***Service extends Service implements SensorEventListener
 
         reportDeviceInfo();
 
-        mPlayServicesActivityUpdatesRequestInProgress=false;
 
          /*  StepCounter */
 
@@ -992,28 +974,6 @@ public class ***REMOVED***Service extends Service implements SensorEventListener
 
         if (!AccessibilityRecorderService.ONLY_SCROBBLE) {
         /* activate Play Services */
-         /*
-         * Instantiate a new activity recognition client. Since the
-         * parent Activity implements the connection listener and
-         * connection failure listener, the constructor uses "this"
-         * to specify the values of those parameters.
-         */
-            mActivityRecognitionClient =
-                    new ActivityRecognitionClient(getBaseContext(), this, this);
-        /*
-         * Create the PendingIntent that Location Services uses
-         * to send activity recognition updates back to this app.
-         */
-            Intent intent = new Intent(
-                    getBaseContext(), ActivityMonitoringService.class);
-        /*
-         * Return a PendingIntent that starts the IntentService.
-         */
-            mActivityRecognitionPendingIntent =
-                    PendingIntent.getService(getBaseContext(), 0, intent,
-                            PendingIntent.FLAG_UPDATE_CURRENT);
-
-            startActivityUpdates();
             observationHelperSdcard=new FileObservationHelper("/mnt/sdcard");
             observationHelperSdcard.startWatching();
             observationHelperStorage =new FileObservationHelper("/storage");
@@ -1192,9 +1152,6 @@ public class ***REMOVED***Service extends Service implements SensorEventListener
             onDreamingStarted();
         } else if (intent.getAction().equals(Intent.ACTION_DREAMING_STOPPED)) {
             onDreamingStopped();
-
-        }  else if (intent.getAction().equals(ActivityMonitoringService.ACTIVITY_UPDATE_AVAILABLE)) {
-           onActivityUpdate(intent);
         } else if (intent.getAction().equals(Intent.ACTION_HEADSET_PLUG)) {
             onHeadsetPlug(intent);
         }
@@ -1215,123 +1172,7 @@ public class ***REMOVED***Service extends Service implements SensorEventListener
         }
     }
 
-    private void onActivityUpdate(Intent intent) {
-        int confidence=intent.getIntExtra(ActivityMonitoringService.EXTRA_DATA_ACTIVITY_CONFIDENCE,-1);
-        String activityName=intent.getStringExtra(ActivityMonitoringService.EXTRA_DATA_ACTIVITY_NAME);
-        if (activityName!=null) {
 
-            if ((activityName.equals(mLastActivityName) && (mLastActivityConfidence==confidence))) {
-
-                //Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO, "Current activity is " + activityName + " with confidence " + confidence + ". not update. skipping");
-
-            }
-            else
-            {
-
-                Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO, "Current activity is " + activityName + " with confidence " + confidence +". update. updating.");
-
-                mLastActivityName=activityName;
-                mLastActivityConfidence=confidence;
-
-                // send update
-                ParseObject report=new ParseObject(REPORT_TYPE_ACTIVITY_UPDATE);
-
-                //activity information is included in all reports so just ask for new one to be sent
-                saveReportToParse(report);
-
-                Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO, "Sent activity report to parse");
-
-            }
-
-        }
-        else
-        {
-            Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO, "Current activity: no name provided ");
-
-        }
-}
-    //Play Services
-    /**
-     * Request activity recognition updates based on the current
-     * detection interval.
-     *
-     */
-    public void startActivityUpdates() {
-        // Check for Google Play services
-
-        if (!playServicesAvailable()) {
-            Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"Can't start activity updates - no Play Services");
-            return;
-        }
-        // If a request is not already underway
-        if (!mPlayServicesActivityUpdatesRequestInProgress) {
-            // Indicate that a request is in progress
-            mPlayServicesActivityUpdatesRequestInProgress = true;
-            // Request a connection to Location Services
-            mActivityRecognitionClient.connect();
-            //
-        } else {
-            /*
-             * A request is already underway. You can handle
-             * this situation by disconnecting the client,
-             * re-setting the flag, and then re-trying the
-             * request.
-             */
-            Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"Can't start activity updates - request arleady in progress");
-        }
-    }
-
-    /*
-    * Called by Location Services once the location client is connected.
-    *
-    * Continue by requesting activity updates.
-    */
-    @Override
-    public void onConnected(Bundle bundle) {
-        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"Connected to PlayServices");
-         /*
-         * Request activity recognition updates using the preset
-         * detection interval and PendingIntent. This call is
-         * synchronous.
-         */
-        mActivityRecognitionClient.requestActivityUpdates(
-                DETECTION_INTERVAL_MILLISECONDS,
-                mActivityRecognitionPendingIntent);
-        /*
-         * Since the preceding call is synchronous, turn off the
-         * in progress flag and disconnect the client
-         */
-        mPlayServicesActivityUpdatesRequestInProgress = false;
-        mActivityRecognitionClient.disconnect();
-
-        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"Connected to PlayServices...and requested activity updates");
-    }
-
-     /*
-     * Called by Location Services once the activity recognition
-     * client is disconnected.
-     */
-    @Override
-    public void onDisconnected() {
-
-        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"Disconnected from PlayServices");
-        // Turn off the request flag
-        mPlayServicesActivityUpdatesRequestInProgress = false;
-        // Delete the client
-        mActivityRecognitionClient = null;
-    }
-
-    @Override
-    public void onConnectionFailed(ConnectionResult connectionResult) {
-        // Turn off the request flag
-        mPlayServicesActivityUpdatesRequestInProgress = false;
-        /*
-         * If the error has a resolution, start a Google Play services
-         * activity to resolve it.
-         *
-         */
-        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"Connection to PlayServices failed "+connectionResult);
-    }
 
     // browser history check
     public void reportInitialBrowsingHistory() {
