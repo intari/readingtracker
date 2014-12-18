@@ -2,8 +2,13 @@ import java.text.SimpleDateFormat
 
 apply plugin: 'com.android.application'
 
-def myVersionCode=103
-
+//update version code on eache build
+/*
+ 1.0 - dollmaster/non-gradle booktracker
+ 1.1 - initial versions of gradle-based booktracker
+ */
+def myVersionName="1.1"
+def myVersionCode=104
 
 def gitSha() {
     def res = 'git rev-parse HEAD'.execute([], project.rootDir).text.trim()
@@ -31,22 +36,25 @@ android {
         minSdkVersion 17
         targetSdkVersion 17
         versionCode myVersionCode
-        versionName "1.1."+versionCode+"-built_at-"+buildTime()+'-git-sha1-'+gitSha();
+        versionName myVersionName+"."+versionCode+"-built_at-"+buildTime()+'-git-sha1-'+gitSha();
 
         //versionCode versionMajor * 10000 + versionMinor * 1000 + versionPatch * 100 + versionBuild
         //versionName "${versionMajor}.${versionMinor}" + ((versionPatch != 0) ? ".${versionPatch}" : "")
     }
     productFlavors {
         //TODO: find out HOW to configure this CORRECTLY
+        //Why first flavor choose for debug automatically?
+        //how to use flavors to change packageName/ApplicationId/title?
         internal {
-            //applicationId "com.viorsan.dollmaster"
-            //packageName ="com.viorsan.dollmaster"
-        }
+            versionCode myVersionCode
+            versionName myVersionName+"."+versionCode+"-internal"+"-built_at-"+buildTime()+'-git-sha1-'+gitSha();
+         }
         playstore {
-            //applicationId = "com.viorsan.booktracker.playstore"
-           // packageName = "com.viorsan.booktracker.playstore"
+            versionCode myVersionCode
+            versionName myVersionName+"."+versionCode+"-playstore"+"-built_at-"+buildTime()+'-git-sha1-'+gitSha();
         }
     }
+
 
     buildTypes {
         release {
