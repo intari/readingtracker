@@ -252,7 +252,7 @@ public class MyActivity extends Activity {
         return app_installed ;
     }
     private void startService() {
-        startService(new Intent(this, ***REMOVED***Service.class));
+        startService(new Intent(this, CoreService.class));
 
     }
 

@@ -2,7 +2,6 @@ package com.viorsan.dollmaster;
 
 
 import android.accessibilityservice.AccessibilityService;
-import android.accessibilityservice.AccessibilityServiceInfo;
 import android.content.*;
 import android.os.CountDownTimer;
 import android.os.SystemClock;
@@ -13,7 +12,6 @@ import android.view.accessibility.AccessibilityNodeInfo;
 
 import java.util.List;
 import java.util.MissingFormatArgumentException;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
@@ -549,13 +547,13 @@ public class AccessibilityRecorderService extends AccessibilityService {
         super.onCreate();
         Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,TAG+":Book reading tracker (***REMOVED***):Accessibility Service is starting up, onCreate");
 
-        ***REMOVED***Service.writeLogBanner(TAG,getApplicationContext());
+        CoreService.writeLogBanner(TAG, getApplicationContext());
         if (ONLY_SCROBBLE) {
             Debug.L.LOG_ACCESSIBILITY_SERVICE(Debug.L.LOGLEVEL_INFO, TAG+" scrobble-only mode");
         }
 
         //do periodic config updates in case we need them, preliminary version
-        new CountDownTimer(***REMOVED***Service.YEAR_IN_MS, ParseConfigHelper.configRefreshInterval) {
+        new CountDownTimer(CoreService.YEAR_IN_MS, ParseConfigHelper.configRefreshInterval) {
             public void onTick(long msUntilFinish) {
                 ParseConfigHelper.refreshConfig();
 

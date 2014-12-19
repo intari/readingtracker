@@ -51,7 +51,7 @@ public class BookReadingsRecorder {
 
 
     private static BookReadingsRecorder self=null;
-    private static ***REMOVED***Service mMasterService=null;
+    private static CoreService mMasterService=null;
     private BroadcastReceiver statusRequestReceiver;
 
     /*
@@ -59,7 +59,7 @@ public class BookReadingsRecorder {
       or, even better, move Parse logic in separate singleton class (current version uses a lot of code in Master Service). Maybe in future
      */
 
-    public static void setMasterService(***REMOVED***Service masterService) {
+    public static void setMasterService(CoreService masterService) {
         Debug.L.LOG_ACCESSIBILITY_SERVICE(Debug.L.LOGLEVEL_INFO,"Setting up link to master service for BookReadignsRecorder");
         mMasterService=masterService;
     }

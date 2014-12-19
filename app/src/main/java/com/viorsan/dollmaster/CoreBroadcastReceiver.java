@@ -8,11 +8,11 @@ import android.content.Intent;
 /**
  * Created by dkzm on 23.05.14.
  */
-public class ***REMOVED***Receiver  extends BroadcastReceiver {
-    ***REMOVED***Service service;
+public class CoreBroadcastReceiver extends BroadcastReceiver {
+    CoreService service;
     boolean mBound = false;
 
-    public void setService(***REMOVED***Service newService) {
+    public void setService(CoreService newService) {
         if (newService != null) {
             service = newService;
             mBound = true;
@@ -27,7 +27,7 @@ public class ***REMOVED***Receiver  extends BroadcastReceiver {
         if (mBound) {
             service.onStartCommand(intent, 0, 0);
         } else {
-            context.startService(new Intent(context, ***REMOVED***Service.class));
+            context.startService(new Intent(context, CoreService.class));
         }
     }
 

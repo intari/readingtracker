@@ -1,7 +1,6 @@
 package com.viorsan.dollmaster;
 
 import android.app.*;
-import android.bluetooth.*;
 import android.database.Cursor;
 import android.location.Location;
 import android.os.BatteryManager;
@@ -10,16 +9,12 @@ import android.os.HandlerThread;
 import android.os.IBinder;
 
 import android.content.*;
-import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
 import android.os.*;
 import android.provider.Browser;
 import android.telephony.TelephonyManager;
-import android.util.Log;
 import android.widget.Toast;
 import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesClient;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.parse.*;
 
@@ -34,12 +29,10 @@ import android.hardware.SensorManager;
  * Created by dkzm on 23.05.14.
  */
 
-public class ***REMOVED***Service extends Service implements SensorEventListener {
+public class CoreService extends Service  {
 
 
     public static final String REPORT_TYPE_DEVICE_REPORT = "DeviceReport";
-    public static final String REPORT_TYPE_APPSWITCH = "AppSwitch";
-    public static final String REPORT_TYPE_ACTIVITY_UPDATE="ActivityUpdate";
     public static final String FAKEAPP_DEVICELOCKED = "com.viorsan.dollmaster.DeviceLocked";
     public static final String FAKEAPP_SCREENOFF = "com.viorsan.dollmaster.ScreenOff";
 
@@ -47,11 +40,7 @@ public class ***REMOVED***Service extends Service implements SensorEventListener
     public static final long YEAR_IN_MS = 365 * 86400 * 1000;
     public static final int PROCESSLIST_RESCAN_INTERVAL_MILLIS = 3000;//ONLY used to check if reader app is currently active
     public static final int REPORT_SENDING_RETRY_MILLIS = 3000;
-    public static final int BROWSER_HISTORY_RESCAN_INTERVAL_MILLIS = 30 * 1000;
     private long lastAppCheckTime;
-
-    private FileObservationHelper observationHelperStorage =null;
-    private FileObservationHelper observationHelperSdcard=null;
 
 
     // helpers for Play Services
@@ -64,19 +53,12 @@ public class ***REMOVED***Service extends Service implements SensorEventListener
 
     private Handler mDelayReporter=null;
 
-    public static long REPORTER_VERSION = 11;
     public static String ourDeviceID = "";
 
-    public static long REPORT_SEND_INTERVAL = 3*60*1000;
 
     private static final String appID="***REMOVED***";
-    private Location lastLocation;
-    private Location lastLocationCoarse;
-    private HandlerThread locationHandlerThread=null;
-    private Handler locationHandler=null;
-    private static String LOCATION_UPDATE_THREAD="LocationHandlerUpdateThread";
 
-    ***REMOVED***Receiver broadcastReceiver = null;
+    CoreBroadcastReceiver broadcastReceiver = null;
 
     private String previousForegroundTask;//can have 'fake' data
     private Boolean isDeviceLocked = false;
@@ -88,25 +70,11 @@ public class ***REMOVED***Service extends Service implements SensorEventListener
     private long nextRequestId;
     private long sessionId;
     private final Object requestIdSyncObject=new Object();
-    private final Object reportSenderSyncObject=new Object();
     private boolean isPowerConnected = false;
 
-   // private SQSReportManager sqsReportManager;
-
-
-
-    private SensorManager mSensorManager;
-    private Sensor mStepCounter;
-    private int mStepCounter_LastCount, mStepCounter_InitialCount;
-    private boolean mStepCounter_InitialCountInitialized;
-    private int mStepCounter_LastDetectorCount;
 
     public static int batteryStatus = BatteryManager.BATTERY_STATUS_UNKNOWN;
     public static int batteryPluggedStatus = 0;
-
-    public static long totalMessagesSize = 0;
-
-    public static String userMessage;
 
 
     private int currentBrowserHistoryPosition=-1;
@@ -165,8 +133,8 @@ public class ***REMOVED***Service extends Service implements SensorEventListener
         return sessionId;
     }
 
-    ***REMOVED***Service getService() {
-        return ***REMOVED***Service.this;
+    CoreService getService() {
+        return CoreService.this;
     }
 
     @Override
@@ -176,8 +144,8 @@ public class ***REMOVED***Service extends Service implements SensorEventListener
 
 
     public class LocalBinder extends Binder {
-        ***REMOVED***Service getService() {
-            return ***REMOVED***Service.this;
+        CoreService getService() {
+            return CoreService.this;
         }
     }
 
@@ -246,7 +214,7 @@ public class ***REMOVED***Service extends Service implements SensorEventListener
         PowerManager pm=(PowerManager) getSystemService(Context.POWER_SERVICE);
         PowerManager.WakeLock wl = pm.newWakeLock(
                 PowerManager.PARTIAL_WAKE_LOCK,
-                ***REMOVED***Service.appID);
+                CoreService.appID);
 
         wl.acquire();
 
@@ -296,98 +264,12 @@ public class ***REMOVED***Service extends Service implements SensorEventListener
             appActivationTime = now;
 
 
-            /*
-            Map<String, String> dimensions = new HashMap<String, String>();
-
-            report.put("name", getApplicationNameByPackageName(previousForegroundTask));
-            report.put("appid", previousForegroundTask);
-            dimensions.put("appid",previousForegroundTask);
-            report.put("timeSpent", timeSpent);
-            if (isHomeScreen(previousForegroundTask))
-            {
-                //report.put("isHomeScreen",isHomeScreen(previousForegroundTask)?1:0);
-                report.put("isHomeScreen",1);
-                dimensions.put("isHomeScreen","yes");
-            }
-            else
-            {
-                report.put("isHomeScreen",0);
-                dimensions.put("isHomeScreen","no");
-            }
-            dimensions.put("timeSpent",new Long(timeSpent).toString());
-            Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO, "ReportSendingUpdates:AppSwitch:AID:" + previousForegroundTask + ".TimeSpent:" + timeSpent);
-
-            if (suInfoReady) {
-                if (suAvailable) {
-                    report.put("fullUserControl","1");
-
-                }
-                else
-                {
-                    report.put("fullUserControl","0");
-                }
-            }
-
-            */
             previousForegroundTask = newForegroundTask;
-            //saveReportToParse(report);
-
-            // Parse Analytics test
-
-            //ParseAnalytics.trackEvent("appSwitch", dimensions);
 
         }
     }
 
-    /*
-    private boolean isHomeScreen(String packageName) {
-        final PackageManager pm = getBaseContext().getPackageManager();
 
-        //code is suboptimal. we should implement cache and update it on app installs. TODO:update this.
-        try {
-            Intent home = new Intent(Intent.ACTION_MAIN);
-            home.addCategory(Intent.CATEGORY_HOME);
-            List<ResolveInfo> activities = pm.queryIntentActivities(home, 0);
-
-            for (ResolveInfo ri: activities)
-            {
-                String pn=ri.activityInfo.applicationInfo.packageName;
-                if (packageName.equals(pn))
-                {
-                    return true;
-                }
-            }
-
-        } catch (Exception ex) {
-            return false;
-        }
-
-        return false;
-
-    }
-    private String getApplicationNameByPackageName(String packageName) {
-        final PackageManager pm = getBaseContext().getPackageManager();
-        ApplicationInfo ai;
-
-        try {
-            ai = pm.getApplicationInfo(packageName, 0);
-        } catch (final PackageManager.NameNotFoundException e) {
-            ai = null;
-        }
-
-        return (String) (ai != null ? pm.getApplicationLabel(ai) : "Unknown");
-    }
-
-    public Location getLocationCoarse() {
-        return lastLocationCoarse;
-    }
-    */
-
-    //TODO:extract this to other class
-    //TODO:rewrite using google apps
-    private void initLocationHandlerThread () {
-        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO, "LocationHandler: Not yet implemented");
-    }
 
 
     //If you use this function from other classes this mean you KNOW what you are doing
@@ -463,18 +345,6 @@ public class ***REMOVED***Service extends Service implements SensorEventListener
         report.put("appBuildApplicationID",BuildConfig.APPLICATION_ID);
         report.put("appBuildAuthority",buildAuthority());
 
-       /*
-        String fbUserId=(String)currentUser.get(FieldIdentifiers.facebookId);
-
-        if (fbUserId!=null) {
-            report.put(FieldIdentifiers.facebookId,fbUserId);
-        }
-        */
-        if (!AccessibilityRecorderService.ONLY_SCROBBLE) {
-            //write body metrics sensors only if it's not scrobble-only mode
-            //this decision may be reverted in future
-            updateSensorInfoForReport(report);
-        }
 
 
         final String reportClass=report.getClassName();
@@ -493,42 +363,7 @@ public class ***REMOVED***Service extends Service implements SensorEventListener
 
     }
 
-    private void updateSensorInfoForReport(ParseObject report) {
-        //save sensor data
-        report.put("numSteps",getStepCounter());
-        //heart rate
-        //report.put("heartRate",mCurrentHeartRate);
-        //HRM sensor's battery level
-        //report.put("hrmBatteryLevel",mHRMBatteryLevel);
 
-
-    }
-    /*
-    private Boolean saveReportSQS(SQSReport report) {
-        report.put("deviceId", ourDeviceID);
-        java.util.Date date = new java.util.Date();
-
-        report.put("clientEventCreateTime", DateHelper.formatISO8601_iOS(date));
-        report.updateTimeAndLocationInfo();
-
-        Long ourRequestId=report.getRequestId();
-        Long ourSessionId=report.getSessionId();
-      */
-        /* debug support only */
-        /*
-        Intent intent = new Intent("ReportSendingUpdates");
-        intent.putExtra("RequestID",ourRequestId);
-        intent.putExtra("SessionID",ourSessionId);
-        LocalBroadcastManager.getInstance(getBaseContext()).sendBroadcast(intent);
-        */
-      /*
-        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"ReportSendingUpdates:SessionID:"+ourSessionId+".RequestID:"+ourRequestId);
-
-        sendSQSMessage(report.toString(), ourRequestId, ourSessionId);//, false);
-
-        return  Boolean.TRUE;
-    }
-    */
 
     private boolean playServicesAvailable() {
         int resultCode=GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
@@ -542,7 +377,7 @@ public class ***REMOVED***Service extends Service implements SensorEventListener
         ParseQuery query = new ParseQuery(REPORT_TYPE_DEVICE_REPORT);
         query.whereEqualTo("deviceId",ourDeviceID);
 
-        final ***REMOVED***Service self=this;
+        final CoreService self=this;
 
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
@@ -749,7 +584,7 @@ public class ***REMOVED***Service extends Service implements SensorEventListener
         //Debug.L.LOG_MARK("BookTracker (***REMOVED***) starting up");
 
         Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"Book reading tracker (***REMOVED***) main service starting up");
-        ***REMOVED***Service.writeLogBanner("",getApplicationContext());
+        CoreService.writeLogBanner("", getApplicationContext());
 
         ParseConfigHelper.refreshConfig();
         
@@ -808,17 +643,7 @@ public class ***REMOVED***Service extends Service implements SensorEventListener
         editor.putLong(CURRENT_SESSION_ID,new Long(sessionId));
         editor.commit();
 
-        /*
-        try {
-            sqsReportManager = SQSReportManager.getInstance(this);
-        } catch (DBStorage.CreateTableException e) {
-            e.printStackTrace();
-            showToast("CuriousApp:Database startup failed. Cannot continue");
-            stopSelf();
-            return;
-        }
-        */
-
+   
         configureForeground();
 
 
@@ -835,8 +660,6 @@ public class ***REMOVED***Service extends Service implements SensorEventListener
 
         BookReadingsRecorder.getBookReadingsRecorder(this.getBaseContext()).setMasterService(this);
 
-
-        initLocationHandlerThread();
 
         //TODO:don't do this in deep sleep
         new CountDownTimer(YEAR_IN_MS, PROCESSLIST_RESCAN_INTERVAL_MILLIS) {
@@ -860,7 +683,7 @@ public class ***REMOVED***Service extends Service implements SensorEventListener
         }.start();
 
         */
-        broadcastReceiver = new ***REMOVED***Receiver();
+        broadcastReceiver = new CoreBroadcastReceiver();
         broadcastReceiver.setService(this);
 
         registerReceiver(broadcastReceiver, getFilters());
@@ -870,68 +693,11 @@ public class ***REMOVED***Service extends Service implements SensorEventListener
         //prepare handler for posting data in case of delays
         mDelayReporter=new Handler();
 
-        if (!AccessibilityRecorderService.ONLY_SCROBBLE) {
-        /* activate Play Services */
-            observationHelperSdcard=new FileObservationHelper("/mnt/sdcard");
-            observationHelperSdcard.startWatching();
-            observationHelperStorage =new FileObservationHelper("/storage");
-            observationHelperStorage.startWatching();
-
-        }
-
-        /*
-        if (!AccessibilityRecorderService.ONLY_SCROBBLE) {
-            reportInitialBrowsingHistory();
-
-            new CountDownTimer(YEAR_IN_MS, BROWSER_HISTORY_RESCAN_INTERVAL_MILLIS) {
-                public void onTick(long msUntilFinish) {
-                    reportBrowsingHistoryUpdates();
-                }
-
-                @Override
-                public void onFinish() {
-
-                }
-            }.start();
-
-        }
-        */
-
 
         showToast("***REMOVED*** activated");
     }
 
 
-
-    @Override
-    public void onSensorChanged(SensorEvent event) {
-        final int type = event.sensor.getType();
-        /*
-        if (type == Sensor.TYPE_STEP_COUNTER) {
-            Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO, "New step counter value  "+(int)event.values[0]);
-
-            //we need step counter since app startup and not since device startup
-            if (!mStepCounter_InitialCountInitialized) {
-                Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO, "Initializing initial steps count:  " + (int) event.values[0]);
-                mStepCounter_InitialCount = (int) event.values[0];
-                mStepCounter_InitialCountInitialized = true;
-            }
-            mStepCounter_LastCount = (int) event.values[0] - mStepCounter_InitialCount;
-
-
-        }
-        */
-    }
-
-    @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
-        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO, "Sensor accuracy changed. New value: " + accuracy);
-
-    }
-    public int getStepCounter()
-    {
-        return mStepCounter_LastCount;
-    }
     @Override
     public void onLowMemory()
     {
@@ -972,14 +738,7 @@ public class ***REMOVED***Service extends Service implements SensorEventListener
         intentFilter.addAction(Intent.ACTION_NEW_OUTGOING_CALL);
         intentFilter.addAction(Intent.ACTION_BATTERY_CHANGED);
 
-
-        //internal
-        intentFilter.addAction(ActivityMonitoringService.ACTIVITY_UPDATE_AVAILABLE);
-
-        //headset plug
-        intentFilter.addAction(Intent.ACTION_HEADSET_PLUG);
-
-        //to be sure we get sleep
+         //to be sure we get sleep
         intentFilter.addAction(Intent.ACTION_DREAMING_STARTED);
         intentFilter.addAction(Intent.ACTION_DREAMING_STOPPED);
         //TODO:phone logic too
@@ -1050,25 +809,11 @@ public class ***REMOVED***Service extends Service implements SensorEventListener
             onDreamingStarted();
         } else if (intent.getAction().equals(Intent.ACTION_DREAMING_STOPPED)) {
             onDreamingStopped();
-        } else if (intent.getAction().equals(Intent.ACTION_HEADSET_PLUG)) {
-            onHeadsetPlug(intent);
         }
 
     }
 
-    private void onHeadsetPlug(Intent intent) {
-        int state = intent.getIntExtra("state", -1);
-        switch(state) {
-            case(0):
-                Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO, "Headset unplugged");
-                break;
-            case(1):
-                Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO, "Headset plugged");
-                break;
-            default:
-                Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_ERROR, "Headset state incorrect");
-        }
-    }
+
 
 
 
@@ -1194,19 +939,7 @@ public class ***REMOVED***Service extends Service implements SensorEventListener
 
     @Override
     public void onDestroy() {
-        //sqsReportManager.destroy();
         stopForeground(true);
-        if (mSensorManager!=null) {
-            mSensorManager.unregisterListener(this);
-
-        }
-        if (observationHelperSdcard!=null) {
-            observationHelperSdcard.stopWatching();
-        }
-        if (observationHelperStorage !=null) {
-            observationHelperStorage.stopWatching();
-        }
-
 
     }
 
