@@ -31,7 +31,6 @@ public class MyApplication extends android.app.Application {
         //Parse.enableLocalDatastore(this);
         //init Parse
         Parse.initialize(this,BuildConfig.PARSE_APP_ID,BuildConfig.PARSE_CLIENT_KEY);
-        //ParseFacebookUtils.initialize("***REMOVED***");
         //enable automatic user support support (user will link to FB anyway)
         //ParseUser.enableAutomaticUser();
 
