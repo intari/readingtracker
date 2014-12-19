@@ -407,7 +407,7 @@ public class CoreService extends Service  {
     }
 
     private static String buildAuthority() {
-        String authority = BuildConfig.APPLICATION_ID+".";//"com.viorsan.";
+        String authority = BuildConfig.APPLICATION_ID+".";
         authority += BuildConfig.FLAVOR;
         if (BuildConfig.DEBUG) {
             authority += ".debug";
