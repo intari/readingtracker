@@ -133,7 +133,7 @@ public class MyActivity extends Activity {
                 Long requestId=intent.getLongExtra("RequestID",0);
                 Long sessionId=intent.getLongExtra("SessionID",0);
                 updateDebugInfo("Last Request ID:"+requestId);
-                Log.d("***REMOVED***", "updating GUI to Last Request ID:" + requestId);
+                Log.d(TAG, "updating GUI to Last Request ID:" + requestId);
 
 
             }
@@ -627,14 +627,14 @@ public class MyActivity extends Activity {
                 // Something you want to do when an update is available, e.g.
                 // enable a button to install the update. Note that the manager
                 // shows an alert dialog after the method returns.
-                Log.d("***REMOVED***", "Update is available");
+                Log.d(TAG, "Update is available");
 
 
                 Toast.makeText(self, R.string.update_is_available, Toast.LENGTH_LONG).show();
             }
 
             public void onNoUpdateAvailable() {
-                Log.d("***REMOVED***", "No updates found");
+                Log.d(TAG, "No updates found");
                 Toast.makeText(self, R.string.update_is_not_available, Toast.LENGTH_SHORT).show();
             }
         });
@@ -643,7 +643,7 @@ public class MyActivity extends Activity {
     protected void onStart()
     {
         super.onStart();
-        Log.d("***REMOVED***", "start");
+        Log.d(TAG, "start");
         //new CheckStatusTask().execute(getResources().getString(R.string.api_status) + "?device_udid=" + new DeviceInfoManager().getDeviceId(getBaseContext()));
         updateReaderStatus();
 
