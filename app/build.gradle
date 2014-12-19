@@ -63,27 +63,60 @@ android {
     compileSdkVersion 'Google Inc.:Google APIs:17'
     buildToolsVersion "21.1.2"
 
-    defaultConfig {
-        applicationId "com.viorsan.dollmaster"
-        minSdkVersion 17
-        targetSdkVersion 17
-        versionCode myVersionCode
-        versionName myVersionName+"."+versionCode+"-built_at-"+buildTime()+'-git-sha1-'+gitSha();
+    //autoincrementing version code
+    //based off https://stackoverflow.com/questions/21405457/autoincrement-versioncode-with-gradle-extra-properties
+    //and
+    if(project.hasProperty("versionPropertiesPath") ) {
+        File versionPropsFile = new File(System.getenv('HOME') + "/" + project.property("versionPropertiesPath"))
+        if (versionPropsFile.canRead()) {
+            def Properties versionProps = new Properties()
 
-        //versionCode versionMajor * 10000 + versionMinor * 1000 + versionPatch * 100 + versionBuild
-        //versionName "${versionMajor}.${versionMinor}" + ((versionPatch != 0) ? ".${versionPatch}" : "")
+            versionProps.load(new FileInputStream(versionPropsFile))
+
+            def code = versionProps['VERSION_CODE'].toInteger() + 1
+
+            versionProps['VERSION_CODE']=code.toString()
+            versionProps.store(versionPropsFile.newWriter(), null)
+
+            defaultConfig {
+                applicationId "com.viorsan.dollmaster"
+                minSdkVersion 17
+                targetSdkVersion 17
+                versionCode code
+                versionName myVersionName+"."+code+"-built_at-"+buildTime()+'-git-sha1-'+gitSha();
+            }
+        }
+        else {
+            throw new GradleException("Could not read version information:"+System.getenv('HOME') + "/" + project.property("versionPropertiesPath")+" is not readable")
+        }
     }
+    else {
+        throw new GradleException("Could not read version information:versionPropertiesPath not configured")
+    }
+
+
+
+
     productFlavors {
         //TODO: find out HOW to configure this CORRECTLY
         //Why first flavor choose for debug automatically?
         //how to use flavors to change packageName/ApplicationId/title?
         internal {
-            versionCode myVersionCode
-            versionName myVersionName+"."+versionCode+"-internal"+"-built_at-"+buildTime()+'-git-sha1-'+gitSha();
+
+            buildConfigField "String", "API_URL", "\"https://dev.viorsan.com\""
+            //my default Parse Keys
+            buildConfigField "String", "PARSE_APP_ID","\"***REMOVED***\""
+            buildConfigField "String", "PARSE_CLIENT_KEY","\"***REMOVED***\""
+            buildConfigField "String", "***REMOVED***","\"***REMOVED***\""
+
          }
         playstore {
-            versionCode myVersionCode
-            versionName myVersionName+"."+versionCode+"-playstore"+"-built_at-"+buildTime()+'-git-sha1-'+gitSha();
+            //ALL PlayStore-based versions including Alpha-playstore
+            buildConfigField "String", "\"PARSE_APP_ID","FILL_APP_ID\""
+            buildConfigField "String", "\"PARSE_CLIENT_KEY","FILL_CLIENT_KEY\""
+            buildConfigField "String", "***REMOVED***","\"FILL_HOCKEYAPP_APP_ID_IF_NEEDED\""
+
+            buildConfigField "String", "API_URL", "\"https://dev.viorsan.com\""
         }
     }
 
@@ -92,6 +125,48 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+    }
+
+
+    //code sign support, based off http://habrahabr.ru/post/205308/
+    //Загружаем значения для подписи приложения
+    if(project.hasProperty("debugSigningPropertiesPath") && project.hasProperty("releaseSigningPropertiesPath")) {
+
+        //Файлы в которых хранятся значения для подписи
+        File debugPropsFile = new File(System.getenv('HOME') +  "/" + project.property("debugSigningPropertiesPath"))
+        File releasePropsFile = new File(System.getenv('HOME') +  "/" + project.property("releaseSigningPropertiesPath"))
+
+        if(debugPropsFile.exists() && releasePropsFile.exists()) {
+            Properties debugProps = new Properties()
+            debugProps.load(new FileInputStream(debugPropsFile))
+
+            Properties releaseProps = new Properties()
+            releaseProps.load(new FileInputStream(releasePropsFile))
+
+            //Дописываем в конфиг загруженные значения
+            signingConfigs {
+                debug {
+                    storeFile file(debugPropsFile.getParent() + "/" + debugProps['keystore'])
+                    storePassword debugProps['keystore.password']
+                    keyAlias debugProps['keyAlias']
+                    keyPassword debugProps['keyPassword']
+                }
+                release {
+                    storeFile file(releasePropsFile.getParent() + "/" + releaseProps['keystore'])
+                    storePassword releaseProps['keystore.password']
+                    keyAlias releaseProps['keyAlias']
+                    keyPassword releaseProps['keyPassword']
+                }
+            }
+            buildTypes {
+                debug {
+                    signingConfig signingConfigs.debug
+                }
+                release {
+                    signingConfig signingConfigs.release
+                }
+            }
         }
     }
 }
