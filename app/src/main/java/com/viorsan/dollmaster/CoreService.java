@@ -380,29 +380,6 @@ public class CoreService extends Service  {
         }
 
 
-        //report some info about important device features
-        final PackageManager pm = getBaseContext().getPackageManager();
-
-
-
-        //TODO:Google Apps are here?
-        if (pm.hasSystemFeature("com.google.android.feautre.GOOGLE_BUILD")) {
-            mDetails.put("featureGoogleBuild",Boolean.TRUE);
-        }
-        else {
-            mDetails.put("featureGoogleBuild",Boolean.FALSE);
-        }
-        //TODO:Nexuses/GPe devices with new launcher?
-        //http://delphigl.de/glcapsviewer/gles_listreports.php?devicefeature=com.google.android.feature.GOOGLE_EXPERIENCE ?
-
-        if (pm.hasSystemFeature("com.google.android.feature.GOOGLE_EXPERIENCE")) {
-            mDetails.put("featureGoogleExperience",Boolean.TRUE);
-        }
-        else {
-            mDetails.put("featureGoogleExperience",Boolean.FALSE);
-        }
-
-
         //Phone network details
         TelephonyManager telephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
 
