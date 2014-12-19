@@ -113,35 +113,7 @@ public class DeviceInfoManager {
         return false;
     }
 
-    /* Checks if external storage is available to at least read */
-    public boolean isExternalStorageReadable() {
-        String state = Environment.getExternalStorageState();
-        if (Environment.MEDIA_MOUNTED.equals(state) ||
-                Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)) {
-            return true;
-        }
-        return false;
-    }
-    public synchronized int readTotalRam() {
-        int tm = 1000;
 
-        try {
-            RandomAccessFile reader = new RandomAccessFile("/proc/meminfo", "r");
-            String load = reader.readLine();
-
-            String[] totalRam = load.split(" kB");
-            String[] trm = totalRam[0].split(" ");
-
-            tm = Integer.parseInt(trm[trm.length - 1]);
-            tm = tm*1024;
-        } catch (IOException e) {
-            e.printStackTrace();
-            ACRA.getErrorReporter().putCustomData("tag", "Device Info");
-            ACRA.getErrorReporter().handleException(e,false);
-        }
-
-        return tm;
-    }
 
     public String getDeviceId(Context context) {
         TelephonyManager telephonyManager = (TelephonyManager)context.getSystemService(Context.TELEPHONY_SERVICE);

@@ -348,10 +348,8 @@ public class CoreService extends Service  {
 
         DeviceInfoManager deviceInfoManager = new DeviceInfoManager();
 
-        Integer totalMemory = deviceInfoManager.readTotalRam();
         String runtimeName=deviceInfoManager.getCurrentRuntimeValue();
 
-        mDetails.put("userAssignedName", "Unknown");
         mDetails.put("systemName", "Android");
         mDetails.put("systemVersion", Build.VERSION.RELEASE);
         mDetails.put("model", Build.PRODUCT);
@@ -364,8 +362,6 @@ public class CoreService extends Service  {
         mDetails.put("fingerprint",Build.FINGERPRINT);
         mDetails.put("manufacturer",Build.MANUFACTURER);
         mDetails.put("brand",Build.BRAND);
-
-        mDetails.put("totalMemory", totalMemory.toString());
 
         mDetails.put("runtime",runtimeName);
 
