@@ -84,7 +84,7 @@ android {
                 targetSdkVersion 17
                 versionCode code
                 versionName myVersionName+"."+code+"-built_at-"+buildTime()+'-git-sha1-'+gitSha();
-            } 
+            }  
         }
         else {
             throw new GradleException("Could not read version information:"+System.getenv('HOME') + "/" + project.property("versionPropertiesPath")+" is not readable")
