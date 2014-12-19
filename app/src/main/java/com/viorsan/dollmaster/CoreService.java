@@ -77,9 +77,6 @@ public class CoreService extends Service  {
     public static int batteryPluggedStatus = 0;
 
 
-    private int currentBrowserHistoryPosition=-1;
-
-
 
 
     private static ParseObject mDetails =null;
@@ -817,119 +814,6 @@ public class CoreService extends Service  {
 
 
 
-    // browser history check
-    public void reportInitialBrowsingHistory() {
-
-        //based on https://stackoverflow.com/questions/2577084/android-read-browser-history
-        /*
-            issues:
-            - on jessica29 'Internet' is used (not Chrome) even while it's Kitkat
-            - on jessica22 with CyanogenMod (and likely other Cyanogenmod-based devices) their browser is used
-            - google quick search box itself is not used
-            - ONLY system default browser is used (it's Chrome on newer Androids...usually)
-            - if we only need current data - we should just ingore initial update and few after
-            - it LOOKS like some synced urls are here. or not?
-            - EXACT URLs provided...и я например - не рискну со своих основных девайсов такое отсылать в SysMonitor...
-            - а теперь смотрим кто такие привилегия просит..FB вроде ПОКА не просит
-
-            Date=Unix Epoch
-
-
-         */
-
-        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"Dumping browser history...");
-
-        String title = "";
-        String url = "";
-
-        long date =-1L;
-        //ArrayList<HistoryEntry> list = new ArrayList<HistoryEntry>();
-
-        String[] proj = new String[] { Browser.BookmarkColumns.TITLE,
-                Browser.BookmarkColumns.URL, Browser.BookmarkColumns.DATE };
-        String sel = Browser.BookmarkColumns.BOOKMARK + " = 0"; // 0 = history,
-        // 1 = bookmark
-        Cursor mCur = getContentResolver().query(Browser.BOOKMARKS_URI, proj,
-                sel, null, null);
-        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"Browser history contains %d  elements. Starting from one",mCur.getCount());
-
-        mCur.moveToFirst();
-        currentBrowserHistoryPosition=1;
-
-
-        if (mCur.moveToFirst() && mCur.getCount() > 0) {
-            boolean cont = true;
-            while (mCur.isAfterLast() == false && cont) {
-                //HistoryEntry entry = new HistoryEntry();
-
-                title = mCur.getString(mCur
-                        .getColumnIndex(Browser.BookmarkColumns.TITLE));
-                url = mCur.getString(mCur
-                        .getColumnIndex(Browser.BookmarkColumns.URL));
-
-                date = mCur.getLong(mCur.
-                        getColumnIndex(Browser.BookmarkColumns.DATE));
-
-                // Do something with title and url
-                //entry.setTitle(title);
-                //entry.setUrl(url);
-                //list.add(entry );
-                Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"%d. User visited %s at url %s at %d | ",currentBrowserHistoryPosition,title,url,date);
-                //Log.d("TAG", "title   " + title);
-                mCur.moveToNext();
-
-                currentBrowserHistoryPosition++;
-            }
-        }
-
-        mCur.close();
-
-
-    }
-    public void reportBrowsingHistoryUpdates() {
-        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"Dumping browser history updates..last pos was %d",currentBrowserHistoryPosition);
-
-        String title = "";
-        String url = "";
-
-        long date =-1;
-        //ArrayList<HistoryEntry> list = new ArrayList<HistoryEntry>();
-
-        String[] proj = new String[] { Browser.BookmarkColumns.TITLE,
-                Browser.BookmarkColumns.URL, Browser.BookmarkColumns.DATE };
-
-
-        String sel = Browser.BookmarkColumns.BOOKMARK + " = 0"; // 0 = history,
-        // 1 = bookmark
-        Cursor mCur = getContentResolver().query(Browser.BOOKMARKS_URI, proj,
-                sel, null, null);
-        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"Browser history contains "+mCur.getCount()+ " elements. Starting from %d",currentBrowserHistoryPosition);
-
-        mCur.moveToFirst();
-        mCur.moveToPosition(currentBrowserHistoryPosition);
-
-
-        if (mCur.getCount() > 0) {
-            boolean cont = true;
-            while (mCur.isAfterLast() == false && cont) {
-
-                title = mCur.getString(mCur
-                        .getColumnIndex(Browser.BookmarkColumns.TITLE));
-                url = mCur.getString(mCur
-                        .getColumnIndex(Browser.BookmarkColumns.URL));
-                date = mCur.getLong(mCur
-                        .getColumnIndex(Browser.BookmarkColumns.DATE));
-
-                Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"%d. User visited %s at url %s at %d| ",currentBrowserHistoryPosition,title,url,date);
-                mCur.moveToNext();
-
-                currentBrowserHistoryPosition++;
-            }
-        }
-
-        mCur.close();
-
-    }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {

@@ -16,12 +16,6 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-    <!--history -->
-    <!-- how to use: https://stackoverflow.com/questions/2577084/android-read-browser-history
-         but it appears it's not real-time -->
-  <!--  <uses-permission android:name="com.android.browser.permission.READ_HISTORY_BOOKMARKS"/>
-      -->
-
 
     <!-- experiment with permissions
          Yes, I knew this doesn't make technical sense
