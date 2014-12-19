@@ -70,7 +70,14 @@ def gitLastCommit() {
 }
 
 def buildTime() {
-    def df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm'Z'") //you can change it
+    def df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm'Z'")
+    df.setTimeZone(TimeZone.getTimeZone("UTC")) //RTZ5 (Omsk) is UTC+6 per https://ru.wikipedia.org/wiki/Время_в_России
+    return df.format(new Date())
+}
+
+//more human readable version
+def buildTimeHumanReadable() {
+    def df = new SimpleDateFormat("yyyy/MM/dd HH:mm")
     df.setTimeZone(TimeZone.getTimeZone("UTC")) //RTZ5 (Omsk) is UTC+6 per https://ru.wikipedia.org/wiki/Время_в_России
     return df.format(new Date())
 }
@@ -138,6 +145,7 @@ android {
                     buildConfigField "String","PARSE_APP_ID", "\""+parseAppId+"\""
                     buildConfigField "String","PARSE_CLIENT_KEY","\""+parseClientKey+"\""
                     buildConfigField "String","HOCKEYAPP_APP_ID", "\""+hockeyAppAppId+"\""
+                    buildConfigField "String","BUILD_DATE_TIME","\""+buildTimeHumanReadable()+" UTC\""
 
                 }
                 else {
@@ -240,7 +248,7 @@ hockeyapp {
             notesType = 1
             commitSha=gitSha()
             //WARNING:Cyrillic is not supported here (plugin issue), TODO: report this
-            notes = "* Automatic build at "+buildTime()+" UTC\r\n* Changes:"+gitLastCommit()+"\r\n* git sha1:"+gitSha()
+            notes = "* Automatic build at "+buildTimeHumanReadable()+" UTC\r\n* Changes:"+gitLastCommit()+"\r\n* git sha1:"+gitSha()
         }
         else {
             throw new GradleException("Could not read HockeyApp API Token for automatic build submission");
