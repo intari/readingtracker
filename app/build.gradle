@@ -34,17 +34,19 @@ parse {
             def parseMasterKey=apiKeysProps['PARSE_MASTER_KEY'];
             //prevent empty values
             if (parseAppId==null) {
-                throw new GradleException("Parse APP ID not configured)");
+                throw new GradleException("Parse APP ID not configured but API Key file was here");
             }
             if (parseMasterKey==null) {
-                throw new GradleException("Parse MASTER KEY not configured)");
+                throw new GradleException("Parse MASTER KEY not configured but API Key file was here");
             }
 
             applicationId  parseAppId
             masterKey parseMasterKey
         }
         else {
-            throw new GradleException("Could not read Parse API Keys");
+            // No file with API Keys = plugin won't work
+            // but don't abort
+            //throw new GradleException("Could not read Parse API Keys");
         }
     }
 
@@ -101,16 +103,32 @@ android {
                 versionCode code
                 versionName myVersionName+"."+code+"-built_at-"+buildTime()+'-git-sha1-'+gitSha();
             }
+
         }
         else {
-            throw new GradleException("Could not read version information:"+System.getenv('HOME') + "/" + project.property("versionPropertiesPath")+" is not readable")
+            defaultConfig {
+                applicationId "com.viorsan.dollmaster.bad_build"
+                minSdkVersion 17
+                targetSdkVersion 17
+                versionCode 9999
+                versionName "BAD."+myVersionName+"-built_at-"+buildTime()+'-git-sha1-'+gitSha();
+            }
+
+            //Cannot read versioning info - file unreadable
+            //throw new GradleException("Could not read version information:"+System.getenv('HOME') + "/" + project.property("versionPropertiesPath")+" is not readable")
         }
     }
     else {
-        throw new GradleException("Could not read version information:versionPropertiesPath not configured")
+        defaultConfig {
+            applicationId "com.viorsan.dollmaster.bad_build"
+            minSdkVersion 17
+            targetSdkVersion 17
+            versionCode 9999
+            versionName "BAD."+myVersionName+"-built_at-"+buildTime()+'-git-sha1-'+gitSha();
+        }
+        //Cannot read versioning info - file unreadable
+        //throw new GradleException("Could not read version information:versionPropertiesPath not configured")
     }
-
-
 
 
     productFlavors {
@@ -127,13 +145,13 @@ android {
                     def hockeyAppAppId=apiKeysProps['HOCKEYAPP_APP_ID'];
                     //prevent empty values
                     if (parseAppId==null) {
-                        throw new GradleException("Parse APP ID not configured");
+                        throw new GradleException("Parse APP ID not configured but API Key file was here");
                     }
                     if (parseClientKey==null) {
-                        throw new GradleException("Parse CLIENT KEY not configured");
+                        throw new GradleException("Parse CLIENT KEY not configured but API Key file was here");
                     }
                     if (hockeyAppAppId==null) {
-                        throw new GradleException("HockeyApp APP ID not configured");
+                        throw new GradleException("HockeyApp APP ID not configured but API Key file was here");
                     }
 
                     buildConfigField "String","PARSE_APP_ID", "\""+parseAppId+"\""
@@ -142,11 +160,15 @@ android {
 
                 }
                 else {
-                    throw new GradleException("Could not read API Keys");
+                    throw new GradleException("Could not read API Keys  but API Key file was here");
                 }
             }
             else {
-                throw new GradleException("API Keys were not specified");
+                //This will produce at least semi-working build, without all networking logic
+                buildConfigField "String","PARSE_APP_ID", "\"NOT_CONFIGURED_CORRECTLY\""
+                buildConfigField "String","PARSE_CLIENT_KEY","\"NOT_CONFIGURED_CORRECTLY\""
+                buildConfigField "String","HOCKEYAPP_APP_ID", "\"NOT_CONFIGURED_CORRECTLY\""
+                println "API keys were not specified. Placeholders were used"
             }
 
          }
@@ -244,9 +266,11 @@ hockeyapp {
             //WARNING:Cyrillic is not supported here (plugin issue), TODO: report this
             notes = "* Automatic build at "+buildTime()+" UTC\r\n* Changes:"+gitLastCommit()+"\r\n* git sha1:"+gitSha()
         }
+        // NO API Keys = no working automatic submission
+        /*
         else {
             throw new GradleException("Could not read API Token for automatic build submission");
-        }
+        } */
     }
 
 }
