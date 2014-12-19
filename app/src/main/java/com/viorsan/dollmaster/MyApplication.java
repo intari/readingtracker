@@ -11,18 +11,11 @@ import org.acra.annotation.ReportsCrashes;
 
 
 
-@ReportsCrashes(
-        formKey = "***REMOVED***"
-)
 
 public class MyApplication extends android.app.Application {
     @Override
     public void onCreate() {
 
-
-        // The following line triggers the initialization of ACRA
-        //ACRA.init(this);
-        //ACRA.getErrorReporter().setReportSender(new HockeySender());
 
         // Enable Parse-based Crash Reporting
         ParseCrashReporting.enable(this);
@@ -42,7 +35,7 @@ public class MyApplication extends android.app.Application {
         //init logger
         if (Debug.D) {
             Debug.enableDebug(this, true);
-            Debug.L.setRemoteHost("***REMOVED***", 50000, true);      // change to your mac's IP address, set a fixed TCP port in the Prefs in desktop NSLogger
+            //Debug.L.setRemoteHost("site.domain.com", 50000, true);      // change to your mac's IP address, set a fixed TCP port in the Prefs in desktop NSLogger
             //Debug.L.LOG_MARK("***REMOVED*** startup");
         }
         super.onCreate();
