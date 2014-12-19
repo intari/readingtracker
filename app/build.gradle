@@ -84,7 +84,7 @@ android {
                 targetSdkVersion 17
                 versionCode code
                 versionName myVersionName+"."+code+"-built_at-"+buildTime()+'-git-sha1-'+gitSha();
-            }  
+            }
         }
         else {
             throw new GradleException("Could not read version information:"+System.getenv('HOME') + "/" + project.property("versionPropertiesPath")+" is not readable")
@@ -203,6 +203,6 @@ hockeyapp {
     //buildServerUrl =
     //WARNING:Cyrillic here = мусор, проблема именно на уровне плагина а не гита. нельзя не в git commit ни просто в сообщениях
     //форматирование должно быть именно таким:\r\n* TextHere
-    notes = "* Automatic build at "+buildTime()+" UTC\r\n* Changes:"+gitLastCommit()+"\r\n* git sha1:"+gitSha()+"\r\n* Test line\r\n* Test"
+    notes = "* Automatic build at "+buildTime()+" UTC\r\n* Changes:"+gitLastCommit()+"\r\n* git sha1:"+gitSha() //+"\r\n* Test line\r\n* Test"
 }
 
