@@ -44,9 +44,7 @@ parse {
             masterKey parseMasterKey
         }
         else {
-            // No file with API Keys = plugin won't work
-            // but don't abort
-            //throw new GradleException("Could not read Parse API Keys");
+            throw new GradleException("Could not read Parse API Keys. Check README.md");
         }
     }
 
@@ -106,28 +104,11 @@ android {
 
         }
         else {
-            defaultConfig {
-                applicationId "com.viorsan.dollmaster.bad_build"
-                minSdkVersion 17
-                targetSdkVersion 17
-                versionCode 9999
-                versionName "BAD."+myVersionName+"-built_at-"+buildTime()+'-git-sha1-'+gitSha();
-            }
-
-            //Cannot read versioning info - file unreadable
-            //throw new GradleException("Could not read version information:"+System.getenv('HOME') + "/" + project.property("versionPropertiesPath")+" is not readable")
+            throw new GradleException("Could not read version information:"+System.getenv('HOME') + "/" + project.property("versionPropertiesPath")+" is not readable")
         }
     }
     else {
-        defaultConfig {
-            applicationId "com.viorsan.dollmaster.bad_build"
-            minSdkVersion 17
-            targetSdkVersion 17
-            versionCode 9999
-            versionName "BAD."+myVersionName+"-built_at-"+buildTime()+'-git-sha1-'+gitSha();
-        }
-        //Cannot read versioning info - file unreadable
-        //throw new GradleException("Could not read version information:versionPropertiesPath not configured")
+        throw new GradleException("Could not read version information:versionPropertiesPath not configured. Check README.md")
     }
 
 
@@ -160,15 +141,11 @@ android {
 
                 }
                 else {
-                    throw new GradleException("Could not read API Keys  but API Key file was here");
+                    throw new GradleException("Could not read API Keys but API Key file was here");
                 }
             }
             else {
-                //This will produce at least semi-working build, without all networking logic
-                buildConfigField "String","PARSE_APP_ID", "\"NOT_CONFIGURED_CORRECTLY\""
-                buildConfigField "String","PARSE_CLIENT_KEY","\"NOT_CONFIGURED_CORRECTLY\""
-                buildConfigField "String","HOCKEYAPP_APP_ID", "\"NOT_CONFIGURED_CORRECTLY\""
-                println "API keys were not specified. Placeholders were used"
+                throw new GradleException("API Keys not found. Check README.md");
             }
 
          }
@@ -236,7 +213,6 @@ dependencies {
     compile 'com.google.android.gms:play-services:6.5.+'
     compile files('libs/HockeySDK-3.0.1.jar')
     compile files('libs/acra-4.4.0.jar')
-    //compile files('libs/android-support-v13.jar')
     compile files('libs/json-simple-1.1.1.jar')
     compile files('libs/jmdns-3.4.1.jar')
 }
@@ -266,11 +242,11 @@ hockeyapp {
             //WARNING:Cyrillic is not supported here (plugin issue), TODO: report this
             notes = "* Automatic build at "+buildTime()+" UTC\r\n* Changes:"+gitLastCommit()+"\r\n* git sha1:"+gitSha()
         }
-        // NO API Keys = no working automatic submission
-        /*
         else {
-            throw new GradleException("Could not read API Token for automatic build submission");
-        } */
+            throw new GradleException("Could not read HockeyApp API Token for automatic build submission");
+        }
+    } else {
+        throw new GradleException("API Keys not found. Check README.md (or don't use HockeyApp's Gradle task)");
     }
 
 }
