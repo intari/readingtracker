@@ -1,15 +1,14 @@
 import java.text.SimpleDateFormat
 
 
-//update version code on eache build
 /*
  1.0 - dollmaster/non-gradle booktracker
  1.1 - initial versions of gradle-based booktracker
+ 1.2 - gradle-based booktracker, externalized API Keys
  */
-def myVersionName="1.1"
+def myVersionName="1.2"
 
 
-//https://parse.com/apps/quickstart#analytics/crashreporting/android/existing
 apply plugin: 'com.parse'
 
 buildscript {
@@ -23,9 +22,6 @@ buildscript {
         classpath 'com.parse.tools:gradle:1.+'
     }
 }
-
-//see https://parse.com/docs/android_guide#crashreporting
-//may be I should user my configured CloudCode repository?
 
 parse {
     if(project.hasProperty("apiKeysPath") ) {
@@ -86,7 +82,6 @@ android {
 
     //autoincrementing version code
     //based off https://stackoverflow.com/questions/21405457/autoincrement-versioncode-with-gradle-extra-properties
-    //and
     if(project.hasProperty("versionPropertiesPath") ) {
         File versionPropsFile = new File(System.getenv('HOME') + "/" + project.property("versionPropertiesPath"))
         if (versionPropsFile.canRead()) {
@@ -167,10 +162,10 @@ android {
 
 
     //code sign support, based off http://habrahabr.ru/post/205308/
-    //Загружаем значения для подписи приложения
+    //Load values used for application signing
     if(project.hasProperty("debugSigningPropertiesPath") && project.hasProperty("releaseSigningPropertiesPath")) {
 
-        //Файлы в которых хранятся значения для подписи
+        // Files which hold values for signing
         File debugPropsFile = new File(System.getenv('HOME') +  "/" + project.property("debugSigningPropertiesPath"))
         File releasePropsFile = new File(System.getenv('HOME') +  "/" + project.property("releaseSigningPropertiesPath"))
 
@@ -181,7 +176,7 @@ android {
             Properties releaseProps = new Properties()
             releaseProps.load(new FileInputStream(releasePropsFile))
 
-            //Дописываем в конфиг загруженные значения
+            // Write loaded values to config
             signingConfigs {
                 debug {
                     storeFile file(debugPropsFile.getParent() + "/" + debugProps['keystore'])
@@ -246,9 +241,8 @@ hockeyapp {
             status = 2
             notesType = 1
             commitSha=gitSha()
-            //WARNING:Cyrillic here = мусор, проблема именно на уровне плагина а не гита. нельзя не в git commit ни просто в сообщениях
-            //форматирование должно быть именно таким:\r\n* TextHere
-            notes = "* Automatic build at "+buildTime()+" UTC\r\n* Changes:"+gitLastCommit()+"\r\n* git sha1:"+gitSha() //+"\r\n* Test line\r\n* Test"
+            //WARNING:Cyrillic is not supported here (plugin issue), TODO: report this
+            notes = "* Automatic build at "+buildTime()+" UTC\r\n* Changes:"+gitLastCommit()+"\r\n* git sha1:"+gitSha()
         }
         else {
             throw new GradleException("Could not read API Token for automatic build submission");
