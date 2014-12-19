@@ -103,20 +103,74 @@ android {
         //how to use flavors to change packageName/ApplicationId/title?
         internal {
 
-            buildConfigField "String", "API_URL", "\"https://dev.viorsan.com\""
-            //my default Parse Keys
-            buildConfigField "String", "PARSE_APP_ID","\"***REMOVED***\""
-            buildConfigField "String", "PARSE_CLIENT_KEY","\"***REMOVED***\""
-            buildConfigField "String", "***REMOVED***","\"***REMOVED***\""
+            if(project.hasProperty("apiKeysPathInternal") ) {
+                File apiKeysFile = new File(System.getenv('HOME') + "/" + project.property("apiKeysPathInternal"))
+                if (apiKeysFile.canRead()) {
+                    def Properties apiKeysProps = new Properties()
+                    apiKeysProps.load(new FileInputStream(apiKeysFile))
+                    def parseAppId= apiKeysProps['PARSE_APP_ID'];
+                    def parseClientKey=apiKeysProps['PARSE_CLIENT_KEY'];
+                    def hockeyAppAppId=apiKeysProps['HOCKEYAPP_APP_ID'];
+                    //prevent empty values
+                    if (parseAppId==null) {
+                        throw new GradleException("Parse APP ID not configured for internal build");
+                    }
+                    if (parseClientKey==null) {
+                        throw new GradleException("Parse CLIENT KEY not configured for internal build");
+                    }
+                    if (hockeyAppAppId==null) {
+                        throw new GradleException("HockeyApp APP ID not configured for internal build");
+                    }
+
+                    buildConfigField "String","PARSE_APP_ID", "\""+parseAppId+"\""
+                    buildConfigField "String","PARSE_CLIENT_KEY","\""+parseClientKey+"\""
+                    buildConfigField "String","HOCKEYAPP_APP_ID", "\""+hockeyAppAppId+"\""
+
+                }
+                else {
+                    throw new GradleException("Could not read API Keys for internal build");
+                }
+            }
+            else {
+                throw new GradleException("API Keys for internal build were not specified");
+            }
+
 
          }
         playstore {
-            //ALL PlayStore-based versions including Alpha-playstore
-            buildConfigField "String", "\"PARSE_APP_ID","FILL_APP_ID\""
-            buildConfigField "String", "\"PARSE_CLIENT_KEY","FILL_CLIENT_KEY\""
-            buildConfigField "String", "***REMOVED***","\"FILL_HOCKEYAPP_APP_ID_IF_NEEDED\""
+            //build for PlayStore
+            if(project.hasProperty("apiKeysPathPlayStore") ) {
+                File apiKeysFile = new File(System.getenv('HOME') + "/" + project.property("apiKeysPathPlayStore"))
+                if (apiKeysFile.canRead()) {
+                    def Properties apiKeysProps = new Properties()
+                    apiKeysProps.load(new FileInputStream(apiKeysFile))
+                    def parseAppId= apiKeysProps['PARSE_APP_ID'];
+                    def parseClientKey=apiKeysProps['PARSE_CLIENT_KEY'];
+                    def hockeyAppAppId=apiKeysProps['HOCKEYAPP_APP_ID'];
+                    //prevent empty values
+                    if (parseAppId==null) {
+                        throw new GradleException("Parse APP ID not configured for PlayStore build");
+                    }
+                    if (parseClientKey==null) {
+                        throw new GradleException("Parse CLIENT KEY not configured for PlayStore build");
+                    }
+                    if (hockeyAppAppId==null) {
+                        throw new GradleException("HockeyApp APP ID not configured for PlayStore build");
+                    }
 
-            buildConfigField "String", "API_URL", "\"https://dev.viorsan.com\""
+                    buildConfigField "String","PARSE_APP_ID", "\""+parseAppId+"\""
+                    buildConfigField "String","PARSE_CLIENT_KEY","\""+parseClientKey+"\""
+                    buildConfigField "String","HOCKEYAPP_APP_ID", "\""+hockeyAppAppId+"\""
+
+                }
+                else {
+                    throw new GradleException("Could not read API Keys for PlayStore build");
+                }
+            }
+            else {
+                throw new GradleException("API Keys for PlayStore build were not specified");
+            }
+
         }
     }
 
@@ -179,9 +233,7 @@ dependencies {
 
 dependencies {
     compile 'com.google.code.gson:gson:2.2.2'
-    //compile 'com.google.android.gms:play-services:+'
     compile 'com.google.android.gms:play-services:6.5.+'
-    //compile 'com.google.android.gms:play-services-location:6.5.+'
     compile files('libs/HockeySDK-3.0.1.jar')
     compile files('libs/acra-4.4.0.jar')
     //compile files('libs/android-support-v13.jar')
@@ -192,17 +244,35 @@ dependencies {
 //Per  https://github.com/x2on/gradle-hockeyapp-plugin/issues/30 it's dependencies must be in root project
 apply plugin: 'de.felixschulze.gradle.hockeyapp'
 hockeyapp {
-    apiToken = "***REMOVED***"
-    releaseType = 2
-    notify = 1
-    status = 2
-    notesType = 1
-    commitSha=gitSha()
-    repositoryUrl = "https://bitbucket.org/intari/booktracker"
-    //TODO: когда у нас реально будет build server - добавить 
-    //buildServerUrl =
-    //WARNING:Cyrillic here = мусор, проблема именно на уровне плагина а не гита. нельзя не в git commit ни просто в сообщениях
-    //форматирование должно быть именно таким:\r\n* TextHere
-    notes = "* Automatic build at "+buildTime()+" UTC\r\n* Changes:"+gitLastCommit()+"\r\n* git sha1:"+gitSha() //+"\r\n* Test line\r\n* Test"
+    if(project.hasProperty("apiKeysPathInternal") ) {
+        File apiKeysFile = new File(System.getenv('HOME') + "/" + project.property("apiKeysPathInternal"))
+        if (apiKeysFile.canRead()) {
+            def Properties apiKeysProps = new Properties()
+
+            apiKeysProps.load(new FileInputStream(apiKeysFile))
+            def hockeyappToken = apiKeysProps['HOCKEYAPP_TOKEN'];
+
+            //prevent empty values
+            if (hockeyappToken == null) {
+                throw new GradleException("HockeyApp API Token not configured (this is required for automatic build submission)");
+            }
+            //configure plugin
+            apiToken = hockeyappToken;
+            releaseType = 2
+            notify = 1
+            status = 2
+            notesType = 1
+            commitSha=gitSha()
+            //WARNING:Cyrillic here = мусор, проблема именно на уровне плагина а не гита. нельзя не в git commit ни просто в сообщениях
+            //форматирование должно быть именно таким:\r\n* TextHere
+            notes = "* Automatic build at "+buildTime()+" UTC\r\n* Changes:"+gitLastCommit()+"\r\n* git sha1:"+gitSha() //+"\r\n* Test line\r\n* Test"
+
+
+        }
+        else {
+            throw new GradleException("Could not read API Token for automatic build submission");
+        }
+    }
+
 }
 

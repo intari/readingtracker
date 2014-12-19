@@ -618,12 +618,11 @@ public class MyActivity extends Activity {
     }
 
     private void checkForCrashes() {
-        //@TODO:remove ACRA-based code and enable this one
-        //CrashManager.register(this, "e05dc7c06e0cde53ef5170bae4fef932");
+        //@TODO:remove old code
 
     }
     private void checkForUpdates() {
-        UpdateManager.register(this, BuildConfig.***REMOVED***, new UpdateManagerListener() {
+        UpdateManager.register(this, BuildConfig.HOCKEYAPP_APP_ID, new UpdateManagerListener() {
             public void onUpdateAvailable() {
                 // Something you want to do when an update is available, e.g.
                 // enable a button to install the update. Note that the manager
