@@ -113,3 +113,18 @@ dependencies {
     compile files('libs/json-simple-1.1.1.jar')
     compile files('libs/jmdns-3.4.1.jar')
 }
+
+//Per  https://github.com/x2on/gradle-hockeyapp-plugin/issues/30 it's dependencies must be in root project
+apply plugin: 'de.felixschulze.gradle.hockeyapp'
+hockeyapp {
+    apiToken = "***REMOVED***"
+    releaseType = 2
+    notify = 1
+    status = 2
+    notesType = 1
+    commitSha=gitSha()
+    //TODO: use master repo
+    repositoryUrl = "https://bitbucket.org/intari/booktracker"
+    notes = "* Automatic build at "+buildTime()+"\r\n* Changes:"+gitLastCommit()+"\r\n * git sha1:"+gitSha()+"\r\n"
+}
+
