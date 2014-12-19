@@ -22,7 +22,7 @@
     <string name="mantanoReaderNotInstalled">Not installed</string>
 
     <!-- Notification messages -->
-    <string name="app_started_notification">BookTracker started</string>
+    <string name="app_started_notification">Reading Tracker started</string>
     <string name="tap_me">Be careful what you wish for</string>
     <string name="check_your_connection">Please, check your connection</string>
     <string name="update_is_available">Update is available</string>

@@ -2,9 +2,9 @@ import java.text.SimpleDateFormat
 
 
 /*
- 1.0 - dollmaster/non-gradle booktracker
- 1.1 - initial versions of gradle-based booktracker
- 1.2 - gradle-based booktracker, externalized API Keys
+ 1.0 - dollmaster/non-gradle Reading Tracker
+ 1.1 - initial versions of gradle-based Reading Tracker
+ 1.2 - gradle-based Reading Tracker, externalized API Keys
  */
 def myVersionName="1.2"
 

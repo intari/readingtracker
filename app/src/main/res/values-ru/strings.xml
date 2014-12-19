@@ -18,7 +18,7 @@
 
 
     <!-- Notification messages -->
-    <string name="app_started_notification">BookTracker started</string>
+    <string name="app_started_notification">Reading Tracker стартовал</string>
     <string name="tap_me">Be careful what you wish for</string>
     <string name="check_your_connection">Проверь коннект</string>
     <string name="update_is_available">Доступно обновление</string>
