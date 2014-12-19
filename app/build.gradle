@@ -28,8 +28,30 @@ buildscript {
 //may be I should user my configured CloudCode repository?
 
 parse {
-    applicationId '***REMOVED***'
-    masterKey '***REMOVED***'
+    if(project.hasProperty("apiKeysPath") ) {
+        File apiKeysFile = new File(System.getenv('HOME') + "/" + project.property("apiKeysPath"))
+        if (apiKeysFile.canRead()) {
+            def Properties apiKeysProps = new Properties()
+
+            apiKeysProps.load(new FileInputStream(apiKeysFile))
+            def parseAppId= apiKeysProps['PARSE_APP_ID'];
+            def parseMasterKey=apiKeysProps['PARSE_MASTER_KEY'];
+            //prevent empty values
+            if (parseAppId==null) {
+                throw new GradleException("Parse APP ID not configured)");
+            }
+            if (parseMasterKey==null) {
+                throw new GradleException("Parse MASTER KEY not configured)");
+            }
+
+            applicationId  parseAppId
+            masterKey parseMasterKey
+        }
+        else {
+            throw new GradleException("Could not read Parse API Keys");
+        }
+    }
+
     uploadSymbols true //upload symobls if ProGuard was used!
 
 }
@@ -97,13 +119,11 @@ android {
 
 
     productFlavors {
-        //TODO: find out HOW to configure this CORRECTLY
-        //Why first flavor choose for debug automatically?
-        //how to use flavors to change packageName/ApplicationId/title?
+
         internal {
 
-            if(project.hasProperty("apiKeysPathInternal") ) {
-                File apiKeysFile = new File(System.getenv('HOME') + "/" + project.property("apiKeysPathInternal"))
+            if(project.hasProperty("apiKeysPath") ) {
+                File apiKeysFile = new File(System.getenv('HOME') + "/" + project.property("apiKeysPath"))
                 if (apiKeysFile.canRead()) {
                     def Properties apiKeysProps = new Properties()
                     apiKeysProps.load(new FileInputStream(apiKeysFile))
@@ -112,13 +132,13 @@ android {
                     def hockeyAppAppId=apiKeysProps['HOCKEYAPP_APP_ID'];
                     //prevent empty values
                     if (parseAppId==null) {
-                        throw new GradleException("Parse APP ID not configured for internal build");
+                        throw new GradleException("Parse APP ID not configured");
                     }
                     if (parseClientKey==null) {
-                        throw new GradleException("Parse CLIENT KEY not configured for internal build");
+                        throw new GradleException("Parse CLIENT KEY not configured");
                     }
                     if (hockeyAppAppId==null) {
-                        throw new GradleException("HockeyApp APP ID not configured for internal build");
+                        throw new GradleException("HockeyApp APP ID not configured");
                     }
 
                     buildConfigField "String","PARSE_APP_ID", "\""+parseAppId+"\""
@@ -127,50 +147,14 @@ android {
 
                 }
                 else {
-                    throw new GradleException("Could not read API Keys for internal build");
+                    throw new GradleException("Could not read API Keys");
                 }
             }
             else {
-                throw new GradleException("API Keys for internal build were not specified");
+                throw new GradleException("API Keys were not specified");
             }
-
 
          }
-        playstore {
-            //build for PlayStore
-            if(project.hasProperty("apiKeysPathPlayStore") ) {
-                File apiKeysFile = new File(System.getenv('HOME') + "/" + project.property("apiKeysPathPlayStore"))
-                if (apiKeysFile.canRead()) {
-                    def Properties apiKeysProps = new Properties()
-                    apiKeysProps.load(new FileInputStream(apiKeysFile))
-                    def parseAppId= apiKeysProps['PARSE_APP_ID'];
-                    def parseClientKey=apiKeysProps['PARSE_CLIENT_KEY'];
-                    def hockeyAppAppId=apiKeysProps['HOCKEYAPP_APP_ID'];
-                    //prevent empty values
-                    if (parseAppId==null) {
-                        throw new GradleException("Parse APP ID not configured for PlayStore build");
-                    }
-                    if (parseClientKey==null) {
-                        throw new GradleException("Parse CLIENT KEY not configured for PlayStore build");
-                    }
-                    if (hockeyAppAppId==null) {
-                        throw new GradleException("HockeyApp APP ID not configured for PlayStore build");
-                    }
-
-                    buildConfigField "String","PARSE_APP_ID", "\""+parseAppId+"\""
-                    buildConfigField "String","PARSE_CLIENT_KEY","\""+parseClientKey+"\""
-                    buildConfigField "String","HOCKEYAPP_APP_ID", "\""+hockeyAppAppId+"\""
-
-                }
-                else {
-                    throw new GradleException("Could not read API Keys for PlayStore build");
-                }
-            }
-            else {
-                throw new GradleException("API Keys for PlayStore build were not specified");
-            }
-
-        }
     }
 
 
@@ -243,8 +227,8 @@ dependencies {
 //Per  https://github.com/x2on/gradle-hockeyapp-plugin/issues/30 it's dependencies must be in root project
 apply plugin: 'de.felixschulze.gradle.hockeyapp'
 hockeyapp {
-    if(project.hasProperty("apiKeysPathInternal") ) {
-        File apiKeysFile = new File(System.getenv('HOME') + "/" + project.property("apiKeysPathInternal"))
+    if(project.hasProperty("apiKeysPath") ) {
+        File apiKeysFile = new File(System.getenv('HOME') + "/" + project.property("apiKeysPath"))
         if (apiKeysFile.canRead()) {
             def Properties apiKeysProps = new Properties()
 
@@ -265,8 +249,6 @@ hockeyapp {
             //WARNING:Cyrillic here = мусор, проблема именно на уровне плагина а не гита. нельзя не в git commit ни просто в сообщениях
             //форматирование должно быть именно таким:\r\n* TextHere
             notes = "* Automatic build at "+buildTime()+" UTC\r\n* Changes:"+gitLastCommit()+"\r\n* git sha1:"+gitSha() //+"\r\n* Test line\r\n* Test"
-
-
         }
         else {
             throw new GradleException("Could not read API Token for automatic build submission");
