@@ -30,7 +30,7 @@ public class MyApplication extends android.app.Application {
         //TODO:this causes problems with FB. Looks like I'm doing something wrong
         //Parse.enableLocalDatastore(this);
         //init Parse
-        Parse.initialize(this, "***REMOVED***", "***REMOVED***");
+        Parse.initialize(this,BuildConfig.PARSE_APP_ID,BuildConfig.PARSE_CLIENT_KEY);
         //ParseFacebookUtils.initialize("***REMOVED***");
         //enable automatic user support support (user will link to FB anyway)
         //ParseUser.enableAutomaticUser();

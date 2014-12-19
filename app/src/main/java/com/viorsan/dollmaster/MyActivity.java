@@ -623,7 +623,7 @@ public class MyActivity extends Activity {
 
     }
     private void checkForUpdates() {
-        UpdateManager.register(this, "***REMOVED***", new UpdateManagerListener() {
+        UpdateManager.register(this, BuildConfig.***REMOVED***, new UpdateManagerListener() {
             public void onUpdateAvailable() {
                 // Something you want to do when an update is available, e.g.
                 // enable a button to install the update. Note that the manager
