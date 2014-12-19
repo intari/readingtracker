@@ -6,28 +6,11 @@
     <!-- versionCode: conflict with Gradle or not ?-->
     <!-- android:versionCode="102"
           android:versionName="1.0" -->
-
-<!--
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_UPDATES" />
--->
     <!-- required for ParseAnalytics.trackEvent -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-<!---
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
--->
-<!--
-    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS"/>
--->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-<!--
-    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"/>
--->
     <uses-permission android:name="android.permission.GET_TASKS"/>
     <uses-permission android:name="android.permission.READ_LOGS" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -64,28 +47,18 @@
      You are free to use this icon for commercial purposes, to share or to modify it. In exchange, it's necessary to credit the author for the original creation.
      TODO: add original license link
     -->
-    <!--android.view.accessibility.AccessibilityNodeInfo.getViewIdResourceName = API Level 18 (4.3)
-        so it's VERY bad idea to have minSdkVersion <18. BookTracker won't work anyway
-         and BTLE hacks will work wrong
-         29 Nov 2014: We CAN use API 17 now for BookTracker
-         -->
     <uses-sdk android:minSdkVersion="17"/>
     <application
         android:label="@string/app_name"
         android:icon="@drawable/dollmaster"
         android:name=".MyApplication">
-        <!-- android:requiredAccountType="com.viorsan.dollmaster.account">    -->
         <activity android:name="net.hockeyapp.android.UpdateActivity" />
 
         <!-- Google Play Services support -->
         <meta-data android:name="com.google.android.gms.version"
                    android:value="@integer/google_play_services_version" />
 
-        <!-- Facebook support https://developers.facebook.com/docs/android/getting-started -->
-       <!--
-        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/app_id"/>
-        <activity android:name="com.facebook.LoginActivity"/>
-           -->
+
         <activity
             android:name="MyActivity"
             android:label="@string/app_name">
