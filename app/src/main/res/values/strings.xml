@@ -34,9 +34,4 @@
     <string name="guiCurrentlyReadingLong">Reading %1$s by %2$s (page %3$s of %4$s) for %5$.2f minutes</string>
 
 
-
-    <!-- Build information -->
-    <!-- Is is ever needed if we have BuildConfig ? -->
-    <string name="build_id" translatable="false">102</string>
-    <string name="TextVersion"  translatable="false">v1.0 from 18 Dec 2014</string>
 </resources>

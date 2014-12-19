@@ -540,10 +540,6 @@ public class CoreService extends Service  {
     static public void writeLogBanner(String tag, Context context) {
         Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,tag+" (c) Dmitriy Kazimirov 2013-2014");
         Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,tag+" e-mail: dmitriy.kazimirov@viorsan.com");
-        String version=context.getResources().getString(R.string.build_version);
-        String build=context.getResources().getString(R.string.build_id);
-
-        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,tag+" (manual)version "+version+" (build "+build+")");
 
         Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,tag+" BuildAuthority:"+buildAuthority());
         Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,tag+" ApplicationId:"+BuildConfig.APPLICATION_ID);
