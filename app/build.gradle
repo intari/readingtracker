@@ -126,6 +126,6 @@ hockeyapp {
     //TODO: use master repo
     repositoryUrl = "https://bitbucket.org/intari/booktracker"
     //WARNING:Cyrillic here = мусор
-    notes = "* Automatic build at "+buildTime()+" UTC\r\n* Changes:"+gitLastCommit()+"\r\n* git sha1:"+gitSha()+"\r\n*Test line\r\n*TestLine2"
+    notes = "* Automatic build at "+buildTime()+" UTC\r\n* Changes:"+gitLastCommit()+"\r\n* git sha1:"+gitSha()+"\r\n* Test line\r\n* Проверка русского"
 }
 
