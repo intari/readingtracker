@@ -64,6 +64,11 @@ public class MyActivity extends Activity {
         //TODO:get cached version if it's exist
         ParseUser currentUser=ParseUser.getCurrentUser();
         if (currentUser!=null) {
+
+            //set an ACL on the current user's data to not be publicly readable
+            ParseUser user = ParseUser.getCurrentUser();
+            user.setACL(new ParseACL(user));
+
             try{
                 currentUser.fetchIfNeeded();
 
