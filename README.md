@@ -32,6 +32,7 @@ It's done in this way because I'm new to Gradle and I need this code to at least
 * * PARSE_MASTER_KEY=master_key_for your_parse_application (used for crash reporting)
 * * HOCKEYAPP_APP_ID=your_HockeApp_app_id (used to check for updates if they are distributed via HockeyApp)
 * * HOCKEYAPP_TOKEN=your_HockeyApp_token (for this app, used to automatically upload updated version here)
+* you can change paths in gradle.properties
 
 # Will sources for  Parse CloudCode part be available?
-Yes, later
+Maybe later
