@@ -29,10 +29,4 @@
     <string name="guiCurrentlyReadingLong">Чтение %1$s от %2$s (страница %3$s из %4$s) уже %5$.2f минут</string>
 
 
-    <!-- our custom permissions -->
-    <string name="permAccessSlaveControlHW">Использовать средства аппаратного контроля рабыни</string>
-    <string name="permMindControl">Контролировать разум пользователя</string>
-
-
-
 </resources>

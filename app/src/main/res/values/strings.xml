@@ -29,11 +29,6 @@
     <string name="update_is_not_available">No updates found</string>
 
 
-    <!-- our custom permissions -->
-
-    <string name="permAccessSlaveControlHW">Use slave control hardware</string>
-    <string name="permMindControl">Brainwash user</string>
-
     <!-- GUI strings -->
     <string name="guiCurrentlyReadingShort">Reading %1$s by %2$s</string>
     <string name="guiCurrentlyReadingLong">Reading %1$s by %2$s (page %3$s of %4$s) for %5$.2f minutes</string>
