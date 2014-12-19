@@ -62,11 +62,6 @@ public class CoreService extends Service  {
     private long nextRequestId;
     private long sessionId;
     private final Object requestIdSyncObject=new Object();
-    private boolean isPowerConnected = false;
-
-
-    public static int batteryStatus = BatteryManager.BATTERY_STATUS_UNKNOWN;
-    public static int batteryPluggedStatus = 0;
 
 
 
@@ -76,29 +71,6 @@ public class CoreService extends Service  {
     private static final String CURRENT_REQUEST_ID = "CURRENT_REQUEST_ID";
 
 
-    public static FixTimeBean gpsTime = new FixTimeBean(-1, -1, -1, false);
-    public static FixTimeBean networkTime = new FixTimeBean(-1, -1, -1, false);
-
-
-
-    public static class FixTimeBean {
-        public long time;
-        public long systemWallClock;
-        public long systemUptime;
-
-        public boolean isUserEnabled;
-
-        public FixTimeBean(long time, long systemWallClock, long systemUptime, boolean isUserEnabled) {
-            this.time = time;
-            this.systemWallClock = systemWallClock;
-            this.systemUptime = systemUptime;
-            this.isUserEnabled = isUserEnabled;
-        }
-    }
-
-    public boolean isExternalPowerConnected() {
-        return isPowerConnected;
-    }
 
 
 
@@ -147,11 +119,6 @@ public class CoreService extends Service  {
     public void onDeviceUnlock() {
         Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"Device unlocked");
 
-        //SQSReport report = new SQSReport(this, "LockStatusChange");
-
-        //report.put("isDeviceLocked", getResources().getInteger(R.integer.DEVICE_NOT_LOCKED));
-        //saveReportSQS(report);
-
         isDeviceLocked = false;
         //updateActiveProcessList();
     }
@@ -160,10 +127,6 @@ public class CoreService extends Service  {
     public void onDeviceLock() {
         Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"Device locked");
         BookReadingsRecorder.getBookReadingsRecorder(this.getBaseContext()).recordSwitchAwayFromBook(this.getBaseContext(),SystemClock.elapsedRealtime());
-        //SQSReport report = new SQSReport(this, "LockStatusChange");
-
-        //report.put("isDeviceLocked", getResources().getInteger(R.integer.DEVICE_LOCKED));
-        //saveReportSQS(report);
 
         isDeviceLocked = true;
         //updateActiveProcessList();
@@ -245,7 +208,6 @@ public class CoreService extends Service  {
             /* Book Scrobbler logic */
             BookReadingsRecorder.getBookReadingsRecorder(this.getBaseContext()).checkIfReadingAppActive(this.getBaseContext());
 
-            //ParseObject report=new ParseObject(REPORT_TYPE_APPSWITCH);
 
             long now = SystemClock.elapsedRealtime();
             //long timeSpent = now - appActivationTime;
@@ -267,7 +229,6 @@ public class CoreService extends Service  {
         Thread reportThread=new Thread( new Runnable() {
             @Override
             public void run() {
-                //Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"Sending report "+reportToSend.getClassName()+" in async task");
                 if (!saveReportToParseReal(reportToSend)) {
                     Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO, "Save report to Parse failed. Will retry. Report type was "+reportToSend.getClassName());
                     if (mDelayReporter==null) {
@@ -296,11 +257,7 @@ public class CoreService extends Service  {
 
         });
 
-        //Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"Will be sending report "+reportToSend.getClassName()+" in background thread");
         reportThread.start();
-
-        //Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"Will be sending report "+reportToSend.getClassName()+" in background thread..request sent!");
-
 
     }
     private Boolean saveReportToParseReal(ParseObject report) {
@@ -337,7 +294,6 @@ public class CoreService extends Service  {
 
 
         final String reportClass=report.getClassName();
-        //report.updateTimeAndLocationInfo();
         report.saveEventually(new SaveCallback() {
             public void done(ParseException e) {
                 if (e == null) {
@@ -360,13 +316,10 @@ public class CoreService extends Service  {
     }
 
     private void reportDeviceInfo() {
-        DeviceInfoManager deviceInfoManager = new DeviceInfoManager();
-
 
         ParseQuery query = new ParseQuery(REPORT_TYPE_DEVICE_REPORT);
         query.whereEqualTo("deviceId",ourDeviceID);
 
-        final CoreService self=this;
 
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
@@ -395,10 +348,6 @@ public class CoreService extends Service  {
 
         DeviceInfoManager deviceInfoManager = new DeviceInfoManager();
 
-//        report.put("details", getDetailsSubReport());
- //       report.put("extraInformation", getExtraSubReport());
-
-     //   WifiApManager wifiApManager = new WifiApManager(getBaseContext());
         Integer totalMemory = deviceInfoManager.readTotalRam();
         String runtimeName=deviceInfoManager.getCurrentRuntimeValue();
 
@@ -407,44 +356,22 @@ public class CoreService extends Service  {
         mDetails.put("systemVersion", Build.VERSION.RELEASE);
         mDetails.put("model", Build.PRODUCT);
 
-        mDetails.put("userInterfaceIdeom", "Android");
         mDetails.put("platformString", Build.MODEL);
         mDetails.put("platform", Build.BOARD);
         mDetails.put("hwModel", Build.HARDWARE);
         mDetails.put("bootloader",Build.BOOTLOADER);
         mDetails.put("userVisibleBuildID",Build.DISPLAY);
-        mDetails.put("hwSerial",Build.SERIAL);
         mDetails.put("fingerprint",Build.FINGERPRINT);
         mDetails.put("manufacturer",Build.MANUFACTURER);
         mDetails.put("brand",Build.BRAND);
 
         mDetails.put("totalMemory", totalMemory.toString());
-      //  mDetails.put("macAddress", wifiApManager.getWifiMac());
-
 
         mDetails.put("runtime",runtimeName);
 
 
-        Context context=getBaseContext();
 
         Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"Device Identifier:"+ourDeviceID);
-
-        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"systemVersion:"+Build.VERSION.RELEASE);
-        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"model:"+Build.PRODUCT);
-        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"platformString:"+Build.MODEL);
-        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"platform:"+Build.BOARD);
-        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"hwModel:"+Build.HARDWARE);
-        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"bootloader:"+Build.HARDWARE);
-        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"userVisibleBuildID:"+Build.HARDWARE);
-        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"hwSerial:"+Build.SERIAL);
-        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"fingerprint:"+Build.FINGERPRINT);
-        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"manufacturer:"+Build.MANUFACTURER);
-        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"brand:"+Build.BOARD);
-
-        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO, "Runtime is " + runtimeName);
-
-
-
 
         if (playServicesAvailable()) {
             Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"Google Play Services present");
@@ -454,25 +381,11 @@ public class CoreService extends Service  {
         {
             Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"Google Play Services not present");
             mDetails.put("GooglePlayServicesInstalled",Boolean.FALSE);
-            //TODO: is is hard error?, should we add dialog per https://developer.android.com/training/location/activity-recognition.html example?
-
-
         }
 
 
-        //report detailed device features
+        //report some info about important device features
         final PackageManager pm = getBaseContext().getPackageManager();
-        /*
-        final FeatureInfo[] featuresList = pm.getSystemAvailableFeatures();
-        for (FeatureInfo f : featuresList) {
-            Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO, "Feauture:" + f.name+" present");
-
-        }
-        */
-
-        //TODO:EXACT meaning? will GoogleEdition have this? will devices like jesssica26/jessica27?
-        //TODO:do we really need all _this_ info for ***REMOVED***?
-        //really needed information
 
 
 
@@ -494,28 +407,21 @@ public class CoreService extends Service  {
         }
 
 
-        //Phone details
+        //Phone network details
         TelephonyManager telephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
 
-        String imei=telephonyManager.getDeviceId();
-        if (imei!=null) {
-            mDetails.put("imei",imei);
-
+        if (telephonyManager.getNetworkOperatorName()!=null) {
             mDetails.put("operatorName", telephonyManager.getNetworkOperatorName());
+        }
+        if (telephonyManager.getSimCountryIso()!=null) {
             mDetails.put("simCountryCode", telephonyManager.getSimCountryIso());
+        }
+        if (telephonyManager.getSimOperatorName()!=null) {
             mDetails.put("simOperatorName", telephonyManager.getSimOperatorName());
-            mDetails.put("simSerialNumber", telephonyManager.getSimSerialNumber());
-            mDetails.put("subscriberId", telephonyManager.getSubscriberId());
         }
 
 
-
-
         saveReportToParse(mDetails);
-    }
-
-    public void checkOutstandingReports() {
-
     }
 
 
@@ -530,7 +436,6 @@ public class CoreService extends Service  {
     private static String buildAuthority() {
         String authority = BuildConfig.APPLICATION_ID+".";//"com.viorsan.";
         authority += BuildConfig.FLAVOR;
-        //authority += ".dollmaster"; ??
         if (BuildConfig.DEBUG) {
             authority += ".debug";
         }
@@ -578,14 +483,6 @@ public class CoreService extends Service  {
         reportDeviceInfo();
 
 
-         /*  StepCounter */
-
-        //mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-        //mStepCounter = mSensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
-        // Batching for the step counter doesn't make sense (the buffer holds
-        // just one step counter event anyway, as it's not a continuous event)
-
-        //mSensorManager.registerListener(this, mStepCounter, SensorManager.SENSOR_DELAY_NORMAL);
 
         ParseUser currentUser=ParseUser.getCurrentUser();
         if (currentUser==null) {
@@ -593,14 +490,6 @@ public class CoreService extends Service  {
             stopSelf();
             return;
         }
-        /*
-        if (!ParseFacebookUtils.isLinked(currentUser)) {
-            Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO, "Logged in but not linked to Facebook. Service will NOT be started");
-            stopSelf();
-            return;
-        }
-        */
-        //uploaderIcons = new UploaderIcons(getBaseContext());
 
 
         sessionId = System.currentTimeMillis();
@@ -657,17 +546,7 @@ public class CoreService extends Service  {
         }.start();
 
 
-        /*
-        new CountDownTimer(YEAR_IN_MS, REPORT_SEND_INTERVAL) {
-            public void onTick(long msUntilFinish) {
-                checkOutstandingReports();
 
-            }
-
-            public  void  onFinish() {}
-        }.start();
-
-        */
         broadcastReceiver = new CoreBroadcastReceiver();
         broadcastReceiver.setService(this);
 
@@ -721,7 +600,6 @@ public class CoreService extends Service  {
         intentFilter.addAction(Intent.ACTION_SCREEN_ON);
         //intentFilter.addAction(Intent.ACTION_TIME_TICK);
         intentFilter.addAction(Intent.ACTION_NEW_OUTGOING_CALL);
-        intentFilter.addAction(Intent.ACTION_BATTERY_CHANGED);
 
          //to be sure we get sleep
         intentFilter.addAction(Intent.ACTION_DREAMING_STARTED);
@@ -735,25 +613,7 @@ public class CoreService extends Service  {
         init();
     }
 
-    private void onBatteryChanged(Intent intent) {
-        batteryPluggedStatus = intent.getIntExtra(BatteryManager.EXTRA_PLUGGED, 0);
 
-        if (batteryPluggedStatus == 0) {
-            onPowerDisconnected();
-        } else if (batteryPluggedStatus == BatteryManager.BATTERY_PLUGGED_AC) {
-            onPowerConnected();
-        } else if (batteryPluggedStatus == BatteryManager.BATTERY_PLUGGED_USB) {
-            onPowerConnected();
-        }
-    }
-
-    private void onPowerConnected() {
-        isPowerConnected = true;
-    }
-
-    private void onPowerDisconnected() {
-        isPowerConnected = false;
-    }
 
     private void configureForeground() {
         Notification note = new Notification(R.drawable.dollmaster,
@@ -786,9 +646,6 @@ public class CoreService extends Service  {
         } else if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
             onDeviceUnlock();
             onScreenOn();
-
-        } else if (intent.getAction().equals(Intent.ACTION_BATTERY_CHANGED)) {
-            onBatteryChanged(intent);
 
         } else if (intent.getAction().equals(Intent.ACTION_DREAMING_STARTED)) {
             onDreamingStarted();
