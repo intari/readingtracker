@@ -1,7 +1,6 @@
 package com.viorsan.dollmaster;
 
 import android.app.Activity;
-//import android.bluetooth.BluetoothManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -13,20 +12,14 @@ import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Base64;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.parse.*;
 import net.hockeyapp.android.UpdateManager;
 import net.hockeyapp.android.UpdateManagerListener;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.Arrays;
-import java.util.List;
 
 
 public class MyActivity extends Activity {
@@ -132,7 +125,6 @@ public class MyActivity extends Activity {
                 // Get extra data included in the Intent
                 Long requestId=intent.getLongExtra("RequestID",0);
                 Long sessionId=intent.getLongExtra("SessionID",0);
-                updateDebugInfo("Last Request ID:"+requestId);
                 Log.d(TAG, "updating GUI to Last Request ID:" + requestId);
 
 
@@ -234,8 +226,6 @@ public class MyActivity extends Activity {
             //TODO: make it work with strange languages
             greeting=getResources().getString(R.string.GreetingsMessage)+" "+userName;
         }
-
-        ParseUser currentUser=ParseUser.getCurrentUser();
 
         mTextView.setText(greeting);
         Debug.L.LOG_UI(Debug.L.LOGLEVEL_INFO, "Updated greeting");
@@ -348,20 +338,14 @@ public class MyActivity extends Activity {
             }
         });
 
-        //temp hack to disable FB Auth
-    }
-
-    private void updateDebugInfo(String msg) {
-        //TextView mTextView=(TextView)findViewById(R.id.debug_info);
-        //mTextView.setText(msg);
     }
 
 
-   
+
+
     @Override
     public void onResume() {
         super.onResume();
-        checkForCrashes();
         checkForUpdates();
         Intent intent=new Intent(AccessibilityRecorderService.ACTIVITY_MONITORING_STATUS_UPDATE_REQUEST);
         LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
@@ -373,10 +357,6 @@ public class MyActivity extends Activity {
         super.onPause();
     }
 
-    private void checkForCrashes() {
-        //@TODO:remove old code
-
-    }
     private void checkForUpdates() {
         UpdateManager.register(this, BuildConfig.HOCKEYAPP_APP_ID, new UpdateManagerListener() {
             public void onUpdateAvailable() {
@@ -400,7 +380,6 @@ public class MyActivity extends Activity {
     {
         super.onStart();
         Log.d(TAG, "start");
-        //new CheckStatusTask().execute(getResources().getString(R.string.api_status) + "?device_udid=" + new DeviceInfoManager().getDeviceId(getBaseContext()));
         updateReaderStatus();
 
     }
