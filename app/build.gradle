@@ -125,6 +125,7 @@ hockeyapp {
     commitSha=gitSha()
     //TODO: use master repo
     repositoryUrl = "https://bitbucket.org/intari/booktracker"
-    notes = "* Automatic build at "+buildTime()+"\r\n* Changes:"+gitLastCommit()+"\r\n * git sha1:"+gitSha()+"\r\n"
+    //WARNING:Cyrillic here = мусор
+    notes = "* Automatic build at "+buildTime()+" UTC* Changes:"+gitLastCommit()+"* git sha1:"+gitSha()+"\r\n*Test line*TestLine2"
 }
 
