@@ -199,7 +199,7 @@ hockeyapp {
     notesType = 1
     commitSha=gitSha()
     repositoryUrl = "https://bitbucket.org/intari/booktracker"
-    //TODO: когда у нас реально будет build server - добавить
+    //TODO: когда у нас реально будет build server - добавить 
     //buildServerUrl =
     //WARNING:Cyrillic here = мусор, проблема именно на уровне плагина а не гита. нельзя не в git commit ни просто в сообщениях
     //форматирование должно быть именно таким:\r\n* TextHere
