@@ -123,9 +123,11 @@ hockeyapp {
     status = 2
     notesType = 1
     commitSha=gitSha()
-    //TODO: use master repo
     repositoryUrl = "https://bitbucket.org/intari/booktracker"
-    //WARNING:Cyrillic here = мусор
-    notes = "* Automatic build at "+buildTime()+" UTC\r\n* Changes:"+gitLastCommit()+"\r\n* git sha1:"+gitSha()+"\r\n* Test line\r\n* Проверка русского"
+    //TODO: когда у нас реально будет build server - добавить
+    //buildServerUrl =
+    //WARNING:Cyrillic here = мусор, проблема именно на уровне плагина а не гита. нельзя не в git commit ни просто в сообщениях
+    //форматирование должно быть именно таким:\r\n* TextHere
+    notes = "* Automatic build at "+buildTime()+" UTC\r\n* Changes:"+gitLastCommit()+"\r\n* git sha1:"+gitSha()+"\r\n* Test line\r\n* Test"
 }
 
