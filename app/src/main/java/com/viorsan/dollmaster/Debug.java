@@ -28,4 +28,4 @@ public class Debug
             L.setMessageFlushing(flushEachMessage);
         }
     }
-}
+} 
