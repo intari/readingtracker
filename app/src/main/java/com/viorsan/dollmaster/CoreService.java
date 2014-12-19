@@ -1,17 +1,13 @@
 package com.viorsan.dollmaster;
 
 import android.app.*;
-import android.database.Cursor;
-import android.location.Location;
 import android.os.BatteryManager;
 import android.os.Handler;
-import android.os.HandlerThread;
 import android.os.IBinder;
 
 import android.content.*;
 import android.content.pm.PackageManager;
 import android.os.*;
-import android.provider.Browser;
 import android.telephony.TelephonyManager;
 import android.widget.Toast;
 import com.google.android.gms.common.ConnectionResult;
@@ -20,10 +16,6 @@ import com.parse.*;
 
 import java.util.*;
 
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
 
 /**
  * Created by dkzm on 23.05.14.
