@@ -41,7 +41,6 @@ parse {
             if (parseMasterKey==null) {
                 throw new GradleException("Parse MASTER KEY not configured but API Key file was here");
             }
-
             applicationId  parseAppId
             masterKey parseMasterKey
         }
@@ -50,7 +49,6 @@ parse {
             if (System.getenv('RUNNING_UNDER_TRAVIS')=='YES') {
                 applicationId System.getenv('PARSE_APP_ID_TRAVIS')
                 masterKey System.getenv('PARSE_MASTER_KEY_TRAVIS')
-
             }
             else
             {
