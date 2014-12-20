@@ -170,22 +170,20 @@ android {
                     buildConfigField "String","BUILD_DATE_TIME","\""+buildTimeHumanReadable()+" UTC\""
                 }
                 else {
-                    throw new GradleException("Could not read API Keys but API Key file was here");
+                    if (System.getenv('RUNNING_UNDER_TRAVIS')=='YES') {
+                        buildConfigField "String","PARSE_APP_ID", "\""+System.getenv('PARSE_APP_ID_TRAVIS')+"\""
+                        buildConfigField "String","PARSE_CLIENT_KEY","\""+System.getenv('PARSE_CLIENT_KEY_TRAVIS')+"\""
+                        buildConfigField "String","HOCKEYAPP_APP_ID", "\""+System.getenv('HOCKEYAPP_APP_ID_TRAVIS')+"\""
+                        buildConfigField "String","BUILD_DATE_TIME","\""+buildTimeHumanReadable()+" UTC\""
+                    }
+                    else
+                    {
+                        throw new GradleException("Could not read API Keys but we knew where it should be. Check README.md");
+                    }
                 }
             }
             else {
-                if (System.getenv('RUNNING_UNDER_TRAVIS')=='YES') {
-
-                    buildConfigField "String","PARSE_APP_ID", "\""+System.getenv('PARSE_APP_ID_TRAVIS')+"\""
-                    buildConfigField "String","PARSE_CLIENT_KEY","\""+System.getenv('PARSE_CLIENT_KEY_TRAVIS')+"\""
-                    buildConfigField "String","HOCKEYAPP_APP_ID", "\""+System.getenv('HOCKEYAPP_APP_ID_TRAVIS')+"\""
-                    buildConfigField "String","BUILD_DATE_TIME","\""+buildTimeHumanReadable()+" UTC\""
-                }
-                else
-                {
-                    //not Travis CI, just regular unconfigured build
-                    throw new GradleException("API Keys not found. Check README.md");
-                }
+                throw new GradleException("API Keys not found. Check README.md");
             }
 
          }
