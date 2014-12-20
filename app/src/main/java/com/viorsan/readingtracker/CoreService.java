@@ -6,7 +6,9 @@ import android.os.IBinder;
 
 import android.content.*;
 import android.os.*;
+import android.support.v4.content.LocalBroadcastManager;
 import android.telephony.TelephonyManager;
+import android.util.Log;
 import android.widget.Toast;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
@@ -30,6 +32,8 @@ public class CoreService extends Service  {
     public static final long YEAR_IN_MS = 365 * 86400 * 1000;
     public static final int PROCESSLIST_RESCAN_INTERVAL_MILLIS = 3000;//ONLY used to check if reader app is currently active
     public static final int REPORT_SENDING_RETRY_MILLIS = 3000;
+    public static final String TAG = "ReadingTracker::CoreService";
+    public static final String USER_LOGGED_OUT_REPORT = "com.viorsan.readingtracker.user_logged_out";
     private long lastAppCheckTime;
 
 
@@ -40,6 +44,8 @@ public class CoreService extends Service  {
     public static final int DETECTION_INTERVAL_MILLISECONDS =
             MILLISECONDS_PER_SECOND * DETECTION_INTERVAL_SECONDS;
 
+
+    private boolean userLoggedIn=false;
 
     private Handler mDelayReporter=null;
 
@@ -61,6 +67,7 @@ public class CoreService extends Service  {
     private long sessionId;
     private final Object requestIdSyncObject=new Object();
 
+    private BroadcastReceiver userLoggedOutReceiver;
 
 
 
@@ -259,6 +266,10 @@ public class CoreService extends Service  {
 
     }
     private Boolean saveReportToParseReal(ParseObject report) {
+        if (!userLoggedIn) {
+            Log.d(TAG,"User is not logged in. Will not send reports");
+            return Boolean.FALSE;
+        }
         if (mDetails==null) {
             Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO, "Cannot save report to Parse. No device details. Report type was "+report.getClassName());
             return Boolean.FALSE;
@@ -451,17 +462,14 @@ public class CoreService extends Service  {
         
         ourDeviceID = new DeviceInfoManager().getDeviceId(getBaseContext());
 
-        reportDeviceInfo();
-
-
-
         ParseUser currentUser=ParseUser.getCurrentUser();
         if (currentUser==null) {
             Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO, "Not logged in. Service will NOT be started");
             stopSelf();
             return;
         }
-
+        userLoggedIn=true;
+        reportDeviceInfo();
 
         sessionId = System.currentTimeMillis();
         nextRequestId = 0L;
@@ -523,6 +531,25 @@ public class CoreService extends Service  {
 
         registerReceiver(broadcastReceiver, getFilters());
 
+        LocalBroadcastManager.getInstance(this).registerReceiver(
+                userLoggedOutReceiver,new IntentFilter(USER_LOGGED_OUT_REPORT)
+        );
+
+        userLoggedOutReceiver =  new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                Log.d(TAG, "UI signaled that user is no longer here. Stopping service");
+                userLoggedIn=false;
+                //tell BookReadingsRecorder we no longer accept data (even if parse helper won't save them anyway)
+                BookReadingsRecorder.getBookReadingsRecorder(getBaseContext()).setMasterService(null);
+                Log.d(TAG, "BookReadings code signaled to stop sending us data. Stopping us");
+                //commit suicide
+                stopSelf();
+                Log.d(TAG, "stopSelf() called");
+
+
+            }
+        };
 
 
         //prepare handler for posting data in case of delays
@@ -627,10 +654,6 @@ public class CoreService extends Service  {
     }
 
 
-
-
-
-
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         processBroadcastInternal(intent);
@@ -639,16 +662,14 @@ public class CoreService extends Service  {
 
     @Override
     public void onDestroy() {
+        Log.d(TAG,"OnDestroy() called");
+
+        unregisterReceiver(broadcastReceiver);
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(userLoggedOutReceiver);
+        Log.d(TAG,"Unregistered receivers");
+
         stopForeground(true);
-
+        Log.d(TAG,"Called stopForeground()");
     }
-
-
-
-
-
-
-
-
 
 }

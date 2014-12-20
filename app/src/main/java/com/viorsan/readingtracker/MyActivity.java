@@ -12,9 +12,13 @@ import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Base64;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.parse.*;
+import com.parse.ui.ParseLoginBuilder;
+
 import net.hockeyapp.android.UpdateManager;
 import net.hockeyapp.android.UpdateManagerListener;
 
@@ -23,7 +27,7 @@ import java.security.NoSuchAlgorithmException;
 
 
 public class MyActivity extends Activity {
-    public static final String FULL_USER_NAME = "fullName";
+    public static final String FULL_USER_NAME = "name";
     public static final String USER_GENDER = "gender";
     private TextView currentlyReadingTextView;
     private TextView accessGrantedTextView;
@@ -39,6 +43,14 @@ public class MyActivity extends Activity {
     private Activity self;
     private static final String TAG = "ReadingTracker::Activity";
 
+    private static final int LOGIN_REQUEST = 0;
+
+    private TextView titleTextView;
+    private TextView emailTextView;
+    private TextView nameTextView;
+    private Button loginOrLogoutButton;
+
+    private ParseUser currentUser;
 
 
     /**
@@ -50,24 +62,60 @@ public class MyActivity extends Activity {
         ParseAnalytics.trackAppOpened(getIntent());
         setContentView(R.layout.main);
         init();
-        startService();
+
 
     }
+    private void handleUserLogin()  {
+        startService();
+        //it will autostop if no user active
 
+    }
+    private void handleUserLogout() {
+        //ask core service to stop
+        Intent intent = new Intent(CoreService.USER_LOGGED_OUT_REPORT);
+        LocalBroadcastManager.getInstance(getBaseContext()).sendBroadcast(intent);
+        userName=getResources().getString(R.string.defaultUserName);
+
+    }
     private void init(){
         self = this;
 
+        titleTextView = (TextView) findViewById(R.id.profile_title);
+        emailTextView = (TextView) findViewById(R.id.profile_email);
+        nameTextView = (TextView) findViewById(R.id.profile_name);
+        loginOrLogoutButton = (Button) findViewById(R.id.login_or_logout_button);
+        titleTextView.setText(R.string.profile_title_logged_in);
+        //even if user is not logged in we should configured other parse of interface
 
-        ParseAnalytics.trackAppOpened(getIntent());
+        currentlyReadingTextView=initCurrentlyReadingTextView();
+        accessGrantedTextView=initAccessGrantedTextView();
+        mantanoReaderInstalledTextView=initMantoReaderInstalledTextView();
+
+
+        loginOrLogoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (currentUser != null) {
+                    // User clicked to log out.
+                    ParseUser.logOut();
+                    currentUser = null;
+                    handleUserLogout();
+                    showProfileLoggedOut();
+                } else {
+                    // User clicked to log in.
+                    ParseLoginBuilder loginBuilder = new ParseLoginBuilder(
+                            MyActivity.this);
+                    startActivityForResult(loginBuilder.build(), LOGIN_REQUEST);
+                }
+            }
+        });
 
         userName=getResources().getString(R.string.defaultUserName);
+        //TODO:this is my old code
         //TODO:get cached version if it's exist
         ParseUser currentUser=ParseUser.getCurrentUser();
-        if (currentUser!=null) {
 
-            //set an ACL on the current user's data to not be publicly readable
-            ParseUser user = ParseUser.getCurrentUser();
-            user.setACL(new ParseACL(user));
+        if (currentUser!=null) {
 
             try{
                 currentUser.fetchIfNeeded();
@@ -77,33 +125,19 @@ public class MyActivity extends Activity {
                 Debug.L.LOG_EXCEPTION(ex);
             }
 
+            //user can be automatic. allow for this in future
             if (currentUser.isAuthenticated()) {
                 Debug.L.LOG_UI(Debug.L.LOGLEVEL_INFO, "ParseUser here. Authenticated. ");
-
+                //set an ACL on the current user's data to not be publicly readable
+                currentUser.setACL(new ParseACL(currentUser));
             }
             else
             {
                 Debug.L.LOG_UI(Debug.L.LOGLEVEL_INFO, "ParseUser here. NOT Authenticated. ");
 
             }
-
             userName=currentUser.getString(FULL_USER_NAME);
-            if (userName==null) {
-                //part of initial setup
-                configureInitialAccountInfo(currentUser);
-            }
-
         }
-        else
-        {
-            //no current user
-            Debug.L.LOG_UI(Debug.L.LOGLEVEL_INFO, "User NOT logged in. Forcing user creation");
-            signup();
-        }
-
-        currentlyReadingTextView=initCurrentlyReadingTextView();
-        accessGrantedTextView=initAccessGrantedTextView();
-        mantanoReaderInstalledTextView=initMantoReaderInstalledTextView();
         //initServiceReceiver();
 
         updateTitles();
@@ -173,7 +207,15 @@ public class MyActivity extends Activity {
                     msg=getResources().getString(R.string.guiCurrentlyReadingShort,bookTitle,bookAuthor);
                 }
                 Debug.L.LOG_UI(Debug.L.LOGLEVEL_INFO,"Got reading update:"+msg);
-                currentlyReadingTextView.setText(msg);
+                ParseUser currentUser=ParseUser.getCurrentUser();
+
+                if (currentUser!=null) {
+                    currentlyReadingTextView.setText(msg);
+                }
+                else {
+                    currentlyReadingTextView.setText(getResources().getText(R.string.profile_title_logged_out));
+
+                }
 
             }
         };
@@ -182,6 +224,30 @@ public class MyActivity extends Activity {
                 currentlyReadingMessageReceiver,new IntentFilter(BookReadingsRecorder.BOOK_READING_STATUS_UPDATE)
         );
 
+    }
+    /**
+     * Shows the profile of the given user.
+     */
+    private void showProfileLoggedIn() {
+        titleTextView.setText(R.string.profile_title_logged_in);
+        emailTextView.setText(currentUser.getEmail());
+        String fullName = currentUser.getString(FULL_USER_NAME);
+        if (fullName != null) {
+            nameTextView.setText(fullName);
+        }
+        loginOrLogoutButton.setText(R.string.profile_logout_button_label);
+        updateTitles();
+    }
+
+    /**
+     * Show a message asking the user to log in, toggle login/logout button text.
+     */
+    private void showProfileLoggedOut() {
+        titleTextView.setText(R.string.profile_title_logged_out);
+        emailTextView.setText("");
+        nameTextView.setText("");
+        loginOrLogoutButton.setText(R.string.profile_login_button_label);
+        updateTitles();
     }
 
     private void updateMonitoringStatus() {
@@ -224,15 +290,14 @@ public class MyActivity extends Activity {
 
         TextView mTextView = (TextView)findViewById(R.id.WelcomeMessage);
 
-        String greeting=getResources().getString(R.string.GreetingsStranger);
-        //we have initial username anyway but may be we use cached data
+         //we have initial username anyway but may be we use cached data
         if (mTextView!=null)
         {
             //TODO: make it work with strange languages
-            greeting=getResources().getString(R.string.GreetingsMessage)+" "+userName;
+            String greeting=getResources().getString(R.string.GreetingsMessage)+" "+userName;
+            mTextView.setText(greeting);
         }
 
-        mTextView.setText(greeting);
         Debug.L.LOG_UI(Debug.L.LOGLEVEL_INFO, "Updated greeting");
 
 
@@ -260,92 +325,6 @@ public class MyActivity extends Activity {
         startService(new Intent(this, CoreService.class));
 
     }
-
-    private String getUserName() {
-        return "***REMOVED***";
-    }
-    private String getPassword() {
-        return "***REMOVED***";
-    }
-    private String getEmail() {
-        return "***REMOVED***@viorsan.com";
-    }
-    private String getFullName() {
-        return "***REMOVED***";
-    }
-    private String getGender() {
-        return "female";
-    }
-    private void signup() {
-        ParseUser user = new ParseUser();
-        user.setUsername(getUserName());
-        user.setPassword(getPassword());
-        user.setEmail(getEmail());
-
-        //other fields can be set just like with ParseObject
-        //user.put("phone", "650-253-0000");
-
-        user.signUpInBackground(new SignUpCallback() {
-            public void done(ParseException e) {
-                if (e == null) {
-                    // Hooray! Let them use the app now.
-                    Debug.L.LOG_UI(Debug.L.LOGLEVEL_INFO, "Sign-up complete"); 
-                    configureInitialAccountInfo(ParseUser.getCurrentUser());
-                    updateTitles();
-                    startService();
-
-                } else {
-                    // try login
-                    loginToParse(getUserName(),getPassword());
-
-                    // Sign up didn't succeed. Look at the ParseException
-                    // to figure out what went wrong
-                    //Debug.L.LOG_EXCEPTION(e);
-                }
-            }
-        });
-    }
-
-    //hard coded!
-    private void configureInitialAccountInfo(ParseUser user) {
-        user.put(FULL_USER_NAME,getFullName());
-        user.put(USER_GENDER,getGender());
-
-        //save user
-        user.saveInBackground(new SaveCallback() {
-            public void done(ParseException e) {
-                if (e == null) {
-                    Debug.L.LOG_UI(Debug.L.LOGLEVEL_INFO, "Saved initial user information  to parse");
-                } else {
-                    Debug.L.LOG_UI(Debug.L.LOGLEVEL_INFO, "Not saved initial user information to parse " + e.toString());
-                    Debug.L.LOG_EXCEPTION(e);
-                }
-            }
-        });
-
-
-    }
-
-    private void loginToParse(String userName, String password) {
-        ParseUser.logInInBackground(userName, password, new LogInCallback() {
-            public void done(ParseUser user, ParseException e) {
-                if (user != null) {
-                    // Hooray! The user is logged in.
-                    Debug.L.LOG_UI(Debug.L.LOGLEVEL_INFO, "Login complete");
-                    updateTitles();
-
-                    startService();
-
-                } else {
-                    // Signup failed. Look at the ParseException to see what happened.
-                    Debug.L.LOG_EXCEPTION(e);
-                }
-            }
-        });
-
-    }
-
-
 
 
     @Override
@@ -385,6 +364,14 @@ public class MyActivity extends Activity {
     {
         super.onStart();
         Log.d(TAG, "start");
+        currentUser = ParseUser.getCurrentUser();
+        if (currentUser != null) {
+            showProfileLoggedIn();
+            handleUserLogin();
+        } else {
+            showProfileLoggedOut();
+            handleUserLogout();
+        }
         updateReaderStatus();
 
     }
