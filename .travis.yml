@@ -28,7 +28,7 @@ android:
 
     # Specify at least one system image,
     # if you need to run emulator(s) during your tests
-    - sys-img-armeabi-v7a-android-19
+    #- sys-img-armeabi-v7a-android-19
     - sys-img-x86-android-19
 
 
@@ -42,6 +42,8 @@ before_install:
   - echo "Android Home:$ANDROID_HOME"
   # manually set sdk.dir variable, according to local paths
   - echo "sdk.dir=$ANDROID_HOME" > local.properties
+  - echo "Local Properties file is "
+  - cat local.properties
   
 
   
