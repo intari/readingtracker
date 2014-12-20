@@ -1,12 +1,10 @@
-package com.viorsan.dollmaster;
+package com.viorsan.readingtracker;
 
 import android.app.*;
-import android.os.BatteryManager;
 import android.os.Handler;
 import android.os.IBinder;
 
 import android.content.*;
-import android.content.pm.PackageManager;
 import android.os.*;
 import android.telephony.TelephonyManager;
 import android.widget.Toast;
@@ -25,8 +23,8 @@ public class CoreService extends Service  {
 
 
     public static final String REPORT_TYPE_DEVICE_REPORT = "DeviceReport";
-    public static final String FAKEAPP_DEVICELOCKED = "com.viorsan.dollmaster.DeviceLocked";
-    public static final String FAKEAPP_SCREENOFF = "com.viorsan.dollmaster.ScreenOff";
+    public static final String FAKEAPP_DEVICELOCKED = "com.viorsan.readingtracker.DeviceLocked";
+    public static final String FAKEAPP_SCREENOFF = "com.viorsan.readingtracker.ScreenOff";
 
 
     public static final long YEAR_IN_MS = 365 * 86400 * 1000;
@@ -48,7 +46,7 @@ public class CoreService extends Service  {
     public static String ourDeviceID = "";
 
 
-    private static final String appID="***REMOVED***";
+    private static final String appID="ReadingTracker";
 
     CoreBroadcastReceiver broadcastReceiver = null;
 
@@ -444,9 +442,9 @@ public class CoreService extends Service  {
     }
     private void init() {
 
-        //Debug.L.LOG_MARK("BookTracker (***REMOVED***) starting up");
+        //Debug.L.LOG_MARK("ReadingTracker starting up");
 
-        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"Book reading tracker (***REMOVED***) main service starting up");
+        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"Book reading tracker main service starting up");
         CoreService.writeLogBanner("", getApplicationContext());
 
         ParseConfigHelper.refreshConfig();
@@ -497,7 +495,7 @@ public class CoreService extends Service  {
         ActivityManager activityManager = (ActivityManager)getSystemService(ACTIVITY_SERVICE);
 
         if (activityManager == null) {
-            previousForegroundTask = "com.viorsan.dollmaster";
+            previousForegroundTask = "com.viorsan.readingtracker";
         } else {
             List<ActivityManager.RunningTaskInfo> appProcesses = activityManager.getRunningTasks(1);
             previousForegroundTask = appProcesses.get(0).topActivity.getPackageName();
@@ -589,7 +587,7 @@ public class CoreService extends Service  {
 
 
     private void configureForeground() {
-        Notification note = new Notification(R.drawable.dollmaster,
+        Notification note = new Notification(R.drawable.readingtracker,
                 getResources().getString(R.string.app_started_notification),
                 System.currentTimeMillis());
 
@@ -600,7 +598,7 @@ public class CoreService extends Service  {
         note.flags |= Notification.FLAG_NO_CLEAR;
         note.flags |= Notification.FLAG_ONGOING_EVENT;
 
-        startForeground(R.drawable.dollmaster, note);
+        startForeground(R.drawable.readingtracker, note);
     }
 
     private void processBroadcastInternal(Intent intent) {

@@ -1,8 +1,6 @@
-package com.viorsan.dollmaster;
+package com.viorsan.readingtracker;
 
 import com.parse.*;
-import org.acra.ACRA;
-import org.acra.annotation.ReportsCrashes;
 
 
 /**
@@ -36,7 +34,7 @@ public class MyApplication extends android.app.Application {
         if (Debug.D) {
             Debug.enableDebug(this, true);
             //Debug.L.setRemoteHost("site.domain.com", 50000, true);      // change to your mac's IP address, set a fixed TCP port in the Prefs in desktop NSLogger
-            //Debug.L.LOG_MARK("***REMOVED*** startup");
+            //Debug.L.LOG_MARK("ReadingTracker startup");
         }
         super.onCreate();
     }

@@ -1,4 +1,4 @@
-package com.viorsan.dollmaster;
+package com.viorsan.readingtracker;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

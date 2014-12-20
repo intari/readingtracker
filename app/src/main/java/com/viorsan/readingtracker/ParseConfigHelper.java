@@ -1,4 +1,4 @@
-package com.viorsan.dollmaster;
+package com.viorsan.readingtracker;
 
 import android.util.Log;
 
@@ -13,7 +13,7 @@ import java.util.List;
  * Created by dkzm on 18.12.14.
  */
 public class ParseConfigHelper {
-    private static String TAG="***REMOVED***ParseConfig";
+    private static String TAG="ReadingTrackerParseConfig";
     public static final long configRefreshInterval = 5*60*1000; //every 5 minutes //2 * 60 * 60 * 1000;//every hour
 
     public static final String SERVER_CONFIG_KEY_DEV_USER_LOGINS = "devUserLogins";

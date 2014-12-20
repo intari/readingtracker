@@ -1,4 +1,4 @@
-package com.viorsan.dollmaster;
+package com.viorsan.readingtracker;
 
 import android.app.ActivityManager;
 import android.content.*;
@@ -27,7 +27,7 @@ public class BookReadingsRecorder {
     //Mantano Reader Premium package name. So far it's only supported book reader
     public static final String MANTANO_READER_PACKAGE_NAME = "com.mantano.reader.android";
     //How we are report ourselves in our brodcasts
-    public static final String OUR_DATA_SOURCE = "com.viorsan.dollmaster.BookReadingMonitor";
+    public static final String OUR_DATA_SOURCE = "com.viorsan.readingtracker.BookReadingMonitor";
     //broadcast name
     public static final String BOOK_READING_STATUS_UPDATE = "com.viorsan.BookMonitoring.BookReadingUpdate";
     //broadcast params&field names

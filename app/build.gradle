@@ -2,11 +2,12 @@ import java.text.SimpleDateFormat
 
 
 /*
- 1.0 - dollmaster/non-gradle Reading Tracker
+ 1.0 - readingtracker/non-gradle Reading Tracker
  1.1 - initial versions of gradle-based Reading Tracker
  1.2 - gradle-based Reading Tracker, externalized API Keys
+ 1.3 - we are ReadingTracker now, all remmants of old name should be gone
  */
-def myVersionName="1.2"
+def myVersionName="1.3"
 
 
 apply plugin: 'com.parse'
@@ -102,7 +103,7 @@ android {
             versionProps.store(versionPropsFile.newWriter(), null)
 
             defaultConfig {
-                applicationId "com.viorsan.dollmaster"
+                applicationId "com.viorsan.readingtracker"
                 minSdkVersion 17
                 targetSdkVersion 17
                 versionCode code

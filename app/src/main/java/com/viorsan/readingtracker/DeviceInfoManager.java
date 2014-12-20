@@ -1,4 +1,4 @@
-package com.viorsan.dollmaster;
+package com.viorsan.readingtracker;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -6,12 +6,7 @@ import android.os.Environment;
 import android.os.StatFs;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
-import android.util.Log;
-import org.acra.ACRA;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.RandomAccessFile;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.UUID;
@@ -28,7 +23,7 @@ public class DeviceInfoManager {
     private static final String LIB_DALVIK = "libdvm.so";
     private static final String LIB_ART = "libart.so";
     private static final String LIB_ART_D = "libartd.so";
-    private static final String TAG="***REMOVED***:DeviceInfoManager";
+    private static final String TAG="ReadingTracker:DeviceInfoManager";
 
     public String /* CharSequence */ getCurrentRuntimeValue() {
         try {

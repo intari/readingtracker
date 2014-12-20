@@ -1,4 +1,4 @@
-package com.viorsan.dollmaster;
+package com.viorsan.readingtracker;
 
 /**
  * Created by dkzm on 23.05.14.
@@ -15,7 +15,7 @@ import java.util.Formatter;
 public final class DroidLogger extends NSLoggerClient
 {
     public static final boolean ALLOW_NSLOGGER=false; //sometimes true=freezes (usually if we switch too much between WiFi and LTE)
-    private static String TAG="***REMOVED***";
+    private static String TAG="ReadingTracker";
     public static int LOGLEVEL_CRIT=0;
     public static int LOGLEVEL_FATAL=1;
     public static int LOGLEVEL_ERROR=2;
@@ -36,9 +36,8 @@ public final class DroidLogger extends NSLoggerClient
         {
             // log with originating source code info
             final StackTraceElement e = st[4];
-            //***REMOVED***: use logcat TOO
             String msg=e.getFileName()+":"+e.getLineNumber()+" "+e.getClassName()+"."+e.getMethodName()+"()."+tag+new Integer(level).toString()+" "+message;
-            Log.d("***REMOVED***:",msg);
+            Log.d("ReadingTracker:",msg);
             if (ALLOW_NSLOGGER) {
                 log(e.getFileName(), e.getLineNumber(), e.getClassName() + "." + e.getMethodName() + "()", tag, level, message);
             }
@@ -50,9 +49,8 @@ public final class DroidLogger extends NSLoggerClient
                 log(tag, level, message);
             }
 
-            //***REMOVED***: use logcat TOO
             String msg= tag+" "+new Integer(level).toString()+" "+message;
-            Log.d("***REMOVED***:",msg);
+            Log.d("ReadingTracker:",msg);
 
         }
     }
@@ -91,9 +89,8 @@ public final class DroidLogger extends NSLoggerClient
                 sb.append("\n");
             }
             final StackTraceElement e = st[0];
-            //***REMOVED***: use logcat TOO
             String msg=""+e.getFileName()+" "+e.getLineNumber()+e.getClassName() + "." + e.getMethodName() + "()"+TAG+":exception"+" "+sb.toString();
-            Log.d("***REMOVED***:Exception",msg);
+            Log.d("ReadingTracker:Exception",msg);
             if (ALLOW_NSLOGGER) {
                 log(e.getFileName(), e.getLineNumber(), e.getClassName() + "." + e.getMethodName() + "()", TAG+":exception", 0, sb.toString());
             }

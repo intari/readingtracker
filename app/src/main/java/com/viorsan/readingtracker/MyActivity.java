@@ -1,4 +1,4 @@
-package com.viorsan.dollmaster;
+package com.viorsan.readingtracker;
 
 import android.app.Activity;
 import android.content.BroadcastReceiver;
@@ -37,7 +37,7 @@ public class MyActivity extends Activity {
     private BroadcastReceiver currentlyReadingMessageReceiver;
 
     private Activity self;
-    private static final String TAG = "***REMOVED***::Activity";
+    private static final String TAG = "ReadingTracker::Activity";
 
 
 
@@ -110,7 +110,7 @@ public class MyActivity extends Activity {
         checkForUpdates();
 
         try {
-            PackageInfo info =     getPackageManager().getPackageInfo("com.viorsan.dollmaster",     PackageManager.GET_SIGNATURES);
+            PackageInfo info =     getPackageManager().getPackageInfo("com.viorsan.readingtracker",     PackageManager.GET_SIGNATURES);
             for (android.content.pm.Signature signature : info.signatures) {
                 MessageDigest md = MessageDigest.getInstance("SHA");
                 md.update(signature.toByteArray());
