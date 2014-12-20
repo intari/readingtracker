@@ -289,7 +289,18 @@ hockeyapp {
             notes = "* Automatic build at "+buildTimeHumanReadable()+" UTC\r\n* Changes:"+gitLastCommit()+"\r\n* git sha1:"+gitSha()
         }
         else {
-            throw new GradleException("Could not read HockeyApp API Token for automatic build submission");
+            if (System.getenv('RUNNING_UNDER_TRAVIS')=='YES') {
+                apiToken = System.getenv('HOCKEYAPP_TOKEN_TRAVIS');
+                releaseType = 2
+                notify = 1
+                status = 2
+                notesType = 1
+                commitSha=gitSha()
+                notes = "* Travis CI-based automatic build at "+buildTimeHumanReadable()+" UTC\r\n* Changes:"+gitLastCommit()+"\r\n* git sha1:"+gitSha()
+            }
+            else {
+                throw new GradleException("Could not read HockeyApp API Token for automatic build submission");
+            }
         }
     } else {
         throw new GradleException("API Keys not found. Check README.md (or don't use HockeyApp's Gradle task)");
