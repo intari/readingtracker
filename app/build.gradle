@@ -118,7 +118,22 @@ android {
         }
     }
     else {
-        throw new GradleException("Could not read version information:versionPropertiesPath not configured. Check README.md")
+        //Handle case were  we run under Travis-CI
+        if (System.getenv('RUNNING_UNDER_TRAVIS')=='YES') {
+            //setup for Travis builds
+            defaultConfig {
+                applicationId "com.viorsan.readingtracker"
+                minSdkVersion rootProject.ext.minSdkVersion
+                targetSdkVersion rootProject.ext.targetSdkVersion
+                versionCode 9999
+                versionName myVersionName + "." + code + "-built_at-" + buildTime() + '-git-sha1-' + gitSha() + "-travis-ci";
+            }
+        }
+        else
+        {
+            //not Travis-CI, just regular unconfigured build
+            throw new GradleException("Could not read version information:versionPropertiesPath not configured. Check README.md")
+        }
     }
 
 
@@ -156,7 +171,18 @@ android {
                 }
             }
             else {
-                throw new GradleException("API Keys not found. Check README.md");
+                if (System.getenv('RUNNING_UNDER_TRAVIS')=='YES') {
+                    buildConfigField "String","PARSE_APP_ID", "\"NOT_CONFIGURED_UNDER_TRAVIS\""
+                    buildConfigField "String","PARSE_CLIENT_KEY","\"NOT_CONFIGURED_UNDER_TRAVIS\""
+                    buildConfigField "String","HOCKEYAPP_APP_ID", "\"NOT_CONFIGURED_UNDER_TRAVIS\""
+                    buildConfigField "String","BUILD_DATE_TIME","\""+buildTimeHumanReadable()+" UTC\""
+
+                }
+                else
+                {
+                    //not Travis-CI, just regular unconfigured build
+                    throw new GradleException("API Keys not found. Check README.md");
+                }
             }
 
          }
