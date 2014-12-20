@@ -8,13 +8,23 @@ TODO: technical description
 * readings are sent to server app at https://parse.com/
 * CloudCode functions  used to send e-mails when you switch away from book,etc
 
+# How your code here licensed?
+* For now only GPLv3 https://www.gnu.org/licenses/gpl-3.0.html
+* I also reserve right to re-license code under any other license for any purpose I want. 
+* Included ParseUI-Android library is (of course) licensed under it's own license. Same applies to Hockeyapp's binaries,etc
+
+
 # Which E-Book Reading programs are supported?
 * Only Mantano Reader currently supported (it's great app! Why you need anything else?)
 
-# App only collects data? How to use them?
+# App only collects data? How to use them? 
 I plan to add client side graphs,reporting,etc
 Server side part currently send e-mails with reading details when you done reading. 
 
+# Is there Privacy Policy?
+If you build your own version, privacy policy is up to you of course.
+If you use my build it's simple: I will only sell/transfer data if asked by relevant authority.
+When this app will be on Play Store / Amazon App Store I will write something more formal.
 
 # Building without API Keys
 Code will build correctly and will even work but everything network will not work. And it's a lot of things
@@ -47,9 +57,10 @@ Maybe later
 * WRITE_EXTERNAL_STORAGE - 
 * BIND_ACCESSIBILITY_SERVICE - to perform core functionality. user WILL be asked to enable this anyway. Application couldn't do it's job without it. TODO: add note somewhere how exactly we use it (more details)
 
-# Your icon is not yours!
-Yes. it's from http://www.flaticon.com/free-icon/marionette-puppet-silhouette_33882
-At time I got license was:
+# Thanks to
+* [Freepik from Flaticon]( http://www.flaticon.com/free-icon/marionette-puppet-silhouette_33882) for application icon
+At time I got it license was:
 License: Creative commons
 You are free to use this icon for commercial purposes, to share or to modify it. In exchange, it's necessary to credit the author for the original creation.
-When app will have About box I put this link there too
+* [Parse Team (currently at Facebook)](https://parse.com/about) for Parse Platform (and ParseUI-Android)
+* [Mantano SAS](www.mantano.com/mantano-reading-platform/) for Mantano Premium. This is best E-Book reader I have so far, even accounting for occasional glitches with Cloud Service and crashes with badly formatted books. Current version of Reading Tracker only support Mantano as data source. 
