@@ -121,18 +121,18 @@ public class MyActivity extends Activity {
 
             } catch (ParseException ex)
             {
-                Debug.L.LOG_EXCEPTION(ex);
+                Log.d(TAG,"Parse Exception "+ex.toString());
             }
 
             //user can be automatic. allow for this in future
             if (currentUser.isAuthenticated()) {
-                Debug.L.LOG_UI(Debug.L.LOGLEVEL_INFO, "ParseUser here. Authenticated. ");
+                Log.i(TAG, "ParseUser here. Authenticated. ");
                 //set an ACL on the current user's data to not be publicly readable
                 currentUser.setACL(new ParseACL(currentUser));
             }
             else
             {
-                Debug.L.LOG_UI(Debug.L.LOGLEVEL_INFO, "ParseUser here. NOT Authenticated. ");
+                Log.i(TAG, "ParseUser here. NOT Authenticated. ");
 
             }
         }
@@ -146,7 +146,7 @@ public class MyActivity extends Activity {
                 MessageDigest md = MessageDigest.getInstance("SHA");
                 md.update(signature.toByteArray());
                 String sign=Base64.encodeToString(md.digest(), Base64.DEFAULT);
-                Debug.L.LOG_UI(Debug.L.LOGLEVEL_INFO, "Key hash is " + sign);
+                Log.i(TAG, "Key hash is " + sign);
                 //Toast.makeText(getApplicationContext(),sign,     Toast.LENGTH_LONG).show();
             }
         } catch (PackageManager.NameNotFoundException e) {
@@ -173,7 +173,7 @@ public class MyActivity extends Activity {
         activityMonitoringMessageReceiver =  new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                Debug.L.LOG_UI(Debug.L.LOGLEVEL_INFO,"Activity monitoring service ready");
+                Log.i(TAG,"Activity monitoring service ready");
                 updateMonitoringStatus();
             }
         };
@@ -203,7 +203,7 @@ public class MyActivity extends Activity {
                     //msg=String.format("%s от %s",bookTitle,bookAuthor);
                     msg=getResources().getString(R.string.guiCurrentlyReadingShort,bookTitle,bookAuthor);
                 }
-                Debug.L.LOG_UI(Debug.L.LOGLEVEL_INFO,"Got reading update:"+msg);
+                Log.i(TAG,"Got reading update:"+msg);
                 ParseUser currentUser=ParseUser.getCurrentUser();
 
                 if (currentUser!=null) {

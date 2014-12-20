@@ -5,6 +5,7 @@ import android.content.*;
 import android.os.Build;
 import android.os.SystemClock;
 import android.support.v4.content.LocalBroadcastManager;
+import android.util.Log;
 
 import com.parse.ParseAnalytics;
 import com.parse.ParseObject;
@@ -21,6 +22,8 @@ import java.util.regex.Pattern;
  *
  */
 public class BookReadingsRecorder {
+    static final String TAG = "ReadingTracker::BookReadingsRecorder";
+
     public static final String REPORT_TYPE_BOOK_READING_SESSION_COMPLETED = "BookReadingSesssionCompleted";
     public static final String READING_SESSION_TIME_MS = "readingSessionTimeMS";
     public static final String READING_SESSION_TIME = "readingSessionTime";
@@ -60,12 +63,12 @@ public class BookReadingsRecorder {
      */
 
     public static void setMasterService(CoreService masterService) {
-        Debug.L.LOG_ACCESSIBILITY_SERVICE(Debug.L.LOGLEVEL_INFO,"Setting up link to master service for BookReadignsRecorder");
+        Log.i(TAG, "Setting up link to master service for BookReadignsRecorder");
         mMasterService=masterService;
     }
     public static BookReadingsRecorder getBookReadingsRecorder(Context context) {
         if (self==null) {
-            Debug.L.LOG_ACCESSIBILITY_SERVICE(Debug.L.LOGLEVEL_INFO,"Class BookReadingsRecorder not created. doing so");
+            Log.i(TAG,"Class BookReadingsRecorder not created. doing so");
 
             self=new BookReadingsRecorder();
             self.updateDeviceInfo();
@@ -73,7 +76,7 @@ public class BookReadingsRecorder {
             self.updateStatusRequestReceiver(context);
 
         }
-        //Debug.L.LOG_ACCESSIBILITY_SERVICE(Debug.L.LOGLEVEL_INFO,"Return singleton value");
+        //Log.i(TAG,"Return singleton value");
         return self;
     }
     //TODO: think about moving exceptions to separate class so they can be reused
@@ -122,7 +125,7 @@ public class BookReadingsRecorder {
         DeviceInfoManager deviceInfoManager = new DeviceInfoManager();
         //yes, this will result in denormalized data. but I need it. and need bpm much less here
         deviceInfoString=""+Build.MANUFACTURER+" "+Build.MODEL;//+" ("+Build.PRODUCT+")";
-        Debug.L.LOG_ACCESSIBILITY_SERVICE(Debug.L.LOGLEVEL_INFO,"Device information string is "+deviceInfoString+"|");
+        Log.i(TAG,"Device information string is "+deviceInfoString+"|");
     }
 
     private void writeLastBookInfo(Context context, long timestamp, String title,String author, String tags) {
@@ -177,7 +180,7 @@ public class BookReadingsRecorder {
 
         if ((!author.equals(currentBookAuthor)) || (!title.equals(currentBookTitle))) {
             //record switch
-            Debug.L.LOG_ACCESSIBILITY_SERVICE(Debug.L.LOGLEVEL_INFO,"recordNewBook: author or title are different. recording switch away");
+            Log.i(TAG,"recordNewBook: author or title are different. recording switch away");
             recordSwitchAwayFromBook(context,timestamp);
 
         }
@@ -201,7 +204,7 @@ public class BookReadingsRecorder {
         statusRequestReceiver=new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                Debug.L.LOG_ACCESSIBILITY_SERVICE(Debug.L.LOGLEVEL_INFO, "Got request for status update (book)");
+                Log.i(TAG, "Got request for status update (book)");
 
                 sendStatusUpdateToUI(context,false);
 
@@ -216,7 +219,7 @@ public class BookReadingsRecorder {
 
         if (lastReadBookKnown) {
 
-            //Debug.L.LOG_ACCESSIBILITY_SERVICE(Debug.L.LOGLEVEL_INFO, "sendStatusUpdateToUI...sending updated information");
+            //Log.i(TAG, "sendStatusUpdateToUI...sending updated information");
 
             Intent intent = new Intent(BOOK_READING_STATUS_UPDATE);
             intent.putExtra(BOOK_TITLE,lastBookTitle);
@@ -231,7 +234,7 @@ public class BookReadingsRecorder {
         }
         else
         {
-            //Debug.L.LOG_ACCESSIBILITY_SERVICE(Debug.L.LOGLEVEL_INFO, "sendStatusUpdateToUI...last current book not known");
+            //Log.i(TAG, "sendStatusUpdateToUI...last current book not known");
 
         }
     }
@@ -246,13 +249,13 @@ public class BookReadingsRecorder {
         if (matcher.matches()) {
 
             if (matcher.groupCount()!=2) {
-                Debug.L.LOG_ACCESSIBILITY_SERVICE(Debug.L.LOGLEVEL_INFO,"Patter matcher has "+matcher.groupCount()+" groups (should be 2).Pagenumbers are "+pageNumbers+"|. Possible change in mantano");
+                Log.i(TAG,"Patter matcher has "+matcher.groupCount()+" groups (should be 2).Pagenumbers are "+pageNumbers+"|. Possible change in mantano");
             }
 
             String currPage = matcher.group(1);
             String totalPages = matcher.group(2);
             if (!currentBookKnown) {
-                Debug.L.LOG_ACCESSIBILITY_SERVICE(Debug.L.LOGLEVEL_INFO, "Reading last known book...");
+                Log.i(TAG, "Reading last known book...");
                 readLastBookInfo(context,timestamp);
             }
             //currentTimestamp = SystemClock.elapsedRealtime();
@@ -265,7 +268,7 @@ public class BookReadingsRecorder {
             //I like to see those stats too
             /*
             if (timePassedInSeconds < MIN_SECONDS_TO_READ_PAGE) {
-                Debug.L.LOG_ACCESSIBILITY_SERVICE(Debug.L.LOGLEVEL_INFO,"BookReadingsRecorder:RecordPageSwitch:read for less than "+MIN_SECONDS_TO_READ_PAGE+" seconds. Only "+timePassedInSeconds+" seconds. Not recording. early exit");
+                Log.i(TAG,"BookReadingsRecorder:RecordPageSwitch:read for less than "+MIN_SECONDS_TO_READ_PAGE+" seconds. Only "+timePassedInSeconds+" seconds. Not recording. early exit");
                 return;
 
             }
@@ -274,7 +277,7 @@ public class BookReadingsRecorder {
 
             //this should never happen anymore due to logic fixes in service
             if (pageNumbers.equals(prevCurrentPage)) {
-                Debug.L.LOG_ACCESSIBILITY_SERVICE(Debug.L.LOGLEVEL_INFO,"Page number is same "+pageNumbers+". early exit");
+                Log.i(TAG,"Page number is same "+pageNumbers+". early exit");
                 //currentTimestamp=currentTimestamp-timePassed;//ignore this page at all
                 return;
             }
@@ -289,13 +292,13 @@ public class BookReadingsRecorder {
             prevCurrentPage=pageNumbers;
 
             if (timePassedInSeconds >MAX_SECONDS_TO_READ_PAGE) {
-                Debug.L.LOG_ACCESSIBILITY_SERVICE(Debug.L.LOGLEVEL_INFO,"BookReadingsRecorder:RecordPageSwitch:read for more  than "+MAX_SECONDS_TO_READ_PAGE+" seconds. Only "+timePassedInSeconds+" seconds. Assuming user was away. Not recording.early exit");
+                Log.i(TAG,"BookReadingsRecorder:RecordPageSwitch:read for more  than "+MAX_SECONDS_TO_READ_PAGE+" seconds. Only "+timePassedInSeconds+" seconds. Assuming user was away. Not recording.early exit");
                 //account for time used!
                 //currentTimestamp=currentTimestamp-timePassed;//ignore this page at all
                 return;
             }
 
-            Debug.L.LOG_ACCESSIBILITY_SERVICE(Debug.L.LOGLEVEL_INFO, "Title:" + currentBookTitle + ". author " + currentBookAuthor + ". tags:" + currentBookTags + ". page " + currentPage + " of " + currentTotalPages + ". " + timePassed/MS_IN_SECOND + " aka "+timePassedInSeconds +" seconds passed ( "+totalTimeForCurrentBook / MS_IN_SECOND + " seconds total for this book in this session)");
+            Log.i(TAG, "Title:" + currentBookTitle + ". author " + currentBookAuthor + ". tags:" + currentBookTags + ". page " + currentPage + " of " + currentTotalPages + ". " + timePassed/MS_IN_SECOND + " aka "+timePassedInSeconds +" seconds passed ( "+totalTimeForCurrentBook / MS_IN_SECOND + " seconds total for this book in this session)");
 
 
             copyCurrentToLast();
@@ -334,7 +337,7 @@ public class BookReadingsRecorder {
             }
             else
             {
-                Debug.L.LOG_ACCESSIBILITY_SERVICE(Debug.L.LOGLEVEL_INFO,"BookReadingsRecorder:RecordPageSwitch:No master service!!!");
+                Log.i(TAG,"BookReadingsRecorder:RecordPageSwitch:No master service!!!");
             }
 
 
@@ -358,7 +361,7 @@ public class BookReadingsRecorder {
         }
         else
         {
-            Debug.L.LOG_ACCESSIBILITY_SERVICE(Debug.L.LOGLEVEL_INFO,"No matches for "+pageNumbers+"|. possible not page number");
+            Log.i(TAG,"No matches for "+pageNumbers+"|. possible not page number");
         }
 
     }
@@ -366,7 +369,7 @@ public class BookReadingsRecorder {
         ActivityManager activityManager = (ActivityManager)context.getSystemService(context.ACTIVITY_SERVICE);
 
         if (activityManager == null) {
-            Debug.L.LOG_ACCESSIBILITY_SERVICE(Debug.L.LOGLEVEL_INFO, "updateProcessList:null activity manager");
+            Log.i(TAG, "updateProcessList:null activity manager");
             return;
 
         }
@@ -374,7 +377,7 @@ public class BookReadingsRecorder {
         String topActivity = appProcesses.get(0).topActivity.getPackageName();
         //For now only Mantano Reader is supported
         if (!topActivity.equals(MANTANO_READER_PACKAGE_NAME)) {
-            Debug.L.LOG_ACCESSIBILITY_SERVICE(Debug.L.LOGLEVEL_INFO, "current activity is not reading app. it's "+topActivity+"|");
+            Log.i(TAG, "current activity is not reading app. it's "+topActivity+"|");
             recordSwitchAwayFromBook(context, SystemClock.elapsedRealtime());
         }
 
@@ -385,7 +388,7 @@ public class BookReadingsRecorder {
         // sometimes it's needed
         /*
         if (!currentBookKnown) {
-            Debug.L.LOG_ACCESSIBILITY_SERVICE(Debug.L.LOGLEVEL_INFO, "Switching back to current book - reading last known book...");
+            Log.i(TAG, "Switching back to current book - reading last known book...");
             readLastBookInfo(context,timestamp);
         }
         */
@@ -397,7 +400,7 @@ public class BookReadingsRecorder {
             return;
         }
         if ((currentBookTitle != null) && (currentBookAuthor != null)) {
-            Debug.L.LOG_ACCESSIBILITY_SERVICE(Debug.L.LOGLEVEL_INFO, "Done reading " + currentBookTitle + " by " + currentBookAuthor + " with tags " + currentBookTags + ". Last page " + currentPage + " of " + currentTotalPages+". Session took "+totalTimeForCurrentBook/MS_IN_SECOND+" seconds");
+            Log.i(TAG, "Done reading " + currentBookTitle + " by " + currentBookAuthor + " with tags " + currentBookTags + ". Last page " + currentPage + " of " + currentTotalPages+". Session took "+totalTimeForCurrentBook/MS_IN_SECOND+" seconds");
 
 
             ParseObject report=new ParseObject(REPORT_TYPE_BOOK_READING_SESSION_COMPLETED);
@@ -418,13 +421,13 @@ public class BookReadingsRecorder {
                 }
                 else
                 {
-                    Debug.L.LOG_ACCESSIBILITY_SERVICE(Debug.L.LOGLEVEL_INFO,"BookReadingsRecorder:RecordSwitchAwayFromBooks:No master service!!!");
+                    Log.i(TAG,"BookReadingsRecorder:RecordSwitchAwayFromBooks:No master service!!!");
                 }
 
             }
             else
             {
-                Debug.L.LOG_ACCESSIBILITY_SERVICE(Debug.L.LOGLEVEL_INFO,"BookReadingsRecorder:RecordSwitchAwayFromBooks:reading only "+totalTimeForCurrentBook+" seconds     is not really READING");
+                Log.i(TAG,"BookReadingsRecorder:RecordSwitchAwayFromBooks:reading only "+totalTimeForCurrentBook+" seconds     is not really READING");
 
             }
             //report analytics
@@ -464,7 +467,7 @@ public class BookReadingsRecorder {
         if ((prevBookAuthor != null)&&(prevBookTitle != null)) {
 
             if ((!prevBookAuthor.equals(currentBookAuthor)) || (!prevBookTitle.equals(currentBookTitle))) {
-                Debug.L.LOG_ACCESSIBILITY_SERVICE(Debug.L.LOGLEVEL_INFO, "Done reading " + prevBookTitle + " by " + prevBookAuthor + " with tags " + prevBookTags + " for " + totalTimeForCurrentBook / MS_IN_SECOND + " seconds. Last page " + prevCurrentPage + " of " + prevTotalPages);
+                Log.i(TAG, "Done reading " + prevBookTitle + " by " + prevBookAuthor + " with tags " + prevBookTags + " for " + totalTimeForCurrentBook / MS_IN_SECOND + " seconds. Last page " + prevCurrentPage + " of " + prevTotalPages);
 
 
             } else {

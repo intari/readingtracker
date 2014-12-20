@@ -273,11 +273,11 @@ public class AccessibilityRecorderService extends AccessibilityService {
 
             if (event.getEventType()==AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED) {
                 if (event.getClassName().toString().equals("com.mantano.android.library.activities.LibraryActivity")) {
-                    Debug.L.LOG_ACCESSIBILITY_SERVICE(Debug.L.LOGLEVEL_INFO, "Switch to library");
+                    Log.i(TAG, "Switch to library");
                     BookReadingsRecorder.getBookReadingsRecorder(this.getBaseContext()).recordSwitchAwayFromBook(this.getBaseContext(), SystemClock.elapsedRealtime());
 
                 } else if (event.getClassName().toString().equals("com.mantano.android.reader.activities.AsyncReaderActivity")) {
-                    Debug.L.LOG_ACCESSIBILITY_SERVICE(Debug.L.LOGLEVEL_INFO, "Switch to reading");
+                    Log.i(TAG, "Switch to reading");
                     BookReadingsRecorder.getBookReadingsRecorder(this.getBaseContext()).recordSwitchBackToCurrentBook(this.getBaseContext(), SystemClock.elapsedRealtime());
 
                 }
@@ -292,7 +292,7 @@ public class AccessibilityRecorderService extends AccessibilityService {
 
                 try {
 
-                    Debug.L.LOG_ACCESSIBILITY_SERVICE(Debug.L.LOGLEVEL_INFO, String.format(
+                   Log.i(TAG, String.format(
                             "onAccessibilityEvent: [windowId] %d [type] %s [class] %s [viewId] %s [package] %s [time] %d  [text] %s",
                             windowId,eventType,eventClassName,
                             sourceViewId,packageName,
@@ -340,7 +340,7 @@ public class AccessibilityRecorderService extends AccessibilityService {
 
 
                 } catch (MissingFormatArgumentException ex) {
-                    Debug.L.LOG_EXCEPTION(ex);
+                    Log.e(TAG,"Exception "+ex.toString());
                 }
 
             }
@@ -391,18 +391,18 @@ public class AccessibilityRecorderService extends AccessibilityService {
                 }
             }  else if (event.getEventType()==AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED) {
                 if (event.getClassName().toString().equals("com.mantano.android.library.activities.LibraryActivity")) {
-                    Debug.L.LOG_ACCESSIBILITY_SERVICE(Debug.L.LOGLEVEL_INFO,"Switch to library");
+                   Log.i(TAG,"Switch to library");
                     BookReadingsRecorder.getBookReadingsRecorder(this.getBaseContext()).recordSwitchAwayFromBook(this.getBaseContext(),SystemClock.elapsedRealtime());
 
                 }
                 else if (event.getClassName().toString().equals("com.mantano.android.reader.activities.AsyncReaderActivity")) {
-                    Debug.L.LOG_ACCESSIBILITY_SERVICE(Debug.L.LOGLEVEL_INFO,"Switch to reading");
+                   Log.i(TAG,"Switch to reading");
                     BookReadingsRecorder.getBookReadingsRecorder(this.getBaseContext()).recordSwitchBackToCurrentBook(this.getBaseContext(),SystemClock.elapsedRealtime());
 
                 }
 /*                if (sourceViewId!=null) {
                     if (sourceViewId.equals("com.mantano.reader.android:id/gridview")) {
-                        Debug.L.LOG_ACCESSIBILITY_SERVICE(Debug.L.LOGLEVEL_INFO,"Switch to library");
+                       Log.i(TAG,"Switch to library");
                         BookReadingsRecorder.getBookReadingsRecorder().recordSwitchAwayFromBook(this.getBaseContext(),SystemClock.elapsedRealtime());
                     }
 
@@ -426,7 +426,7 @@ public class AccessibilityRecorderService extends AccessibilityService {
                     currentPageNumbers);
 
         } catch (BookReadingsRecorder.InvalidArgumentsException e) {
-            Debug.L.LOG_EXCEPTION(e);
+            Log.e(TAG,"Exception "+e.toString());
         }
     }
 
@@ -434,10 +434,10 @@ public class AccessibilityRecorderService extends AccessibilityService {
       Processing of com.mantano.reader.android:id/book_bloc_item_list block - basic book data
      */
     private void processMantanoBookData(List<CharSequence> unprocessedData) {
-        Debug.L.LOG_ACCESSIBILITY_SERVICE(Debug.L.LOGLEVEL_INFO,"Size of book data:"+unprocessedData.size());
+       Log.i(TAG,"Size of book data:"+unprocessedData.size());
         for (int i=0;i<unprocessedData.size();i++)
         {
-            Debug.L.LOG_ACCESSIBILITY_SERVICE(Debug.L.LOGLEVEL_INFO,"Processing item "+i+". it's "+unprocessedData.get(i).toString());
+           Log.i(TAG,"Processing item "+i+". it's "+unprocessedData.get(i).toString());
         }
         try {
 
@@ -451,11 +451,11 @@ public class AccessibilityRecorderService extends AccessibilityService {
             //if we don't check we can crash Mantano
             //есть у меня подозрения что тут и так бред идет
             if (unprocessedData.size()==6) {
-                Debug.L.LOG_ACCESSIBILITY_SERVICE(Debug.L.LOGLEVEL_INFO,"Size of book data appears correct for arleady-opened book");
+               Log.i(TAG,"Size of book data appears correct for arleady-opened book");
                 currentPageNumbers = unprocessedData.get(4).toString();   //was 5
             }
             else {
-                Debug.L.LOG_ACCESSIBILITY_SERVICE(Debug.L.LOGLEVEL_INFO,"Size of book data is not 6 (it's "+unprocessedData.size()+"). Likely unread-before book");
+               Log.i(TAG,"Size of book data is not 6 (it's "+unprocessedData.size()+"). Likely unread-before book");
                 currentPageNumbers="1/0";//we need to report SOMETHING. TODO:make it possible to report something other if this becomes issue
                 //если size()==4 то возможно что tags будет 'Не синхронизировано' а реальные теги в (2) а не (3)
                 //в нормальной ситуации в (2) дата доступа
@@ -464,7 +464,7 @@ public class AccessibilityRecorderService extends AccessibilityService {
                 //еще бывает случай когда size()=5 (но все равно не синхронизировано но есть дата последнего доступа) и все нормально
                 //вообще - надо ли это фиксить или пусть живет и само потом поправится?
                 if (bookTags.equals("Не синхронизировано")) {
-                    Debug.L.LOG_ACCESSIBILITY_SERVICE(Debug.L.LOGLEVEL_INFO,"Fixing bookTags to "+bookTagsAlt);
+                   Log.i(TAG,"Fixing bookTags to "+bookTagsAlt);
                     bookTags=bookTagsAlt;
                 }
 
@@ -475,7 +475,7 @@ public class AccessibilityRecorderService extends AccessibilityService {
                 BookReadingsRecorder.getBookReadingsRecorder(this.getBaseContext()).recordNewBook(this.getBaseContext(),SystemClock.elapsedRealtime(),
                         currentBookAuthor,currentBookTitle,bookTags,currentPageNumbers);
             } catch (BookReadingsRecorder.InvalidArgumentsException e) {
-                Debug.L.LOG_EXCEPTION(e);
+                Log.e(TAG,"Exception "+e.toString());
             }
 
             //writeLastBookInfo(currentBookTitle, currentBookAuthor, bookTags);
@@ -483,13 +483,13 @@ public class AccessibilityRecorderService extends AccessibilityService {
 
         } catch(IndexOutOfBoundsException e) {
             //possible logic violation
-            Debug.L.LOG_EXCEPTION(e);
-            Debug.L.LOG_ACCESSIBILITY_SERVICE(Debug.L.LOGLEVEL_ERROR,"unprocessed data was "+unprocessedData+"|. Details of event should be above");
+            Log.e(TAG,"Exception "+e.toString());
+            Log.e(TAG,"unprocessed data was "+unprocessedData+"|. Details of event should be above");
 
             /*
             try {
 
-                Debug.L.LOG_ACCESSIBILITY_SERVICE(Debug.L.LOGLEVEL_INFO, String.format(
+               Log.i(TAG, String.format(
                         "onAccessibilityEvent: [windowId] %d [type] %s [class] %s [viewId] %s [package] %s [time] %d  [text] %s",
                         windowId,eventType,eventClassName,
                         sourceViewId,packageName,
@@ -497,7 +497,7 @@ public class AccessibilityRecorderService extends AccessibilityService {
                         +"[SourceText]:"+sourceInfoText+"|");
 
             } catch (MissingFormatArgumentException ex) {
-                Debug.L.LOG_EXCEPTION(ex);
+                Log.e(TAG,"Exception "+ex.toString());
             } */
 
         }
@@ -505,21 +505,21 @@ public class AccessibilityRecorderService extends AccessibilityService {
 
     @Override
     public void onInterrupt() {
-        Debug.L.LOG_ACCESSIBILITY_SERVICE(Debug.L.LOGLEVEL_INFO, TAG+":onInterrupt");
+       Log.i(TAG, "onInterrupt");
     }
 
     @Override
     protected void onServiceConnected() {
         super.onServiceConnected();
-        Debug.L.LOG_ACCESSIBILITY_SERVICE(Debug.L.LOGLEVEL_INFO, TAG+":onServiceConnected");
+       Log.i(TAG, "onServiceConnected");
         if (ONLY_SCROBBLE) {
-            Debug.L.LOG_ACCESSIBILITY_SERVICE(Debug.L.LOGLEVEL_INFO, TAG+" scrobble-only mode");
+           Log.i(TAG, " scrobble-only mode");
         }
 
         statusRequestReceiver=new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                Debug.L.LOG_ACCESSIBILITY_SERVICE(Debug.L.LOGLEVEL_INFO, "Got request for status update");
+               Log.i(TAG, "Got request for status update");
                 Intent i=new Intent(ACTIVITY_MONITORING_CONNECTED);
                 LocalBroadcastManager.getInstance(context).sendBroadcast(i);
 
@@ -545,11 +545,11 @@ public class AccessibilityRecorderService extends AccessibilityService {
     @Override
     public void onCreate() {
         super.onCreate();
-        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,TAG+":Book reading tracker:Accessibility Service is starting up, onCreate");
+        Log.i(TAG,"Book reading tracker:Accessibility Service is starting up, onCreate");
 
         CoreService.writeLogBanner(TAG, getApplicationContext());
         if (ONLY_SCROBBLE) {
-            Debug.L.LOG_ACCESSIBILITY_SERVICE(Debug.L.LOGLEVEL_INFO, TAG+" scrobble-only mode");
+           Log.i(TAG, " scrobble-only mode");
         }
 
         //do periodic config updates in case we need them, preliminary version

@@ -122,7 +122,7 @@ public class CoreService extends Service  {
 
     /* TODO: make it use keyguard */
     public void onDeviceUnlock() {
-        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"Device unlocked");
+        Log.i(TAG,"Device unlocked");
 
         isDeviceLocked = false;
         //updateActiveProcessList();
@@ -130,7 +130,7 @@ public class CoreService extends Service  {
 
     /* TODO: make it use keyguard */
     public void onDeviceLock() {
-        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"Device locked");
+        Log.i(TAG,"Device locked");
         BookReadingsRecorder.getBookReadingsRecorder(this.getBaseContext()).recordSwitchAwayFromBook(this.getBaseContext(),SystemClock.elapsedRealtime());
 
         isDeviceLocked = true;
@@ -139,27 +139,27 @@ public class CoreService extends Service  {
 
     public void onDreamingStarted() {
 
-        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"Dreaming started");
+        Log.i(TAG,"Dreaming started");
         BookReadingsRecorder.getBookReadingsRecorder(this.getBaseContext()).recordSwitchAwayFromBook(this.getBaseContext(),SystemClock.elapsedRealtime());
 
     }
 
     public void onDreamingStopped() {
 
-        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"Dreaming stopped");
+        Log.i(TAG,"Dreaming stopped");
 
     }
 
     public void onScreenOn() {
 
-        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"Screen is on");
+        Log.i(TAG,"Screen is on");
 
         isDeviceScreenOff = false;
         updateActiveProcessList();
     }
 
     public void onScreenOff() {
-        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"Screen is off");
+        Log.i(TAG,"Screen is off");
         BookReadingsRecorder.getBookReadingsRecorder(this.getBaseContext()).recordSwitchAwayFromBook(this.getBaseContext(),SystemClock.elapsedRealtime());
 
         isDeviceScreenOff = true;
@@ -184,7 +184,7 @@ public class CoreService extends Service  {
         Long timeToCheck=checkFinishedTime-uptimeNow;
         if (timeToCheck>600)
         {
-            Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"Process list check took  "+timeToCheck.toString()+",ms, >0 ms");
+            Log.i(TAG,"Process list check took  "+timeToCheck.toString()+",ms, >0 ms");
         }
         lastAppCheckTime=checkFinishedTime;
         wl.release();
@@ -195,7 +195,7 @@ public class CoreService extends Service  {
         ActivityManager activityManager = (ActivityManager)this.getSystemService(ACTIVITY_SERVICE);
 
         if (activityManager == null) {
-            Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO, "updateProcessList:null activity manager");
+            Log.i(TAG, "updateProcessList:null activity manager");
             return;
         }
 
@@ -235,9 +235,9 @@ public class CoreService extends Service  {
             @Override
             public void run() {
                 if (!saveReportToParseReal(reportToSend)) {
-                    Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO, "Save report to Parse failed. Will retry. Report type was "+reportToSend.getClassName());
+                    Log.i(TAG, "Save report to Parse failed. Will retry. Report type was "+reportToSend.getClassName());
                     if (mDelayReporter==null) {
-                        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO, "Cannot retry. DelayReporter is null");
+                        Log.i(TAG, "Cannot retry. DelayReporter is null");
                         return;
 
                     }
@@ -246,9 +246,9 @@ public class CoreService extends Service  {
                         mDelayReporter.postDelayed(new Runnable() {
                             @Override
                             public void run () {
-                                Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO, "Retrying "+reportToSend.getClassName());
+                                Log.i(TAG, "Retrying "+reportToSend.getClassName());
                                 if (!saveReportToParseReal(reportToSend)) {
-                                    Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO, "Save report to Parse failed on retry. Will retry. Report type was "+reportToSend.getClassName());
+                                    Log.i(TAG, "Save report to Parse failed on retry. Will retry. Report type was "+reportToSend.getClassName());
 
                                 }
                             }
@@ -271,7 +271,7 @@ public class CoreService extends Service  {
             return Boolean.FALSE;
         }
         if (mDetails==null) {
-            Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO, "Cannot save report to Parse. No device details. Report type was "+report.getClassName());
+            Log.i(TAG, "Cannot save report to Parse. No device details. Report type was "+report.getClassName());
             return Boolean.FALSE;
         }
 
@@ -287,7 +287,7 @@ public class CoreService extends Service  {
         report.put("clientEventCreateTime", DateHelper.formatISO8601_iOS(date));
         ParseUser currentUser=ParseUser.getCurrentUser();
         if (currentUser==null) {
-            Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO, "Cannot save report to Parse. No current user. Report type was "+report.getClassName());
+            Log.i(TAG, "Cannot save report to Parse. No current user. Report type was "+report.getClassName());
             return Boolean.FALSE;
         }
         report.put("user",currentUser);
@@ -306,9 +306,9 @@ public class CoreService extends Service  {
         report.saveEventually(new SaveCallback() {
             public void done(ParseException e) {
                 if (e == null) {
-                    //Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO, "Saved report "+reportClass+" to parse. heartrate "+mCurrentHeartRate);
+                    //Log.i(TAG, "Saved report "+reportClass+" to parse. heartrate "+mCurrentHeartRate);
                 } else {
-                    Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO, "Not saved report "+reportClass+"to parse: " + e.toString());
+                    Log.i(TAG, "Not saved report "+reportClass+"to parse: " + e.toString());
                 }
             }
         });
@@ -336,15 +336,15 @@ public class CoreService extends Service  {
 
                 if (e == null) {
                     if (list.size()>0) {
-                        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_WARN,"retrived list with "+list.size()+" elements for deviceInfoList. killing extra");
+                        Log.w(TAG,"retrived list with "+list.size()+" elements for deviceInfoList. killing extra");
                         for (ParseObject obj:list) {
                             obj.deleteInBackground();
                         }
                     }
-                    Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO, "calling reportDeviceInfoReal in async way");
+                    Log.i(TAG, "calling reportDeviceInfoReal in async way");
                     reportDeviceInfoReal();
                 } else {
-                    Debug.L.LOG_EXCEPTION(e);
+                    Log.e(TAG,"Exception "+e.toString());
                 }
             }
         });
@@ -376,15 +376,15 @@ public class CoreService extends Service  {
 
 
 
-        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"Device Identifier:"+ourDeviceID);
+        Log.i(TAG,"Device Identifier:"+ourDeviceID);
 
         if (playServicesAvailable()) {
-            Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"Google Play Services present");
+            Log.i(TAG,"Google Play Services present");
             mDetails.put("GooglePlayServicesInstalled",Boolean.TRUE);
         }
         else
         {
-            Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"Google Play Services not present");
+            Log.i(TAG,"Google Play Services not present");
             mDetails.put("GooglePlayServicesInstalled",Boolean.FALSE);
         }
 
@@ -425,21 +425,21 @@ public class CoreService extends Service  {
     }
 
     static public void writeLogBanner(String tag, Context context) {
-        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,tag+" (c) Dmitriy Kazimirov 2013-2014");
-        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,tag+" e-mail: dmitriy.kazimirov@viorsan.com");
+        Log.i(TAG,tag+" (c) Dmitriy Kazimirov 2013-2014");
+        Log.i(TAG,tag+" e-mail: dmitriy.kazimirov@viorsan.com");
 
-        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,tag+" BuildAuthority:"+buildAuthority());
-        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,tag+" ApplicationId:"+BuildConfig.APPLICATION_ID);
-        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,tag+" BuildType:"+BuildConfig.BUILD_TYPE);
-        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,tag+" VersionCode:"+BuildConfig.VERSION_CODE);
-        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,tag+" VersionName:"+BuildConfig.VERSION_NAME);
-        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,tag+" Flavor:"+BuildConfig.FLAVOR);
+        Log.i(TAG,tag+" BuildAuthority:"+buildAuthority());
+        Log.i(TAG,tag+" ApplicationId:"+BuildConfig.APPLICATION_ID);
+        Log.i(TAG,tag+" BuildType:"+BuildConfig.BUILD_TYPE);
+        Log.i(TAG,tag+" VersionCode:"+BuildConfig.VERSION_CODE);
+        Log.i(TAG,tag+" VersionName:"+BuildConfig.VERSION_NAME);
+        Log.i(TAG,tag+" Flavor:"+BuildConfig.FLAVOR);
         if (BuildConfig.DEBUG) {
-            Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,tag+" BuildConfig:DEBUG");
+            Log.i(TAG,tag+" BuildConfig:DEBUG");
         }
         else
         {
-            Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,tag+" BuildConfig:RELEASE");
+            Log.i(TAG,tag+" BuildConfig:RELEASE");
         }
 
 
@@ -453,9 +453,7 @@ public class CoreService extends Service  {
     }
     private void init() {
 
-        //Debug.L.LOG_MARK("ReadingTracker starting up");
-
-        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"Book reading tracker main service starting up");
+        Log.i(TAG,"Book reading tracker main service starting up");
         CoreService.writeLogBanner("", getApplicationContext());
 
         ParseConfigHelper.refreshConfig();
@@ -464,7 +462,7 @@ public class CoreService extends Service  {
 
         ParseUser currentUser=ParseUser.getCurrentUser();
         if (currentUser==null) {
-            Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO, "Not logged in. Service will NOT be started");
+            Log.i(TAG, "Not logged in. Service will NOT be started");
             stopSelf();
             return;
         }
@@ -475,7 +473,7 @@ public class CoreService extends Service  {
         nextRequestId = 0L;
         //TODO:check for session restart
 
-        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO, "Checking for session restart. new SID:" + sessionId + ". RID:" + nextRequestId);
+        Log.i(TAG, "Checking for session restart. new SID:" + sessionId + ". RID:" + nextRequestId);
 
 
         Context context=this.getBaseContext();
@@ -484,13 +482,13 @@ public class CoreService extends Service  {
         if (oldSID!=sessionId)
         {
             Long oldRID=sharedPreferences.getLong(CURRENT_REQUEST_ID,Context.MODE_PRIVATE);
-            Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO, "Session restart detected. was " + oldSID + " but now " + sessionId + ". Last stored RID was " + oldRID);
+            Log.i(TAG, "Session restart detected. was " + oldSID + " but now " + sessionId + ". Last stored RID was " + oldRID);
 
 
         }
         else
         {
-           Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO, "no session restart? at startup?!");
+           Log.i(TAG, "no session restart? at startup?!");
         }
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putLong(CURRENT_SESSION_ID,new Long(sessionId));
@@ -563,29 +561,29 @@ public class CoreService extends Service  {
     @Override
     public void onLowMemory()
     {
-        Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO, "onLowMemory");
+        Log.w(TAG, "onLowMemory");
     }
     @Override
     public void onTrimMemory(int level) {
         switch (level)
         {
             case TRIM_MEMORY_UI_HIDDEN:
-                Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO, "TRIM_MEMORY_UI_HIDDEN");
+                Log.w(TAG, "TRIM_MEMORY_UI_HIDDEN");
                 break;
             case TRIM_MEMORY_BACKGROUND:
-                Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO, "TRIM_MEMORY_BACKGROUND");
+                Log.w(TAG, "TRIM_MEMORY_BACKGROUND");
                 break;
             case TRIM_MEMORY_COMPLETE:
-                Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO, "TRIM_MEMORY_COMPLETE");
+                Log.w(TAG, "TRIM_MEMORY_COMPLETE");
                 break;
             case TRIM_MEMORY_MODERATE:
-                Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO, "TRIM_MEMORY_MODERATE");
+                Log.w(TAG, "TRIM_MEMORY_MODERATE");
                 break;
             case TRIM_MEMORY_RUNNING_CRITICAL:
-                Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_ERROR, "TRIM_MEMORY_RUNNING_CRITICAL");
+                Log.w(TAG, "TRIM_MEMORY_RUNNING_CRITICAL");
                 break;
             case TRIM_MEMORY_RUNNING_LOW:
-                Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"TRIM_MEMORY_RUNNING_LOW");
+                Log.w(TAG,"TRIM_MEMORY_RUNNING_LOW");
                 break;
         }
     }

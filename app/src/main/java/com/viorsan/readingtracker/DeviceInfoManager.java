@@ -6,6 +6,7 @@ import android.os.Environment;
 import android.os.StatFs;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
+import android.util.Log;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -48,21 +49,21 @@ public class DeviceInfoManager {
 
                     return value;
                 } catch (IllegalAccessException e) {
-                     Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO, "Can't get runtime:IllegalAccessException");
+                     Log.i(TAG, "Can't get runtime:IllegalAccessException");
                     return "Dalvik";
                 } catch (IllegalArgumentException e) {
-                     Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO, "Can't get runtime:IllegalArgumentException");
+                     Log.i(TAG, "Can't get runtime:IllegalArgumentException");
                     return "Dalvik";
                 } catch (InvocationTargetException e) {
-                     Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO, "Can't get runtime:InvocationTargetException");
+                     Log.i(TAG, "Can't get runtime:InvocationTargetException");
                     return "Dalvik";
                 }
             } catch (NoSuchMethodException e) {
-                 Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"Can't get runtime:SystemProperties.get(String key, String def) method is not found, assuming Dalvik");
+                 Log.i(TAG,"Can't get runtime:SystemProperties.get(String key, String def) method is not found, assuming Dalvik");
                 return "Dalvik";
             }
         } catch (ClassNotFoundException e) {
-             Debug.L.LOG_SERVICE(Debug.L.LOGLEVEL_INFO,"Can't get runtime:SystemProperties class is not found,assuming Dalvik");
+             Log.i(TAG,"Can't get runtime:SystemProperties class is not found,assuming Dalvik");
             return "Davlik";
         }
     }

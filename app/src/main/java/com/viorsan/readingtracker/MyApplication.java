@@ -32,12 +32,6 @@ public class MyApplication extends android.app.Application {
         //this could cause issues if there is no cached user
         ParseACL.setDefaultACL(new ParseACL(), true);
 
-        //init logger
-        if (Debug.D) {
-            Debug.enableDebug(this, true);
-            //Debug.L.setRemoteHost("site.domain.com", 50000, true);      // change to your mac's IP address, set a fixed TCP port in the Prefs in desktop NSLogger
-            //Debug.L.LOG_MARK("ReadingTracker startup");
-        }
         super.onCreate();
     }
 }
