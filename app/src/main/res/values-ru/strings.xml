@@ -2,12 +2,7 @@
 <resources>
     <!-- (Partial) Russian Translation -->
 
-    <string name="GreetingsMessage">Привет, </string>
-    <string name="GreetingsStranger">Привет, неизвестный(-я)</string>
-    <string name="defaultUserName">неизвестный(-я)</string>
-
-
-
+  
     <string name="accessibilityDescription">Отслеживать читаемые книги</string>
 
     <string name="accessGrantedOK">OK</string>
