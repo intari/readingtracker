@@ -18,12 +18,14 @@ public class MyApplication extends android.app.Application {
         // Enable Parse-based Crash Reporting
         ParseCrashReporting.enable(this);
         //enable local datastore (we are write-mostly anyway)
-        //TODO:this causes problems with FB. Looks like I'm doing something wrong
         //Parse.enableLocalDatastore(this);
         //init Parse
         Parse.initialize(this,BuildConfig.PARSE_APP_ID,BuildConfig.PARSE_CLIENT_KEY);
-        //enable automatic user support support (user will link to FB anyway)
+        //enable automatic user support support
         //ParseUser.enableAutomaticUser();
+
+        //activate extra logging to debug login system
+        Parse.setLogLevel(Parse.LOG_LEVEL_DEBUG);
 
         //init ACLs
         //Dropbox-style-only-this-user-can-access-this
