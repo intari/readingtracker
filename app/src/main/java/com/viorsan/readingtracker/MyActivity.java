@@ -65,15 +65,17 @@ public class MyActivity extends Activity {
 
     }
     private void handleUserLogin()  {
+        Log.d(TAG,"Signaling everybody that user was logged in");
         startService();
         //it will autostop if no user active
 
     }
     private void handleUserLogout() {
         //ask core service to stop
+        Log.d(TAG,"Signaling everybody that user was logged out");
         Intent intent = new Intent(CoreService.USER_LOGGED_OUT_REPORT);
         LocalBroadcastManager.getInstance(getBaseContext()).sendBroadcast(intent);
-
+        Log.d(TAG,"Signeled everybody that user was logged out");
     }
     private void init(){
         self = this;

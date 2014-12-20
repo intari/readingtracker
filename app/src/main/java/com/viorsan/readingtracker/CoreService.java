@@ -24,7 +24,7 @@ import java.util.*;
 public class CoreService extends Service  {
 
 
-    public static final String REPORT_TYPE_DEVICE_REPORT = "DeviceReport";
+    public static final String REPORT_TYPE_DEVICE_REPORT = "DeviceInformation";
     public static final String FAKEAPP_DEVICELOCKED = "com.viorsan.readingtracker.DeviceLocked";
     public static final String FAKEAPP_SCREENOFF = "com.viorsan.readingtracker.ScreenOff";
 
@@ -531,10 +531,6 @@ public class CoreService extends Service  {
 
         registerReceiver(broadcastReceiver, getFilters());
 
-        LocalBroadcastManager.getInstance(this).registerReceiver(
-                userLoggedOutReceiver,new IntentFilter(USER_LOGGED_OUT_REPORT)
-        );
-
         userLoggedOutReceiver =  new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
@@ -543,13 +539,17 @@ public class CoreService extends Service  {
                 //tell BookReadingsRecorder we no longer accept data (even if parse helper won't save them anyway)
                 BookReadingsRecorder.getBookReadingsRecorder(getBaseContext()).setMasterService(null);
                 Log.d(TAG, "BookReadings code signaled to stop sending us data. Stopping us");
+
                 //commit suicide
                 stopSelf();
                 Log.d(TAG, "stopSelf() called");
-
-
             }
         };
+
+
+        LocalBroadcastManager.getInstance(this).registerReceiver(
+                userLoggedOutReceiver,new IntentFilter(USER_LOGGED_OUT_REPORT)
+        );
 
 
         //prepare handler for posting data in case of delays
@@ -653,7 +653,13 @@ public class CoreService extends Service  {
 
     }
 
+    private void stopReceivers() {
+        Log.d(TAG,"Unregistering receivers");
+        unregisterReceiver(broadcastReceiver);
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(userLoggedOutReceiver);
+        Log.d(TAG,"Unregistered receivers");
 
+    }
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         processBroadcastInternal(intent);
@@ -664,10 +670,7 @@ public class CoreService extends Service  {
     public void onDestroy() {
         Log.d(TAG,"OnDestroy() called");
 
-        unregisterReceiver(broadcastReceiver);
-        LocalBroadcastManager.getInstance(this).unregisterReceiver(userLoggedOutReceiver);
-        Log.d(TAG,"Unregistered receivers");
-
+        stopReceivers();
         stopForeground(true);
         Log.d(TAG,"Called stopForeground()");
     }
