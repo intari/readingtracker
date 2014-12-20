@@ -10,8 +10,6 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.widget.Toast;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.parse.*;
 
 import java.util.*;
@@ -37,7 +35,6 @@ public class CoreService extends Service  {
     private long lastAppCheckTime;
 
 
-    // helpers for Play Services
     // Constants that define the activity detection interval
     public static final int MILLISECONDS_PER_SECOND = 1000;
     public static final int DETECTION_INTERVAL_SECONDS = 20;
@@ -318,12 +315,6 @@ public class CoreService extends Service  {
     }
 
 
-
-    private boolean playServicesAvailable() {
-        int resultCode=GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
-        return resultCode==ConnectionResult.SUCCESS;
-    }
-
     private void reportDeviceInfo() {
 
         ParseQuery query = new ParseQuery(REPORT_TYPE_DEVICE_REPORT);
@@ -378,15 +369,6 @@ public class CoreService extends Service  {
 
         Log.i(TAG,"Device Identifier:"+ourDeviceID);
 
-        if (playServicesAvailable()) {
-            Log.i(TAG,"Google Play Services present");
-            mDetails.put("GooglePlayServicesInstalled",Boolean.TRUE);
-        }
-        else
-        {
-            Log.i(TAG,"Google Play Services not present");
-            mDetails.put("GooglePlayServicesInstalled",Boolean.FALSE);
-        }
 
 
         //Phone network details

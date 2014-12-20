@@ -32,10 +32,6 @@
         android:name="com.viorsan.readingtracker.MyApplication">
         <activity android:name="net.hockeyapp.android.UpdateActivity" />
 
-        <!-- Google Play Services support -->
-        <meta-data android:name="com.google.android.gms.version"
-                   android:value="@integer/google_play_services_version" />
-
 
         <activity
             android:name="com.parse.ui.ParseLoginActivity"
