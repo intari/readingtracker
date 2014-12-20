@@ -93,6 +93,19 @@ def buildTimeHumanReadable() {
 }
 
 
+apply plugin: 'robolectric'
+
+robolectric {
+    include '**/*Test.class'
+    exclude '**/espresso/**/*.class'
+
+    // use afterTest to listen to the test execution results
+    afterTest { descriptor, result ->
+        println "Executing test for {$descriptor.name} with result: ${result.resultType}"
+    }
+}
+
+
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
@@ -198,6 +211,12 @@ android {
     }
 
 
+    sourceSets {
+        androidTest {
+            setRoot('src/test')
+        }
+    }
+
     //code sign support, based off http://habrahabr.ru/post/205308/
     //Load values used for application signing
     if(project.hasProperty("debugSigningPropertiesPath") && project.hasProperty("releaseSigningPropertiesPath")) {
@@ -240,6 +259,7 @@ android {
     }
 }
 
+// Parse Platform dependencies
 dependencies {
     compile 'com.parse.bolts:bolts-android:1.+'
 
@@ -247,21 +267,30 @@ dependencies {
     compile fileTree(dir: '../libs', include: 'ParseCrashReporting-*.jar')
 }
 
+//our regular dependencies
 dependencies {
     compile 'com.google.code.gson:gson:2.2.2'
-    compile 'com.google.android.gms:play-services:6.5.+'
+    //compile 'com.google.android.gms:play-services:6.5.+'
     compile files('libs/HockeySDK-3.0.1.jar')
     compile files('libs/acra-4.4.0.jar')
     compile files('libs/json-simple-1.1.1.jar')
     compile files('libs/jmdns-3.4.1.jar')
 }
 
+// ParseUI dependencies
 dependencies {
     compile 'com.facebook.android:facebook-android-sdk:3.21.0'
     compile project(':ParseLoginUI')
     compile 'com.android.support:support-v4:21.0.0'
 }
 
+// dependencies for tests
+dependencies {
+    androidTestCompile('junit:junit:4.11')
+    androidTestCompile('org.robolectric:robolectric:2.4')
+    // add the stripped version of android.jar, 'fix' per https://gist.github.com/avbk/d82c44ed8bef5782dbe5
+    androidTestCompile files("../testlibs/android-17-stripped.jar")
+}
 
 //Per  https://github.com/x2on/gradle-hockeyapp-plugin/issues/30 it's dependencies must be in root project
 apply plugin: 'de.felixschulze.gradle.hockeyapp'
@@ -307,4 +336,3 @@ hockeyapp {
     }
 
 }
-
