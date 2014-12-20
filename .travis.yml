@@ -39,8 +39,8 @@ before_install:
   # for gradle output style
   - export TERM=dumb
   # environment info
-  - sudo chmod +x gradlew
-  - ./gradlew -v
+  # - sudo chmod +x gradlew
+  - gradle -v
   - uname -a
   - echo "Android Home:$ANDROID_HOME"
   # manually set sdk.dir variable, according to local paths
@@ -58,11 +58,11 @@ before_script:
 #  - adb shell input keyevent 82 &
 
 install: 
-    - ./gradlew clean 
-    - ./gradlew build
+    - gradle clean 
+    - gradle build
 
 script: 
-    - ./gradlew check
+    - gradle check
 
     
     
