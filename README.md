@@ -3,6 +3,8 @@ Application to collect data on your reading habits. Which books you read. When y
 So you could analyze this data for yourself.
 
 # How it works?
+using Android Accessibility APIs
+
 TODO: technical description
 
 * readings are sent to server app at https://parse.com/
@@ -63,4 +65,4 @@ At time I got it license was:
 License: Creative commons
 You are free to use this icon for commercial purposes, to share or to modify it. In exchange, it's necessary to credit the author for the original creation.
 * [Parse Team (currently at Facebook)](https://parse.com/about) for Parse Platform (and ParseUI-Android)
-* [Mantano SAS](www.mantano.com/mantano-reading-platform/) for Mantano Premium. This is best E-Book reader I have so far, even accounting for occasional glitches with Cloud Service and crashes with badly formatted books. Current version of Reading Tracker only support Mantano as data source. 
+* [Mantano SAS](www.mantano.com/mantano-reading-platform/) for Mantano Premium. This is best E-Book reader I have so far, even accounting for occasional glitches with Cloud Service and crashes with badly formatted books. Current version of Reading Tracker only support Mantano as data source.
