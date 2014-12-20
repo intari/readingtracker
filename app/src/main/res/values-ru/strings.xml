@@ -28,5 +28,12 @@
     <string name="guiCurrentlyReadingShort">Чтение %1$s от %2$s</string>
     <string name="guiCurrentlyReadingLong">Чтение %1$s от %2$s (страница %3$s из %4$s) уже %5$.2f минут</string>
 
+    <!-- ParseUI -->
+    <string name="profile_login_button_label">Войти</string>
+    <string name="profile_logo_content_description">Лого</string>
+    <string name="profile_logout_button_label">Выйти</string>
+    <string name="profile_title_logged_in">Вы вошли как</string>
+    <string name="profile_title_logged_out">Требуется вход </string>
+
 
 </resources>

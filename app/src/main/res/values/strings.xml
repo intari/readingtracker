@@ -31,4 +31,11 @@
     <string name="guiCurrentlyReadingLong">Reading %1$s by %2$s (page %3$s of %4$s) for %5$.2f minutes</string>
 
 
+    <!-- Parse Login strings -->
+    <string name="profile_logo_content_description">Logo</string>
+    <string name="profile_title_logged_in">Your are logged in as</string>
+    <string name="profile_logout_button_label">Log out</string>
+    <string name="profile_title_logged_out">You must be logged</string>
+    <string name="profile_login_button_label">Log in</string>
+
 </resources>
