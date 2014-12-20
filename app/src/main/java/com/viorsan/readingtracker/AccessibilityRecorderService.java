@@ -549,7 +549,7 @@ public class AccessibilityRecorderService extends AccessibilityService {
 
         CoreService.writeLogBanner(TAG, getApplicationContext());
         if (ONLY_SCROBBLE) {
-           Log.i(TAG, " scrobble-only mode");
+           Log.i(TAG, "scrobble-only mode");
         }
 
         //do periodic config updates in case we need them, preliminary version
@@ -574,72 +574,3 @@ public class AccessibilityRecorderService extends AccessibilityService {
 //helpers
 //http://habrahabr.ru/post/234425/
 //https://code.google.com/p/eyes-free/source/browse/trunk/braille/brailleback/res/xml/accessibilityservice.xml?spec=svn819&r=819
-
-/*
-
-полезное для игр с Mantano
-
-[997     ] 11:24:38.352 | ReadingTracker:accessibility_service | main | onAccessibilityEvent: [windowId] 30 [type] TYPE_VIEW_CLICKED [class] android.widget.RelativeLayout [viewId] com.mantano.reader.android:id/book_bloc_item_list [package] com.mantano.reader.android [time] 725870  [text] Раскрой свои крыльяИар ЭльтеррусПоследний доступ: 06.09.14 11:24sf_action, sf_socialОбщий доступ1/362[SourceText]:null|
-
-а вот если делить то
-[938     ] 11:28:46.808 | ReadingTracker:accessibility_service | main | onAccessibilityEvent: [windowId] 30 [type] TYPE_VIEW_CLICKED [class] android.widget.RelativeLayout [viewId] com.mantano.reader.android:id/book_bloc_item_list [package] com.mantano.reader.android [time] 974326  [text] Слово Гермионы (Г.П. и свиток Хокаге - 1)|Сейтимбетов Самат Айдосович|Последний доступ: 06.09.14 11:27|fanfics, Harry P., Harry P./Hermione G., Hermione G.|Общий доступ|113/654|[SourceText]:null|
-
-для PDF (не синхионизированных):
-[1920    ] 16:43:56.706 | ReadingTracker:accessibility_service | main | unprocessed data was [Numbers '09 Руководство пользователя, Apple Inc., Добавить теги, Не синхронизировано]|. Details of event below
-видимо проблема с датой последнего доступа
-и
-
-onAccessibilityEvent:sourceViewId:com.mantano.reader.android:id/bookreader_pagenumber_overlay
-09-06 11:29:34.756  11600-11600/com.viorsan.readingtracker D/AccessibilityRecorderService﹕ onAccessibilityEvent:sourceInfoText:5 / 362
-
-TYPE_WINDOW_CONTENT_CHANGED [class] android.widget.Button [viewId] com.mantano.reader.android:id/bookreader_pagenumber_overlay [package] com.mantano.reader.android [time] 2198393  [text] [SourceText]:6 / 362|
-
-[1005    ] 11:24:40.821 | ReadingTracker:accessibility_service | main | onAccessibilityEvent: [windowId] 41 [type] TYPE_WINDOW_CONTENT_CHANGED [class] android.widget.Button [viewId] com.mantano.reader.android:id/bookreader_pagenumber_overlay [package] com.mantano.reader.android [time] 728316  [text] [SourceText]:2 / 362|
-
-[1019    ] 11:25:46.686 | ReadingTracker:accessibility_service | main | onAccessibilityEvent: [windowId] 41 [type] TYPE_WINDOW_CONTENT_CHANGED [class] android.widget.Button [viewId] com.mantano.reader.android:id/bookreader_pagenumber_overlay [package] com.mantano.reader.android [time] 794180  [text] [SourceText]:5 / 362|
-
-при подсветке [1036    ] 11:26:20.299 | ReadingTracker:accessibility_service | main | onAccessibilityEvent: [windowId] 41 [type] TYPE_WINDOW_CONTENT_CHANGED [class] android.widget.TextView [viewId] android:id/action_bar_title [package] com.mantano.reader.android [time] 827540  [text] [SourceText]:Раскрой свои крылья|
-
-
-при уходе на библиотеку
-[1170    ] 08:58:55.889 | ReadingTracker:accessibility_service | main | onAccessibilityEvent: [windowId] 12 [type] TYPE_WINDOW_STATE_CHANGED [class] com.mantano.android.library.activities.LibraryActivity [viewId] null [package] com.mantano.reader.android [time] 138715  [text] Mantano Reader Premium|[SourceText]:null|
-
-
-
-TODO:а сделать с MoonReader такое?
-TODO:а собственно зачем вот так сразу Goodreads? кидать broadcast и да
-кстати о - в Reading Tracker поддержку всех основных lastfm-клиентов?
-и - android-
-как решать проблему с загрузкой в книгу - а хранить последнию книгу в prefs
-а еще - можно такое отлаживать
-
-Simple Lastfm Scrobbler: https://code.google.com/p/a-simple-lastfm-scrobbler/wiki/Developers
-Simple Lastfm Scrobbler(новое) https://github.com/tgwizard/sls
-Scrobble Droid API: http://code.google.com/p/scrobbledroid/wiki/DeveloperAPI
-
-
- */
-/*
-
-29 nov 2014 tracing:
-по pagenumber overlay - пока вроде только он с TYPE_WINDOW_CONTENT_CHANGED И android.widget.Button
-и см выше.
-другие потенциально интересные
-при движении мышкой над книгой
-D/ReadingTracker:(15414): AccessibilityRecorderService.java:168 com.viorsan.readingtracker.AccessibilityRecorderService.onAccessibilityEvent().ReadingTracker:accessibility_service4 onAccessibilityEvent: [windowId] 38
-[type] TYPE_VIEW_HOVER_ENTER
-[class] android.widget.RelativeLayout [viewId] null [package] com.mantano.reader.android [time] 4069847
-[text] Personal Disaster Assistant: (PDA)|Chris Ferraro|Последний доступ: 29.11.14 13:15|sf_cyberpunk|1/58|Общий доступ|[SourceText]:null|
-D/ReadingTracker:(15414): AccessibilityRecorderService.java:168 com.viorsan.readingtracker.AccessibilityRecorderService.onAccessibilityEvent().ReadingTracker:accessibility_service4 onAccessibilityEvent: [windowId] 38 [type] TYPE_VIEW_HOVER_ENTER [class] android.widget.RelativeLayout [viewId] null [package] com.mantano.reader.android [time] 4069860  [text] Personal Disaster Assistant: (PDA)|Chris Ferraro|Последний доступ: 29.11.14 13:15|sf_cyberpunk|1/58|Общий доступ|[SourceText]:null|
-D/ReadingTracker:(15414): AccessibilityRecorderService.java:168 com.viorsan.readingtracker.AccessibilityRecorderService.onAccessibilityEvent().ReadingTracker:accessibility_service4 onAccessibilityEvent: [windowId] 38 [type] TYPE_VIEW_HOVER_EXIT [class] android.widget.RelativeLayout [viewId] null [package] com.mantano.reader.android [time] 4070096  [text] Personal Disaster Assistant: (PDA)|Chris Ferraro|Последний доступ: 29.11.14 13:15|sf_cyberpunk|1/58|Общий доступ|[SourceText]:null|
-D/ReadingTracker:(15414): AccessibilityRecorderService.java:168 com.viorsan.readingtracker.AccessibilityRecorderService.onAccessibilityEvent().ReadingTracker:accessibility_service4 onAccessibilityEvent: [windowId] 38 [type]
-TYPE_VIEW_HOVER_ENTER [class] android.widget.RelativeLayout [viewId] null [package] com.mantano.reader.android [time] 4070129
-[text] Подарок Судьбы (гет)|Hermi Potter|Последний доступ: 29.11.14 13:33|Draco M., fanfics, Ginny W., Harry P., Hermione G., Luna L., Neville L.|345/345|Общий доступ|[SourceText]:null|
-D/ReadingTracker:(15414): AccessibilityRecorderService.java:168 com.viorsan.readingtracker.AccessibilityRecorderService.onAccessibilityEvent().ReadingTracker:accessibility_service4 onAccessibilityEvent: [windowId] 38
-[type] TYPE_VIEW_HOVER_EXIT [class] android.widget.RelativeLayout [viewId] null [package] com.mantano.reader.android [time] 4070135  [
-text] Personal Disaster Assistant: (PDA)|Chris Ferraro|Последний доступ: 29.11.14 13:15|sf_cyberpunk|1/58|Общий доступ|[SourceText]:null|
-
-
-
-
- */
