@@ -501,7 +501,7 @@ public class CoreService extends Service  {
         ActivityManager activityManager = (ActivityManager)getSystemService(ACTIVITY_SERVICE);
 
         if (activityManager == null) {
-            previousForegroundTask = "com.viorsan.readingtracker";
+            previousForegroundTask = BuildConfig.APPLICATION_ID;
         } else {
             List<ActivityManager.RunningTaskInfo> appProcesses = activityManager.getRunningTasks(1);
             previousForegroundTask = appProcesses.get(0).topActivity.getPackageName();
