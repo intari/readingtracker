@@ -5,11 +5,6 @@
 
     <!-- GUI -->
 
-    <string name="GreetingsStranger">Greetings, unknown user</string>
-    <string name="defaultUserName">unknown user</string>
-    <string name="GreetingsMessage">Greetings, </string>
-
-
     <string name="accessibilityDescription">Monitor your book reading habits</string>
 
     <string name="accessGrantedOK">OK</string>

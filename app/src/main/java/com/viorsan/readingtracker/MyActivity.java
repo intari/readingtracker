@@ -35,7 +35,6 @@ public class MyActivity extends Activity {
 
     private boolean activityRecorderConnected=false;
 
-    private String userName;
     private BroadcastReceiver messageReceiver;
     private BroadcastReceiver activityMonitoringMessageReceiver;
     private BroadcastReceiver currentlyReadingMessageReceiver;
@@ -74,7 +73,6 @@ public class MyActivity extends Activity {
         //ask core service to stop
         Intent intent = new Intent(CoreService.USER_LOGGED_OUT_REPORT);
         LocalBroadcastManager.getInstance(getBaseContext()).sendBroadcast(intent);
-        userName=getResources().getString(R.string.defaultUserName);
 
     }
     private void init(){
@@ -110,7 +108,6 @@ public class MyActivity extends Activity {
             }
         });
 
-        userName=getResources().getString(R.string.defaultUserName);
         //TODO:this is my old code
         //TODO:get cached version if it's exist
         ParseUser currentUser=ParseUser.getCurrentUser();
@@ -136,11 +133,9 @@ public class MyActivity extends Activity {
                 Debug.L.LOG_UI(Debug.L.LOGLEVEL_INFO, "ParseUser here. NOT Authenticated. ");
 
             }
-            userName=currentUser.getString(FULL_USER_NAME);
         }
         //initServiceReceiver();
 
-        updateTitles();
         checkForUpdates();
 
         try {
@@ -236,7 +231,6 @@ public class MyActivity extends Activity {
             nameTextView.setText(fullName);
         }
         loginOrLogoutButton.setText(R.string.profile_logout_button_label);
-        updateTitles();
     }
 
     /**
@@ -247,7 +241,6 @@ public class MyActivity extends Activity {
         emailTextView.setText("");
         nameTextView.setText("");
         loginOrLogoutButton.setText(R.string.profile_login_button_label);
-        updateTitles();
     }
 
     private void updateMonitoringStatus() {
@@ -285,23 +278,6 @@ public class MyActivity extends Activity {
         return mTextView;
     }
 
-    private void updateTitles()
-    {
-
-        TextView mTextView = (TextView)findViewById(R.id.WelcomeMessage);
-
-         //we have initial username anyway but may be we use cached data
-        if (mTextView!=null)
-        {
-            //TODO: make it work with strange languages
-            String greeting=getResources().getString(R.string.GreetingsMessage)+" "+userName;
-            mTextView.setText(greeting);
-        }
-
-        Debug.L.LOG_UI(Debug.L.LOGLEVEL_INFO, "Updated greeting");
-
-
-    }
 
     private boolean isMantanoReaderInstalled()
     {
