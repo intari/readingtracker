@@ -46,7 +46,17 @@ parse {
             masterKey parseMasterKey
         }
         else {
-            throw new GradleException("Could not read Parse API Keys. Check README.md");
+            //Handle case were  we run under Travis-CI
+            if (System.getenv('RUNNING_UNDER_TRAVIS')=='YES') {
+                applicationId System.getenv('PARSE_APP_ID_TRAVIS')
+                masterKey System.getenv('PARSE_MASTER_KEY_TRAVIS')
+
+            }
+            else
+            {
+                //regular unconfigured build
+                throw new GradleException("Could not read Parse API Keys. Check README.md");
+            }
         }
     }
 
@@ -172,9 +182,10 @@ android {
             }
             else {
                 if (System.getenv('RUNNING_UNDER_TRAVIS')=='YES') {
-                    buildConfigField "String","PARSE_APP_ID", "\"NOT_CONFIGURED_UNDER_TRAVIS\""
-                    buildConfigField "String","PARSE_CLIENT_KEY","\"NOT_CONFIGURED_UNDER_TRAVIS\""
-                    buildConfigField "String","HOCKEYAPP_APP_ID", "\"NOT_CONFIGURED_UNDER_TRAVIS\""
+
+                    buildConfigField "String","PARSE_APP_ID", "\""+System.getenv('PARSE_APP_ID_TRAVIS')+"\""
+                    buildConfigField "String","PARSE_CLIENT_KEY","\""+System.getenv('PARSE_CLIENT_KEY_TRAVIS')+"\""
+                    buildConfigField "String","HOCKEYAPP_APP_ID", "\""+System.getenv('HOCKEYAPP_APP_ID_TRAVIS')+"\""
                     buildConfigField "String","BUILD_DATE_TIME","\""+buildTimeHumanReadable()+" UTC\""
 
                 }
