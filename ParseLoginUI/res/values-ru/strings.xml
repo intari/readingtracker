@@ -25,9 +25,13 @@
     <string name="com_parse_ui_invalid_email_toast">E-mail некорректен, исправьте и попробуйте снова</string>
     <string name="com_parse_ui_email_taken_toast">E-mail использован, используйте сброс пароля</string>
     <string name="com_parse_ui_no_name_toast">Пожалуйста укажите ваше имя</string>
-    <string name="com_parse_ui_signup_failed_unknown_toast">Could not sign up, please try again later</string>
+    <string name="com_parse_ui_signup_failed_unknown_toast">Регистрация не возможна, пожалуйста попробуйте позднее</string>
     <string name="com_parse_ui_login_help_instructions">Укажите e-mail для восстановления пароля</string>
-    <string name="com_parse_ui_login_help_email_input_hint">Email</string>
     <string name="com_parse_ui_login_help_submit_button_label">Отправить</string>
+    <string name="com_parse_ui_email_input_hint">E-Mail</string>
+    <string name="com_parse_ui_login_help_email_input_hint">E-mail</string>
+    <string name="com_parse_ui_login_help_email_sent">Проверьте ваш e-mail для получения инструкций по доступу к аккаунту</string>
+    <string name="com_parse_ui_login_help_login_again_button_label">Назад на Вход</string>
+    <string name="com_parse_ui_login_help_submit_failed_unknown">Ошибка запроса сброса пароля, попробуйте позднее</string>
 
 </resources>
