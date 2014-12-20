@@ -85,8 +85,9 @@ def buildTimeHumanReadable() {
 
 
 android {
-    compileSdkVersion 'Google Inc.:Google APIs:17'
-    buildToolsVersion "21.1.2"
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
 
     //autoincrementing version code
     //based off https://stackoverflow.com/questions/21405457/autoincrement-versioncode-with-gradle-extra-properties
@@ -104,8 +105,8 @@ android {
 
             defaultConfig {
                 applicationId "com.viorsan.readingtracker"
-                minSdkVersion 17
-                targetSdkVersion 17
+                minSdkVersion rootProject.ext.minSdkVersion
+                targetSdkVersion rootProject.ext.targetSdkVersion
                 versionCode code
                 versionName myVersionName+"."+code+"-built_at-"+buildTime()+'-git-sha1-'+gitSha();
             }
@@ -225,6 +226,13 @@ dependencies {
     compile files('libs/json-simple-1.1.1.jar')
     compile files('libs/jmdns-3.4.1.jar')
 }
+
+dependencies {
+    compile 'com.facebook.android:facebook-android-sdk:3.21.0'
+    compile project(':ParseLoginUI')
+    compile 'com.android.support:support-v4:21.0.0'
+}
+
 
 //Per  https://github.com/x2on/gradle-hockeyapp-plugin/issues/30 it's dependencies must be in root project
 apply plugin: 'de.felixschulze.gradle.hockeyapp'
