@@ -24,7 +24,7 @@ import java.util.*;
 public class CoreService extends Service  {
 
 
-    public static final String REPORT_TYPE_DEVICE_REPORT = "DeviceInformation";
+    public static final String REPORT_TYPE_DEVICE_REPORT = "DeviceReport";
     public static final String FAKEAPP_DEVICELOCKED = "com.viorsan.readingtracker.DeviceLocked";
     public static final String FAKEAPP_SCREENOFF = "com.viorsan.readingtracker.ScreenOff";
 
