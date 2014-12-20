@@ -2,7 +2,12 @@
 Application to collect data on your reading habits. Which books you read. When you read. How much you read. 
 So you could analyze this data for yourself.
 
-# How it works?
+
+# How it works? (Non-technical)
+* In the begging there was a phrase "The Amazon Kindle reports which pages of which books the user looks at, and when"...but I want this information too, for e-books I read
+* TODO:continue
+
+# How it works? (Technical)
 using Android Accessibility APIs
 
 TODO: technical description
@@ -10,27 +15,35 @@ TODO: technical description
 * readings are sent to server app at https://parse.com/
 * CloudCode functions  used to send e-mails when you switch away from book,etc
 
-# How your code here licensed?
-* For now only GPLv3 https://www.gnu.org/licenses/gpl-3.0.html
-* I also reserve right to re-license code under any other license for any purpose I want. 
-* Included ParseUI-Android library is (of course) licensed under it's own license. Same applies to Hockeyapp's binaries,etc
 
+# Is code ever works?
+
+* According to Travis CI current build satus is ![current build status according to Travis CI](https://travis-ci.org/intari/readingtracker.svg?branch=master)
+
+# How it is licensed licensed?
+* For now only GPLv3 https://www.gnu.org/licenses/gpl-3.0.html
+* I also reserve right to re-license my code under any other license for any purpose I want. 
+* Included ParseUI-Android library is (of course) licensed under it's own license. Same applies to Hockeyapp's binaries and other 3rd-party libraries
 
 # Which E-Book Reading programs are supported?
 * Only Mantano Reader currently supported (it's great app! Why you need anything else?)
 
 # App only collects data? How to use them? 
-I plan to add client side graphs,reporting,etc
+I plan to add client side graphs,reporting,etc at some point in future
 Server side part currently send e-mails with reading details when you done reading. 
+
+
 
 # Is there Privacy Policy?
 If you build your own version, privacy policy is up to you of course.
 If you use my build it's simple: I will only sell/transfer data if asked by relevant authority.
 When this app will be on Play Store / Amazon App Store I will write something more formal.
 
+
 # Building without API Keys
 Code will build correctly and will even work but everything network will not work. And it's a lot of things
 It's done in this way because I'm new to Gradle and I need this code to at least compile  without any extra non-public data
+
 
 # How to configure correct API Keys, code signing,etc 
 * if don't do this, your build WILL fail
@@ -66,3 +79,4 @@ License: Creative commons
 You are free to use this icon for commercial purposes, to share or to modify it. In exchange, it's necessary to credit the author for the original creation.
 * [Parse Team (currently at Facebook)](https://parse.com/about) for Parse Platform (and ParseUI-Android)
 * [Mantano SAS](www.mantano.com/mantano-reading-platform/) for Mantano Premium. This is best E-Book reader I have so far, even accounting for occasional glitches with Cloud Service and crashes with badly formatted books. Current version of Reading Tracker only support Mantano as data source.
+
