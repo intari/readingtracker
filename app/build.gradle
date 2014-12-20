@@ -45,7 +45,7 @@ parse {
             masterKey parseMasterKey
         }
         else {
-            //Handle case were  we run under Travis-CI
+            //Handle case were  we run under Travis CI
             if (System.getenv('RUNNING_UNDER_TRAVIS')=='YES') {
                 applicationId System.getenv('PARSE_APP_ID_TRAVIS')
                 masterKey System.getenv('PARSE_MASTER_KEY_TRAVIS')
@@ -138,7 +138,7 @@ android {
         }
     }
     else {
-        //Handle case were  we run under Travis-CI
+        //Handle case were  we run under Travis CI
         if (System.getenv('RUNNING_UNDER_TRAVIS')=='YES') {
             //setup for Travis builds
             defaultConfig {
@@ -151,7 +151,7 @@ android {
         }
         else
         {
-            //not Travis-CI, just regular unconfigured build
+            //not Travis CI, just regular unconfigured build
             throw new GradleException("Could not read version information:versionPropertiesPath not configured. Check README.md")
         }
     }
@@ -198,7 +198,7 @@ android {
                 }
                 else
                 {
-                    //not Travis-CI, just regular unconfigured build
+                    //not Travis CI, just regular unconfigured build
                     throw new GradleException("API Keys not found. Check README.md");
                 }
             }
