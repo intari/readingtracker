@@ -77,30 +77,6 @@ public class DeviceInfoManager {
         return getMemorySizeFromPath(Environment.getDataDirectory().getPath());
     }
 
-    public String getMusicStorageDir() {
-        File path = Environment.getExternalStoragePublicDirectory(
-                Environment.DIRECTORY_MUSIC);
-        return path.getAbsolutePath();
-    }
-
-    public String getCameraStorageDir() {
-        File path = Environment.getExternalStoragePublicDirectory(
-                Environment.DIRECTORY_DCIM);
-        return path.getAbsolutePath();
-    }
-
-    public String getDownloadsStorageDir() {
-        File path = Environment.getExternalStoragePublicDirectory(
-                Environment.DIRECTORY_DOWNLOADS);
-        return path.getAbsolutePath();
-    }
-    public String getMoviesStorageDir() {
-        File path = Environment.getExternalStoragePublicDirectory(
-                Environment.DIRECTORY_MOVIES);
-        return path.getAbsolutePath();
-    }
-
-
 
 
     /* Checks if external storage is available for read and write */
