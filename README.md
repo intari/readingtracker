@@ -47,9 +47,10 @@ Maybe later
 * WRITE_EXTERNAL_STORAGE - 
 * BIND_ACCESSIBILITY_SERVICE - to perform core functionality. user WILL be asked to enable this anyway. Application couldn't do it's job without it. TODO: add note somewhere how exactly we use it (more details)
 
-# Your icon is not yours!
-Yes. it's from http://www.flaticon.com/free-icon/marionette-puppet-silhouette_33882
-At time I got license was:
+# Thanks to
+* [Freepik from Flaticon]( http://www.flaticon.com/free-icon/marionette-puppet-silhouette_33882) for application icon
+At time I got it license was:
 License: Creative commons
 You are free to use this icon for commercial purposes, to share or to modify it. In exchange, it's necessary to credit the author for the original creation.
-When app will have About box I put this link there too
+* [Parse Team (currently at Facebook)](https://parse.com/about) for Parse Platform (and ParseUI-Android sample)
+
