@@ -127,7 +127,7 @@ android {
                     minSdkVersion rootProject.ext.minSdkVersion
                     targetSdkVersion rootProject.ext.targetSdkVersion
                     versionCode System.getenv('VERSION_CODE')
-                    versionName myVersionName+"."+code+"travis-built_at-"+buildTime()+'-git-sha1-'+gitSha()+"";
+                    versionName myVersionName+"."+System.getenv('VERSION_CODE')+"-travis-built_at-"+buildTime()+'-git-sha1-'+gitSha()+"";
                 }
             }
             else
@@ -138,22 +138,7 @@ android {
         }
     }
     else {
-        //Handle case were  we run under Travis CI
-        if (System.getenv('RUNNING_UNDER_TRAVIS')=='YES') {
-            //setup for Travis builds
-            defaultConfig {
-                applicationId "com.viorsan.readingtracker"
-                minSdkVersion rootProject.ext.minSdkVersion
-                targetSdkVersion rootProject.ext.targetSdkVersion
-                versionCode 9999
-                versionName myVersionName + "." + code + "-built_at-" + buildTime() + '-git-sha1-' + gitSha() + "-travis-ci";
-            }
-        }
-        else
-        {
-            //not Travis CI, just regular unconfigured build
-            throw new GradleException("Could not read version information:versionPropertiesPath not configured. Check README.md")
-        }
+        throw new GradleException("Could not read version information:versionPropertiesPath not configured. Check README.md")
     }
 
 
