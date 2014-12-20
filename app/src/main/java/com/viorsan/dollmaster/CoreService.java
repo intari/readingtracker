@@ -531,7 +531,7 @@ public class CoreService extends Service  {
         mDelayReporter=new Handler();
 
 
-        showToast("***REMOVED*** activated");
+        showToast(getResources().getString(R.string.app_started_notification));
     }
 
 
