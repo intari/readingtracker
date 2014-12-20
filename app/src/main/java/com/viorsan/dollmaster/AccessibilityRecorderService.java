@@ -608,7 +608,7 @@ TYPE_WINDOW_CONTENT_CHANGED [class] android.widget.Button [viewId] com.mantano.r
 
 TODO:а сделать с MoonReader такое?
 TODO:а собственно зачем вот так сразу Goodreads? кидать broadcast и да
-кстати о - в SysMonitor поддержку всех основных lastfm-клиентов?
+кстати о - в Reading Tracker поддержку всех основных lastfm-клиентов?
 и - android-
 как решать проблему с загрузкой в книгу - а хранить последнию книгу в prefs
 а еще - можно такое отлаживать

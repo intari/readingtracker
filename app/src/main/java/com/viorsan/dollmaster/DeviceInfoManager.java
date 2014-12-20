@@ -19,7 +19,6 @@ import java.util.UUID;
 /**
  * Created by dkzm on 23.05.14.
  * My standard device detection code.
- * Originally written for SysMonitor
  */
 
 
