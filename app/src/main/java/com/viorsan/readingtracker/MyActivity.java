@@ -58,11 +58,23 @@ public class MyActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ParseAnalytics.trackAppOpened(getIntent());
+        if (getMyApp().testHarnessActive==false) {
+            System.out.println(TAG +":Calling Parse Analytics because test harness is not active");
+            Log.d(TAG,"Calling Parse Analytics because test harness is not active");
+            ParseAnalytics.trackAppOpened(getIntent());
+        }
+        else
+        {
+            System.out.println(TAG +":Not calling Parse Analytics because test harness is active");
+            Log.d(TAG,"Not calling Parse Analytics because test harness is active");
+        }
         setContentView(R.layout.main);
         init();
 
 
+    }
+    private MyApplication getMyApp() {
+        return (MyApplication)getApplication();
     }
     private void handleUserLogin()  {
         Log.d(TAG,"Signaling everybody that user was logged in");
@@ -141,14 +153,35 @@ public class MyActivity extends Activity {
         checkForUpdates();
 
         try {
-            PackageInfo info =     getPackageManager().getPackageInfo("com.viorsan.readingtracker",     PackageManager.GET_SIGNATURES);
-            for (android.content.pm.Signature signature : info.signatures) {
-                MessageDigest md = MessageDigest.getInstance("SHA");
-                md.update(signature.toByteArray());
-                String sign=Base64.encodeToString(md.digest(), Base64.DEFAULT);
-                Log.i(TAG, "Key hash is " + sign);
-                //Toast.makeText(getApplicationContext(),sign,     Toast.LENGTH_LONG).show();
+            PackageManager pm=getPackageManager();
+            if (pm!=null) {
+                PackageInfo info = pm.getPackageInfo(BuildConfig.APPLICATION_ID,     PackageManager.GET_SIGNATURES);
+                if (info!=null) {
+                    if (info.signatures!=null) {
+                        for (android.content.pm.Signature signature : info.signatures) {
+                            MessageDigest md = MessageDigest.getInstance("SHA");
+                            md.update(signature.toByteArray());
+                            String sign=Base64.encodeToString(md.digest(), Base64.DEFAULT);
+                            Log.i(TAG, "Key hash is " + sign);
+                            //Toast.makeText(getApplicationContext(),sign,     Toast.LENGTH_LONG).show();
+                        }
+                    }
+                    else
+                    {
+                        //This happens with (for example) Robolectric
+                        Log.d(TAG,"Cannot get package signatures (info.signatures is null)");
+                        System.out.println(TAG+":Cannot get package signatures (info.signatures is null)");
+                    }
+                }
+                else {
+                    Log.d(TAG,"Cannot get package info");
+                }
             }
+            else
+            {
+                Log.d(TAG,"Cannot get package manager");
+            }
+
         } catch (PackageManager.NameNotFoundException e) {
         } catch (NoSuchAlgorithmException e) {
         }
