@@ -4,6 +4,7 @@ import android.app.Application;
 import android.os.Build;
 
 import com.parse.Parse;
+import com.parse.ParseUser;
 
 import java.lang.reflect.Method;
 
@@ -32,6 +33,22 @@ public class TestMyApplication extends MyApplication
     // init Parse Platform using our test keys
     private void initParseForTests() {
         Parse.initialize(this, BuildConfig.PARSE_APP_ID_FOR_TEST_HARNESS, BuildConfig.PARSE_CLIENT_KEY_FOR_TEST_HARNESS);
+        if ("YES".equals(System.getenv("RUNNING_UNDER_TRAVIS"))) {
+            System.out.println("Running under Travis CI");
+            String autologinToParse=System.getenv("LOGGED_IN_TO_PARSE_PLATFORM");
+            if ("YES".equals(autologinToParse)) {
+                System.out.println("We were logged in to Parse");
+            }
+            else
+            {
+                System.out.println("We were not logged in to Parse");
+            }
+        }
+        else
+        {
+            System.out.println("Not running under Travis CI");
+        }
+
     }
     @Override
     public void onCreate() {
