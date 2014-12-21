@@ -5,6 +5,7 @@ import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.widget.TextView;
 
 import com.viorsan.readingtracker.MyActivity;
@@ -26,7 +27,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 
 
-@Config(manifest = "./src/main/AndroidManifest.xml", emulateSdk = 17)
+@Config(manifest = "./src/main/AndroidManifest.xml", emulateSdk = Build.VERSION_CODES.JELLY_BEAN_MR1)
 //Our big thanks to https://github.com/robolectric/robolectric/issues/1025, this is why those hacks are needed
 //@Config(manifest = "./build/intermediates/manifests/full/internal/debug/AndroidManifest.xml", resourceDir = "../../../../res/internal/debug/", emulateSdk = 17)
 @RunWith(RobolectricTestRunner.class)
