@@ -6,9 +6,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.parse.ParseUser;
 import com.viorsan.readingtracker.MyActivity;
 import com.viorsan.readingtracker.R;
 
@@ -20,10 +22,12 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 import org.robolectric.shadows.ShadowApplication;
 
+import java.text.ParseException;
 import java.util.jar.Manifest;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
@@ -47,6 +51,7 @@ public class ActivityUsageTest {
     public void testWhichWork() throws Exception {
         assertTrue(true);
     }
+
 
     @Test
     public void shouldHaveApplicationName() throws Exception
@@ -76,24 +81,12 @@ public class ActivityUsageTest {
         TextView accessGrantedTextView=(TextView)activity.findViewById(R.id.accessGrantedTextView);
         assertNotNull(accessGrantedTextView);
     }
-    @Test
-    public void testMainActivityHasAccessGrantedTextViewOfCorrectType() throws Exception {
-        MyActivity activity = Robolectric.buildActivity(MyActivity.class).create().get();
-        TextView accessGrantedTextView=(TextView)activity.findViewById(R.id.accessGrantedTextView);
-        assertThat(accessGrantedTextView,instanceOf(TextView.class));
-    }
 
     @Test
     public void testMainActivityHasCurrentlyReadingMessageTextView() throws Exception {
         MyActivity activity = Robolectric.buildActivity(MyActivity.class).create().get();
         TextView currentlyReadingMessageTextView=(TextView)activity.findViewById(R.id.currentlyReadingMessage);
         assertNotNull(currentlyReadingMessageTextView);
-    }
-    @Test
-    public void testMainActivityHasCurrentlyReadingMessageTextViewOnCorrectType() throws Exception {
-        MyActivity activity = Robolectric.buildActivity(MyActivity.class).create().get();
-        TextView currentlyReadingMessageTextView=(TextView)activity.findViewById(R.id.currentlyReadingMessage);
-        assertThat(currentlyReadingMessageTextView, instanceOf(TextView.class));
     }
 
     @Test
@@ -103,23 +96,10 @@ public class ActivityUsageTest {
         assertNotNull(mantanoReaderInstalledOkTextView);
     }
     @Test
-    public void testMainActivityHasMantanoReaderInstalledOkTextViewOfCorrectType() throws Exception {
-        MyActivity activity = Robolectric.buildActivity(MyActivity.class).create().get();
-        TextView mantanoReaderInstalledOkTextView=(TextView)activity.findViewById(R.id.mantanoReaderInstalledOkTextView);
-        assertThat(mantanoReaderInstalledOkTextView,instanceOf(TextView.class));
-    }
-
-    @Test
     public void testMainActivityHasEmailTextView() throws Exception {
         MyActivity activity = Robolectric.buildActivity(MyActivity.class).create().get();
         TextView emailTextView=(TextView)activity.findViewById(R.id.profile_email);
         assertNotNull(emailTextView);
-    }
-    @Test
-    public void testMainActivityHasEmailTextViewOfCorrectType() throws Exception {
-        MyActivity activity = Robolectric.buildActivity(MyActivity.class).create().get();
-        TextView emailTextView=(TextView)activity.findViewById(R.id.profile_email);
-        assertThat(emailTextView, instanceOf(TextView.class));
     }
     @Test
     public void testMainActivityHasTitleTextView() throws Exception {
@@ -128,29 +108,25 @@ public class ActivityUsageTest {
         assertNotNull(titleTextView);
     }
     @Test
-    public void testMainActivityHasTitleTextViewOfCorrectType() throws Exception {
-        MyActivity activity = Robolectric.buildActivity(MyActivity.class).create().get();
-        TextView titleTextView=(TextView)activity.findViewById(R.id.profile_title);
-        assertThat(titleTextView, instanceOf(TextView.class));
-    }
-    @Test
     public void testMainActivityHasNameTextView() throws Exception {
         MyActivity activity = Robolectric.buildActivity(MyActivity.class).create().get();
         TextView nameTextView=(TextView)activity.findViewById(R.id.profile_name);
         assertNotNull(nameTextView);
-        assertThat(nameTextView, instanceOf(TextView.class));
-    }
-    @Test
-    public void testMainActivityHasNameTextViewOfCorrectType() throws Exception {
-        MyActivity activity = Robolectric.buildActivity(MyActivity.class).create().get();
-        TextView nameTextView=(TextView)activity.findViewById(R.id.profile_name);
-        assertThat(nameTextView,instanceOf(TextView.class));
     }
     @Test
     public void testMainActivityHasLoginLogoutButton() throws Exception {
         MyActivity activity = Robolectric.buildActivity(MyActivity.class).create().get();
         Button loginLogoutButton=(Button)activity.findViewById(R.id.login_or_logout_button);
-        assertThat(loginLogoutButton,instanceOf(TextView.class));
+        assertNotNull(loginLogoutButton);
     }
+    @Test
+    public void testMainActivityHasLoginLogoutButtonTryPress() throws Exception {
+        MyActivity activity = Robolectric.buildActivity(MyActivity.class).create().get();
+        Button loginLogoutButton=(Button)activity.findViewById(R.id.login_or_logout_button);
+        loginLogoutButton.performClick();
+        //TODO:check that correct handler was called (depending on login state)
+
+    }
+
 
 }
