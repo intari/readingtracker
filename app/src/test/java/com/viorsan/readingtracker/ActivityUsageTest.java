@@ -55,8 +55,8 @@ public class ActivityUsageTest {
 
     @Test
     public void testMainActivityCreation() throws Exception {
-        MyActivity activity = Robolectric.setupActivity(MyActivity.class);
-        //MyActivity activity = Robolectric.buildActivity(MyActivity.class).withApplication(Robolectric.application).create().get();
+        //MyActivity activity = Robolectric.setupActivity(MyActivity.class);
+        MyActivity activity = Robolectric.buildActivity(MyActivity.class).create().get();
         assertNotNull(activity);
     }
 
