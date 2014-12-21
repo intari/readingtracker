@@ -167,6 +167,11 @@ android {
                     def parseAppId= apiKeysProps['PARSE_APP_ID'];
                     def parseClientKey=apiKeysProps['PARSE_CLIENT_KEY'];
                     def hockeyAppAppId=apiKeysProps['HOCKEYAPP_APP_ID'];
+
+                    //Load API Keys for usage by test system
+                    def parseAppIdForTestHarness= apiKeysProps['PARSE_APP_ID_FOR_TEST_HARNESS'];
+                    def parseClientKeyForTestHarness=apiKeysProps['PARSE_CLIENT_KEY_FOR_TEST_HARNESS'];
+
                     //prevent empty values
                     if (parseAppId==null) {
                         throw new GradleException("Parse APP ID not configured but API Key file was here");
@@ -177,10 +182,20 @@ android {
                     if (hockeyAppAppId==null) {
                         throw new GradleException("HockeyApp APP ID not configured but API Key file was here");
                     }
+                    if (parseAppIdForTestHarness==null) {
+                        throw new GradleException("Parse APP ID for tests not configured but API Key file was here");
+                    }
+                    if (parseClientKeyForTestHarness==null) {
+                        throw new GradleException("Parse CLIENT KEY for tests not configured but API Key file was here");
+                    }
+
                     buildConfigField "String","PARSE_APP_ID", "\""+parseAppId+"\""
                     buildConfigField "String","PARSE_CLIENT_KEY","\""+parseClientKey+"\""
                     buildConfigField "String","HOCKEYAPP_APP_ID", "\""+hockeyAppAppId+"\""
                     buildConfigField "String","BUILD_DATE_TIME","\""+buildTimeHumanReadable()+" UTC\""
+                    buildConfigField "String","PARSE_APP_ID_FOR_TEST_HARNESS", "\""+parseAppIdForTestHarness+"\""
+                    buildConfigField "String","PARSE_CLIENT_KEY_FOR_TEST_HARNESS","\""+parseClientKeyForTestHarness+"\""
+
                 }
                 else {
                     if (System.getenv('RUNNING_UNDER_TRAVIS')=='YES') {
@@ -188,6 +203,8 @@ android {
                         buildConfigField "String","PARSE_CLIENT_KEY","\""+System.getenv('PARSE_CLIENT_KEY_TRAVIS')+"\""
                         buildConfigField "String","HOCKEYAPP_APP_ID", "\""+System.getenv('HOCKEYAPP_APP_ID_TRAVIS')+"\""
                         buildConfigField "String","BUILD_DATE_TIME","\""+buildTimeHumanReadable()+" UTC\""
+                        buildConfigField "String","PARSE_APP_ID_FOR_TEST_HARNESS", "\""+System.getenv('PARSE_APP_ID_FOR_TEST_HARNESS_TRAVIS')+"\""
+                        buildConfigField "String","PARSE_CLIENT_KEY_FOR_TEST_HARNESS","\""+System.getenv('PARSE_CLIENT_KEY_FOR_TEST_HARNESS_TRAVIS')+"\""
                     }
                     else
                     {
