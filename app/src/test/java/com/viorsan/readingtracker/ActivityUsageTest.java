@@ -20,10 +20,13 @@ import org.robolectric.shadows.ShadowApplication;
 
 import java.util.jar.Manifest;
 
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
 
-@Config(manifest = "./src/main/AndroidManifest.xml") //, emulateSdk = 17)
+
+@Config(manifest = "./src/main/AndroidManifest.xml", emulateSdk = 17)
 //Our big thanks to https://github.com/robolectric/robolectric/issues/1025, this is why those hacks are needed
 //@Config(manifest = "./build/intermediates/manifests/full/internal/debug/AndroidManifest.xml", resourceDir = "../../../../res/internal/debug/", emulateSdk = 17)
 @RunWith(RobolectricTestRunner.class)
@@ -41,15 +44,22 @@ public class ActivityUsageTest {
     public void testWhichWork() throws Exception {
         assertTrue(true);
     }
-/*
+
+    @Test
+    public void shouldHaveApplicationName() throws Exception
+    {
+        String appName=new MyActivity().getResources().getString(R.string.app_name);
+        assertThat(appName, equalTo("Reading Tracker"));
+    }
+
     @Test
     public void testMainActivityCreation() throws Exception {
         MyActivity activity = Robolectric.setupActivity(MyActivity.class);
         //MyActivity activity = Robolectric.buildActivity(MyActivity.class).withApplication(Robolectric.application).create().get();
         assertNotNull(activity);
     }
-*/
-/*
+
+
     @Test
     public void testMainActivityCreationWithTestingIntent() throws Exception {
         Intent i= new Intent(Robolectric.application, MyActivity.class);
@@ -57,8 +67,8 @@ public class ActivityUsageTest {
         MyActivity activity = Robolectric.buildActivity(MyActivity.class).withIntent(i).create().get();
         assertNotNull(activity);
     }
-*/
-/*
+
+
     @Test
     public void testMainActivityHasAccessGrantedTextView() throws Exception {
         MyActivity activity = Robolectric.buildActivity(MyActivity.class).create().get();
@@ -66,5 +76,5 @@ public class ActivityUsageTest {
         TextView accessGrantedTextView=(TextView)activity.findViewById(R.id.accessGrantedTextView);
         assertNotNull(accessGrantedTextView);
     }
-*/
+
 }
