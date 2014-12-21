@@ -17,7 +17,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Created by dkzm on 14.09.14.
+ * Created by Dmitriy Kazimirov, e-mail:dmitriy.kazimirov@viorsan.com on 14.09.14.
  * incapsulated logic to monitor book readings
  *
  */

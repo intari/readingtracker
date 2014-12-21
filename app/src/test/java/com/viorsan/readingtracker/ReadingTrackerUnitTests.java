@@ -1,7 +1,7 @@
 package com.viorsan.readingtracker;
 
 /**
- * Created by dkzm on 20.12.14.
+ * Created by Dmitriy Kazimirov, e-mail:dmitriy.kazimirov@viorsan.com on 20.12.14.
  */
 
 import junit.framework.Assert;

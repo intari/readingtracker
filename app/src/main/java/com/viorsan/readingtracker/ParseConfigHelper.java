@@ -10,7 +10,7 @@ import com.parse.ParseUser;
 import java.util.List;
 
 /**
- * Created by dkzm on 18.12.14.
+ * Created by Dmitriy Kazimirov, e-mail:dmitriy.kazimirov@viorsan.com on 18.12.14.
  */
 public class ParseConfigHelper {
     private static String TAG="ReadingTrackerParseConfig";

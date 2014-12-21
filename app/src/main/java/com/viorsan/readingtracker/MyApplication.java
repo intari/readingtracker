@@ -6,7 +6,7 @@ import com.parse.*;
 
 
 /**
- * Created by dkzm on 23.05.14.
+ * Created by Dmitriy Kazimirov, e-mail:dmitriy.kazimirov@viorsan.com on 23.05.14.
  */
 
 

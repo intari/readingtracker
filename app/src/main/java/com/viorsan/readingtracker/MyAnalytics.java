@@ -4,7 +4,7 @@ import android.util.Log;
 import com.parse.ParseAnalytics;
 
 /**
- * Created by dkzm on 21.12.14.
+ * Created by Dmitriy Kazimirov, e-mail:dmitriy.kazimirov@viorsan.com on 21.12.14.
  * Wrapper for Parse Analytics and (in future) other analytics systems
  * Also takes in account running under test harness
  *

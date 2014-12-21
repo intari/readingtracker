@@ -21,7 +21,7 @@ import java.util.jar.Manifest;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertNotNull;
 /**
- * Created by dkzm on 20.12.14.
+ * Created by Dmitriy Kazimirov, e-mail:dmitriy.kazimirov@viorsan.com on 20.12.14.
  */
 
 public class TestMyApplication extends MyApplication

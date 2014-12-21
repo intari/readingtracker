@@ -15,7 +15,7 @@ import java.util.MissingFormatArgumentException;
 import java.util.regex.Pattern;
 
 /**
- * Created by dkzm on 06.09.14.
+ * Created by Dmitriy Kazimirov, e-mail:dmitriy.kazimirov@viorsan.com on 06.09.14.
  * based off https://gist.github.com/qihnus/1909616
  */
 
