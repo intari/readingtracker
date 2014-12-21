@@ -121,6 +121,17 @@ public class BookReadingsRecorder {
     String lastBookTags;
     long  totalTimeForLastBook;
 
+
+    private MyApplication getMyApp() {
+        if (mMasterService!=null) {
+            return (MyApplication)mMasterService.getApplication();
+        }
+        else
+        {
+            Log.e(TAG,"getMyApp:No master service!!!");
+            return null;
+        }
+    }
     private void updateDeviceInfo() {
         DeviceInfoManager deviceInfoManager = new DeviceInfoManager();
         //yes, this will result in denormalized data. but I need it. and need bpm much less here
@@ -337,7 +348,7 @@ public class BookReadingsRecorder {
             }
             else
             {
-                Log.i(TAG,"BookReadingsRecorder:RecordPageSwitch:No master service!!!");
+                Log.e(TAG,"BookReadingsRecorder:RecordPageSwitch:No master service!!!");
             }
 
 
@@ -440,7 +451,7 @@ public class BookReadingsRecorder {
             Double totalReadingSessionTime=totalTimeForCurrentBook/MS_IN_SECOND;
             dimensions.put(READING_SESSION_TIME,totalReadingSessionTime.toString());
 
-            ParseAnalytics.trackEvent("readingSessionCompleted", dimensions);
+            MyAnalytics.trackEvent(getMyApp(),"readingSessionCompleted", dimensions);
 
             //clear data
 

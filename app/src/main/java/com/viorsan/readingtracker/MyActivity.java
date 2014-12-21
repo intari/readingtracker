@@ -58,19 +58,9 @@ public class MyActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getMyApp().testHarnessActive==false) {
-            System.out.println(TAG +":Calling Parse Analytics because test harness is not active");
-            Log.d(TAG,"Calling Parse Analytics because test harness is not active");
-            ParseAnalytics.trackAppOpened(getIntent());
-        }
-        else
-        {
-            System.out.println(TAG +":Not calling Parse Analytics because test harness is active");
-            Log.d(TAG,"Not calling Parse Analytics because test harness is active");
-        }
+        MyAnalytics.trackAppOpened(getMyApp(),getIntent());
         setContentView(R.layout.main);
         init();
-
 
     }
     private MyApplication getMyApp() {
