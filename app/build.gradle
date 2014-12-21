@@ -168,9 +168,11 @@ android {
                     def parseClientKey=apiKeysProps['PARSE_CLIENT_KEY'];
                     def hockeyAppAppId=apiKeysProps['HOCKEYAPP_APP_ID'];
 
-                    //Load API Keys for usage by test system
+                    //Load API Keys for usage by test system 
                     def parseAppIdForTestHarness= apiKeysProps['PARSE_APP_ID_FOR_TEST_HARNESS'];
                     def parseClientKeyForTestHarness=apiKeysProps['PARSE_CLIENT_KEY_FOR_TEST_HARNESS'];
+                    def parseUserNameForTestHarness=apiKeysProps['PARSE_USERNAME_FOR_TEST_HARNESS'];
+                    def parsePasswordForTestHarness=apiKeysProps['PARSE_PASSWORD_FOR_TEST_HARNESS'];
 
                     //prevent empty values
                     if (parseAppId==null) {
@@ -189,12 +191,21 @@ android {
                         throw new GradleException("Parse CLIENT KEY for tests not configured but API Key file was here");
                     }
 
+                    if (parseUserNameForTestHarness==null) {
+                        throw new GradleException("Parse username for tests not configured but API Key file was here");
+                    }
+                    if (parsePasswordForTestHarness==null) {
+                        throw new GradleException("Parse password for tests not configured but API Key file was here");
+                    }
+
                     buildConfigField "String","PARSE_APP_ID", "\""+parseAppId+"\""
                     buildConfigField "String","PARSE_CLIENT_KEY","\""+parseClientKey+"\""
                     buildConfigField "String","HOCKEYAPP_APP_ID", "\""+hockeyAppAppId+"\""
                     buildConfigField "String","BUILD_DATE_TIME","\""+buildTimeHumanReadable()+" UTC\""
                     buildConfigField "String","PARSE_APP_ID_FOR_TEST_HARNESS", "\""+parseAppIdForTestHarness+"\""
                     buildConfigField "String","PARSE_CLIENT_KEY_FOR_TEST_HARNESS","\""+parseClientKeyForTestHarness+"\""
+                    buildConfigField "String","PARSE_USERNAME_FOR_TEST_HARNESS","\""+parseUserNameForTestHarness+"\""
+                    buildConfigField "String","PARSE_PASSWORD_FOR_TEST_HARNESS","\""+parsePasswordForTestHarness+"\""
 
                 }
                 else {
@@ -205,6 +216,10 @@ android {
                         buildConfigField "String","BUILD_DATE_TIME","\""+buildTimeHumanReadable()+" UTC\""
                         buildConfigField "String","PARSE_APP_ID_FOR_TEST_HARNESS", "\""+System.getenv('PARSE_APP_ID_FOR_TEST_HARNESS_TRAVIS')+"\""
                         buildConfigField "String","PARSE_CLIENT_KEY_FOR_TEST_HARNESS","\""+System.getenv('PARSE_CLIENT_KEY_FOR_TEST_HARNESS_TRAVIS')+"\""
+
+                        buildConfigField "String","PARSE_USERNAME_FOR_TEST_HARNESS","\""+System.getenv('PARSE_USERNAME_FOR_TEST_HARNESS_TRAVIS')+"\""
+                        buildConfigField "String","PARSE_PASSWORD_FOR_TEST_HARNESS","\""+System.getenv('PARSE_PASSWORD_FOR_TEST_HARNESS_TRAVIS')+"\""
+
                     }
                     else
                     {
