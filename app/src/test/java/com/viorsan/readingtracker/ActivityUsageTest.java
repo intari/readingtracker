@@ -129,4 +129,29 @@ public class ActivityUsageTest {
     }
 
 
+    //Translation testing
+    //Test message directly
+    @Test
+    @Config(qualifiers="en")
+    public void shouldHaveEnglishAccessibilityMessage() throws Exception
+    {
+        assertTrue(Robolectric.application.getString(R.string.accessibilityDescription).equals("Monitor your book reading habits"));
+    }
+    /*
+    @Test
+    @Config(qualifiers="en")
+    public void shouldHaveEnglishAccessibilityMessageTestViaMainActivity() throws Exception
+    {
+        String message=new MyActivity().getResources().getString(R.string.accessibilityDescription);
+        assertThat(message, equalTo("Monitor your book reading habits"));
+    }
+    */
+    @Test
+    @Config(qualifiers="ru")
+    public void shouldHaveRussianAccessibilityMessage() throws Exception
+    {
+        assertTrue(Robolectric.application.getString(R.string.accessibilityDescription).equals("Отслеживать читаемые книги"));
+    }
+
+
 }
