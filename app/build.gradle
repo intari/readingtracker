@@ -110,6 +110,11 @@ android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+
 
     //autoincrementing version code
     //based off https://stackoverflow.com/questions/21405457/autoincrement-versioncode-with-gradle-extra-properties
