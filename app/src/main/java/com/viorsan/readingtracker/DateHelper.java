@@ -30,7 +30,7 @@ public class DateHelper {
 
     }
     public static String formatGMT ( String format, Date date ) {
-        SimpleDateFormat sdf = new SimpleDateFormat(format, Locale.US));
+        SimpleDateFormat sdf = new SimpleDateFormat(format, Locale.US);
         sdf.setTimeZone(new SimpleTimeZone(0, "GMT"));
 
         return sdf.format ( date );
