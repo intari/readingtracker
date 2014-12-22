@@ -15,7 +15,6 @@
     <!-- Notification messages -->
     <string name="app_started_notification">Reading Tracker стартовал</string>
     <string name="tap_me">Be careful what you wish for</string>
-    <string name="check_your_connection">Проверь коннект</string>
     <string name="update_is_available">Доступно обновление</string>
     <string name="update_is_not_available">Нет обновлений</string>
 
@@ -25,7 +24,6 @@
 
     <!-- ParseUI -->
     <string name="profile_login_button_label">Войти</string>
-    <string name="profile_logo_content_description">Лого</string>
     <string name="profile_logout_button_label">Выйти</string>
     <string name="profile_title_logged_in">Вы вошли как</string>
     <string name="profile_title_logged_out">Требуется вход </string>
