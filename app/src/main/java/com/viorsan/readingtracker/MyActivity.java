@@ -114,7 +114,7 @@ public class MyActivity extends Activity {
 
         //TODO:this is my old code
         //TODO:get cached version if it's exist
-        ParseUser currentUser=ParseUser.getCurrentUser();
+        ParseUser currentUser=ParsePlatformUtils.getCurrentParseUser();
 
         if (currentUser!=null) {
 
@@ -227,7 +227,7 @@ public class MyActivity extends Activity {
                     msg=getResources().getString(R.string.guiCurrentlyReadingShort,bookTitle,bookAuthor);
                 }
                 Log.i(TAG,"Got reading update:"+msg);
-                ParseUser currentUser=ParseUser.getCurrentUser();
+                ParseUser currentUser=ParsePlatformUtils.getCurrentParseUser();
 
                 if (currentUser!=null) {
                     currentlyReadingTextView.setText(msg);
@@ -365,7 +365,7 @@ public class MyActivity extends Activity {
     {
         super.onStart();
         Log.d(TAG, "start");
-        currentUser = ParseUser.getCurrentUser();
+        currentUser = ParsePlatformUtils.getCurrentParseUser();
         if (currentUser != null) {
             showProfileLoggedIn();
             handleUserLogin();
