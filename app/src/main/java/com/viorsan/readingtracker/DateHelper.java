@@ -3,6 +3,7 @@ package com.viorsan.readingtracker;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import java.util.SimpleTimeZone;
 
 /**
@@ -24,12 +25,12 @@ public class DateHelper {
     public final static String SIMPLE = "MM/dd/yyyy hh:mm:ss a";
 
     public static String format ( String format, Date date ) {
-        SimpleDateFormat sdf = new SimpleDateFormat(format);
+        SimpleDateFormat sdf = new SimpleDateFormat(format, Locale.US);
         return sdf.format ( date );
 
     }
     public static String formatGMT ( String format, Date date ) {
-        SimpleDateFormat sdf = new SimpleDateFormat(format);
+        SimpleDateFormat sdf = new SimpleDateFormat(format, Locale.US));
         sdf.setTimeZone(new SimpleTimeZone(0, "GMT"));
 
         return sdf.format ( date );
@@ -63,7 +64,7 @@ public class DateHelper {
     }
 
     public static Date parse ( String format, String date ) throws ParseException {
-        SimpleDateFormat sdf = new SimpleDateFormat(format);
+        SimpleDateFormat sdf = new SimpleDateFormat(format, Locale.US);
         return sdf.parse ( date );
     }
 
