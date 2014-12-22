@@ -458,7 +458,7 @@ public class CoreService extends Service  {
            Log.i(TAG, "no session restart? at startup?!");
         }
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putLong(CURRENT_SESSION_ID,new Long(sessionId));
+        editor.putLong(CURRENT_SESSION_ID,Long.valueOf(sessionId));
         editor.commit();
 
    
