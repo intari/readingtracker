@@ -141,6 +141,60 @@ public class ParseEmulationLoggedInTest {
         ParseUser currentUser=ParsePlatformUtils.getCurrentParseUser();
         assertNotNull(currentUser.getString("name"));
     }
+    @Test
+    public void testUsernameCannotBeRemovedAsUsername() {
+        ParseUser currentUser=ParsePlatformUtils.getCurrentParseUser();
+        currentUser.setUsername("Helva-DX834");
+        try {
+            currentUser.remove("username");
+        } catch (IllegalArgumentException ex)
+        {
+            return;//exception SHOULD be thrown
+        }
+        fail("attempt to remove \'username\' should result in IllegalArgumentException if we put username via setUsername");
+    }
+    @Test
+    public void testUsernameCannotBeRemovedAsOrdinaryField() {
+        ParseUser currentUser=ParsePlatformUtils.getCurrentParseUser();
+        currentUser.put("username","Hypadia Cade");
+        try {
+            currentUser.remove("username");
+        } catch (IllegalArgumentException ex)
+        {
+            return;//exception SHOULD be thrown
+        }
+        fail("attempt to remove \'username\' should result in IllegalArgumentException even if we put username as ordinary field");
+    }
+    @Test
+    public void testPutNullValue() {
+        ParseUser currentUser=ParsePlatformUtils.getCurrentParseUser();
+        try {
+            currentUser.put("key",null);
+        } catch (IllegalArgumentException ex)
+        {
+            return;//exception SHOULD be thrown
+        }
+        fail("attempt to use null value should result in IllegalArgumentException");
+    }
+    @Test
+    public void testPutNullKey() {
+        ParseUser currentUser=ParsePlatformUtils.getCurrentParseUser();
+        try {
+            currentUser.put(null,"value");
+        } catch (IllegalArgumentException ex)
+        {
+            return;//exception SHOULD be thrown
+        }
+        fail("attempt to use null key should result in IllegalArgumentException");
+    }
+    @Test
+    public void testRemoveShouldWork() {
+        ParseUser currentUser=ParsePlatformUtils.getCurrentParseUser();
+        currentUser.put("testKey","testValue");
+        assertThat("value was correctly put",true,equalTo(currentUser.has("testKey")));
+        currentUser.remove("testKey");
+        assertThat("value was correctly removed",false,equalTo(currentUser.has("testKey")));
+    }
 
 
     @Test
