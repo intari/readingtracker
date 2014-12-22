@@ -164,27 +164,12 @@ public class CoreService extends Service  {
     }
 
     public synchronized void updateActiveProcessList() {
-
-        PowerManager pm=(PowerManager) getSystemService(Context.POWER_SERVICE);
-        PowerManager.WakeLock wl = pm.newWakeLock(
-                PowerManager.PARTIAL_WAKE_LOCK,
-                CoreService.appID);
-
-        wl.acquire();
-
         long uptimeNow=SystemClock.uptimeMillis();
-        Long timeSinceLastCheck=uptimeNow-lastAppCheckTime;
 
         updateActiveProcessListInner();
 
         long checkFinishedTime=SystemClock.uptimeMillis();
-        Long timeToCheck=checkFinishedTime-uptimeNow;
-        if (timeToCheck>600)
-        {
-            Log.i(TAG,"Process list check took  "+timeToCheck.toString()+",ms, >0 ms");
-        }
         lastAppCheckTime=checkFinishedTime;
-        wl.release();
     }
 
     private void updateActiveProcessListInner() {
