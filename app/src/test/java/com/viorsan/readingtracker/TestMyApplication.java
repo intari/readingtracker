@@ -4,6 +4,7 @@ import android.app.Application;
 import android.os.Build;
 
 import com.parse.Parse;
+import com.parse.ParseObject;
 import com.parse.ParseUser;
 
 import java.lang.reflect.Method;
@@ -31,7 +32,7 @@ public class TestMyApplication extends MyApplication
     public static final String TAG = "TestMyApplication";
 
     // init Parse Platform using our test keys
-    private void initParseForTests() {
+    private void initParseForTestsOld() {
         Parse.initialize(this, BuildConfig.PARSE_APP_ID_FOR_TEST_HARNESS, BuildConfig.PARSE_CLIENT_KEY_FOR_TEST_HARNESS);
         if ("YES".equals(System.getenv("RUNNING_UNDER_TRAVIS"))) {
             System.out.println("Running under Travis CI");
@@ -49,6 +50,23 @@ public class TestMyApplication extends MyApplication
             System.out.println("Not running under Travis CI");
         }
 
+    }
+    //activate our testing support for Parse Platform
+    private void initParseForTests() {
+        //register our subclasses for emulation
+        //http://blog.parse.com/2013/05/30/parse-on-android-just-got-classier/
+        ParseObject.registerSubclass(ParseUser_TestLoggedIn.class);
+        //we are running under test harness so real Parse Platform won't work anyway so...we need to just decicde on mode
+        String autologinToParse=System.getenv("LOGGED_IN_TO_PARSE_PLATFORM");
+        if ("YES".equals(autologinToParse)) {
+            System.out.println("Will simulate that we were logged in to Parse Platform");
+            ParsePlatformUtils.setParsePlatformMode(ParsePlatformUtils.ParsePlatformMode.TEST_LOGGED_IN);
+        }
+        else
+        {
+            System.out.println("Will simulate that we were not logged in to Parse Platform");
+            ParsePlatformUtils.setParsePlatformMode(ParsePlatformUtils.ParsePlatformMode.TEST_NOT_LOGGED_IN);
+        }
     }
     @Override
     public void onCreate() {
