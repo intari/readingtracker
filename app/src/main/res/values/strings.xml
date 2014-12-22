@@ -11,6 +11,8 @@
 
     <string name="mantanoReaderInstalled">Installed</string>
     <string name="mantanoReaderNotInstalled">Not installed</string>
+    <string name="accessInAccessibilitySettings">Access in Accessibilty Settings</string>
+    <string name="mantanoReader" translatable="false">Mantano Reader:</string>
 
     <!-- Notification messages -->
     <string name="app_started_notification">Reading Tracker started</string>
@@ -25,7 +27,7 @@
 
 
     <!-- Parse Login strings -->
-    <string name="profile_logo_content_description">Logo</string>
+    <string name="profile_logo_content_description" translatable="false">Logo</string>
     <string name="profile_title_logged_in">Your are logged in as</string>
     <string name="profile_logout_button_label">Log out</string>
     <string name="profile_title_logged_out">You must be logged</string>

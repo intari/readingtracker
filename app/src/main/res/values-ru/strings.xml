@@ -5,11 +5,12 @@
   
     <string name="accessibilityDescription">Отслеживать читаемые книги</string>
 
-    <string name="accessGrantedOK">OK</string>
-    <string name="accessGrantedNotOk">None</string>
+    <string name="accessGrantedOK">Получен</string>
+    <string name="accessGrantedNotOk">Нет</string>
 
     <string name="mantanoReaderInstalled">Установлен</string>
     <string name="mantanoReaderNotInstalled">Не установлен</string>
+    <string name="accessInAccessibilitySettings">Доступ в Специальных Возможностях</string>
 
 
     <!-- Notification messages -->
