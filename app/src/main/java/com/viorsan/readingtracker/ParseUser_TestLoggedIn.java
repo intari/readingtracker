@@ -22,9 +22,15 @@ public class ParseUser_TestLoggedIn extends ParseUser {
     private static String emulatedObjectId;
     private HashMap<String,Object> emulatedData;
 
-    public void  ParseUser_TestLoggedIn() {
+    //setup values for emulation. of course we don't want to use 'real' ParseUser data (if it was interface I would thought about implementing it)
+    public ParseUser_TestLoggedIn() {
         System.out.println(TAG +":constructor called");
         emulatedData=new HashMap<String, Object>();
+        emulatedObjectId="ZATRIX";
+        emulatedEmail="brideOfTheSunGod@example.net";
+        emulatedUsername="BrideOfTheSun";
+        put("name","Bride of the Sun");
+        System.out.println(TAG +":constructor finished");
     }
     public static ParseUser getCurrentUser() {
         System.out.println(TAG +":getCurrentUser() called, asked platformUtils for it");
@@ -80,7 +86,7 @@ public class ParseUser_TestLoggedIn extends ParseUser {
         return emulatedData.get(key);
     }
     public String getString(String key) {
-        return (String) get(key);
+        return (String) emulatedData.get(key);
     }
     public void setACL(com.parse.ParseACL acl) {
         System.out.println(TAG +":setACL() called");
