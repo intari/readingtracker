@@ -10,7 +10,7 @@
 
     <string name="mantanoReaderInstalled">Установлен</string>
     <string name="mantanoReaderNotInstalled">Не установлен</string>
-    <string name="accessInAccessibilitySettings">Доступ в Специальных Возможностях</string>
+    <string name="accessInAccessibilitySettings">Доступ в 'Специальных Возможностях':</string>
 
 
     <!-- Notification messages -->

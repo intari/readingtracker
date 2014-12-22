@@ -11,7 +11,7 @@
 
     <string name="mantanoReaderInstalled">Installed</string>
     <string name="mantanoReaderNotInstalled">Not installed</string>
-    <string name="accessInAccessibilitySettings">Access in Accessibilty Settings</string>
+    <string name="accessInAccessibilitySettings">Access in 'Accessibilty Settings':</string>
     <string name="mantanoReader" translatable="false">Mantano Reader:</string>
 
     <!-- Notification messages -->
