@@ -25,11 +25,11 @@
      You are free to use this icon for commercial purposes, to share or to modify it. In exchange, it's necessary to credit the author for the original creation.
      TODO: add original license link and for now let's assume in-comment link is ok
     -->
-    <uses-sdk android:minSdkVersion="17"/>
     <application
         android:label="@string/app_name"
         android:icon="@drawable/readingtracker"
-        android:name="com.viorsan.readingtracker.MyApplication">
+        android:name="com.viorsan.readingtracker.MyApplication"
+        android:allowBackup="true" >
         <activity android:name="net.hockeyapp.android.UpdateActivity" />
 
 
