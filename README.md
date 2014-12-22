@@ -18,7 +18,15 @@ TODO: technical description
 
 
 ## Is code ever works?
-* According to Travis CI current build status is ![current build status according to Travis CI](https://travis-ci.org/intari/readingtracker.svg?branch=master)
+* Checked on:
+ * HP Slate 21 (not "Pro") with Android 4.2
+ * Sony Xperia Tablet Z2 (stock firmware) with с Android 4.4
+ * Sony Xperia Z Ultra with CyanogenMod
+ * Nexus 5/7/10...with CyanogenMod or with stock
+
+* I used slightly different method for Android 4.2 because Accessibility API works in slightly different way here (Target Android version would be 4.3 if not for my HP Slate 21)
+
+* According to Travis CI current build status is ![current build status according to Travis CI](https://travis-ci.org/intari/readingtracker.svg?branch=master) or look yourself how it gets build at https://travis-ci.org/intari/readingtracker
 
 ## How it is licensed?
 * For now only GPLv3 https://www.gnu.org/licenses/gpl-3.0.html
@@ -131,7 +139,7 @@ You are free to use this icon for commercial purposes, to share or to modify it.
 
 * для Android 4.2 используется чуть другой метод работы из-за отличающегося поведения API Специальных Возможностей. Вообще если бы не тот HP Slate 21 то минимальной версией был бы 4.3 и все работало бы чуть чуть надежднее
 
-* Собираемость текущей версии и прохождение автотестов (знаю что тестируется далеко не все...пока что): ![current build status according to Travis CI](https://travis-ci.org/intari/readingtracker.svg?branch=master)
+* Собираемость текущей версии и прохождение автотестов (знаю что тестируется далеко не все...пока что): ![current build status according to Travis CI](https://travis-ci.org/intari/readingtracker.svg?branch=master), вы можете посмотреть как оно собирается на https://travis-ci.org/intari/readingtracker
 
 ## Под какой лицензий код?
 GPLv3 https://www.gnu.org/licenses/gpl-3.0.html
