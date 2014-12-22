@@ -46,7 +46,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="Not installed"
+                    android:text="@string/mantanoReaderNotInstalled"
                     android:id="@+id/mantanoReaderInstalledOkTextView"
                     />
             </TableRow>
