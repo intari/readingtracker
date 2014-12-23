@@ -200,6 +200,8 @@ android {
                     buildConfigField "String","PARSE_PASSWORD_FOR_TEST_HARNESS","\""+parsePasswordForTestHarness+"\""
 
                     buildConfigField "String","BUILDER_TYPE","\"regular-internal\""
+                    //we now have all info, ask for version code
+                    myVersionCode=getVersionCodeFromNetwork(versionCodeNetworkAuth,versionCodeNetworkURL).toInteger()
 
                 }
                 else {
@@ -216,8 +218,10 @@ android {
                         buildConfigField "String","BUILDER_TYPE","\"Travis CI\""
 
                         //try to get version code from network (using configured env vars)
-                        versionCodeNetworkURL=System.getenv('VERSION_CODE_URL')
-                        versionCodeNetworkAuth=System.getenv('VERSION_CODE_AUTH')
+                        //versionCodeNetworkURL=System.getenv('VERSION_CODE_URL')
+                        //versionCodeNetworkAuth=System.getenv('VERSION_CODE_AUTH')
+                        //I'm NOT interested in this until I start use Travis CI not only for tests but for submission to hockeyapp too
+                        myVersionCode=0
 
                     }
                     else
@@ -229,8 +233,6 @@ android {
             else {
                 throw new GradleException("API Keys not found. Check README.md");
             }
-            //we now have all info, ask for version code
-            myVersionCode=getVersionCodeFromNetwork(versionCodeNetworkAuth,versionCodeNetworkURL).toInteger()
 
             buildConfigField "String","BUILD_HOST", "\""+getHostname()+"\""
             buildConfigField "String","BUILD_USER", "\""+getUsername()+"\""
