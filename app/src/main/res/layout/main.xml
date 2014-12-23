@@ -35,7 +35,7 @@
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="@string/accessGrantedNotOk"
-                        android:id="@+id/accessGrantedTextView"
+                        android:id="@+id/accessGranted"
                         />
             </TableRow>
 
@@ -54,7 +54,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="@string/supportedEbookReaderNotInstalled"
-                    android:id="@+id/supportedEbookReaderInstalledOkTextView"
+                    android:id="@+id/supportedEbookReaderInstalledStatus"
                     />
             </TableRow>
 
