@@ -27,8 +27,6 @@ public class BookReadingsRecorder {
     public static final String REPORT_TYPE_BOOK_READING_SESSION_COMPLETED = "BookReadingSesssionCompleted";
     public static final String READING_SESSION_TIME_MS = "readingSessionTimeMS";
     public static final String READING_SESSION_TIME = "readingSessionTime";
-    //Mantano Reader Premium package name. So far it's only supported book reader
-    public static final String MANTANO_READER_PACKAGE_NAME = "com.mantano.reader.android";
     //How we are report ourselves in our brodcasts
     public static final String OUR_DATA_SOURCE = "com.viorsan.readingtracker.BookReadingMonitor";
     //broadcast name
@@ -387,7 +385,9 @@ public class BookReadingsRecorder {
         List<ActivityManager.RunningTaskInfo> appProcesses = activityManager.getRunningTasks(1);
         String topActivity = appProcesses.get(0).topActivity.getPackageName();
         //For now only Mantano Reader is supported
-        if (!topActivity.equals(MANTANO_READER_PACKAGE_NAME)) {
+        if (topActivity.equals(AccessibilityRecorderService.MANTANO_READER_PACKAGE_NAME)||
+                topActivity.equals(AccessibilityRecorderService.MANTANO_READER_ESSENTIALS_PACKAGE_NAME)||
+                topActivity.equals(AccessibilityRecorderService.MANTANO_READER_LITE_PACKAGE_NAME)) {
             Log.i(TAG, "current activity is not reading app. it's "+topActivity+"|");
             recordSwitchAwayFromBook(context, SystemClock.elapsedRealtime());
         }
