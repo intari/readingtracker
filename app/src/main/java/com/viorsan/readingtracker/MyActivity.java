@@ -272,7 +272,7 @@ public class MyActivity extends Activity {
     }
 
     private void updateReaderStatus() {
-        if (isMantanoReaderInstalled()) {
+        if (isSupportedEbookReaderInstalled()) {
            supportedEbookReaderInstalledTextView.setText(getResources().getText(R.string.supportedEbookReaderInstalled));
         }
         else {
@@ -280,11 +280,14 @@ public class MyActivity extends Activity {
         }
     }
 
-
-    private boolean isMantanoReaderInstalled()
+    //is one of supported E-Book readers installed
+    private boolean isSupportedEbookReaderInstalled()
     {
-      return appInstalledOrNot(AccessibilityRecorderService.MANTANO_READER_PACKAGE_NAME);
-
+      return (
+              appInstalledOrNot(AccessibilityRecorderService.MANTANO_READER_PACKAGE_NAME) ||
+              appInstalledOrNot(AccessibilityRecorderService.MANTANO_READER_ESSENTIALS_PACKAGE_NAME) ||
+              appInstalledOrNot(AccessibilityRecorderService.MANTANO_READER_LITE_PACKAGE_NAME)
+      );
 
     };
     private boolean appInstalledOrNot(String uri) {

@@ -31,6 +31,10 @@ public class AccessibilityRecorderService extends AccessibilityService {
 
     //Mantano Reader Premium package name. So far it's only supported book reader
     public static final String MANTANO_READER_PACKAGE_NAME = "com.mantano.reader.android";
+    //Mantato Reader Lite package name
+    public static final String MANTANO_READER_LITE_PACKAGE_NAME="com.mantano.reader.android.lite";
+    //Mantano Reader Essentials package name
+    public static final String MANTANO_READER_ESSENTIALS_PACKAGE_NAME="com.mantano.reader.android.normal";
     //How we are report ourselves in our brodcasts
     public static final String OUR_DATA_SOURCE = "com.viorsan.readingtracker.BookReadingMonitor";
     //broadcast name
