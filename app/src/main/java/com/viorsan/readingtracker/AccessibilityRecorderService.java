@@ -184,7 +184,7 @@ public class AccessibilityRecorderService extends AccessibilityService {
         );  */
 
         //Mantano-specific processing
-        if (packageName.equals(MANTANO_READER_PACKAGE_NAME)) {
+        if (packageName.equals(MANTANO_READER_PACKAGE_NAME)||packageName.equals(MANTANO_READER_ESSENTIALS_PACKAGE_NAME)||packageName.equals(MANTANO_READER_LITE_PACKAGE_NAME)) {
             /*
              alternative detection
 
