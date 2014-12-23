@@ -1,7 +1,5 @@
 import java.text.SimpleDateFormat
 
-import static java.lang.Runtime.*
-
 
 /*
  1.0 - readingtracker/non-gradle Reading Tracker
@@ -12,6 +10,8 @@ import static java.lang.Runtime.*
  */
 def myVersionName="1.4"
 
+//default version code
+def myVersionCode=0
 
 apply plugin: 'com.parse'
 
@@ -94,6 +94,25 @@ def buildTimeHumanReadable() {
     return df.format(new Date())
 }
 
+def getHostname() {
+    return 'hostname'.execute().text.trim()
+}
+def getUsername() {
+    return System.getProperty("user.name")
+}
+
+/*
+ * Ask for version code from service which will generated increasing numbers
+ * if you don't have one you could modify build to use something along
+ * lines from https://stackoverflow.com/questions/21405457/autoincrement-versioncode-with-gradle-extra-properties
+ *
+ */
+//TODO:do something for windows
+def getVersionCodeFromNetwork(auth,url) {
+    def cmd='curl -X GET https://'+auth+'@'+url
+    println "will ask for network version code via "+cmd
+    return cmd.execute().text.trim()
+}
 
 apply plugin: 'robolectric'
 
@@ -107,46 +126,14 @@ robolectric {
     }
 }
 
-//default version code
-def myVersionCode=0
-def versionCodeNetworkURL=""
-//try to use version code file
-
-//autoincrementing version code
-//based off https://stackoverflow.com/questions/21405457/autoincrement-versioncode-with-gradle-extra-properties
-if(project.hasProperty("versionPropertiesPath") ) {
-    File versionPropsFile = new File(System.getenv('HOME') + "/" + project.property("versionPropertiesPath"))
-    if (versionPropsFile.canRead()) {
-        def Properties versionProps = new Properties()
-
-        versionProps.load(new FileInputStream(versionPropsFile))
-
-        def code = versionProps['VERSION_CODE'].toInteger() + 1
-
-        versionProps['VERSION_CODE']=code.toString()
-        versionProps.store(versionPropsFile.newWriter(), null)
-
-        myVersionCode=code
-    }
-
-    else
-    {
-        //regular uncofigured build
-        throw new GradleException("Could not read version information:"+System.getenv('HOME') + "/" + project.property("versionPropertiesPath")+" is not readable")
-    }
-
-}
-/*
-else {
-    throw new GradleException("Could not read version information:versionPropertiesPath not configured. Check README.md")
-}
-*/
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
 
 
+    def versionCodeNetworkURL=''
+    def versionCodeNetworkAuth=''
 
     productFlavors {
 
@@ -168,7 +155,9 @@ android {
                     def parsePasswordForTestHarness=apiKeysProps['PARSE_PASSWORD_FOR_TEST_HARNESS'];
 
                     //support for updating versionCode from network server
-                    versionCodeNetworkURL=apiKeysProps['BUILD_NUMBER_URL']
+                    versionCodeNetworkURL=apiKeysProps['VERSION_CODE_URL']
+                    versionCodeNetworkAuth=apiKeysProps['VERSION_CODE_AUTH']
+
                     //prevent empty values
                     if (parseAppId==null) {
                         throw new GradleException("Parse APP ID not configured but API Key file was here");
@@ -197,6 +186,10 @@ android {
                     if (versionCodeNetworkURL==null) {
                         throw new GradleException("network url for version code updates was not configured but API Key file was here");
                     }
+                    if (versionCodeNetworkAuth==null) {
+                        throw new GradleException("network auth for version code updates was not configured but API Key file was here");
+                    }
+
                     */
                     buildConfigField "String","PARSE_APP_ID", "\""+parseAppId+"\""
                     buildConfigField "String","PARSE_CLIENT_KEY","\""+parseClientKey+"\""
@@ -209,9 +202,6 @@ android {
 
                     buildConfigField "String","BUILDER_TYPE","\"regular-internal\""
 
-                    //try to get version code from network (using local URL)
-                    def  networkVersionCode=new URL(versionCodeNetworkURL).text;
-                    myVersionCode=networkVersionCode
                 }
                 else {
                     if (System.getenv('RUNNING_UNDER_TRAVIS')=='YES') {
@@ -221,16 +211,15 @@ android {
                         buildConfigField "String","BUILD_DATE_TIME","\""+buildTimeHumanReadable()+" UTC\""
                         buildConfigField "String","PARSE_APP_ID_FOR_TEST_HARNESS", "\""+System.getenv('PARSE_APP_ID_FOR_TEST_HARNESS_TRAVIS')+"\""
                         buildConfigField "String","PARSE_CLIENT_KEY_FOR_TEST_HARNESS","\""+System.getenv('PARSE_CLIENT_KEY_FOR_TEST_HARNESS_TRAVIS')+"\""
-
                         buildConfigField "String","PARSE_USERNAME_FOR_TEST_HARNESS","\""+System.getenv('PARSE_USERNAME_FOR_TEST_HARNESS_TRAVIS')+"\""
                         buildConfigField "String","PARSE_PASSWORD_FOR_TEST_HARNESS","\""+System.getenv('PARSE_PASSWORD_FOR_TEST_HARNESS_TRAVIS')+"\""
 
                         buildConfigField "String","BUILDER_TYPE","\"Travis CI\""
 
-                        //try to get version code from network (using configured env var)
-                        versionCodeNetworkURL=System.getenv('BUILD_NUMBER_URL')
-                        def  networkVersionCode=new URL(versionCodeNetworkURL).text;
-                        myVersionCode=networkVersionCode
+                        //try to get version code from network (using configured env vars)
+                        versionCodeNetworkURL=System.getenv('VERSION_CODE_URL')
+                        versionCodeNetworkAuth=System.getenv('VERSION_CODE_AUTH')
+
                     }
                     else
                     {
@@ -241,8 +230,13 @@ android {
             else {
                 throw new GradleException("API Keys not found. Check README.md");
             }
+            //we now have all info, ask for version code
+            myVersionCode=getVersionCodeFromNetwork(versionCodeNetworkAuth,versionCodeNetworkURL).toInteger()
 
-         }
+            buildConfigField "String","BUILD_HOST", "\""+getHostname()+"\""
+            buildConfigField "String","BUILD_USER", "\""+getUsername()+"\""
+
+        }
     }
 
 
@@ -250,7 +244,7 @@ android {
         applicationId "com.viorsan.readingtracker"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode myVersionCode.toInteger()
+        versionCode myVersionCode
         versionName myVersionName+"."+myVersionCode+"-built_at-"+buildTime()+'-git-sha1-'+gitSha();
     }
 

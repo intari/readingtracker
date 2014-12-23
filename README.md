@@ -34,7 +34,7 @@ TODO: technical description
 * Included ParseUI-Android library is (of course) licensed under it's own license. Same applies to Hockeyapp's binaries and other 3rd-party libraries
 
 ## Which E-Book Reading programs are supported?
-* Only Mantano Reader currently supported (it's great app! Why you need anything else?)
+* Only Mantano Reader Premium currently supported (it's great app! Why you need anything else?)
 
 ## App only collects data? How to use them?
 I plan to add client side graphs,reporting,etc at some point in future
@@ -62,8 +62,6 @@ Code will not build correctly without them.
 * if don't do this, your build WILL fail
 * cd $HOME
 * mkdir .androidSigning/
-* touch versionCodesBookTrackerProperties
-* edit versionCodesBookTrackerProperties to put VERSION_CODE=0 (or any other number)
 * touch booktrackerAPIKeys
 * edit booktrackerAPIKeys to add:
   * PARSE_APP_ID=your_parse_app_id (https://parse.com/ , Application used Parse as network backend
@@ -75,11 +73,14 @@ Code will not build correctly without them.
   * PARSE_CLIENT_KEY_FOR_TEST_HARNESS=not currently used but something must be put here
   * PARSE_USERNAME_FOR_TEST_HARNESS=not currently used but something must be put here
   * PARSE_PASSWORD_FOR_TEST_HARNESS=not currently used but something must be put here
+  * TODO:describe others
   you can change paths in gradle.properties
 
 * or look at build.gradle to determine how to use env vars
 
-
+## It does not build on Windows
+currently getVersionCodeFromNetwork() from build.gradle doesn't work on Windows
+Simple solution is just put 'return 0' instead of it's content.
 
 ## Will sources for  Parse CloudCode part be available?
 Maybe later
@@ -112,7 +113,7 @@ You are free to use this icon for commercial purposes, to share or to modify it.
 
 ## Как оно работает?
 * В начале была фраза "Amazon Kindle докладывает, в какие страницы каких книг заглядывает пользователь и когда он это делает"...но мне захотелось тоже иметь эту информацию. Для тех книг что я читаю.
-* TODO:даль
+* TODO:дальше
 
 ## Как оно работает (Технически подробности)
 * С использованием API Специальных Возможностей (Accessibility API) Android'а отслеживается структура элементов управления и читается часть текста с них.
@@ -147,7 +148,7 @@ GPLv3 https://www.gnu.org/licenses/gpl-3.0.html
 ParseUI-Android разумеется под своей собственной лицензий. Как и бинарные библиотеки Parse Platform / HockeyApp и остальные сторонние
 
 ## Какие читалки поддерживаются?
-* Пока только Mantano Reader. А зачем вам что-то еще?
+* Пока только Mantano Reader Premium. А зачем вам что-то еще?
 
 ## Приложение только собирает данные. А как их использовать?
 Красивые картинки со статистикой будут позднее.
@@ -173,8 +174,6 @@ ParseUI-Android разумеется под своей собственной л
 ## Как настроить API-ключи, подпись,etc
 * cd $HOME
 * mkdir .androidSigning/
-* touch versionCodesBookTrackerProperties
-* в versionCodesBookTrackerProperties напишите VERSION_CODE=0 (или другое)
 * touch booktrackerAPIKeys
 * в booktrackerAPIKeys добавьте:
   * PARSE_APP_ID=your_parse_app_id (https://parse.com/ , Application used Parse as network backend
@@ -186,6 +185,7 @@ ParseUI-Android разумеется под своей собственной л
   * PARSE_CLIENT_KEY_FOR_TEST_HARNESS=пока не используется но указать что-то надо
   * PARSE_USERNAME_FOR_TEST_HARNESS=пока не используется но указать что-то надо
   * PARSE_PASSWORD_FOR_TEST_HARNESS=пока не используется но указать что-то надо
+  * TODO:остально (про систему работы с versionCode)
   пути можно помять в  gradle.properties
 
 * или посмотрите в build.gradle как задать это же с использованием переменных окружения
