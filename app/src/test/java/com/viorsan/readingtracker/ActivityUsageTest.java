@@ -65,7 +65,7 @@ public class ActivityUsageTest {
     @Test
     public void testMainActivityHasAccessGrantedTextView() throws Exception {
         MyActivity activity = Robolectric.buildActivity(MyActivity.class).create().get();
-        TextView accessGrantedTextView=(TextView)activity.findViewById(R.id.accessGrantedTextView);
+        TextView accessGrantedTextView=(TextView)activity.findViewById(R.id.accessGranted);
         assertNotNull(accessGrantedTextView);
     }
 
@@ -79,7 +79,7 @@ public class ActivityUsageTest {
     @Test
     public void testMainActivityHasSupportedEbookReaderReaderInstalledOkTextView() throws Exception {
         MyActivity activity = Robolectric.buildActivity(MyActivity.class).create().get();
-        TextView supportedEbookReaderInstalledOkTextView=(TextView)activity.findViewById(R.id.supportedEbookReaderInstalledOkTextView);
+        TextView supportedEbookReaderInstalledOkTextView=(TextView)activity.findViewById(R.id.supportedEbookReaderInstalledStatus);
         assertNotNull(supportedEbookReaderInstalledOkTextView);
     }
     @Test
