@@ -385,9 +385,10 @@ public class BookReadingsRecorder {
         List<ActivityManager.RunningTaskInfo> appProcesses = activityManager.getRunningTasks(1);
         String topActivity = appProcesses.get(0).topActivity.getPackageName();
         //For now only Mantano Reader is supported
-        if (topActivity.equals(AccessibilityRecorderService.MANTANO_READER_PACKAGE_NAME)||
+        if (!(topActivity.equals(AccessibilityRecorderService.MANTANO_READER_PACKAGE_NAME)||
                 topActivity.equals(AccessibilityRecorderService.MANTANO_READER_ESSENTIALS_PACKAGE_NAME)||
-                topActivity.equals(AccessibilityRecorderService.MANTANO_READER_LITE_PACKAGE_NAME)) {
+                topActivity.equals(AccessibilityRecorderService.MANTANO_READER_LITE_PACKAGE_NAME))
+                ){
             Log.i(TAG, "current activity is not reading app. it's "+topActivity+"|");
             recordSwitchAwayFromBook(context, SystemClock.elapsedRealtime());
         }
