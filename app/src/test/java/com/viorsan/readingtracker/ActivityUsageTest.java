@@ -1,18 +1,9 @@
 package com.viorsan.readingtracker;
 
-import android.app.Activity;
-import android.app.Application;
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Build;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
-import com.parse.ParseUser;
-import com.viorsan.readingtracker.MyActivity;
-import com.viorsan.readingtracker.R;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -22,11 +13,7 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 import org.robolectric.shadows.ShadowApplication;
 
-import java.text.ParseException;
-import java.util.jar.Manifest;
-
 import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertNotNull;
@@ -90,10 +77,10 @@ public class ActivityUsageTest {
     }
 
     @Test
-    public void testMainActivityHasMantanoReaderInstalledOkTextView() throws Exception {
+    public void testMainActivityHasSupportedEbookReaderReaderInstalledOkTextView() throws Exception {
         MyActivity activity = Robolectric.buildActivity(MyActivity.class).create().get();
-        TextView mantanoReaderInstalledOkTextView=(TextView)activity.findViewById(R.id.mantanoReaderInstalledOkTextView);
-        assertNotNull(mantanoReaderInstalledOkTextView);
+        TextView supportedEbookReaderInstalledOkTextView=(TextView)activity.findViewById(R.id.supportedEbookReaderInstalledOkTextView);
+        assertNotNull(supportedEbookReaderInstalledOkTextView);
     }
     @Test
     public void testMainActivityHasEmailTextView() throws Exception {

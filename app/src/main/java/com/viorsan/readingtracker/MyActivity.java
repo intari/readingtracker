@@ -31,7 +31,7 @@ public class MyActivity extends Activity {
     public static final String USER_GENDER = "gender";
     private TextView currentlyReadingTextView;
     private TextView accessGrantedTextView;
-    private TextView mantanoReaderInstalledTextView;
+    private TextView supportedEbookReaderInstalledTextView;
 
     private boolean activityRecorderConnected=false;
 
@@ -91,7 +91,7 @@ public class MyActivity extends Activity {
 
         currentlyReadingTextView=initCurrentlyReadingTextView();
         accessGrantedTextView=initAccessGrantedTextView();
-        mantanoReaderInstalledTextView=initMantoReaderInstalledTextView();
+        supportedEbookReaderInstalledTextView =initMantoReaderInstalledTextView();
 
 
         loginOrLogoutButton.setOnClickListener(new View.OnClickListener() {
@@ -281,15 +281,15 @@ public class MyActivity extends Activity {
 
     private void updateReaderStatus() {
         if (isMantanoReaderInstalled()) {
-            mantanoReaderInstalledTextView.setText(getResources().getText(R.string.mantanoReaderInstalled));
+           supportedEbookReaderInstalledTextView.setText(getResources().getText(R.string.supportedEbookReaderInstalled));
         }
         else {
-            mantanoReaderInstalledTextView.setText(getResources().getText(R.string.mantanoReaderNotInstalled));
+            supportedEbookReaderInstalledTextView.setText(getResources().getText(R.string.supportedEbookReaderNotInstalled));
         }
     }
     private TextView initMantoReaderInstalledTextView()
     {
-        TextView mTextView=(TextView)findViewById(R.id.mantanoReaderInstalledOkTextView);
+        TextView mTextView=(TextView)findViewById(R.id.supportedEbookReaderInstalledOkTextView);
         return mTextView;
     }
     private  TextView initAccessGrantedTextView()

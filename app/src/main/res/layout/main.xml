@@ -46,15 +46,15 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="@string/mantanoReader"
+                    android:text="@string/supportedEbookReader"
                     android:id="@+id/textViewMantanoInstalled"/>
 
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="@string/mantanoReaderNotInstalled"
-                    android:id="@+id/mantanoReaderInstalledOkTextView"
+                    android:text="@string/supportedEbookReaderNotInstalled"
+                    android:id="@+id/supportedEbookReaderInstalledOkTextView"
                     />
             </TableRow>
 

@@ -9,10 +9,10 @@
     <string name="accessGrantedOK">OK</string>
     <string name="accessGrantedNotOk">None</string>
 
-    <string name="mantanoReaderInstalled">Installed</string>
-    <string name="mantanoReaderNotInstalled">Not installed</string>
+    <string name="supportedEbookReaderInstalled">Installed</string>
+    <string name="supportedEbookReaderNotInstalled">Not installed</string>
     <string name="accessInAccessibilitySettings">Access in \'Accessibilty Settings\':</string>
-    <string name="mantanoReader" translatable="false">Mantano Reader:</string>
+    <string name="supportedEbookReader">Supported e-book reader:</string>
 
     <!-- Notification messages -->
     <string name="app_started_notification">Reading Tracker started</string>
