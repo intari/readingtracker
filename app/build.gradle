@@ -308,6 +308,7 @@ dependencies {
     compile files('libs/acra-4.4.0.jar')
     compile files('libs/json-simple-1.1.1.jar')
     compile files('libs/jmdns-3.4.1.jar')
+    compile 'com.jakewharton:butterknife:6.0.0' //https://jakewharton.github.io/butterknife/
 }
 
 // ParseUI dependencies

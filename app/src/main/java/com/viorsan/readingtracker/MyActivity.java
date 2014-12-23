@@ -25,13 +25,20 @@ import net.hockeyapp.android.UpdateManagerListener;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+import butterknife.OnClick;
 
 public class MyActivity extends Activity {
     public static final String FULL_USER_NAME = "name";
     public static final String USER_GENDER = "gender";
-    private TextView currentlyReadingTextView;
-    private TextView accessGrantedTextView;
-    private TextView supportedEbookReaderInstalledTextView;
+    @InjectView(R.id.currentlyReadingMessage) TextView currentlyReadingTextView;
+    @InjectView(R.id.accessGranted) TextView accessGrantedTextView;
+    @InjectView(R.id.supportedEbookReaderInstalledStatus) TextView supportedEbookReaderInstalledTextView;
+    @InjectView(R.id.profile_title) TextView titleTextView;
+    @InjectView(R.id.profile_name) TextView nameTextView;
+    @InjectView(R.id.profile_email) TextView emailTextView;
+    @InjectView(R.id.login_or_logout_button) Button loginOrLogoutButton;
 
     private boolean activityRecorderConnected=false;
 
@@ -44,10 +51,6 @@ public class MyActivity extends Activity {
 
     private static final int LOGIN_REQUEST = 0;
 
-    private TextView titleTextView;
-    private TextView emailTextView;
-    private TextView nameTextView;
-    private Button loginOrLogoutButton;
 
     private ParseUser currentUser;
 
@@ -60,6 +63,7 @@ public class MyActivity extends Activity {
         super.onCreate(savedInstanceState);
         MyAnalytics.trackAppOpened(getMyApp(),getIntent());
         setContentView(R.layout.main);
+        ButterKnife.inject(this);
         init();
 
     }
@@ -79,38 +83,26 @@ public class MyActivity extends Activity {
         LocalBroadcastManager.getInstance(getBaseContext()).sendBroadcast(intent);
         Log.d(TAG,"Signeled everybody that user was logged out");
     }
+    @OnClick(R.id.login_or_logout_button)
+    public void loginLogoutButtonClicked(View v) {
+        if (currentUser != null) {
+            // User clicked to log out.
+            ParseUser.logOut();
+            currentUser = null;
+            handleUserLogout();
+            showProfileLoggedOut();
+        } else {
+            // User clicked to log in.
+            ParseLoginBuilder loginBuilder = new ParseLoginBuilder(
+                    MyActivity.this);
+            startActivityForResult(loginBuilder.build(), LOGIN_REQUEST);
+        }
+    }
     private void init(){
         self = this;
 
-        titleTextView = (TextView) findViewById(R.id.profile_title);
-        emailTextView = (TextView) findViewById(R.id.profile_email);
-        nameTextView = (TextView) findViewById(R.id.profile_name);
-        loginOrLogoutButton = (Button) findViewById(R.id.login_or_logout_button);
         titleTextView.setText(R.string.profile_title_logged_in);
         //even if user is not logged in we should configured other parse of interface
-
-        currentlyReadingTextView=initCurrentlyReadingTextView();
-        accessGrantedTextView=initAccessGrantedTextView();
-        supportedEbookReaderInstalledTextView =initMantoReaderInstalledTextView();
-
-
-        loginOrLogoutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (currentUser != null) {
-                    // User clicked to log out.
-                    ParseUser.logOut();
-                    currentUser = null;
-                    handleUserLogout();
-                    showProfileLoggedOut();
-                } else {
-                    // User clicked to log in.
-                    ParseLoginBuilder loginBuilder = new ParseLoginBuilder(
-                            MyActivity.this);
-                    startActivityForResult(loginBuilder.build(), LOGIN_REQUEST);
-                }
-            }
-        });
 
         //TODO:this is my old code
         //TODO:get cached version if it's exist
@@ -286,21 +278,6 @@ public class MyActivity extends Activity {
         else {
             supportedEbookReaderInstalledTextView.setText(getResources().getText(R.string.supportedEbookReaderNotInstalled));
         }
-    }
-    private TextView initMantoReaderInstalledTextView()
-    {
-        TextView mTextView=(TextView)findViewById(R.id.supportedEbookReaderInstalledOkTextView);
-        return mTextView;
-    }
-    private  TextView initAccessGrantedTextView()
-    {
-        TextView mTextView=(TextView)findViewById(R.id.accessGrantedTextView);
-        return mTextView;
-    }
-
-    private TextView initCurrentlyReadingTextView() {
-        TextView mTextView=(TextView) findViewById(R.id.currentlyReadingMessage);
-        return mTextView;
     }
 
 
