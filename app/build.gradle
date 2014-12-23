@@ -128,16 +128,19 @@ if(project.hasProperty("versionPropertiesPath") ) {
 
         myVersionCode=code
     }
+
     else
     {
         //regular uncofigured build
         throw new GradleException("Could not read version information:"+System.getenv('HOME') + "/" + project.property("versionPropertiesPath")+" is not readable")
     }
+
 }
+/*
 else {
     throw new GradleException("Could not read version information:versionPropertiesPath not configured. Check README.md")
 }
-
+*/
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -209,7 +212,6 @@ android {
                     //try to get version code from network (using local URL)
                     def  networkVersionCode=new URL(versionCodeNetworkURL).text;
                     myVersionCode=networkVersionCode
-                    buildConfigField "String","versionCode", "\""+myVersionCode+"\""
                 }
                 else {
                     if (System.getenv('RUNNING_UNDER_TRAVIS')=='YES') {
@@ -229,7 +231,6 @@ android {
                         versionCodeNetworkURL=System.getenv('BUILD_NUMBER_URL')
                         def  networkVersionCode=new URL(versionCodeNetworkURL).text;
                         myVersionCode=networkVersionCode
-                        buildConfigField "String","versionCode", "\""+myVersionCode+"\""
                     }
                     else
                     {
