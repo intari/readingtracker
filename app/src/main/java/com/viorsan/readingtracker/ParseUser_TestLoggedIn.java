@@ -29,8 +29,6 @@ public class ParseUser_TestLoggedIn extends ParseUser {
     public static final String TAG = "ParseUser_TestLoggedIn";
 
     //minimal emulated data
-    private static String emulatedUsername;
-    private static String emulatedEmail;
     private static String emulatedObjectId;
     private HashMap<String,Object> emulatedData;
 
