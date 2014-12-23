@@ -284,9 +284,11 @@ public class MyActivity extends Activity {
     private boolean isSupportedEbookReaderInstalled()
     {
       return (
-              appInstalledOrNot(AccessibilityRecorderService.MANTANO_READER_PACKAGE_NAME) ||
+              appInstalledOrNot(AccessibilityRecorderService.MANTANO_READER_PACKAGE_NAME)
+              /* ||
               appInstalledOrNot(AccessibilityRecorderService.MANTANO_READER_ESSENTIALS_PACKAGE_NAME) ||
               appInstalledOrNot(AccessibilityRecorderService.MANTANO_READER_LITE_PACKAGE_NAME)
+              */
       );
 
     };
