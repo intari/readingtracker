@@ -110,7 +110,6 @@ def getUsername() {
 //TODO:do something for windows
 def getVersionCodeFromNetwork(auth,url) {
     def cmd='curl -X GET https://'+auth+'@'+url
-    println "will ask for network version code via "+cmd
     return cmd.execute().text.trim()
 }
 
