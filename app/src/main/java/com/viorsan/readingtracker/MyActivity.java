@@ -24,6 +24,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.facebook.AppEventsLogger;
 import com.parse.*;
 import com.parse.ui.ParseLoginBuilder;
 
@@ -32,6 +34,7 @@ import net.hockeyapp.android.UpdateManagerListener;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -64,7 +67,7 @@ public class MyActivity extends FragmentActivity implements GoToAccessibilitySet
 
 
     private ParseUser currentUser;
-
+    private CountDownTimer timerToWaitBeforeAskingForAccessibilitySettings=null;
 
     /**
      * Called when the activity is first created.
@@ -106,6 +109,12 @@ public class MyActivity extends FragmentActivity implements GoToAccessibilitySet
             // User clicked to log in.
             ParseLoginBuilder loginBuilder = new ParseLoginBuilder(
                     MyActivity.this);
+            /*loginBuilder
+                    .setFacebookLoginEnabled(true)
+                    .setParseLoginEnabled(true);
+                    //.setFacebookLoginPermissions(Arrays.asList("user_status", "read_stream"));
+            */
+
             startActivityForResult(loginBuilder.build(), LOGIN_REQUEST);
         }
     }
@@ -256,6 +265,24 @@ public class MyActivity extends FragmentActivity implements GoToAccessibilitySet
         }.start();
         */
 
+        timerToWaitBeforeAskingForAccessibilitySettings=       new CountDownTimer(TIME_BEFORE_ASKING_USER_TO_GO_TO_ACCESSIBILITY_SETTINGS, TIME_BEFORE_ASKING_USER_TO_GO_TO_ACCESSIBILITY_SETTINGS) {
+            public void onTick(long msUntilFinish) {
+            }
+
+            public  void  onFinish() {
+                Log.d(TAG,"check if it's time to ask user to enable our Accessibility Service");
+                if ((activityRecorderConnected==false) && (goToSettingsToEnableAccessibilityServiceDialogShown==false)) {
+                    Log.d(TAG,"yes it is - asking");
+                    goToSettingsToEnableAccessibilityServiceDialogShown=true;
+                    showGoToAccessibilitySettingsDialog();
+                    Log.d(TAG,"yes it is - asked");
+                }
+                else {
+                    Log.d(TAG,"Not it is not");
+
+                }
+            }
+        };
 
     }
     /**
@@ -369,24 +396,7 @@ public class MyActivity extends FragmentActivity implements GoToAccessibilitySet
             LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
 
             //wait a little, so service will send us details
-            new CountDownTimer(TIME_BEFORE_ASKING_USER_TO_GO_TO_ACCESSIBILITY_SETTINGS, TIME_BEFORE_ASKING_USER_TO_GO_TO_ACCESSIBILITY_SETTINGS) {
-                public void onTick(long msUntilFinish) {
-                }
-
-                public  void  onFinish() {
-                    Log.d(TAG,"check if it's time to ask user to enable our Accessibility Service");
-                    if ((activityRecorderConnected==false) && (goToSettingsToEnableAccessibilityServiceDialogShown==false)) {
-                        Log.d(TAG,"yes it is - asking");
-                        goToSettingsToEnableAccessibilityServiceDialogShown=true;
-                        showGoToAccessibilitySettingsDialog();
-                        Log.d(TAG,"yes it is - asked");
-                    }
-                    else {
-                        Log.d(TAG,"Not it is not");
-
-                    }
-                }
-            }.start();
+            timerToWaitBeforeAskingForAccessibilitySettings.start();
 
         }
         else
@@ -398,6 +408,8 @@ public class MyActivity extends FragmentActivity implements GoToAccessibilitySet
     @Override
     public void onResume() {
         super.onResume();
+        // Logs 'install' and 'app activate' App Events.
+        AppEventsLogger.activateApp(this);
         checkForUpdates();
         goToSettingsToEnableAccessibilityServiceDialogShown=false;//may be user changed her mind? we really can't work without!
         askForActivityMonitoringUpdate();
@@ -407,6 +419,9 @@ public class MyActivity extends FragmentActivity implements GoToAccessibilitySet
     @Override
     public void onPause() {
         super.onPause();
+        // Logs 'app deactivate' App Event.
+        AppEventsLogger.deactivateApp(this);
+        timerToWaitBeforeAskingForAccessibilitySettings.cancel();
     }
 
     private void checkForUpdates() {
