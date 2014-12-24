@@ -30,7 +30,7 @@ public class CoreService extends Service  {
     public static final long YEAR_IN_MS = 365 * 86400 * 1000;
     public static final int PROCESSLIST_RESCAN_INTERVAL_MILLIS = 3000;//ONLY used to check if reader app is currently active
     public static final int REPORT_SENDING_RETRY_MILLIS = 3000;
-    public static final String TAG = "ReadingTracker::CoreService";
+    public static final String TAG = "CoreService";
     public static final String USER_LOGGED_OUT_REPORT = "com.viorsan.readingtracker.user_logged_out";
     private long lastAppCheckTime;
 
@@ -392,22 +392,24 @@ public class CoreService extends Service  {
     }
 
     static public void writeLogBanner(String tag, Context context) {
-        Log.i(TAG,tag+" (c) Dmitriy Kazimirov 2013-2014");
-        Log.i(TAG,tag+" e-mail: dmitriy.kazimirov@viorsan.com");
+        Log.i(TAG," (c) Dmitriy Kazimirov 2013-2014");
+        Log.i(TAG," e-mail: dmitriy.kazimirov@viorsan.com");
 
-        Log.i(TAG,tag+" BuildAuthority:"+buildAuthority());
-        Log.i(TAG,tag+" ApplicationId:"+BuildConfig.APPLICATION_ID);
-        Log.i(TAG,tag+" BuildType:"+BuildConfig.BUILD_TYPE);
-        Log.i(TAG,tag+" VersionCode:"+BuildConfig.VERSION_CODE);
-        Log.i(TAG,tag+" VersionName:"+BuildConfig.VERSION_NAME);
-        Log.i(TAG,tag+" Flavor:"+BuildConfig.FLAVOR);
+        Log.i(TAG," BuildAuthority:"+buildAuthority());
+        Log.i(TAG," ApplicationId:"+BuildConfig.APPLICATION_ID);
+        Log.i(TAG," BuildType:"+BuildConfig.BUILD_TYPE);
+        Log.i(TAG," VersionCode:"+BuildConfig.VERSION_CODE);
+        Log.i(TAG," VersionName:"+BuildConfig.VERSION_NAME);
+        Log.i(TAG," Flavor:"+BuildConfig.FLAVOR);
         if (BuildConfig.DEBUG) {
-            Log.i(TAG,tag+" BuildConfig:DEBUG");
+            Log.i(TAG," BuildConfig:DEBUG");
         }
         else
         {
-            Log.i(TAG,tag+" BuildConfig:RELEASE");
+            Log.i(TAG," BuildConfig:RELEASE");
         }
+        Log.i(TAG," BuilderType:"+BuildConfig.BUILDER_TYPE);
+        Log.i(TAG," Built on "+BuildConfig.BUILD_HOST+ " of type "+BuildConfig.BUILDER_TYPE+ " by user "+ BuildConfig.BUILD_USER);
 
 
 
