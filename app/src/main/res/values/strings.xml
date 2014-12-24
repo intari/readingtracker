@@ -37,7 +37,7 @@
     <string name="profile_login_button_label">Log in</string>
 
     <!-- Facebook support -->
-    <string name="facebook_app_id">343039695901464</string>
+    <string name="facebook_app_id" translatable="false">343039695901464</string>
     <string-array name="my_facebook_permissions">
         <item>public_profile</item>
         <item>user_friends</item>
