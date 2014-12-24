@@ -1,14 +1,22 @@
 package com.viorsan.readingtracker;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Base64;
 import android.util.Log;
@@ -29,9 +37,11 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
-public class MyActivity extends Activity {
+public class MyActivity extends FragmentActivity implements GoToAccessibilitySettingsDialogFragment.GoToAccessibilitySettingsDialogListener {
     public static final String FULL_USER_NAME = "name";
     public static final String USER_GENDER = "gender";
+    public static final int TIME_BEFORE_ASKING_USER_TO_GO_TO_ACCESSIBILITY_SETTINGS = 5 * 1000;//5 seconds to wait before checking if we should ask user to go to Accessibility settings
+    public static final int TIME_BEFORE_ASKING_FOR_MONITORING_STATUS_UPDATE = 5 * 1000;
     @InjectView(R.id.currentlyReadingMessage) TextView currentlyReadingTextView;
     @InjectView(R.id.accessGranted) TextView accessGrantedTextView;
     @InjectView(R.id.supportedEbookReaderInstalledStatus) TextView supportedEbookReaderInstalledTextView;
@@ -41,6 +51,7 @@ public class MyActivity extends Activity {
     @InjectView(R.id.login_or_logout_button) Button loginOrLogoutButton;
 
     private boolean activityRecorderConnected=false;
+    private boolean goToSettingsToEnableAccessibilityServiceDialogShown=false;//true - 'go to settings to enable us' dialog was shown
 
     private BroadcastReceiver messageReceiver;
     private BroadcastReceiver activityMonitoringMessageReceiver;
@@ -61,7 +72,7 @@ public class MyActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        MyAnalytics.trackAppOpened(getMyApp(),getIntent());
+        MyAnalytics.trackAppOpened(getMyApp(), getIntent());
         setContentView(R.layout.main);
         ButterKnife.inject(this);
         init();
@@ -235,6 +246,16 @@ public class MyActivity extends Activity {
         LocalBroadcastManager.getInstance(this).registerReceiver(
                 currentlyReadingMessageReceiver,new IntentFilter(BookReadingsRecorder.BOOK_READING_STATUS_UPDATE)
         );
+        /*
+        new CountDownTimer(TIME_BEFORE_ASKING_FOR_MONITORING_STATUS_UPDATE, TIME_BEFORE_ASKING_FOR_MONITORING_STATUS_UPDATE) {
+            public void onTick(long msUntilFinish) { }
+            public  void  onFinish() {
+                Log.d(TAG,"check if it's time to ask user to enable our Accessibility Service");
+                askForActivityMonitoringUpdate();
+            }
+        }.start();
+        */
+
 
     }
     /**
@@ -270,6 +291,7 @@ public class MyActivity extends Activity {
         }
 
     }
+
 
     private void updateReaderStatus() {
         if (isSupportedEbookReaderInstalled()) {
@@ -309,13 +331,76 @@ public class MyActivity extends Activity {
 
     }
 
+    /*
+  * This dialog can have significant amount of text so make it possible for it be shown in fullscreen way
+  * and not only as regular dialog
+  */
+    public void showGoToAccessibilitySettingsDialog() {
 
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        GoToAccessibilitySettingsDialogFragment newFragment=new GoToAccessibilitySettingsDialogFragment();
+
+        newFragment.show(fragmentManager, "goToAccessibilitySettingsDialog");
+
+    }
+    // implementation of GoToAccessibilitySettingsDialogListener
+    public void onGoToAccessibilitySettingsDialogPositiveClick(GoToAccessibilitySettingsDialogFragment dialog) {
+        // Users wants to go to settings
+        Log.d(TAG,"User chooses to go to settings");
+        openAccessibilitySettings();
+    }
+    // implementation of GoToAccessibilitySettingsDialogListener
+    public void onGoToAccessibilitySettingsNegativeClick(GoToAccessibilitySettingsDialogFragment dialog) {
+        // User cancelled the dialog
+        Log.d(TAG,"User chooses not to go to settings");
+    }
+    // open Accessibility settings
+    private void openAccessibilitySettings() {
+        Intent intent = new Intent(android.provider.Settings.ACTION_ACCESSIBILITY_SETTINGS);
+        startActivityForResult(intent, 0);
+    }
+    // Asks monitoring service if it was correctly connected
+    private void askForActivityMonitoringUpdate() {
+
+        if (activityRecorderConnected==false) {
+            Log.d(TAG, "asking for update on monitoring status");
+
+            Intent intent=new Intent(AccessibilityRecorderService.ACTIVITY_MONITORING_STATUS_UPDATE_REQUEST);
+            LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
+
+            //wait a little, so service will send us details
+            new CountDownTimer(TIME_BEFORE_ASKING_USER_TO_GO_TO_ACCESSIBILITY_SETTINGS, TIME_BEFORE_ASKING_USER_TO_GO_TO_ACCESSIBILITY_SETTINGS) {
+                public void onTick(long msUntilFinish) {
+                }
+
+                public  void  onFinish() {
+                    Log.d(TAG,"check if it's time to ask user to enable our Accessibility Service");
+                    if ((activityRecorderConnected==false) && (goToSettingsToEnableAccessibilityServiceDialogShown==false)) {
+                        Log.d(TAG,"yes it is - asking");
+                        goToSettingsToEnableAccessibilityServiceDialogShown=true;
+                        showGoToAccessibilitySettingsDialog();
+                        Log.d(TAG,"yes it is - asked");
+                    }
+                    else {
+                        Log.d(TAG,"Not it is not");
+
+                    }
+                }
+            }.start();
+
+        }
+        else
+        {
+            Log.d(TAG,"No need to ask, we have it arleady");
+        }
+
+    }
     @Override
     public void onResume() {
         super.onResume();
         checkForUpdates();
-        Intent intent=new Intent(AccessibilityRecorderService.ACTIVITY_MONITORING_STATUS_UPDATE_REQUEST);
-        LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
+        goToSettingsToEnableAccessibilityServiceDialogShown=false;//may be user changed her mind? we really can't work without!
+        askForActivityMonitoringUpdate();
         updateReaderStatus();
 
     }
@@ -356,6 +441,7 @@ public class MyActivity extends Activity {
             handleUserLogout();
         }
         updateReaderStatus();
+        askForActivityMonitoringUpdate();
 
     }
 
