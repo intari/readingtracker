@@ -203,6 +203,10 @@ ParseUI-Android разумеется под своей собственной л
 * WRITE_EXTERNAL_STORAGE -
 * BIND_ACCESSIBILITY_SERVICE - to perform core functionality. user WILL be asked to enable this anyway. Application couldn't do it's job without it. TODO: add note somewhere how exactly we use it (more details)
 
+## Проблемы
+* Q:Приложение спрашивает доступ к Специальным возможностям хотя уже выдано.
+  A:Вы видимо недавно обновили приложение. Либо перезагрузите устройство либо отключите доступ и тут же включите
+
 # Благодарности
 * [Freepik from Flaticon]( http://www.flaticon.com/free-icon/marionette-puppet-silhouette_33882) текущая иконка
 Когда я ее нашел - лицензия была:
