@@ -133,6 +133,7 @@ android {
 
     def versionCodeNetworkURL=''
     def versionCodeNetworkAuth=''
+    def versionSuffix="none"
 
     productFlavors {
 
@@ -199,7 +200,7 @@ android {
                     buildConfigField "String","PARSE_USERNAME_FOR_TEST_HARNESS","\""+parseUserNameForTestHarness+"\""
                     buildConfigField "String","PARSE_PASSWORD_FOR_TEST_HARNESS","\""+parsePasswordForTestHarness+"\""
 
-                    buildConfigField "String","BUILDER_TYPE","\"regular-internal\""
+                    buildConfigField "String","BUILDER_TYPE","\"internal\""
                     //we now have all info, ask for version code
                     myVersionCode=getVersionCodeFromNetwork(versionCodeNetworkAuth,versionCodeNetworkURL).toInteger()
 
@@ -236,8 +237,66 @@ android {
 
             buildConfigField "String","BUILD_HOST", "\""+getHostname()+"\""
             buildConfigField "String","BUILD_USER", "\""+getUsername()+"\""
-
+            versionSuffix="-internal-built_at-"+buildTime()+'-git-sha1-'+gitSha()
         }
+        playStore {
+            if(project.hasProperty("apiKeysPath") ) {
+                File apiKeysFile = new File(System.getenv('HOME') + "/" + project.property("apiKeysPath"))
+                if (apiKeysFile.canRead()) {
+                    def Properties apiKeysProps = new Properties()
+                    apiKeysProps.load(new FileInputStream(apiKeysFile))
+                    def parseAppId= apiKeysProps['PARSE_APP_ID'];
+                    def parseClientKey=apiKeysProps['PARSE_CLIENT_KEY'];
+                    def hockeyAppAppId=apiKeysProps['HOCKEYAPP_APP_ID'];
+
+
+                    //support for updating versionCode from network server
+                    versionCodeNetworkURL=apiKeysProps['VERSION_CODE_URL']
+                    versionCodeNetworkAuth=apiKeysProps['VERSION_CODE_AUTH']
+
+                    //prevent empty values
+                    if (parseAppId==null) {
+                        throw new GradleException("Playstore Release:Parse APP ID not configured but API Key file was here");
+                    }
+                    if (parseClientKey==null) {
+                        throw new GradleException("Playstore Release:Parse CLIENT KEY not configured but API Key file was here");
+                    }
+                    if (hockeyAppAppId==null) {
+                        throw new GradleException("Playstore Release:HockeyApp APP ID not configured but API Key file was here");
+                    }
+
+                    /*
+                    if (versionCodeNetworkURL==null) {
+                        throw new GradleException("network url for version code updates was not configured but API Key file was here");
+                    }
+                    if (versionCodeNetworkAuth==null) {
+                        throw new GradleException("network auth for version code updates was not configured but API Key file was here");
+                    }
+
+                    */
+                    buildConfigField "String","PARSE_APP_ID", "\""+parseAppId+"\""
+                    buildConfigField "String","PARSE_CLIENT_KEY","\""+parseClientKey+"\""
+                    buildConfigField "String","HOCKEYAPP_APP_ID", "\""+hockeyAppAppId+"\""
+                    buildConfigField "String","BUILD_DATE_TIME","\""+buildTimeHumanReadable()+" UTC\""
+
+                    buildConfigField "String","BUILDER_TYPE","\"internal\""
+                    //we now have all info, ask for version code
+                    myVersionCode=getVersionCodeFromNetwork(versionCodeNetworkAuth,versionCodeNetworkURL).toInteger()
+
+                }
+                else {
+                        throw new GradleException("Playstore Release:Could not read API Keys but we knew where it should be. Check README.md");
+                }
+            }
+            else {
+                throw new GradleException("Playstore Release:API Keys not found. Check README.md");
+            }
+
+            buildConfigField "String","BUILD_HOST", "\""+getHostname()+"\""
+            buildConfigField "String","BUILD_USER", "\""+getUsername()+"\""
+            versionSuffix="-playstore-git-sha1-"+gitSha()
+        }
+
     }
 
 
@@ -246,7 +305,7 @@ android {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode myVersionCode
-        versionName myVersionName+"."+myVersionCode+"-built_at-"+buildTime()+'-git-sha1-'+gitSha();
+        versionName myVersionName+"."+myVersionCode+versionSuffix
     }
 
 

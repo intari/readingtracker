@@ -86,13 +86,15 @@ Simple solution is just put 'return 0' instead of it's content.
 Maybe later
 
 ## Which Android Permissions are used and why
-* RECEIVE_BOOT_COMPLETED  - to start at device boot
-* INTERNET - to send readings report to server 
-* ACCESS_NETWORK_STATE - for analytics & error reporting
-* READ_PHONE_STATE - to get hardware details for statistical purposes
-* GET_TASKS - to knew currently active app. This is needed to detected situation when user switches away from reading app
-* WRITE_EXTERNAL_STORAGE - 
-* BIND_ACCESSIBILITY_SERVICE - to perform core functionality. user WILL be asked to enable this anyway. Application couldn't do it's job without it. TODO: add note somewhere how exactly we use it (more details)
+Permissions
+* RECEIVE_BOOT_COMPLETED  - to be able to catch moments when you start read
+* INTERNET - communication with our server
+* ACCESS_NETWORK_STATE - usage analytics & error reportings
+* READ_PHONE_STATE - statistics
+* GET_TASKS - to knew when you switch from supported reading app to something other
+* WRITE_EXTERNAL_STORAGE -
+* BIND_ACCESSIBILITY_SERVICE - main app functionality. you will be asked to provide access to 'Accessibility Services' on startup. You could refuse but you will not be able to get your statistics from this device
+
 
 ## Thanks to
 * [Freepik from Flaticon]( http://www.flaticon.com/free-icon/marionette-puppet-silhouette_33882) for application icon
@@ -195,13 +197,13 @@ ParseUI-Android разумеется под своей собственной л
 Может быть
 
 ## Какие используется Permission'ы Андроида и зачем
-* RECEIVE_BOOT_COMPLETED  - to start at device boot
-* INTERNET - to send readings report to server
-* ACCESS_NETWORK_STATE - for analytics & error reporting
-* READ_PHONE_STATE - to get hardware details for statistical purposes
-* GET_TASKS - to knew currently active app. This is needed to detected situation when user switches away from reading app
-* WRITE_EXTERNAL_STORAGE -
-* BIND_ACCESSIBILITY_SERVICE - to perform core functionality. user WILL be asked to enable this anyway. Application couldn't do it's job without it. TODO: add note somewhere how exactly we use it (more details)
+* RECEIVE_BOOT_COMPLETED  - запуск мониторинга с момента загрузки
+* INTERNET - общение с серверной частью
+* ACCESS_NETWORK_STATE - анатилитка и отсылка ошибок
+* READ_PHONE_STATE - статистика
+* GET_TASKS - отслеживание ситуации когда вы переключаетесь с поддерживаемой читалки на что-то е-е
+* WRITE_EXTERNAL_STORAGE -  хранить временные данны
+* BIND_ACCESSIBILITY_SERVICE - для работы основного функционала приложения (приложения попросит при запуске разрешить доступ к 'Специальным возможностям', вы можете отказаться но сбор аналитики по книгам работать не будет)
 
 ## Проблемы
 * Q:Приложение спрашивает доступ к Специальным возможностям хотя уже выдано.
