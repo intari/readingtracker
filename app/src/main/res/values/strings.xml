@@ -38,7 +38,7 @@
 
     <!-- Facebook support -->
     <string name="facebook_app_id" translatable="false">343039695901464</string>
-    <string-array name="my_facebook_permissions">
+    <string-array name="my_facebook_permissions" translatable="false">
         <item>public_profile</item>
         <item>user_friends</item>
         <item>email</item>
