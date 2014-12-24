@@ -21,7 +21,7 @@ import java.util.regex.Pattern;
 
 public class AccessibilityRecorderService extends AccessibilityService {
 
-    static final String TAG = "ReadingTracker::AccessibilityRecorderService";
+    static final String TAG = "AccessibilityRecorderService";
 
     /* Mantano-specific things */
     /* if true - we are only scrobble readings
