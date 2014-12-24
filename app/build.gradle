@@ -326,13 +326,13 @@ dependencies {
     compile files('libs/json-simple-1.1.1.jar')
     compile files('libs/jmdns-3.4.1.jar')
     compile 'com.jakewharton:butterknife:6.0.0' //https://jakewharton.github.io/butterknife/
+    compile "com.android.support:support-v4:21.0.3"
 }
 
 // ParseUI dependencies
 dependencies {
     compile 'com.facebook.android:facebook-android-sdk:3.21.0'
     compile project(':ParseLoginUI')
-    compile 'com.android.support:support-v4:21.0.0'
 }
 
 // dependencies for tests
