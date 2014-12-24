@@ -12,8 +12,10 @@ import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 import org.robolectric.shadows.ShadowApplication;
+import org.robolectric.util.FragmentTestUtil;
 
 import static org.hamcrest.CoreMatchers.equalTo;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertNotNull;
@@ -115,6 +117,16 @@ public class ActivityUsageTest {
 
     }
 
+    //check that dialog used in  'showGoToAccessibilitySettingsDialog()' could be shown
+    @Test
+    public void testGoToAccessibilitySettingsDialogWorks() throws Exception {
+        //MyActivity activity = Robolectric.buildActivity(MyActivity.class).create().get();
+        GoToAccessibilitySettingsDialogFragment newFragment=new GoToAccessibilitySettingsDialogFragment();
+        assertNotNull(newFragment);
+        FragmentTestUtil.startFragment(newFragment,MyActivity.class);
+
+        //TODO:complete this.  are buttons shown? is message correct?  is dialog visible? Is my understanding of Robolectric correct? -:)
+     }
 
     //Translation testing
     //Test message directly
