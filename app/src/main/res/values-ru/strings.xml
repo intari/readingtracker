@@ -8,8 +8,8 @@
     <string name="accessGrantedOK">Получен</string>
     <string name="accessGrantedNotOk">Нет</string>
 
-    <string name="supportedEbookReaderInstalled">Установлен</string>
-    <string name="supportedEbookReaderNotInstalled">Не установлен</string>
+    <string name="supportedEbookReaderInstalled">Установлена</string>
+    <string name="supportedEbookReaderNotInstalled">Не установлена</string>
     <string name="accessInAccessibilitySettings">Доступ в \'Специальных Возможностях\':</string>
     <string name="supportedEbookReader">Поддерживаемая читалка:</string>
 
