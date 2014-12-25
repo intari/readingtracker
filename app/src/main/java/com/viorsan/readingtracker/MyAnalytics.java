@@ -113,6 +113,76 @@ public class MyAnalytics {
             System.out.println(TAG +":trackAppOpened not sending event "+name+" (with dimensions) to analytics service"+". Test harness said so");
         }
     }
+
+    public static void trackTimedEventStart(String name) {
+        if (app==null) {
+            Log.e(TAG,"trackTimedEventStart: app is null");
+            System.out.println(TAG+":trackTimedEventStart: app is null");
+            return;
+        }
+        //don't track anything if test harness active
+        if (!app.testHarnessActive) {
+            Log.d(TAG,"Sending start of event "+name+"  to analytics service");
+            //ParseAnalytics.trackEvent(name,dimensions);
+            //Countly.sharedInstance().recordEvent(name,dimensions,1);
+            FlurryAgent.logEvent(name,true);
+        }
+        else {
+            System.out.println(TAG +":trackTimedEventStart not sending event "+name+"  to analytics service"+". Test harness said so");
+        }
+    }
+    public static void trackTimedEventStart(String name, java.util.Map<java.lang.String,java.lang.String> dimensions) {
+        if (app==null) {
+            Log.e(TAG,"trackTimedEventStart (with dimensions): app is null");
+            System.out.println(TAG+":trackTimedEventStart (withDimensions): app is null");
+            return;
+        }
+        //don't track anything if test harness active
+        if (!app.testHarnessActive) {
+            Log.d(TAG,"Sending start of event "+name+" (with dimensions) to analytics service");
+            //ParseAnalytics.trackEvent(name,dimensions);
+            //Countly.sharedInstance().recordEvent(name,dimensions,1);
+            FlurryAgent.logEvent(name,dimensions,true);
+        }
+        else {
+            System.out.println(TAG +":trackTimedEventStart not sending event "+name+" (with dimensions) to analytics service"+". Test harness said so");
+        }
+    }
+    public static void trackTimedEventStop(String name) {
+        if (app==null) {
+            Log.e(TAG,"trackTimedEventStop: app is null");
+            System.out.println(TAG+":trackTimedEventStop: app is null");
+            return;
+        }
+        //don't track anything if test harness active
+        if (!app.testHarnessActive) {
+            Log.d(TAG,"Sending stop of event "+name+" (with dimensions) to analytics service");
+            //ParseAnalytics.trackEvent(name,dimensions);
+            //Countly.sharedInstance().recordEvent(name,dimensions,1);
+            FlurryAgent.endTimedEvent(name);
+        }
+        else {
+            System.out.println(TAG +":trackTimedEventStop not sending event "+name+" (with dimensions) to analytics service"+". Test harness said so");
+        }
+    }
+    public static void trackTimedEventStop(String name, java.util.Map<java.lang.String,java.lang.String> dimensions) {
+        if (app==null) {
+            Log.e(TAG,"trackTimedEventStop (with dimensions): app is null");
+            System.out.println(TAG+":trackTimedEventStop (withDimensions): app is null");
+            return;
+        }
+        //don't track anything if test harness active
+        if (!app.testHarnessActive) {
+            Log.d(TAG,"Sending stop of event "+name+" (with dimensions) to analytics service");
+            //ParseAnalytics.trackEvent(name,dimensions);
+            //Countly.sharedInstance().recordEvent(name,dimensions,1);
+            FlurryAgent.endTimedEvent(name,dimensions);
+        }
+        else {
+            System.out.println(TAG +":trackTimedEventStop not sending event "+name+" (with dimensions) to analytics service"+". Test harness said so");
+        }
+    }
+
     public static void trackEvent(String name) {
         if (app==null) {
             Log.e(TAG,"trackEvent: app is null");

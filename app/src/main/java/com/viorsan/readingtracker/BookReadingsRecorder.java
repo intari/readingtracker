@@ -214,6 +214,7 @@ public class BookReadingsRecorder {
         //TODO:describe this in privacy policy, and really think if we need THIS data in 3rd-party analytical systems
         MyAnalytics.trackEvent("readingSessionStarted", dimensions);
 
+        MyAnalytics.trackTimedEventStart("readingSession",dimensions);
 
 
     }
@@ -466,6 +467,7 @@ public class BookReadingsRecorder {
 
             //TODO:describe this in privacy policy, and really think if we need THIS data in 3rd-party analytical systems
             MyAnalytics.trackEvent("readingSessionCompleted", dimensions);
+            MyAnalytics.trackTimedEventStop("readingSession",dimensions);
 
             //clear data
 
