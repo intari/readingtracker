@@ -22,8 +22,10 @@ public class MyAnalytics {
 
     private static HashMap<String, String> userData = new HashMap<String, String>();
 
-    public static void init(MyApplication app,Context context) {
+    private static MyApplication app;
+    public static void init(MyApplication newApp,Context context) {
         Log.d(TAG,"init");
+        app=newApp;
         if (!app.testHarnessActive) {
             Countly.sharedInstance().init(context, BuildConfig.COUNTLY_SERVER, BuildConfig.COUNTLY_APP_KEY);
         }
@@ -33,7 +35,7 @@ public class MyAnalytics {
         userData.put(key,value);
     }
 
-    public static void sendUserData(MyApplication app) {
+    public static void sendUserData() {
         if (!app.testHarnessActive) {
             Bundle bundle=new Bundle();
             for (String key:userData.keySet()) {
@@ -51,7 +53,7 @@ public class MyAnalytics {
         Log.d(TAG,"stopnalytics()");
         Countly.sharedInstance().onStop();
     }
-    public static void trackAppOpened(MyApplication app,android.content.Intent intent) {
+    public static void trackAppOpened(android.content.Intent intent) {
         if (app==null) {
             Log.e(TAG,"trackAppOpened: app is null");
             System.out.println(TAG+":trackAppOpened: app is null");
@@ -66,7 +68,7 @@ public class MyAnalytics {
             System.out.println(TAG +":trackAppOpened not sending intent "+intent.toString()+" to analytics service"+". Test harness said so");
         }
     }
-    public static void trackEvent(MyApplication app,String name, java.util.Map<java.lang.String,java.lang.String> dimensions) {
+    public static void trackEvent(String name, java.util.Map<java.lang.String,java.lang.String> dimensions) {
         if (app==null) {
             Log.e(TAG,"trackEvent (with dimensions): app is null");
             System.out.println(TAG+":trackEvent (withDimensions): app is null");
@@ -82,7 +84,7 @@ public class MyAnalytics {
             System.out.println(TAG +":trackAppOpened not sending event "+name+" (with dimensions) to analytics service"+". Test harness said so");
         }
     }
-    public static void trackEvent(MyApplication app,String name) {
+    public static void trackEvent(String name) {
         if (app==null) {
             Log.e(TAG,"trackEvent: app is null");
             System.out.println(TAG+":trackEvent: app is null");

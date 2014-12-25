@@ -278,10 +278,12 @@ public class AccessibilityRecorderService extends AccessibilityService {
             if (event.getEventType()==AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED) {
                 if (event.getClassName().toString().equals("com.mantano.android.library.activities.LibraryActivity")) {
                     Log.i(TAG, "Switch to library");
+                    MyAnalytics.trackEvent("SwitchToLibrary");
                     BookReadingsRecorder.getBookReadingsRecorder(this.getBaseContext()).recordSwitchAwayFromBook(this.getBaseContext(), SystemClock.elapsedRealtime());
 
                 } else if (event.getClassName().toString().equals("com.mantano.android.reader.activities.AsyncReaderActivity")) {
                     Log.i(TAG, "Switch to reading");
+                    MyAnalytics.trackEvent("SwitchToReading");
                     BookReadingsRecorder.getBookReadingsRecorder(this.getBaseContext()).recordSwitchBackToCurrentBook(this.getBaseContext(), SystemClock.elapsedRealtime());
 
                 }
@@ -519,6 +521,8 @@ public class AccessibilityRecorderService extends AccessibilityService {
         if (ONLY_SCROBBLE) {
            Log.i(TAG, " scrobble-only mode");
         }
+
+        MyAnalytics.trackEvent("accessibilityServiceConnected");
 
         statusRequestReceiver=new BroadcastReceiver() {
             @Override

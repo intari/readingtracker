@@ -76,7 +76,7 @@ public class MyActivity extends FragmentActivity implements GoToAccessibilitySet
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        MyAnalytics.trackAppOpened(getMyApp(), getIntent());
+        MyAnalytics.trackAppOpened(getIntent());
         setContentView(R.layout.main);
         ButterKnife.inject(this);
         init();
@@ -89,7 +89,7 @@ public class MyActivity extends FragmentActivity implements GoToAccessibilitySet
         Log.d(TAG,"Signaling everybody that user was logged in");
         startService();
         //it will autostop if no user active
-        MyAnalytics.trackEvent(getMyApp(),"userLogin");
+        MyAnalytics.trackEvent("userLogin");
     }
     private void handleUserLogout() {
         //ask core service to stop
@@ -97,18 +97,20 @@ public class MyActivity extends FragmentActivity implements GoToAccessibilitySet
         Intent intent = new Intent(CoreService.USER_LOGGED_OUT_REPORT);
         LocalBroadcastManager.getInstance(getBaseContext()).sendBroadcast(intent);
         Log.d(TAG,"Signeled everybody that user was logged out");
-        MyAnalytics.trackEvent(getMyApp(),"userLogout");
+        MyAnalytics.trackEvent("userLogout");
     }
     @OnClick(R.id.login_or_logout_button)
     public void loginLogoutButtonClicked(View v) {
         if (currentUser != null) {
             // User clicked to log out.
+            MyAnalytics.trackEvent("userClickedLogoutButton");
             ParseUser.logOut();
             currentUser = null;
             handleUserLogout();
             showProfileLoggedOut();
         } else {
             // User clicked to log in.
+            MyAnalytics.trackEvent("userClickedLoginButton");
             ParseLoginBuilder loginBuilder = new ParseLoginBuilder(
                     MyActivity.this);
             /*loginBuilder
@@ -278,7 +280,7 @@ public class MyActivity extends FragmentActivity implements GoToAccessibilitySet
                     Log.d(TAG,"yes it is - asking");
                     goToSettingsToEnableAccessibilityServiceDialogShown=true;
 
-                    MyAnalytics.trackEvent(getMyApp(),"userAskedToGoToAccSettings");
+                    MyAnalytics.trackEvent("userAskedToGoToAccSettings");
                     showGoToAccessibilitySettingsDialog();
                     Log.d(TAG,"yes it is - asked");
                 }
@@ -379,7 +381,7 @@ public class MyActivity extends FragmentActivity implements GoToAccessibilitySet
     public void onGoToAccessibilitySettingsDialogPositiveClick(GoToAccessibilitySettingsDialogFragment dialog) {
         // Users wants to go to settings
         Log.d(TAG,"User chooses to go to settings");
-        MyAnalytics.trackEvent(getMyApp(),"userWentToAccSettings");
+        MyAnalytics.trackEvent("userWentToAccSettings");
         openAccessibilitySettings();
     }
     // implementation of GoToAccessibilitySettingsDialogListener
@@ -387,7 +389,7 @@ public class MyActivity extends FragmentActivity implements GoToAccessibilitySet
         // User cancelled the dialog
         Log.d(TAG,"User chooses not to go to settings");
 
-        MyAnalytics.trackEvent(getMyApp(),"userDeclinedAccSettings");
+        MyAnalytics.trackEvent("userDeclinedAccSettings");
     }
     // open Accessibility settings
     private void openAccessibilitySettings() {
