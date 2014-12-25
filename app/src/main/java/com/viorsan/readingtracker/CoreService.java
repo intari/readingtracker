@@ -22,7 +22,6 @@ import java.util.*;
 public class CoreService extends Service  {
 
 
-    public static final String REPORT_TYPE_DEVICE_REPORT = "DeviceReport";
     public static final String FAKEAPP_DEVICELOCKED = "com.viorsan.readingtracker.DeviceLocked";
     public static final String FAKEAPP_SCREENOFF = "com.viorsan.readingtracker.ScreenOff";
 
@@ -259,10 +258,6 @@ public class CoreService extends Service  {
 
         report.put("deviceId",ourDeviceID);
 
-        //don't save link to this object itself
-        if (report.getClassName()!=REPORT_TYPE_DEVICE_REPORT) {
-            report.put("device",mDetails);
-        }
 
         java.util.Date date = new java.util.Date();
 
@@ -300,78 +295,7 @@ public class CoreService extends Service  {
     }
 
 
-    private void reportDeviceInfo() {
 
-        ParseQuery query = new ParseQuery(REPORT_TYPE_DEVICE_REPORT);
-        query.whereEqualTo("deviceId",ourDeviceID);
-
-
-        query.findInBackground(new FindCallback<ParseObject>() {
-            @Override
-            public void done(List<ParseObject> list, ParseException e) {
-
-                if (e == null) {
-                    if (list.size()>0) {
-                        Log.w(TAG,"retrived list with "+list.size()+" elements for deviceInfoList. killing extra");
-                        for (ParseObject obj:list) {
-                            obj.deleteInBackground();
-                        }
-                    }
-                    Log.i(TAG, "calling reportDeviceInfoReal in async way");
-                    reportDeviceInfoReal();
-                } else {
-                    Log.e(TAG,"Exception "+e.toString());
-                }
-            }
-        });
-
-    }
-    private void reportDeviceInfoReal() {
-        if (mDetails ==null) {
-            mDetails =new ParseObject(REPORT_TYPE_DEVICE_REPORT);
-        }
-
-        DeviceInfoManager deviceInfoManager = new DeviceInfoManager();
-
-        String runtimeName=deviceInfoManager.getCurrentRuntimeValue();
-
-        mDetails.put("systemName", "Android");
-        mDetails.put("systemVersion", Build.VERSION.RELEASE);
-        mDetails.put("model", Build.PRODUCT);
-
-        mDetails.put("platformString", Build.MODEL);
-        mDetails.put("platform", Build.BOARD);
-        mDetails.put("hwModel", Build.HARDWARE);
-        mDetails.put("bootloader",Build.BOOTLOADER);
-        mDetails.put("userVisibleBuildID",Build.DISPLAY);
-        mDetails.put("fingerprint",Build.FINGERPRINT);
-        mDetails.put("manufacturer",Build.MANUFACTURER);
-        mDetails.put("brand",Build.BRAND);
-
-        mDetails.put("runtime",runtimeName);
-
-
-
-        Log.i(TAG,"Device Identifier:"+ourDeviceID);
-
-
-
-        //Phone network details
-        TelephonyManager telephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
-
-        if (telephonyManager.getNetworkOperatorName()!=null) {
-            mDetails.put("operatorName", telephonyManager.getNetworkOperatorName());
-        }
-        if (telephonyManager.getSimCountryIso()!=null) {
-            mDetails.put("simCountryCode", telephonyManager.getSimCountryIso());
-        }
-        if (telephonyManager.getSimOperatorName()!=null) {
-            mDetails.put("simOperatorName", telephonyManager.getSimOperatorName());
-        }
-
-
-        saveReportToParse(mDetails);
-    }
 
 
     protected void showToast(String message) {
@@ -436,7 +360,7 @@ public class CoreService extends Service  {
             return;
         }
         userLoggedIn=true;
-        reportDeviceInfo();
+
 
         sessionId = System.currentTimeMillis();
         nextRequestId = 0L;
