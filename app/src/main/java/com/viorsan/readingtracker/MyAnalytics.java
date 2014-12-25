@@ -41,7 +41,11 @@ public class MyAnalytics {
     public static void provideUserdata(String key, String value) {
         userData.put(key,value);
     }
-
+    public static void setUserId(String userId) {
+        if (!app.testHarnessActive) {
+            FlurryAgent.setUserId(userId);
+        }
+    }
     public static void sendUserData() {
         if (!app.testHarnessActive) {
             Bundle bundle=new Bundle();

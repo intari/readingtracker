@@ -90,6 +90,16 @@ public class MyActivity extends FragmentActivity implements GoToAccessibilitySet
         startService();
         //it will autostop if no user active
         MyAnalytics.trackEvent("userLogin");
+        ParseUser currentUser=ParsePlatformUtils.getCurrentParseUser();
+
+        if (currentUser!=null) {
+            MyAnalytics.setUserId(currentUser.getUsername());
+        }
+        else
+        {
+            MyAnalytics.trackEvent("userLoginNoCurrentUser");
+            Log.d(TAG,"handleUserLogin but no current user?!");
+        }
     }
     private void handleUserLogout() {
         //ask core service to stop
