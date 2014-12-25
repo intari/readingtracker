@@ -66,8 +66,6 @@ public class CoreService extends Service  {
     private BroadcastReceiver userLoggedOutReceiver;
 
 
-
-    private static ParseObject mDetails =null;
     private static final String CURRENT_SESSION_ID = "CURRENT_SESSION_ID";
     private static final String CURRENT_REQUEST_ID = "CURRENT_REQUEST_ID";
 
@@ -249,10 +247,6 @@ public class CoreService extends Service  {
     private Boolean saveReportToParseReal(ParseObject report) {
         if (!userLoggedIn) {
             Log.d(TAG,"User is not logged in. Will not send reports");
-            return Boolean.FALSE;
-        }
-        if (mDetails==null) {
-            Log.i(TAG, "Cannot save report to Parse. No device details. Report type was "+report.getClassName());
             return Boolean.FALSE;
         }
 
