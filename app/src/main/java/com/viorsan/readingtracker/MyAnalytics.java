@@ -53,14 +53,14 @@ public class MyAnalytics {
         }
     }
     public static void startAnalyticsWithContext(Context context) {
-        Log.d(TAG,"startAnalyticsNoAppContext()");
+        Log.d(TAG,"startAnalyticsWithContext()");
         if (!app.testHarnessActive) {
             FlurryAgent.onStartSession(context);
         }
     }
 
     public static void stopAnalyticsWithContext(Context context) {
-        Log.d(TAG,"stopAnalyticsNoAppContext()");
+        Log.d(TAG,"stopAnalyticsWithContext()");
         if (!app.testHarnessActive) {
             FlurryAgent.onEndSession(context);
         }
