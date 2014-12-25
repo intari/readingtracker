@@ -206,6 +206,13 @@ public class BookReadingsRecorder {
         recordPageSwitch(context,timestamp,pageNumbers);
 
 
+        Map<String, String> dimensions = new HashMap<String, String>();
+        dimensions.put(BOOK_TITLE,currentBookTitle);
+        dimensions.put(BOOK_AUTHOR,currentBookAuthor);
+        dimensions.put(BOOK_TAGS,currentBookTags);
+
+        MyAnalytics.trackEvent("readingSessionStarted", dimensions);
+
 
 
     }
