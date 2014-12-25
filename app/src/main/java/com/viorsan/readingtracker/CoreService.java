@@ -344,6 +344,7 @@ public class CoreService extends Service  {
         CoreService.writeLogBanner("", getApplicationContext());
 
         ParseConfigHelper.refreshConfig();
+        MyAnalytics.startAnalyticsWithContext(this);
         
         ourDeviceID = new DeviceInfoManager().getDeviceId(getBaseContext());
 
@@ -558,6 +559,7 @@ public class CoreService extends Service  {
         stopReceivers();
         stopForeground(true);
         Log.d(TAG,"Called stopForeground()");
+        MyAnalytics.startAnalyticsWithContext(this);
     }
 
 }

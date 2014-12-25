@@ -521,7 +521,6 @@ public class AccessibilityRecorderService extends AccessibilityService {
         if (ONLY_SCROBBLE) {
            Log.i(TAG, " scrobble-only mode");
         }
-
         MyAnalytics.trackEvent("accessibilityServiceConnected");
 
         statusRequestReceiver=new BroadcastReceiver() {
@@ -559,6 +558,7 @@ public class AccessibilityRecorderService extends AccessibilityService {
         if (ONLY_SCROBBLE) {
            Log.i(TAG, "scrobble-only mode");
         }
+        MyAnalytics.startAnalyticsWithContext(this);
 
         //do periodic config updates in case we need them, preliminary version
         new CountDownTimer(CoreService.YEAR_IN_MS, ParseConfigHelper.configRefreshInterval) {
@@ -575,6 +575,12 @@ public class AccessibilityRecorderService extends AccessibilityService {
 
             public  void  onFinish() {}
         }.start();
+
+    }
+    @Override
+    public void onDestroy() {
+        Log.d(TAG,"OnDestroy() called");
+        MyAnalytics.stopAnalyticsWithContext(this);
 
     }
 

@@ -163,6 +163,10 @@ android {
                     def countlyServer=apiKeysProps['COUNTLY_SERVER']
                     def countlyAppKey=apiKeysProps['COUNTLY_APPKEY']
 
+                    //Flurry
+                    def flurryApiKey=apiKeysProps['FLURRY_APIKEY']
+
+
                     //prevent empty values
                     if (parseAppId==null) {
                         throw new GradleException("Parse APP ID not configured but API Key file was here");
@@ -216,6 +220,7 @@ android {
 
                     buildConfigField "String","COUNTLY_SERVER", "\""+countlyServer+"\""
                     buildConfigField "String","COUNTLY_APP_KEY","\""+countlyAppKey+"\""
+                    buildConfigField "String","FLURRY_API_KEY","\""+flurryApiKey+"\""
 
                     buildConfigField "String","BUILDER_TYPE","\"internal\""
                     //we now have all info, ask for version code
@@ -235,6 +240,7 @@ android {
 
                         buildConfigField "String","COUNTLY_SERVER", "\""+System.getenv('COUNTLY_SERVER')+"\""
                         buildConfigField "String","COUNTLY_APP_KEY","\""+System.getenv('COUNTLY_APP_KEY')+"\""
+                        buildConfigField "String","FLURRY_API_KEY","\""+""+"\""
 
                         buildConfigField "String","BUILDER_TYPE","\"Travis CI\""
 
@@ -278,6 +284,9 @@ android {
                         def countlyServer=apiKeysProps['COUNTLY_SERVER']
                         def countlyAppKey=apiKeysProps['COUNTLY_APPKEY']
 
+                        //Flurry
+                        def flurryApiKey=apiKeysProps['FLURRY_APIKEY']
+
                         //prevent empty values
                         if (parseAppId==null) {
                             throw new GradleException("Playstore Release:Parse APP ID not configured but API Key file was here");
@@ -294,7 +303,9 @@ android {
                         if (countlyAppKey==null) {
                             throw new GradleException("Playstore Release:Count.ly App Key not configured not configured but API Key file was here");
                         }
-
+                        if (flurryApiKey==null) {
+                            throw new GradleException("Playstore Release:Flurry Api Key not configured not configured but API Key file was here");
+                        }
 
                         /*
                         if (versionCodeNetworkURL==null) {
@@ -312,6 +323,7 @@ android {
 
                         buildConfigField "String","COUNTLY_SERVER", "\""+countlyServer+"\""
                         buildConfigField "String","COUNTLY_APP_KEY","\""+countlyAppKey+"\""
+                        buildConfigField "String","FLURRY_API_KEY","\""+flurryApiKey+"\""
 
                         buildConfigField "String","BUILDER_TYPE","\"internal\""
 
@@ -426,6 +438,7 @@ dependencies {
     compile files('libs/acra-4.4.0.jar')
     compile files('libs/json-simple-1.1.1.jar')
     compile files('libs/jmdns-3.4.1.jar')
+    compile files('libs/FlurryAnalytics-5.0.0.jar')
     compile 'com.jakewharton:butterknife:6.0.0' //https://jakewharton.github.io/butterknife/
     compile "com.android.support:support-v4:21.0.3"
     compile 'ly.count:sdk-android:+'

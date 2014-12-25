@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+
+import com.flurry.android.FlurryAgent;
 import com.parse.ParseAnalytics;
 
 import java.util.HashMap;
@@ -28,6 +30,11 @@ public class MyAnalytics {
         app=newApp;
         if (!app.testHarnessActive) {
             Countly.sharedInstance().init(context, BuildConfig.COUNTLY_SERVER, BuildConfig.COUNTLY_APP_KEY);
+
+            // configure Flurry
+            FlurryAgent.setLogEnabled(false);
+            // init Flurry
+            FlurryAgent.init(context, BuildConfig.FLURRY_API_KEY);
         }
 
     }
@@ -43,6 +50,19 @@ public class MyAnalytics {
             }
             Countly.sharedInstance().setUserData(bundle);
 
+        }
+    }
+    public static void startAnalyticsWithContext(Context context) {
+        Log.d(TAG,"startAnalyticsNoAppContext()");
+        if (!app.testHarnessActive) {
+            FlurryAgent.onStartSession(context);
+        }
+    }
+
+    public static void stopAnalyticsWithContext(Context context) {
+        Log.d(TAG,"stopAnalyticsNoAppContext()");
+        if (!app.testHarnessActive) {
+            FlurryAgent.onEndSession(context);
         }
     }
     public static void startAnalytics() {
@@ -83,6 +103,7 @@ public class MyAnalytics {
             Log.d(TAG,"Sending event "+name+" (with dimensions) to analytics service");
             ParseAnalytics.trackEvent(name,dimensions);
             Countly.sharedInstance().recordEvent(name,dimensions,1);
+            FlurryAgent.logEvent(name,dimensions);
         }
         else {
             System.out.println(TAG +":trackAppOpened not sending event "+name+" (with dimensions) to analytics service"+". Test harness said so");
@@ -99,6 +120,7 @@ public class MyAnalytics {
             Log.d(TAG,"Sending event "+name+" to analytics service");
             ParseAnalytics.trackEvent(name);
             Countly.sharedInstance().recordEvent(name,1);
+            FlurryAgent.logEvent(name);
         }
         else {
             System.out.println(TAG +":trackAppOpened not sending event "+name+" to analytics service"+". Test harness said so");

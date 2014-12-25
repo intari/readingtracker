@@ -457,12 +457,14 @@ public class MyActivity extends FragmentActivity implements GoToAccessibilitySet
     protected void onStop()
     {
         Log.d(TAG,"stop");
+        MyAnalytics.stopAnalyticsWithContext(this);
         super.onStop();
     }
     protected void onStart()
     {
         super.onStart();
         Log.d(TAG, "start");
+        MyAnalytics.startAnalyticsWithContext(this);
         currentUser = ParsePlatformUtils.getCurrentParseUser();
         if (currentUser != null) {
             showProfileLoggedIn();
