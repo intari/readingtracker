@@ -72,7 +72,7 @@ public class MyAnalytics {
         }
     }
     public static void stopAnalytics() {
-        Log.d(TAG,"stopnalytics()");
+        Log.d(TAG,"stopAnalytics()");
         if (!app.testHarnessActive) {
             Countly.sharedInstance().onStop();
         }
