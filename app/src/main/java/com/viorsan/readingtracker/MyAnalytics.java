@@ -47,11 +47,15 @@ public class MyAnalytics {
     }
     public static void startAnalytics() {
         Log.d(TAG,"startAnalytics()");
-        Countly.sharedInstance().onStart();
+        if (!app.testHarnessActive) {
+            Countly.sharedInstance().onStart();
+        }
     }
     public static void stopAnalytics() {
         Log.d(TAG,"stopnalytics()");
-        Countly.sharedInstance().onStop();
+        if (!app.testHarnessActive) {
+            Countly.sharedInstance().onStop();
+        }
     }
     public static void trackAppOpened(android.content.Intent intent) {
         if (app==null) {
