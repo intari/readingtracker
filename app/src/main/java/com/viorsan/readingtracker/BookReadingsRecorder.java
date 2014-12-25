@@ -211,6 +211,7 @@ public class BookReadingsRecorder {
         dimensions.put(BOOK_AUTHOR,currentBookAuthor);
         dimensions.put(BOOK_TAGS,currentBookTags);
 
+        //TODO:describe this in privacy policy, and really think if we need THIS data in 3rd-party analytical systems
         MyAnalytics.trackEvent("readingSessionStarted", dimensions);
 
 
@@ -463,6 +464,7 @@ public class BookReadingsRecorder {
             Double totalReadingSessionTime=totalTimeForCurrentBook/MS_IN_SECOND;
             dimensions.put(READING_SESSION_TIME,totalReadingSessionTime.toString());
 
+            //TODO:describe this in privacy policy, and really think if we need THIS data in 3rd-party analytical systems
             MyAnalytics.trackEvent("readingSessionCompleted", dimensions);
 
             //clear data
