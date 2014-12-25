@@ -63,6 +63,17 @@ public class MyApplication extends android.app.Application {
 
         System.out.println(TAG +":OnCreate, calling super's one");
         super.onCreate();
+        System.out.println(TAG +":OnCreate, init & start analytics");
+
+        MyAnalytics.init(this,getApplicationContext());
+        MyAnalytics.startAnalytics();
+
+    }
+    @Override public void onTerminate() {
+        System.out.println(TAG +":OnTerminate");
+        MyAnalytics.stopAnalytics();
+
+        super.onTerminate();
     }
 }
 

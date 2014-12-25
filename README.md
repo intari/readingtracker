@@ -73,6 +73,8 @@ Code will not build correctly without them.
   * PARSE_CLIENT_KEY_FOR_TEST_HARNESS=not currently used but something must be put here
   * PARSE_USERNAME_FOR_TEST_HARNESS=not currently used but something must be put here
   * PARSE_PASSWORD_FOR_TEST_HARNESS=not currently used but something must be put here
+  * COUNTLY_SERVER = count.ly analytics server URL
+  * COUNTLY_APPKEY = count.ly analytics App Key
   * TODO:describe others
   you can change paths in gradle.properties
 
@@ -187,6 +189,8 @@ ParseUI-Android разумеется под своей собственной л
   * PARSE_CLIENT_KEY_FOR_TEST_HARNESS=пока не используется но указать что-то надо
   * PARSE_USERNAME_FOR_TEST_HARNESS=пока не используется но указать что-то надо
   * PARSE_PASSWORD_FOR_TEST_HARNESS=пока не используется но указать что-то надо
+  * COUNTLY_SERVER = count.ly analytics server URL
+  * COUNTLY_APPKEY = count.ly analytics App Key
   * TODO:остально (про систему работы с versionCode)
   пути можно помять в  gradle.properties
 
