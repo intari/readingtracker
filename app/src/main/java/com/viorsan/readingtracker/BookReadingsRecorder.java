@@ -210,6 +210,8 @@ public class BookReadingsRecorder {
         dimensions.put(BOOK_TITLE,currentBookTitle);
         dimensions.put(BOOK_AUTHOR,currentBookAuthor);
         dimensions.put(BOOK_TAGS,currentBookTags);
+        dimensions.put(CURRENT_PAGE,currentPage);
+        dimensions.put(TOTAL_PAGES,currentTotalPages);
 
         //TODO:describe this in privacy policy, and really think if we need THIS data in 3rd-party analytical systems
         MyAnalytics.trackEvent("readingSessionStarted", dimensions);
