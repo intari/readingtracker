@@ -399,10 +399,11 @@ public class BookReadingsRecorder {
                 topActivity.equals(AccessibilityRecorderService.MANTANO_READER_LITE_PACKAGE_NAME)) */
                 ){
             Log.i(TAG, "current activity is not reading app. it's "+topActivity+"|");
+            MyAnalytics.stopAnalyticsWithContext(context);
             recordSwitchAwayFromBook(context, SystemClock.elapsedRealtime());
         }
         else {
-
+            MyAnalytics.startAnalyticsWithContext(context);
             MyAnalytics.trackEvent("userIsInSupportedReadingApp");
         }
 
