@@ -51,6 +51,7 @@ public class BookReadingsRecorder {
     public static final double MS_IN_SECOND = 1000.0;
     public static final String STARTED_PAGE = "startedPage";
     public static final String PAGES_READ = "pagesRead";
+    public static final String END_PAGE = "endPage";
 
 
     private static BookReadingsRecorder self=null;
@@ -448,6 +449,7 @@ public class BookReadingsRecorder {
             //report.put(READING_SESSION_TIME_MS,totalTimeForCurrentBook);
             report.put(READING_SESSION_TIME,totalTimeForCurrentBook/MS_IN_SECOND);
             report.put(DEVICE_TYPE,deviceInfoString);
+            report.put(END_PAGE,lastCurrentPage);
 
             report.put(STARTED_PAGE,startedPage);
             long pagesRead=Long.valueOf(currentPage);
@@ -475,10 +477,10 @@ public class BookReadingsRecorder {
             //report analytics
 
             Map<String, String> dimensions = new HashMap<String, String>();
-            dimensions.put(BOOK_TITLE,lastBookTitle);
-            dimensions.put(BOOK_AUTHOR,lastBookAuthor);
-            dimensions.put(BOOK_TAGS,lastBookTags);
-            dimensions.put(CURRENT_PAGE,lastCurrentPage);
+            dimensions.put(BOOK_TITLE,currentBookTitle);
+            dimensions.put(BOOK_AUTHOR,currentBookAuthor);
+            dimensions.put(BOOK_TAGS,currentBookTags);
+            dimensions.put(END_PAGE,lastCurrentPage);
             Double totalReadingSessionTime=totalTimeForCurrentBook/MS_IN_SECOND;
             dimensions.put(READING_SESSION_TIME,totalReadingSessionTime.toString());
             dimensions.put(STARTED_PAGE,Long.valueOf(startedPage).toString());
