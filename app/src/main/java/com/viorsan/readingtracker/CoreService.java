@@ -79,8 +79,7 @@ public class CoreService extends Service  {
             Long res=nextRequestId;
             nextRequestId=nextRequestId+1L;
             //store request identifier
-            Context context=this.getBaseContext();
-            SharedPreferences sharedPreferences = context.getSharedPreferences(CURRENT_SESSION_ID, Context.MODE_PRIVATE);
+            SharedPreferences sharedPreferences = this.getSharedPreferences(CURRENT_SESSION_ID, Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putLong(CURRENT_REQUEST_ID,res);
             editor.commit();
@@ -125,7 +124,7 @@ public class CoreService extends Service  {
     /* TODO: make it use keyguard */
     public void onDeviceLock() {
         Log.i(TAG,"Device locked");
-        BookReadingsRecorder.getBookReadingsRecorder(this.getBaseContext()).recordSwitchAwayFromBook(this.getBaseContext(),SystemClock.elapsedRealtime());
+        BookReadingsRecorder.getBookReadingsRecorder(this).recordSwitchAwayFromBook(this,SystemClock.elapsedRealtime());
 
         isDeviceLocked = true;
         //updateActiveProcessList();
@@ -134,7 +133,7 @@ public class CoreService extends Service  {
     public void onDreamingStarted() {
 
         Log.i(TAG,"Dreaming started");
-        BookReadingsRecorder.getBookReadingsRecorder(this.getBaseContext()).recordSwitchAwayFromBook(this.getBaseContext(),SystemClock.elapsedRealtime());
+        BookReadingsRecorder.getBookReadingsRecorder(this).recordSwitchAwayFromBook(this,SystemClock.elapsedRealtime());
 
     }
 
@@ -154,7 +153,7 @@ public class CoreService extends Service  {
 
     public void onScreenOff() {
         Log.i(TAG,"Screen is off");
-        BookReadingsRecorder.getBookReadingsRecorder(this.getBaseContext()).recordSwitchAwayFromBook(this.getBaseContext(),SystemClock.elapsedRealtime());
+        BookReadingsRecorder.getBookReadingsRecorder(this).recordSwitchAwayFromBook(this,SystemClock.elapsedRealtime());
 
         isDeviceScreenOff = true;
         updateActiveProcessList();
@@ -190,7 +189,7 @@ public class CoreService extends Service  {
         if (!newForegroundTask.equals(previousForegroundTask)) {
 
             /* Book Scrobbler logic */
-            BookReadingsRecorder.getBookReadingsRecorder(this.getBaseContext()).checkIfReadingAppActive(this.getBaseContext());
+            BookReadingsRecorder.getBookReadingsRecorder(this).checkIfReadingAppActive(this);
 
 
             long now = SystemClock.elapsedRealtime();
@@ -246,7 +245,7 @@ public class CoreService extends Service  {
     }
     private Boolean saveReportToParseReal(ParseObject report) {
         if (!userLoggedIn) {
-            Log.d(TAG,"User is not logged in. Will not send reports");
+            Log.d(TAG, "User is not logged in. Will not send reports");
             return Boolean.FALSE;
         }
 
@@ -328,7 +327,7 @@ public class CoreService extends Service  {
         }
         Log.i(TAG," BuilderType:"+BuildConfig.BUILDER_TYPE);
         Log.i(TAG," Built on "+BuildConfig.BUILD_HOST+ " of type "+BuildConfig.BUILDER_TYPE+ " by user "+ BuildConfig.BUILD_USER);
-
+        Log.i(TAG," Flurry release:"+ FlurryAgent.getReleaseVersion());
 
 
 
@@ -346,7 +345,7 @@ public class CoreService extends Service  {
         ParseConfigHelper.refreshConfig();
         MyAnalytics.startAnalyticsWithContext(this);
         
-        ourDeviceID = new DeviceInfoManager().getDeviceId(getBaseContext());
+        ourDeviceID = new DeviceInfoManager().getDeviceId(this);
 
         ParseUser currentUser=ParseUser.getCurrentUser();
         if (currentUser==null) {
@@ -364,8 +363,7 @@ public class CoreService extends Service  {
         Log.i(TAG, "Checking for session restart. new SID:" + sessionId + ". RID:" + nextRequestId);
 
 
-        Context context=this.getBaseContext();
-        SharedPreferences sharedPreferences = context.getSharedPreferences(CURRENT_SESSION_ID, Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences(CURRENT_SESSION_ID, Context.MODE_PRIVATE);
         Long oldSID=sharedPreferences.getLong(CURRENT_SESSION_ID,sessionId);
         if (oldSID!=sessionId)
         {
@@ -397,7 +395,7 @@ public class CoreService extends Service  {
 
         appActivationTime = SystemClock.elapsedRealtime();
 
-        BookReadingsRecorder.getBookReadingsRecorder(this.getBaseContext()).setMasterService(this);
+        BookReadingsRecorder.getBookReadingsRecorder(this).setMasterService(this);
 
 
         //TODO:don't do this in deep sleep
