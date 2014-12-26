@@ -121,12 +121,14 @@ public class CoreService extends Service  {
 
         isDeviceLocked = false;
         //updateActiveProcessList();
+        MyAnalytics.trackEvent("DeviceUnlocked");
     }
 
     /* TODO: make it use keyguard */
     public void onDeviceLock() {
         Log.i(TAG,"Device locked");
         BookReadingsRecorder.getBookReadingsRecorder(this).recordSwitchAwayFromBook(this,SystemClock.elapsedRealtime());
+        MyAnalytics.trackEvent("DeviceLocked");
 
         isDeviceLocked = true;
         //updateActiveProcessList();
@@ -136,12 +138,14 @@ public class CoreService extends Service  {
 
         Log.i(TAG,"Dreaming started");
         BookReadingsRecorder.getBookReadingsRecorder(this).recordSwitchAwayFromBook(this,SystemClock.elapsedRealtime());
+        MyAnalytics.trackEvent("DreamingStarted");
 
     }
 
     public void onDreamingStopped() {
 
         Log.i(TAG,"Dreaming stopped");
+        MyAnalytics.trackEvent("DreamingStopped");
 
     }
 
@@ -151,12 +155,13 @@ public class CoreService extends Service  {
 
         isDeviceScreenOff = false;
         updateActiveProcessList();
+        MyAnalytics.trackEvent("ScreenOn");
     }
 
     public void onScreenOff() {
         Log.i(TAG,"Screen is off");
         BookReadingsRecorder.getBookReadingsRecorder(this).recordSwitchAwayFromBook(this,SystemClock.elapsedRealtime());
-
+        MyAnalytics.trackEvent("ScreenOff");
         isDeviceScreenOff = true;
         updateActiveProcessList();
     }
