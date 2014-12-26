@@ -210,20 +210,19 @@ public class BookReadingsRecorder {
 
         writeLastBookInfo(context,timestamp, currentBookTitle, currentBookAuthor,currentBookTags);
         numPagePageSwitches=0;
-        recordPageSwitch(context,timestamp,pageNumbers);
-
 
         Map<String, String> dimensions = new HashMap<String, String>();
         dimensions.put(BOOK_TITLE,currentBookTitle);
         dimensions.put(BOOK_AUTHOR,currentBookAuthor);
         dimensions.put(BOOK_TAGS,currentBookTags);
-        startedPage=Long.valueOf(currentPage);
 
         //TODO:describe this in privacy policy, and really think if we need THIS data in 3rd-party analytical systems
         MyAnalytics.trackEvent("readingSessionStarted", dimensions);
 
         MyAnalytics.trackTimedEventStart("readingSession",dimensions);
 
+        recordPageSwitch(context,timestamp,pageNumbers);
+        startedPage=Long.valueOf(currentPage);
 
     }
     private void updateStatusRequestReceiver(Context outerContext) {
