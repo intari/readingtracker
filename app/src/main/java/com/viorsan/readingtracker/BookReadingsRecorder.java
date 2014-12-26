@@ -49,6 +49,8 @@ public class BookReadingsRecorder {
     public static final double MIN_SECONDS_TO_READ_PAGE = 1.0;
     public static final double MAX_SECONDS_TO_READ_PAGE = 180.0;
     public static final double MS_IN_SECOND = 1000.0;
+    public static final String STARTED_PAGE = "startedPage";
+    public static final String PAGES_READ = "pagesRead";
 
 
     private static BookReadingsRecorder self=null;
@@ -119,6 +121,7 @@ public class BookReadingsRecorder {
     String lastBookTags;
     long  totalTimeForLastBook;
 
+    long startedPage=0;
 
     private MyApplication getMyApp() {
         if (mMasterService!=null) {
@@ -210,8 +213,7 @@ public class BookReadingsRecorder {
         dimensions.put(BOOK_TITLE,currentBookTitle);
         dimensions.put(BOOK_AUTHOR,currentBookAuthor);
         dimensions.put(BOOK_TAGS,currentBookTags);
-        dimensions.put(CURRENT_PAGE,currentPage);
-        dimensions.put(TOTAL_PAGES,currentTotalPages);
+        startedPage=Long.valueOf(currentPage);
 
         //TODO:describe this in privacy policy, and really think if we need THIS data in 3rd-party analytical systems
         MyAnalytics.trackEvent("readingSessionStarted", dimensions);
@@ -334,6 +336,8 @@ public class BookReadingsRecorder {
 
 
 
+
+
             /* Current page.
                For Mantano this means ADE page.
                see https://www.evernote.com/shard/s11/nl/1252762/ddd07bc4-afd1-4d5e-8331-899db04957f7/
@@ -360,7 +364,13 @@ public class BookReadingsRecorder {
                 Log.e(TAG,"BookReadingsRecorder:RecordPageSwitch:No master service!!!");
             }
 
+            Map<String, String> dimensions = new HashMap<String, String>();
+            dimensions.put(BOOK_TITLE,currentBookTitle);
+            dimensions.put(BOOK_AUTHOR,currentBookAuthor);
+            dimensions.put(BOOK_TAGS,currentBookTags);
+            dimensions.put(TIME_PASSED,Double.valueOf(timePassedInSeconds).toString());
 
+            MyAnalytics.trackTimedEventStart("pageRead",dimensions);
 
 
 
@@ -439,6 +449,10 @@ public class BookReadingsRecorder {
             report.put(READING_SESSION_TIME,totalTimeForCurrentBook/MS_IN_SECOND);
             report.put(DEVICE_TYPE,deviceInfoString);
 
+            report.put(STARTED_PAGE,startedPage);
+            long pagesRead=Long.valueOf(currentPage);
+            report.put(PAGES_READ,pagesRead);
+
 
 
             if (totalTimeForCurrentBook > MIN_SECONDS_TO_READ_PAGE) {
@@ -467,6 +481,8 @@ public class BookReadingsRecorder {
             dimensions.put(CURRENT_PAGE,lastCurrentPage);
             Double totalReadingSessionTime=totalTimeForCurrentBook/MS_IN_SECOND;
             dimensions.put(READING_SESSION_TIME,totalReadingSessionTime.toString());
+            dimensions.put(STARTED_PAGE,Long.valueOf(startedPage).toString());
+            dimensions.put(PAGES_READ,Long.valueOf(pagesRead).toString());
 
             //TODO:describe this in privacy policy, and really think if we need THIS data in 3rd-party analytical systems
             MyAnalytics.trackEvent("readingSessionCompleted", dimensions);
