@@ -52,6 +52,7 @@ public class BookReadingsRecorder {
     public static final String STARTED_PAGE = "startedPage";
     public static final String PAGES_READ = "pagesRead";
     public static final String END_PAGE = "endPage";
+    public static final String NUM_PAGE_SWITCHES = "numPageSwitches";
 
 
     private static BookReadingsRecorder self=null;
@@ -122,7 +123,8 @@ public class BookReadingsRecorder {
     String lastBookTags;
     long  totalTimeForLastBook;
 
-    long startedPage=0;
+    long startedPage=0;//starting page, using to calculate amount of pages read
+    long numPagePageSwitches=0;//total number of page switches
 
     private MyApplication getMyApp() {
         if (mMasterService!=null) {
@@ -207,6 +209,7 @@ public class BookReadingsRecorder {
         prevCurrentPage="";
 
         writeLastBookInfo(context,timestamp, currentBookTitle, currentBookAuthor,currentBookTags);
+        numPagePageSwitches=0;
         recordPageSwitch(context,timestamp,pageNumbers);
 
 
@@ -314,10 +317,22 @@ public class BookReadingsRecorder {
 
             prevCurrentPage=pageNumbers;
 
+            numPagePageSwitches++;
             if (timePassedInSeconds >MAX_SECONDS_TO_READ_PAGE) {
                 Log.i(TAG,"BookReadingsRecorder:RecordPageSwitch:read for more  than "+MAX_SECONDS_TO_READ_PAGE+" seconds. Only "+timePassedInSeconds+" seconds. Assuming user was away. Not recording.early exit");
                 //account for time used!
                 //currentTimestamp=currentTimestamp-timePassed;//ignore this page at all
+                Map<String, String> dimensions = new HashMap<String, String>();
+                dimensions.put(BOOK_TITLE,currentBookTitle);
+                dimensions.put(BOOK_AUTHOR,currentBookAuthor);
+                dimensions.put(BOOK_TAGS,currentBookTags);
+                dimensions.put(CURRENT_PAGE,currentPage);
+                dimensions.put(TOTAL_PAGES,totalPages);
+                dimensions.put(NUM_PAGE_SWITCHES,Long.valueOf(numPagePageSwitches).toString());
+                dimensions.put(TIME_PASSED,Double.valueOf(timePassedInSeconds).toString());
+
+                MyAnalytics.trackTimedEventStart("pageReadTooLong",dimensions);
+
                 return;
             }
 
@@ -356,6 +371,7 @@ public class BookReadingsRecorder {
             report.put(CURRENT_PAGE,currentPage);
             report.put(TOTAL_PAGES,totalPages);
             report.put(DEVICE_TYPE,deviceInfoString);
+            report.put(NUM_PAGE_SWITCHES,numPagePageSwitches);
 
             if (mMasterService!=null) {
                 mMasterService.saveReportToParse(report);
@@ -371,6 +387,7 @@ public class BookReadingsRecorder {
             dimensions.put(BOOK_TAGS,currentBookTags);
             dimensions.put(CURRENT_PAGE,currentPage);
             dimensions.put(TOTAL_PAGES,totalPages);
+            dimensions.put(NUM_PAGE_SWITCHES,Long.valueOf(numPagePageSwitches).toString());
             dimensions.put(TIME_PASSED,Double.valueOf(timePassedInSeconds).toString());
 
             MyAnalytics.trackTimedEventStart("pageRead",dimensions);
@@ -455,7 +472,8 @@ public class BookReadingsRecorder {
 
             report.put(STARTED_PAGE,startedPage);
             long pagesRead=Long.valueOf(currentPage);
-            report.put(PAGES_READ,pagesRead);
+            report.put(PAGES_READ,pagesRead);//pages read, as in 'endPage-startPage'
+            report.put(NUM_PAGE_SWITCHES,Long.valueOf(numPagePageSwitches).toString());//number of times user switches page
 
 
 
@@ -487,6 +505,7 @@ public class BookReadingsRecorder {
             dimensions.put(READING_SESSION_TIME,totalReadingSessionTime.toString());
             dimensions.put(STARTED_PAGE,Long.valueOf(startedPage).toString());
             dimensions.put(PAGES_READ,Long.valueOf(pagesRead).toString());
+            dimensions.put(NUM_PAGE_SWITCHES,Long.valueOf(numPagePageSwitches).toString());
 
             //TODO:describe this in privacy policy, and really think if we need THIS data in 3rd-party analytical systems
             MyAnalytics.trackEvent("readingSessionCompleted", dimensions);
