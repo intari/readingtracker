@@ -369,6 +369,8 @@ public class BookReadingsRecorder {
             dimensions.put(BOOK_TITLE,currentBookTitle);
             dimensions.put(BOOK_AUTHOR,currentBookAuthor);
             dimensions.put(BOOK_TAGS,currentBookTags);
+            dimensions.put(CURRENT_PAGE,currentPage);
+            dimensions.put(TOTAL_PAGES,totalPages);
             dimensions.put(TIME_PASSED,Double.valueOf(timePassedInSeconds).toString());
 
             MyAnalytics.trackTimedEventStart("pageRead",dimensions);
