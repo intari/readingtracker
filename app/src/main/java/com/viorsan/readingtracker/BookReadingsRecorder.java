@@ -50,9 +50,9 @@ public class BookReadingsRecorder {
     public static final double MAX_SECONDS_TO_READ_PAGE = 180.0;
     public static final double MS_IN_SECOND = 1000.0;
     public static final String STARTED_PAGE = "startedPage";
-    public static final String PAGES_READ = "pagesRead";
+    public static final String PAGES_READ = "pagesReadInThisSession";
     public static final String END_PAGE = "endPage";
-    public static final String NUM_PAGE_SWITCHES = "numPageSwitches";
+    public static final String NUM_PAGE_SWITCHES = "numPageSwitchesInThisSession";
 
 
     private static BookReadingsRecorder self=null;
