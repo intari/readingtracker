@@ -99,7 +99,8 @@ Permissions
 
 
 ## Thanks to
-* [Freepik from Flaticon]( http://www.flaticon.com/free-icon/marionette-puppet-silhouette_33882) for application icon
+* Freepik from FlatIcon. Icon(s) are based on
+<div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a>         is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
 At time I got it license was:
 License: Creative commons
 You are free to use this icon for commercial purposes, to share or to modify it. In exchange, it's necessary to credit the author for the original creation.
@@ -214,8 +215,9 @@ ParseUI-Android разумеется под своей собственной л
   A:Вы видимо недавно обновили приложение. Либо перезагрузите устройство либо отключите доступ и тут же включите
 
 # Благодарности
-* [Freepik from Flaticon]( http://www.flaticon.com/free-icon/marionette-puppet-silhouette_33882) текущая иконка
-Когда я ее нашел - лицензия была:
+* Freepik from FlatIcon. Icon(s) are based on
+<div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a>         is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
+At time I got it license was:
 License: Creative commons
 You are free to use this icon for commercial purposes, to share or to modify it. In exchange, it's necessary to credit the author for the original creation.
 * [Parse Team (currently at Facebook)](https://parse.com/about) -  Parse Platform (and ParseUI-Android)
