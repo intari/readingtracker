@@ -278,13 +278,32 @@ public class AccessibilityRecorderService extends AccessibilityService {
             if (event.getEventType()==AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED) {
                 if (event.getClassName().toString().equals("com.mantano.android.library.activities.LibraryActivity")) {
                     Log.i(TAG, "Switch to library");
-                    BookReadingsRecorder.getBookReadingsRecorder(this.getBaseContext()).recordSwitchAwayFromBook(this.getBaseContext(), SystemClock.elapsedRealtime());
-                    MyAnalytics.trackEvent("SwitchToLibrary");
+                    //prevent potential Mantano crash due to us take too much time
+                    Thread reportThread=new Thread( new Runnable() {
+                        @Override
+                        public void run() {
+                            Log.i(TAG,"Sending 'switchToLibrary' event in async way..");
+                            BookReadingsRecorder.getBookReadingsRecorder(getBaseContext()).recordSwitchAwayFromBook(getBaseContext(), SystemClock.elapsedRealtime());
+                            MyAnalytics.trackEvent("SwitchToLibrary");
+                            Log.i(TAG,"Sent 'switchToLibrary' event in async way..");
+                        }
+                    });
+                    reportThread.start();
+
 
                 } else if (event.getClassName().toString().equals("com.mantano.android.reader.activities.AsyncReaderActivity")) {
                     Log.i(TAG, "Switch to reading");
-                    MyAnalytics.trackEvent("SwitchToReading");
-                    BookReadingsRecorder.getBookReadingsRecorder(this.getBaseContext()).recordSwitchBackToCurrentBook(this.getBaseContext(), SystemClock.elapsedRealtime());
+                    //prevent potential Mantano crash due to us take too much time
+                    Thread reportThread=new Thread( new Runnable() {
+                        @Override
+                        public void run() {
+                            Log.i(TAG,"Sending 'switchToReading' event in async way..");
+                            MyAnalytics.trackEvent("SwitchToReading");
+                            BookReadingsRecorder.getBookReadingsRecorder(getBaseContext()).recordSwitchBackToCurrentBook(getBaseContext(), SystemClock.elapsedRealtime());
+                            Log.i(TAG,"Sent 'switchToReading' event in async way..");
+                        }
+                    });
+                    reportThread.start();
 
                 }
             }
