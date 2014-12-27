@@ -52,7 +52,7 @@ public class BookReadingsRecorder {
     public static final String STARTED_PAGE = "startedPage";
     public static final String PAGES_READ = "pagesReadInThisSession";
     public static final String END_PAGE = "endPage";
-    public static final String NUM_PAGE_SWITCHES = "numPageSwitchesInThisSession";
+    public static final String NUM_PAGE_SWITCHES = "numPageSwitchesSinceSessionStart";
 
 
     private static BookReadingsRecorder self=null;
