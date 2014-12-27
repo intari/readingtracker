@@ -13,7 +13,7 @@ import com.parse.*;
 
 
 public class MyApplication extends android.app.Application {
-    public static final String TAG = "MyApplication";
+    public static final String TAG = "ReadingTracker::MyApplication";
     protected boolean useParseCrashReporting=true;//should we activate Parse's crash reporting ourselves?
     protected boolean initParse=true;//should we init Parse ourselves?
     protected boolean testHarnessActive=false;//we are running under Robolectric's test harness

@@ -31,7 +31,7 @@ public class CoreService extends Service  {
     public static final long YEAR_IN_MS = 365 * 86400 * 1000;
     public static final int PROCESSLIST_RESCAN_INTERVAL_MILLIS = 3000;//ONLY used to check if reader app is currently active
     public static final int REPORT_SENDING_RETRY_MILLIS = 3000;
-    public static final String TAG = "CoreService";
+    public static final String TAG = "ReadingTracker::CoreService";
     public static final String USER_LOGGED_OUT_REPORT = "com.viorsan.readingtracker.user_logged_out";
     private long lastAppCheckTime;
 

@@ -20,7 +20,7 @@ import android.util.Log;
  */
 public class GoToAccessibilitySettingsDialogFragment extends DialogFragment {
 
-    public static final String TAG = "GoToAccessibilitySettingsDialogFragment";
+    public static final String TAG = "ReadingTracker::GoToAccessibilitySettingsDialogFragment";
 
     /* The activity that creates an instance of this dialog fragment must
      * implement this interface in order to receive event callbacks.

@@ -26,7 +26,7 @@ import java.util.Map;
 @ParseClassName("ParseUser_TestLoggedIn")
 public class ParseUser_TestLoggedIn extends ParseUser {
 
-    public static final String TAG = "ParseUser_TestLoggedIn";
+    public static final String TAG = "ReadingTracker::ParseUser_TestLoggedIn";
 
     //minimal emulated data
     private static String emulatedObjectId;

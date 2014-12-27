@@ -20,7 +20,7 @@ import ly.count.android.api.Countly;
  */
 public class MyAnalytics {
 
-    public static final String TAG = "MyAnalytics";
+    public static final String TAG = "ReadingTracker::MyAnalytics";
 
     private static HashMap<String, String> userData = new HashMap<String, String>();
 
