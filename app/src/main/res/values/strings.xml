@@ -16,7 +16,7 @@
 
     <!-- Notification messages -->
     <string name="app_started_notification">Reading Tracker started</string>
-    <string name="tap_me">Be careful what you wish for</string>
+    <string name="tap_me">Now you are in control of your reading</string>
     <string name="update_is_available">Update is available</string>
     <string name="update_is_not_available">No updates found</string>
 

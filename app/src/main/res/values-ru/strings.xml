@@ -16,7 +16,7 @@
 
     <!-- Notification messages -->
     <string name="app_started_notification">Reading Tracker стартовал</string>
-    <string name="tap_me">Be careful what you wish for</string>
+    <string name="tap_me">Now you are in control of your reading</string> <!-- TODO: translate, or, better, make something more interesting -->
     <string name="update_is_available">Доступно обновление</string>
     <string name="update_is_not_available">Нет обновлений</string>
 
