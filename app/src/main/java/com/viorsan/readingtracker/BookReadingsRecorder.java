@@ -330,6 +330,11 @@ public class BookReadingsRecorder {
                 dimensions.put(NUM_PAGE_SWITCHES,Long.valueOf(numPagePageSwitches).toString());
                 dimensions.put(TIME_PASSED,Double.valueOf(timePassedInSeconds).toString());
 
+                /*
+                 * One page was read (or at least user switched pages. Possbile backwards!)
+                 * And it took too much time so user likely was busy doing something else
+                 * so only report to analytics system but NOT to Parse (because it could confuse stats)
+                 */
                 MyAnalytics.trackTimedEventStart("pageReadTooLong",dimensions);
 
                 return;
@@ -340,12 +345,28 @@ public class BookReadingsRecorder {
 
             copyCurrentToLast();
 
+            //send status update UI so if user wants to look - s/he can
             sendStatusUpdateToUI(context, true);
 
+            /*
+             * One page was read (or at least user switched pages. Possbile backwards!)
+             * Report details to Parse
+             */
             ParseObject report=new ParseObject(REPORT_TYPE_BOOK_READING_PROGRESS_REPORT);
+            //Title of book currently read
             report.put(BOOK_TITLE,currentBookTitle);
+            //Author of currenly read book
             report.put(BOOK_AUTHOR,currentBookAuthor);
+            /*
+             * comma-separated list of tags, like:
+             * romance_sf, sf_space
+             * sf_action
+             * Development,iOS Development, Languages & Tools
+             * sci, sci_space
+             *
+             */
             report.put(BOOK_TAGS,currentBookTags);
+            // time for which this page was read, in seconds
             report.put(TIME_PASSED,timePassedInSeconds);
 
 
@@ -363,13 +384,19 @@ public class BookReadingsRecorder {
                - Number of pages usually correspond to printed book (if any) but not always equal
                - current/total pages are NOT depended on screen size
                - on some small screen devices several screen pages correspond to one ADE page. On this devices this function will be called several times with identical currentPage
+               - on large screens in dual-page mode sometimes every 2nd page will be reported
                - Calibre's calculator is approximation
                For Kindle, if/then it will be supported it will be either location OR Kindle pages (depending on specific book)
-
              */
             report.put(CURRENT_PAGE,currentPage);
+            //Total pages in this book
             report.put(TOTAL_PAGES,totalPages);
+            //basic device information string
             report.put(DEVICE_TYPE,deviceInfoString);
+            /*
+             * number of page turns which leads to this page. i.e. how much time user switched times. no direct relation to current page,e
+             * it's possible for user to go backwards or one on-screen page not be one 'page' in terms currentPages uses...see above
+             */
             report.put(NUM_PAGE_SWITCHES,numPagePageSwitches);
 
             if (mMasterService!=null) {
@@ -389,6 +416,11 @@ public class BookReadingsRecorder {
             dimensions.put(NUM_PAGE_SWITCHES,Long.valueOf(numPagePageSwitches).toString());
             dimensions.put(TIME_PASSED,Double.valueOf(timePassedInSeconds).toString());
 
+            /*
+             * One page was read (or at least user switched pages. Possbile backwards!)
+             * but report details to (possibly) 3rd-party analytics system(s)
+             * In future some of personal details will be masked
+             */
             MyAnalytics.trackTimedEventStart("pageRead",dimensions);
 
 
@@ -467,10 +499,11 @@ public class BookReadingsRecorder {
             //report.put(READING_SESSION_TIME_MS,totalTimeForCurrentBook);
             report.put(READING_SESSION_TIME,totalTimeForCurrentBook/MS_IN_SECOND);
             report.put(DEVICE_TYPE,deviceInfoString);
-            report.put(END_PAGE,lastCurrentPage);
+            //Page on which reading session ended. same comments as for currentPage applies
+            report.put(END_PAGE,currentPage);
 
             report.put(STARTED_PAGE,startedPage);
-            long pagesRead=Long.valueOf(currentPage);
+            long pagesRead=Long.valueOf(currentPage)-startedPage;
             report.put(PAGES_READ,pagesRead);//pages read, as in 'endPage-startPage'
             report.put(NUM_PAGE_SWITCHES,Long.valueOf(numPagePageSwitches).toString());//number of times user switches page
 
@@ -499,7 +532,7 @@ public class BookReadingsRecorder {
             dimensions.put(BOOK_TITLE,currentBookTitle);
             dimensions.put(BOOK_AUTHOR,currentBookAuthor);
             dimensions.put(BOOK_TAGS,currentBookTags);
-            dimensions.put(END_PAGE,lastCurrentPage);
+            dimensions.put(END_PAGE,currentPage);
             Double totalReadingSessionTime=totalTimeForCurrentBook/MS_IN_SECOND;
             dimensions.put(READING_SESSION_TIME,totalReadingSessionTime.toString());
             dimensions.put(STARTED_PAGE,Long.valueOf(startedPage).toString());
