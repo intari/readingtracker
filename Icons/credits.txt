@@ -1,5 +1,10 @@
+current icon is based on 
+- book30
+- eye46
+- my meager image editing skills
+---
+planned icons:
 
-planned icons (‘book30’ is main source icon I currently use)
 Icons are from FlatIcon
 License CC BY 3.0 
 requested attribution
