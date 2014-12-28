@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<!-- old version of settings code -->
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/readingTrackerLogo"
+        android:src="@drawable/logo"
+        android:layout_gravity="center_horizontal"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/app_name"
+        android:id="@+id/appNameBig"
+        android:layout_gravity="center_horizontal" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/readingTrackerSlogan"
+        android:id="@+id/readingTrackerSlogan"
+        android:layout_gravity="center_horizontal|left"
+        android:autoLink="web"/>
+
+<!-- settings should be here -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/readingTrackerCopyright"
+        android:id="@+id/readingTrackerCC"
+        android:layout_gravity="center_horizontal|left"
+        android:autoLink="web"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/readingTrackerToS"
+        android:id="@+id/readingTrackerToS"
+        android:layout_gravity="center_horizontal|left"
+        android:autoLink="web"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/readingTrackerPrivacyPolicy"
+        android:id="@+id/readingTrackerPP"
+        android:layout_gravity="center_horizontal|left"
+        android:autoLink="web"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/creditsTitle"
+        android:id="@+id/creditsTitle"
+        android:layout_gravity="center_horizontal" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/readingTracker3rdparty"
+        android:id="@+id/credits3rdParty"
+        android:layout_gravity="center_horizontal|left"
+        android:autoLink="web"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/creditsParsePlatform"
+        android:id="@+id/creditsParsePlatform"
+        android:layout_gravity="center_horizontal|left"
+        android:autoLink="web"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/creditsParseUI"
+        android:id="@+id/creditsParseUI"
+        android:layout_gravity="center_horizontal|left"
+        android:autoLink="web"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/creditsIcons"
+        android:id="@+id/creditsIcons"
+        android:layout_gravity="center_horizontal|left"
+        android:autoLink="web"/>
+
+
+
+
+</LinearLayout>

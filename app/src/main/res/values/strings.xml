@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_name" translatable="false">Reading Tracker</string>
 
     <!-- ActionBar GUI -->
@@ -10,17 +11,29 @@
 
     <!-- GUI -->
     <string name="logo_content_description" translatable="false">Logo</string>
-
-
     <string name="accessibilityDescription">Monitor your book reading habits</string>
-
     <string name="accessGrantedOK">OK</string>
     <string name="accessGrantedNotOk">None</string>
-
     <string name="supportedEbookReaderInstalled">Installed</string>
     <string name="supportedEbookReaderNotInstalled">Not installed</string>
     <string name="accessInAccessibilitySettings">Access in \'Accessibilty Settings\':</string>
     <string name="supportedEbookReader">Supported e-book reader:</string>
+
+    <!-- Settings page -->
+    <string name="creditsTitle" translatable="false">Credits</string>
+<!--     <string name="readingTrackerToS" translatable="false">Reading Tracker web site: TODO put linkToS can be read here TODO: Link</string> -->
+
+    <string name="readingTrackerSlogan" translatable="false">Now you are in control of what you read</string>
+    <string name="readingTrackerCopyright" translatable="false">Reading Tracker (c) 2014,2015 Dmitriy Kazimirov, mailto:dmitriy.kazimirov@viorsan.com </string>
+    <string name="readingTrackerCopyrightLicense" translatable="false">Reading Tracker Application itself is licensed under GNU Public License version 3, permission is granted to link with all libraries below </string>
+
+    <string name="readingTracker3rdparty" translatable="false">Following 3rd-part components were used:</string>
+    <string name="readingTrackerToS" translatable="false">Reading Tracker ToS can be read here TODO: Link</string>
+    <string name="readingTrackerPrivacyPolicy" translatable="false">Reading Tracker\'s Privacy Policy can be read here TODO: Link</string>
+    <string name="creditsIcons" translatable="false">Icons are based on materials from http://www.flaticon.com by http://www.freepik.com which were licensed under CC BY 3.0 (http://creativecommons.org/licenses/by/3.0/) </string>
+    <string name="creditsParsePlatform" translatable="false">Application uses Parse Platform by https://parse.com/about (c) Parse LLC </string>
+    <string name="creditsParseUI" translatable="false">Application uses Modified Parse UI library from https://github.com/ParsePlatform/ParseUI-Android, Copyright (c) 2014, Parse, LLC. All rights reserved.</string>
+    <string name="creditsAOSP" translatable="false">Application uses some code from The Android Open Source Project (c) The Android Open Source Project, under Apache License 2.0 </string>
 
     <!-- Notification messages -->
     <string name="app_started_notification">Reading Tracker started</string>
@@ -28,11 +41,9 @@
     <string name="update_is_available">Update is available</string>
     <string name="update_is_not_available">No updates found</string>
 
-
     <!-- GUI strings -->
     <string name="guiCurrentlyReadingShort">Reading %1$s by %2$s</string>
     <string name="guiCurrentlyReadingLong">Reading %1$s by %2$s (page %3$s of %4$s) for %5$.2f minutes</string>
-
     <string name="goToAccessibilitySettingsMessage">Do you want to open \'Accessibility Settings\' and allow access for  \'Reading Tracker\' here?</string>
     <string name="goToAccessibilitySettingsOK">Yes, please</string>
     <string name="goToAccessibilitySettingsCancel">No</string>
@@ -46,10 +57,15 @@
 
     <!-- Facebook support -->
     <string name="facebook_app_id" translatable="false">343039695901464</string>
+
     <string-array name="my_facebook_permissions" translatable="false">
         <item>public_profile</item>
         <item>user_friends</item>
         <item>email</item>
     </string-array>
+
+    <string name="title_activity_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
 
 </resources>

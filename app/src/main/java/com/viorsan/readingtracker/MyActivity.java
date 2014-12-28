@@ -1,11 +1,8 @@
 package com.viorsan.readingtracker;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageInfo;
@@ -13,10 +10,7 @@ import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Base64;
 import android.util.Log;
@@ -34,9 +28,7 @@ import net.hockeyapp.android.UpdateManagerListener;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.Arrays;
 
-import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -45,7 +37,6 @@ import android.view.MenuItem;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
-import ly.count.android.api.Countly;
 
 /*
  * Main activity of application
@@ -437,7 +428,13 @@ public class MyActivity extends ActionBarActivity implements GoToAccessibilitySe
         Intent intent = new Intent(android.provider.Settings.ACTION_ACCESSIBILITY_SETTINGS);
         startActivityForResult(intent, 0);
     }
-
+    /**
+     * Open settings activity
+     */
+    private void openApplicationSettings() {
+        Intent intent=new Intent(this, SettingsActivity.class);
+        startActivity(intent);
+    }
     /**
      *  Asks monitoring service if it was correctly connected
      */
@@ -542,14 +539,6 @@ public class MyActivity extends ActionBarActivity implements GoToAccessibilitySe
         // Inflate our menu from the resources by using the menu inflater.
         getMenuInflater().inflate(R.menu.main, menu);
 
-        // It is also possible add items here. Use a generated id from
-        // resources (ids.xml) to ensure that all menu ids are distinct.
-        MenuItem locationItem = menu.add(0, R.id.menu_location, 0, R.string.menu_location);
-        locationItem.setIcon(R.drawable.ic_action_location);
-
-        // Need to use MenuItemCompat methods to call any action item related methods
-        MenuItemCompat.setShowAsAction(locationItem, MenuItem.SHOW_AS_ACTION_IF_ROOM);
-
         return true;
     }
 
@@ -561,19 +550,11 @@ public class MyActivity extends ActionBarActivity implements GoToAccessibilitySe
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.menu_refresh:
-                // Here we might start a background refresh task
-                Log.d(TAG,"menu_refresh");
-                return true;
-
-            case R.id.menu_location:
-                // Here we might call LocationManager.requestLocationUpdates()
-                Log.d(TAG,"menu_location");
-                return true;
 
             case R.id.menu_settings:
                 // Here we would open up our settings activity
                 Log.d(TAG,"menu_settings");
+                openApplicationSettings();
                 return true;
         }
 

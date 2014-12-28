@@ -1,0 +1,152 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.viorsan.readingtracker.SettingsActivity">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/readingTrackerLogo"
+        android:src="@drawable/logo"
+        android:layout_gravity="center_horizontal"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="logo" />
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:id="@+id/readingTrackerInfo"
+        android:layout_below="@+id/readingTrackerLogo">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/app_name"
+            android:id="@+id/appNameBig"
+            android:layout_gravity="center_horizontal" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/readingTrackerSlogan"
+            android:id="@+id/readingTrackerSlogan"
+            android:layout_gravity="center_horizontal|left"
+            android:autoLink="web"/>
+        </LinearLayout>
+
+    <!-- settings should be here -->
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:id="@+id/ThirdPartyCredits"
+        android:layout_below="@+id/readingTrackerInfo">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/readingTrackerCopyright"
+            android:id="@+id/readingTrackerCC"
+            android:layout_gravity="center_horizontal|left"
+            android:autoLink="web"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/readingTrackerCopyrightLicense"
+            android:id="@+id/readingTrackerCopyrightLicense"
+            android:layout_gravity="center_horizontal|left"
+            android:autoLink="web"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/readingTrackerToS"
+            android:id="@+id/readingTrackerToS"
+            android:layout_gravity="center_horizontal|left"
+            android:autoLink="web"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/readingTrackerPrivacyPolicy"
+            android:id="@+id/readingTrackerPP"
+            android:layout_gravity="center_horizontal|left"
+            android:autoLink="web"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/creditsTitle"
+            android:id="@+id/creditsTitle"
+            android:layout_gravity="center_horizontal" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/readingTracker3rdparty"
+            android:id="@+id/credits3rdParty"
+            android:layout_gravity="center_horizontal|left"
+            android:autoLink="web"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/creditsIcons"
+            android:id="@+id/creditsIcons"
+            android:layout_gravity="center_horizontal|left"
+            android:autoLink="web"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/creditsParsePlatform"
+            android:id="@+id/creditsParsePlatform"
+            android:layout_gravity="center_horizontal|left"
+            android:autoLink="web"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/creditsParseUI"
+            android:id="@+id/creditsParseUI"
+            android:layout_gravity="center_horizontal|left"
+            android:autoLink="web"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/creditsAOSP"
+            android:id="@+id/creditsAOSP"
+            android:layout_gravity="center_horizontal|left"
+            android:autoLink="web"/>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

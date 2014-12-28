@@ -1,97 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.viorsan.readingtracker"
-           >
+    package="com.viorsan.readingtracker" >
 
-    <!-- versionCode: conflict with Gradle or not ?-->
-    <!-- android:versionCode="102"
-          android:versionName="1.0" -->
+    <!-- versionCode: conflict with Gradle or not ? -->
+    <!--
+         android:versionCode="102"
+          android:versionName="1.0"
+    -->
     <!-- required for ParseAnalytics.trackEvent -->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-    <uses-permission android:name="android.permission.GET_TASKS"/>
-<!--    <uses-permission android:name="android.permission.READ_LOGS" /> -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <!-- <uses-permission android:name="android.permission.READ_LOGS" /> -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
-
-
-
-    <!-- Icon is from http://www.flaticon.com/free-icon/marionette-puppet-silhouette_33882
+    <!--
+     Icon is from http://www.flaticon.com/free-icon/marionette-puppet-silhouette_33882
      License according to source is
      License: Creative commons
      You are free to use this icon for commercial purposes, to share or to modify it. In exchange, it's necessary to credit the author for the original creation.
      TODO: add original license link and for now let's assume in-comment link is ok
     -->
     <application
-        android:label="@string/app_name"
+        android:name=".MyApplication"
+        android:allowBackup="true"
         android:icon="@drawable/readingtracker"
-        android:name="com.viorsan.readingtracker.MyApplication"
-        android:theme="@style/Theme.AppCompat"
-        android:allowBackup="true" >
+        android:label="@string/app_name"
+        android:theme="@style/Theme.AppCompat" >
         <activity android:name="net.hockeyapp.android.UpdateActivity" />
-
-
         <activity
             android:name="com.parse.ui.ParseLoginActivity"
             android:label="@string/app_name"
-            android:launchMode="singleTop">
+            android:launchMode="singleTop" >
             <meta-data
                 android:name="com.parse.ui.ParseLoginActivity.PARSE_LOGIN_ENABLED"
-                android:value="true"/>
+                android:value="true" />
             <meta-data
                 android:name="com.parse.ui.ParseLoginActivity.FACEBOOK_LOGIN_ENABLED"
-                android:value="true"/>
+                android:value="true" />
             <!-- We reference a string-array resource here, so we must use android:resource -->
             <meta-data
                 android:name="com.parse.ui.ParseLoginActivity.FACEBOOK_LOGIN_PERMISSIONS"
-                android:resource="@array/my_facebook_permissions"/>
+                android:resource="@array/my_facebook_permissions" />
         </activity>
-
         <activity
-            android:name="com.viorsan.readingtracker.MyActivity"
-            android:label="@string/app_name">
+            android:name=".MyActivity"
+            android:label="@string/app_name" >
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name="com.facebook.LoginActivity"
             android:label="@string/app_name"
-            android:launchMode="singleTop"/>
+            android:launchMode="singleTop" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id"/>
+            android:value="@string/facebook_app_id" />
 
-        <service android:name="com.viorsan.readingtracker.CoreService"
-                 android:enabled="true"></service>
-
-        <service android:name="com.viorsan.readingtracker.AccessibilityRecorderService"
-                 android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+        <service
+            android:name=".CoreService"
+            android:enabled="true" />
+        <service
+            android:name=".AccessibilityRecorderService"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE" >
             <intent-filter>
                 <action android:name="android.accessibilityservice.AccessibilityService" />
             </intent-filter>
-            <meta-data android:name="android.accessibilityservice"
-                       android:resource="@xml/accessibilityconfig" />
+
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/accessibilityconfig" />
         </service>
 
-
-        <receiver android:name="com.viorsan.readingtracker.CoreBroadcastReceiver">
+        <receiver android:name=".CoreBroadcastReceiver" >
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
             <intent-filter>
-                <action android:name="android.intent.action.ACTION_POWER_CONNECTED"/>
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
             </intent-filter>
+        </receiver>
 
-
-
-         </receiver>
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".MyActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.viorsan.readingtracker.MyActivity" />
+        </activity>
     </application>
+
 </manifest>
