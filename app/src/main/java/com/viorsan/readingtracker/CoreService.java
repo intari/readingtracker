@@ -33,6 +33,8 @@ public class CoreService extends Service  {
     public static final int REPORT_SENDING_RETRY_MILLIS = 3000;
     public static final String TAG = "ReadingTracker::CoreService";
     public static final String USER_LOGGED_OUT_REPORT = "com.viorsan.readingtracker.user_logged_out";
+    public static final String ERRORID_NO_CURRENT_PARSE_USER = "NO_CURRENT_PARSE_USER";
+    public static final String ERRORCLASS_PARSE_INTERFACE = "PARSE_INTERFACE";
     private long lastAppCheckTime;
 
 
@@ -265,6 +267,7 @@ public class CoreService extends Service  {
         ParseUser currentUser=ParseUser.getCurrentUser();
         if (currentUser==null) {
             Log.i(TAG, "Cannot save report to Parse. No current user. Report type was "+report.getClassName());
+            FlurryAgent.onError(ERRORID_NO_CURRENT_PARSE_USER,"cannot save object of class "+report.getClassName()+" - no current user!", ERRORCLASS_PARSE_INTERFACE);
             return Boolean.FALSE;
         }
         report.put("user",currentUser);
