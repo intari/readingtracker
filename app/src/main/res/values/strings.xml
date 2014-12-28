@@ -3,6 +3,7 @@
     <string name="app_name" translatable="false">Reading Tracker</string>
 
     <!-- GUI -->
+    <string name="logo_content_description" translatable="false">Logo</string>
 
     <string name="accessibilityDescription">Monitor your book reading habits</string>
 
