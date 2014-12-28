@@ -32,6 +32,7 @@ public class MyAnalytics {
             Countly.sharedInstance().init(context, BuildConfig.COUNTLY_SERVER, BuildConfig.COUNTLY_APP_KEY);
 
             // configure Flurry
+            FlurryAgent.setCaptureUncaughtExceptions(false);//Parse will do this for us and in correct way
             FlurryAgent.setLogEnabled(true);
             FlurryAgent.setLogEvents(true);
             // init Flurry
