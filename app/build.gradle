@@ -422,13 +422,6 @@ android {
     }
 }
 
-// Parse Platform dependencies
-dependencies {
-    compile 'com.parse.bolts:bolts-android:1.+'
-
-    compile fileTree(dir: '../libs', include: 'Parse-*.jar')
-    compile fileTree(dir: '../libs', include: 'ParseCrashReporting-*.jar')
-}
 
 //our regular dependencies
 dependencies {
@@ -442,21 +435,31 @@ dependencies {
     compile 'com.jakewharton:butterknife:6.0.0' //https://jakewharton.github.io/butterknife/
     compile "com.android.support:support-v4:21.0.3"
     compile 'ly.count:sdk-android:+'
-}
 
-// ParseUI dependencies
-dependencies {
+    compile "com.android.support:gridlayout-v7:21.0.2"
+    compile "com.android.support:cardview-v7:21.0.2"
+
+    compile "com.android.support:appcompat-v7:21.0.3"
+
+    //Parse Platform
+    compile 'com.parse.bolts:bolts-android:1.+'
+
+    compile fileTree(dir: '../libs', include: 'Parse-*.jar')
+    compile fileTree(dir: '../libs', include: 'ParseCrashReporting-*.jar')
+
+    //ParseUI
     compile 'com.facebook.android:facebook-android-sdk:3.21.0'
     compile project(':ParseLoginUI')
-}
 
-// dependencies for tests
-dependencies {
+    //Robolectric tests
     androidTestCompile('junit:junit:4.11')
     androidTestCompile('org.robolectric:robolectric:2.4')
     // add the stripped version of android.jar, 'fix' per https://gist.github.com/avbk/d82c44ed8bef5782dbe5
     androidTestCompile files("../testlibs/android-17-stripped.jar")
+
 }
+
+
 
 //Per  https://github.com/x2on/gradle-hockeyapp-plugin/issues/30 it's dependencies must be in root project
 apply plugin: 'de.felixschulze.gradle.hockeyapp'

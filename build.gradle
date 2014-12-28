@@ -16,9 +16,9 @@ allprojects {
     }
 }
 ext {
-    compileSdkVersion = "Google Inc.:Google APIs:17"
+    compileSdkVersion = "Google Inc.:Google APIs:21"
     buildToolsVersion = "21.1.2"
 
     minSdkVersion = 17
-    targetSdkVersion = 17
+    targetSdkVersion = 21
 }

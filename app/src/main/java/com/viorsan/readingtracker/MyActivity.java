@@ -36,12 +36,24 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
+import android.os.Bundle;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
+import android.view.MenuItem;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 import ly.count.android.api.Countly;
 
-public class MyActivity extends FragmentActivity implements GoToAccessibilitySettingsDialogFragment.GoToAccessibilitySettingsDialogListener {
+/*
+ * Main activity of application
+ *
+ * This Activity extends from {@link ActionBarActivity}, which provides all of the function
+ * necessary to display a compatible Action Bar on devices running Android v2.1+.
+ */
+public class MyActivity extends ActionBarActivity implements GoToAccessibilitySettingsDialogFragment.GoToAccessibilitySettingsDialogListener {
     public static final String FULL_USER_NAME = "name";
     public static final String USER_GENDER = "gender";
     public static final int TIME_BEFORE_ASKING_USER_TO_GO_TO_ACCESSIBILITY_SETTINGS = 5 * 1000;//5 seconds to wait before checking if we should ask user to go to Accessibility settings
@@ -336,7 +348,9 @@ public class MyActivity extends FragmentActivity implements GoToAccessibilitySet
 
     }
 
-
+    /**
+     * Updates textview about supported reader status being installed based on result of {@link #isSupportedEbookReaderInstalled()}
+     */
     private void updateReaderStatus() {
         if (isSupportedEbookReaderInstalled()) {
            supportedEbookReaderInstalledTextView.setText(getResources().getText(R.string.supportedEbookReaderInstalled));
@@ -346,7 +360,10 @@ public class MyActivity extends FragmentActivity implements GoToAccessibilitySet
         }
     }
 
-    //is one of supported E-Book readers installed
+    /**
+     * Checks if one of supported E-Book readers installed
+     * @return true if one of supported E-Book readers are found
+     */
     private boolean isSupportedEbookReaderInstalled()
     {
       return (
@@ -358,6 +375,12 @@ public class MyActivity extends FragmentActivity implements GoToAccessibilitySet
       );
 
     };
+
+    /**
+     * Checks if package installed on device
+     * @param uri - package to check
+     * @return true if given package installed on device
+     */
     private boolean appInstalledOrNot(String uri) {
         PackageManager pm = getPackageManager();
         boolean app_installed = false;
@@ -375,10 +398,10 @@ public class MyActivity extends FragmentActivity implements GoToAccessibilitySet
 
     }
 
-    /*
-  * This dialog can have significant amount of text so make it possible for it be shown in fullscreen way
-  * and not only as regular dialog
-  */
+   /**
+    * This dialog can have significant amount of text so make it possible for it be shown in fullscreen way
+    * and not only as regular dialog
+    */
     public void showGoToAccessibilitySettingsDialog() {
 
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -387,26 +410,37 @@ public class MyActivity extends FragmentActivity implements GoToAccessibilitySet
         newFragment.show(fragmentManager, "goToAccessibilitySettingsDialog");
 
     }
-    // implementation of GoToAccessibilitySettingsDialogListener
+
+    /**
+     * implementation of GoToAccessibilitySettingsDialogListener
+     */
     public void onGoToAccessibilitySettingsDialogPositiveClick(GoToAccessibilitySettingsDialogFragment dialog) {
         // Users wants to go to settings
         Log.d(TAG,"User chooses to go to settings");
         MyAnalytics.trackEvent("userWentToAccSettings");
         openAccessibilitySettings();
     }
-    // implementation of GoToAccessibilitySettingsDialogListener
+    /**
+     * implementation of GoToAccessibilitySettingsDialogListener
+     */
     public void onGoToAccessibilitySettingsNegativeClick(GoToAccessibilitySettingsDialogFragment dialog) {
         // User cancelled the dialog
         Log.d(TAG,"User chooses not to go to settings");
 
         MyAnalytics.trackEvent("userDeclinedAccSettings");
     }
-    // open Accessibility settings
+
+    /**
+     *  open Accessibility settings
+     */
     private void openAccessibilitySettings() {
         Intent intent = new Intent(android.provider.Settings.ACTION_ACCESSIBILITY_SETTINGS);
         startActivityForResult(intent, 0);
     }
-    // Asks monitoring service if it was correctly connected
+
+    /**
+     *  Asks monitoring service if it was correctly connected
+     */
     private void askForActivityMonitoringUpdate() {
 
         if (activityRecorderConnected==false) {
@@ -444,6 +478,9 @@ public class MyActivity extends FragmentActivity implements GoToAccessibilitySet
         timerToWaitBeforeAskingForAccessibilitySettings.cancel();
     }
 
+    /**
+     * Register handlers for update checking from Hockeyapp
+     */
     private void checkForUpdates() {
         UpdateManager.register(this, BuildConfig.HOCKEYAPP_APP_ID, new UpdateManagerListener() {
             public void onUpdateAvailable() {
@@ -494,6 +531,53 @@ public class MyActivity extends FragmentActivity implements GoToAccessibilitySet
     @Override
     public void onConfigurationChanged(Configuration configuration){
         super.onConfigurationChanged(configuration);
+    }
+
+    /**
+     * Use this method to instantiate your menu, and add your items to it. You
+     * should return true if you have added items to it and want the menu to be displayed.
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate our menu from the resources by using the menu inflater.
+        getMenuInflater().inflate(R.menu.main, menu);
+
+        // It is also possible add items here. Use a generated id from
+        // resources (ids.xml) to ensure that all menu ids are distinct.
+        MenuItem locationItem = menu.add(0, R.id.menu_location, 0, R.string.menu_location);
+        locationItem.setIcon(R.drawable.ic_action_location);
+
+        // Need to use MenuItemCompat methods to call any action item related methods
+        MenuItemCompat.setShowAsAction(locationItem, MenuItem.SHOW_AS_ACTION_IF_ROOM);
+
+        return true;
+    }
+
+    /**
+     * This method is called when one of the menu items to selected. These items
+     * can be on the Action Bar, the overflow menu, or the standard options menu. You
+     * should return true if you handle the selection.
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_refresh:
+                // Here we might start a background refresh task
+                Log.d(TAG,"menu_refresh");
+                return true;
+
+            case R.id.menu_location:
+                // Here we might call LocationManager.requestLocationUpdates()
+                Log.d(TAG,"menu_location");
+                return true;
+
+            case R.id.menu_settings:
+                // Here we would open up our settings activity
+                Log.d(TAG,"menu_settings");
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 

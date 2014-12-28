@@ -2,8 +2,15 @@
 <resources>
     <string name="app_name" translatable="false">Reading Tracker</string>
 
+    <!-- ActionBar GUI -->
+
+    <string name="menu_refresh">Refresh</string>
+    <string name="menu_location">Location</string>
+    <string name="menu_settings">Settings</string>
+
     <!-- GUI -->
     <string name="logo_content_description" translatable="false">Logo</string>
+
 
     <string name="accessibilityDescription">Monitor your book reading habits</string>
 
