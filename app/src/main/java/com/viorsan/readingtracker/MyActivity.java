@@ -29,7 +29,6 @@ import net.hockeyapp.android.UpdateManagerListener;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -429,10 +428,10 @@ public class MyActivity extends ActionBarActivity implements GoToAccessibilitySe
         startActivityForResult(intent, 0);
     }
     /**
-     * Open settings activity
+     * Open About activity
      */
-    private void openApplicationSettings() {
-        Intent intent=new Intent(this, SettingsActivity.class);
+    private void openApplicationAbout() {
+        Intent intent=new Intent(this, AboutActivity.class);
         startActivity(intent);
     }
     /**
@@ -552,9 +551,12 @@ public class MyActivity extends ActionBarActivity implements GoToAccessibilitySe
         switch (item.getItemId()) {
 
             case R.id.menu_settings:
+                Log.d(TAG,"menu_settings");
+                break;
+            case R.id.menu_about:
                 // Here we would open up our settings activity
                 Log.d(TAG,"menu_settings");
-                openApplicationSettings();
+                openApplicationAbout();
                 return true;
         }
 

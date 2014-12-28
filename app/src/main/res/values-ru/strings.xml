@@ -33,5 +33,12 @@
     <string name="profile_title_logged_in">Вы вошли как</string>
     <string name="profile_title_logged_out">Требуется вход </string>
 
+    <!-- other GUI -->
+    <string name="action_settings">Настройки</string>
+    <string name="title_activity_settings">Настройки</string>
+
+    <string name="title_activity_about">О приложении</string>
+    <string name="action_about">О приложении</string>
+
 
 </resources>

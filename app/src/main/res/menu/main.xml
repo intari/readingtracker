@@ -20,5 +20,9 @@
         android:icon="@drawable/ic_action_settings"
         android:title="@string/action_settings"
         support:showAsAction="never"/>
+    <item
+        android:id="@+id/menu_about"
+        android:title="@string/action_about"
+        support:showAsAction="never"/>
 
 </menu>

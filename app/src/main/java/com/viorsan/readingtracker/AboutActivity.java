@@ -10,19 +10,19 @@ import butterknife.ButterKnife;
 
 /**
  * Created by Dmitriy Kazimirov, e-mail:dmitriy.kazimirov@viorsan.com on 28.12.14.
- * Settings / Credits activity
+ * About / Credits activity
  */
-public class SettingsActivity extends ActionBarActivity {
+public class AboutActivity extends ActionBarActivity {
 
-    private static final String TAG = "ReadingTracker::SettingsActivity";
+    private static final String TAG = "ReadingTracker::AboutActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
+        setContentView(R.layout.activity_about);
         ButterKnife.inject(this);
 
-        MyAnalytics.trackEvent("SettingsActivityCreated");
+        MyAnalytics.trackEvent("AboutActivityCreated");
         Log.d(TAG, "onCreate");
     }
 
@@ -53,7 +53,7 @@ public class SettingsActivity extends ActionBarActivity {
     {
         Log.d(TAG, "stop");
 
-        MyAnalytics.trackEvent("SettingsActivityOnStop");
+        MyAnalytics.trackEvent("AboutActivityOnStop");
         super.onStop();
     }
 
@@ -62,6 +62,6 @@ public class SettingsActivity extends ActionBarActivity {
         super.onStart();
         Log.d(TAG, "start");
 
-        MyAnalytics.trackEvent("SettingsActivityOnStart");
+        MyAnalytics.trackEvent("AboutActivityOnStart");
     }
 }
