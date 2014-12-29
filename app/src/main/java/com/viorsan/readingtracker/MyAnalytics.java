@@ -105,9 +105,6 @@ public class MyAnalytics {
                 Countly.sharedInstance().onStop();
                 countlyStarted=false;
             }
-            else {
-                Log.d(TAG,"Possible logic violation. stopAnalytics() was called before startAnalytics()");
-            }
         }
     }
 
