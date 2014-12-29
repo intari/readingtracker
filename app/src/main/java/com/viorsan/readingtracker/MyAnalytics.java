@@ -9,6 +9,7 @@ import com.flurry.android.FlurryAgent;
 import com.parse.ParseAnalytics;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import ly.count.android.api.Countly;
 
@@ -21,6 +22,7 @@ import ly.count.android.api.Countly;
 public class MyAnalytics {
 
     public static final String TAG = "ReadingTracker::MyAnalytics";
+    public static final String APP_OPENED = "appOpened";
 
     private static HashMap<String, String> userData = new HashMap<String, String>();
 
@@ -103,6 +105,20 @@ public class MyAnalytics {
         if (!app.testHarnessActive) {
             Log.d(TAG,"Sending intent "+intent.toString()+" to analytics service");
             ParseAnalytics.trackAppOpened(intent);
+            Map<String, String> dimensions = new HashMap<String, String>();
+            dimensions.put("intent",intent.toString());
+            if (intent.getAction()!=null) {
+                dimensions.put("action",intent.getAction());
+            }
+            if (intent.getPackage()!=null) {
+                dimensions.put("package",intent.getPackage());
+            }
+            if (intent.getType()!=null) {
+                dimensions.put("type",intent.getType());
+            }
+            //TODO:put extras?
+            FlurryAgent.logEvent(APP_OPENED,dimensions);
+            Countly.sharedInstance().recordEvent(APP_OPENED,dimensions,1);
         }
         else {
             System.out.println(TAG +":trackAppOpened not sending intent "+intent.toString()+" to analytics service"+". Test harness said so");
