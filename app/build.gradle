@@ -490,7 +490,7 @@ hockeyapp {
             if (System.getenv('RUNNING_UNDER_TRAVIS')=='YES') {
                 apiToken = System.getenv('HOCKEYAPP_TOKEN_TRAVIS');
                 releaseType = 2
-                notify = 1
+                notify = 0
                 status = 2
                 notesType = 1
                 commitSha=gitSha()
