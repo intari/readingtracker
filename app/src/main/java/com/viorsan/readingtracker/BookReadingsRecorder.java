@@ -272,7 +272,7 @@ public class BookReadingsRecorder {
         //TODO:describe this in privacy policy, and really think if we need THIS data in 3rd-party analytical systems
         MyAnalytics.trackEvent("readingSessionStarted", dimensions);
 
-        MyAnalytics.trackTimedEventStart("readingSession",dimensions);
+        //MyAnalytics.trackTimedEventStart("readingSession",dimensions);
 
         recordPageSwitch(context,timestamp,pageNumbers);
         startedPage=Long.valueOf(currentPage);
@@ -594,7 +594,7 @@ public class BookReadingsRecorder {
 
             //TODO:describe this in privacy policy, and really think if we need THIS data in 3rd-party analytical systems
             MyAnalytics.trackEvent("readingSessionCompleted", dimensions);
-            MyAnalytics.trackTimedEventStop("readingSession",dimensions);
+            //MyAnalytics.trackTimedEventStop("readingSession",dimensions);
 
             //clear data
 

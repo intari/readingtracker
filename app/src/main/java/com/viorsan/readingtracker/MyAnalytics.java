@@ -26,6 +26,8 @@ public class MyAnalytics {
 
     private static HashMap<String, String> userData = new HashMap<String, String>();
 
+    private static final boolean flurryEnabled=false;
+
     private static boolean countlyStarted=false;
     private static MyApplication app;
     public static void init(MyApplication newApp,Context context) {
@@ -34,12 +36,18 @@ public class MyAnalytics {
         if (!app.testHarnessActive) {
             Countly.sharedInstance().init(context, BuildConfig.COUNTLY_SERVER, BuildConfig.COUNTLY_APP_KEY);
 
-            // configure Flurry
-            FlurryAgent.setCaptureUncaughtExceptions(false);//Parse will do this for us and in correct way
-            FlurryAgent.setLogEnabled(true);
-            FlurryAgent.setLogEvents(true);
-            // init Flurry
-            FlurryAgent.init(context, BuildConfig.FLURRY_API_KEY);
+            if (flurryEnabled) {
+                Log.d(TAG,"Flurry Analytics enabled");
+                // configure Flurry
+                FlurryAgent.setCaptureUncaughtExceptions(false);//Parse will do this for us and in correct way
+                FlurryAgent.setLogEnabled(true);
+                FlurryAgent.setLogEvents(true);
+                // init Flurry
+                FlurryAgent.init(context, BuildConfig.FLURRY_API_KEY);
+            }
+            else {
+                Log.d(TAG,"Flurry Analytics not enabled");
+            }
         }
 
     }
@@ -68,7 +76,9 @@ public class MyAnalytics {
     public static void startAnalyticsWithContext(Context context) {
         Log.d(TAG,"startAnalyticsWithContext()");
         if (!app.testHarnessActive) {
-            FlurryAgent.onStartSession(context);
+            if (flurryEnabled) {
+                FlurryAgent.onStartSession(context);
+            }
         }
         startAnalytics();
     }
@@ -80,7 +90,9 @@ public class MyAnalytics {
     public static void stopAnalyticsWithContext(Context context) {
         Log.d(TAG,"stopAnalyticsWithContext()");
         if (!app.testHarnessActive) {
-            FlurryAgent.onEndSession(context);
+            if (flurryEnabled) {
+                FlurryAgent.onEndSession(context);
+            }
         }
         stopAnalytics();
     }
@@ -134,11 +146,13 @@ public class MyAnalytics {
                 dimensions.put("type",intent.getType());
             }
             //TODO:put extras?
-            FlurryAgent.logEvent(APP_OPENED,dimensions);
+            if (flurryEnabled) {
+                FlurryAgent.logEvent(APP_OPENED, dimensions);
+            }
             Countly.sharedInstance().recordEvent(APP_OPENED,dimensions,1);
         }
         else {
-            System.out.println(TAG +":trackAppOpened not sending intent "+intent.toString()+" to analytics service"+". Test harness said so");
+            System.out.println(TAG + ":trackAppOpened not sending intent " + intent.toString() + " to analytics service" + ". Test harness said so");
         }
     }
 
@@ -158,10 +172,12 @@ public class MyAnalytics {
             Log.d(TAG,"Sending event "+name+" (with dimensions) to analytics service");
             ParseAnalytics.trackEvent(name,dimensions);
             Countly.sharedInstance().recordEvent(name,dimensions,1);
-            FlurryAgent.logEvent(name,dimensions);
+            if (flurryEnabled) {
+                FlurryAgent.logEvent(name, dimensions);
+            }
         }
         else {
-            System.out.println(TAG +":trackEvent not sending event "+name+" (with dimensions) to analytics service"+". Test harness said so");
+            System.out.println(TAG + ":trackEvent not sending event " + name + " (with dimensions) to analytics service" + ". Test harness said so");
         }
     }
 
@@ -181,10 +197,12 @@ public class MyAnalytics {
             Log.d(TAG,"Sending start of event "+name+"  to analytics service");
             //ParseAnalytics.trackEvent(name,dimensions);
             //Countly.sharedInstance().recordEvent(name,dimensions,1);
-            FlurryAgent.logEvent(name,true);
+            if (flurryEnabled) {
+                FlurryAgent.logEvent(name, true);
+            }
         }
         else {
-            System.out.println(TAG +":trackTimedEventStart not sending event "+name+"  to analytics service"+". Test harness said so");
+            System.out.println(TAG + ":trackTimedEventStart not sending event " + name + "  to analytics service" + ". Test harness said so");
         }
     }
 
@@ -205,10 +223,12 @@ public class MyAnalytics {
             Log.d(TAG,"Sending start of event "+name+" (with dimensions) to analytics service");
             //ParseAnalytics.trackEvent(name,dimensions);
             //Countly.sharedInstance().recordEvent(name,dimensions,1);
-            FlurryAgent.logEvent(name,dimensions,true);
+            if (flurryEnabled) {
+                FlurryAgent.logEvent(name, dimensions, true);
+            }
         }
         else {
-            System.out.println(TAG +":trackTimedEventStart not sending event "+name+" (with dimensions) to analytics service"+". Test harness said so");
+            System.out.println(TAG + ":trackTimedEventStart not sending event " + name + " (with dimensions) to analytics service" + ". Test harness said so");
         }
     }
     /**
@@ -227,10 +247,12 @@ public class MyAnalytics {
             Log.d(TAG,"Sending stop of event "+name+" (with dimensions) to analytics service");
             //ParseAnalytics.trackEvent(name,dimensions);
             //Countly.sharedInstance().recordEvent(name,dimensions,1);
-            FlurryAgent.endTimedEvent(name);
+            if (flurryEnabled) {
+                FlurryAgent.endTimedEvent(name);
+            }
         }
         else {
-            System.out.println(TAG +":trackTimedEventStop not sending event "+name+" (with dimensions) to analytics service"+". Test harness said so");
+            System.out.println(TAG + ":trackTimedEventStop not sending event " + name + " (with dimensions) to analytics service" + ". Test harness said so");
         }
     }
     /**
@@ -250,10 +272,12 @@ public class MyAnalytics {
             Log.d(TAG,"Sending stop of event "+name+" (with dimensions) to analytics service");
             //ParseAnalytics.trackEvent(name,dimensions);
             //Countly.sharedInstance().recordEvent(name,dimensions,1);
-            FlurryAgent.endTimedEvent(name,dimensions);
+            if (flurryEnabled) {
+                FlurryAgent.endTimedEvent(name, dimensions);
+            }
         }
         else {
-            System.out.println(TAG +":trackTimedEventStop not sending event "+name+" (with dimensions) to analytics service"+". Test harness said so");
+            System.out.println(TAG + ":trackTimedEventStop not sending event " + name + " (with dimensions) to analytics service" + ". Test harness said so");
         }
     }
     /**
@@ -271,10 +295,12 @@ public class MyAnalytics {
             Log.d(TAG,"Sending event "+name+" to analytics service");
             ParseAnalytics.trackEvent(name);
             Countly.sharedInstance().recordEvent(name,1);
-            FlurryAgent.logEvent(name);
+            if (flurryEnabled) {
+                FlurryAgent.logEvent(name);
+            }
         }
         else {
-            System.out.println(TAG +":trackEvent not sending event "+name+" to analytics service"+". Test harness said so");
+            System.out.println(TAG + ":trackEvent not sending event " + name + " to analytics service" + ". Test harness said so");
         }
 
     }
