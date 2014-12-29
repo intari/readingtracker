@@ -63,6 +63,7 @@ public class MyAnalytics {
         if (!app.testHarnessActive) {
             FlurryAgent.onStartSession(context);
         }
+        startAnalytics();
     }
 
     public static void stopAnalyticsWithContext(Context context) {
@@ -70,6 +71,7 @@ public class MyAnalytics {
         if (!app.testHarnessActive) {
             FlurryAgent.onEndSession(context);
         }
+        stopAnalytics();
     }
     public static void startAnalytics() {
         Log.d(TAG,"startAnalytics()");
