@@ -61,6 +61,10 @@ public class MyAnalytics {
 
         }
     }
+    /**
+     * Starts 3rd-party analytics, will call {@link MyAnalytics.starAnalytics()}
+     * @param context - context to use. cannot be application's context. must be Activity/Service one or at least base
+     */
     public static void startAnalyticsWithContext(Context context) {
         Log.d(TAG,"startAnalyticsWithContext()");
         if (!app.testHarnessActive) {
@@ -69,6 +73,10 @@ public class MyAnalytics {
         startAnalytics();
     }
 
+    /**
+     * Stops 3rd-party analytics, will call {@link MyAnalytics.stopAnalytics()}
+     * @param context - context to use. cannot be application's context. must be Activity/Service one or at least base
+     */
     public static void stopAnalyticsWithContext(Context context) {
         Log.d(TAG,"stopAnalyticsWithContext()");
         if (!app.testHarnessActive) {
@@ -76,6 +84,9 @@ public class MyAnalytics {
         }
         stopAnalytics();
     }
+    /**
+     * starts 3rd party analytics. for analytics systems which don't need context
+     */
     public static void startAnalytics() {
         Log.d(TAG,"startAnalytics()");
         if (!app.testHarnessActive) {
@@ -83,6 +94,10 @@ public class MyAnalytics {
             countlyStarted=true;
         }
     }
+
+    /**
+     * pauses 3rd party analytics (and possibile stops). for analytics systems which don't need context
+     */
     public static void stopAnalytics() {
         Log.d(TAG,"stopAnalytics()");
         if (!app.testHarnessActive) {
@@ -95,6 +110,11 @@ public class MyAnalytics {
             }
         }
     }
+
+    /**
+     * Signals 'app opened' intent to 3rd-part analytics systems.
+     * @param intent - intent used to open app
+     */
     public static void trackAppOpened(android.content.Intent intent) {
         if (app==null) {
             Log.e(TAG,"trackAppOpened: app is null");
@@ -124,6 +144,12 @@ public class MyAnalytics {
             System.out.println(TAG +":trackAppOpened not sending intent "+intent.toString()+" to analytics service"+". Test harness said so");
         }
     }
+
+    /**
+     * Signals event to be recorded by 3rd-party analytics systems.
+     * @param name - event name
+     * @param dimensions -  additional event information
+     */
     public static void trackEvent(String name, java.util.Map<java.lang.String,java.lang.String> dimensions) {
         if (app==null) {
             Log.e(TAG,"trackEvent (with dimensions): app is null");
@@ -138,10 +164,15 @@ public class MyAnalytics {
             FlurryAgent.logEvent(name,dimensions);
         }
         else {
-            System.out.println(TAG +":trackAppOpened not sending event "+name+" (with dimensions) to analytics service"+". Test harness said so");
+            System.out.println(TAG +":trackEvent not sending event "+name+" (with dimensions) to analytics service"+". Test harness said so");
         }
     }
 
+    /**
+     * Signals start of timed event to 3rd-party analytics systems.
+     * Currently only Flurry is supported (not Count.ly)
+     * @param name - event name
+     */
     public static void trackTimedEventStart(String name) {
         if (app==null) {
             Log.e(TAG,"trackTimedEventStart: app is null");
@@ -159,6 +190,13 @@ public class MyAnalytics {
             System.out.println(TAG +":trackTimedEventStart not sending event "+name+"  to analytics service"+". Test harness said so");
         }
     }
+
+    /**
+     * Signals start of timed event to 3rd-party analytics systems.
+     * Currently only Flurry is supported (not Count.ly)
+     * @param name - event name
+     * @param dimensions - additional event information
+     */
     public static void trackTimedEventStart(String name, java.util.Map<java.lang.String,java.lang.String> dimensions) {
         if (app==null) {
             Log.e(TAG,"trackTimedEventStart (with dimensions): app is null");
@@ -176,6 +214,11 @@ public class MyAnalytics {
             System.out.println(TAG +":trackTimedEventStart not sending event "+name+" (with dimensions) to analytics service"+". Test harness said so");
         }
     }
+    /**
+     * Signals stop of timed event to 3rd-party analytics systems.
+     * Currently only Flurry is supported (not Count.ly)
+     * @param name - event name
+     */
     public static void trackTimedEventStop(String name) {
         if (app==null) {
             Log.e(TAG,"trackTimedEventStop: app is null");
@@ -193,6 +236,12 @@ public class MyAnalytics {
             System.out.println(TAG +":trackTimedEventStop not sending event "+name+" (with dimensions) to analytics service"+". Test harness said so");
         }
     }
+    /**
+     * Signals end of timed event to 3rd-party analytics systems.
+     * Currently only Flurry is supported (not Count.ly)
+     * @param name - event name
+     * @param dimensions - additional event information
+     */
     public static void trackTimedEventStop(String name, java.util.Map<java.lang.String,java.lang.String> dimensions) {
         if (app==null) {
             Log.e(TAG,"trackTimedEventStop (with dimensions): app is null");
@@ -210,7 +259,10 @@ public class MyAnalytics {
             System.out.println(TAG +":trackTimedEventStop not sending event "+name+" (with dimensions) to analytics service"+". Test harness said so");
         }
     }
-
+    /**
+     * Signals event to be recorded by 3rd-party analytics systems.
+     * @param name - event name
+     */
     public static void trackEvent(String name) {
         if (app==null) {
             Log.e(TAG,"trackEvent: app is null");
@@ -225,7 +277,7 @@ public class MyAnalytics {
             FlurryAgent.logEvent(name);
         }
         else {
-            System.out.println(TAG +":trackAppOpened not sending event "+name+" to analytics service"+". Test harness said so");
+            System.out.println(TAG +":trackEvent not sending event "+name+" to analytics service"+". Test harness said so");
         }
 
     }
