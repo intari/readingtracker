@@ -84,7 +84,66 @@ public class DeviceInfoManager {
         return false;
     }
 
-
+    /**
+     * Returns name of SIM's operator (may be different from operator currently used by device if roaming)
+     * @param context - Android's context
+     * @return operator name or null if not possible
+     */
+    public String getSimOperatorName(Context context) {
+        TelephonyManager telephonyManager = (TelephonyManager)context.getSystemService(Context.TELEPHONY_SERVICE);
+        if (telephonyManager!=null) {
+            return telephonyManager.getSimOperatorName();
+        }
+        else
+        {
+            return null;
+        }
+    }
+    /**
+     * Returns name of operator currently used by device
+     * @param context - Android's context
+     * @return operator name or null if not possible
+     */
+    public String getNetworkOperatorName(Context context) {
+        TelephonyManager telephonyManager = (TelephonyManager)context.getSystemService(Context.TELEPHONY_SERVICE);
+        if (telephonyManager!=null) {
+            return telephonyManager.getNetworkOperatorName();
+        }
+        else
+        {
+            return null;
+        }
+    }
+    /**
+     * Returns name of SIM's operator Country (may be different from operator currently used by device if roaming)
+     * @param context - Android's context
+     * @return country name or null if not possible
+     */
+    public String getSimOperatorCountryISO(Context context) {
+        TelephonyManager telephonyManager = (TelephonyManager)context.getSystemService(Context.TELEPHONY_SERVICE);
+        if (telephonyManager!=null) {
+            return telephonyManager.getSimCountryIso();
+        }
+        else
+        {
+            return null;
+        }
+    }
+    /**
+     * Returns ISO country code  of operator currently used by device
+     * @param context - Android's context
+     * @return operator name or null if not possible
+     */
+    public String getNetworkOperatorCountryISO(Context context) {
+        TelephonyManager telephonyManager = (TelephonyManager)context.getSystemService(Context.TELEPHONY_SERVICE);
+        if (telephonyManager!=null) {
+            return telephonyManager.getNetworkCountryIso();
+        }
+        else
+        {
+            return null;
+        }
+    }
 
     public String getDeviceId(Context context) {
         TelephonyManager telephonyManager = (TelephonyManager)context.getSystemService(Context.TELEPHONY_SERVICE);
