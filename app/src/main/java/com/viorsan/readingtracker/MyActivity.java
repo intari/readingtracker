@@ -8,6 +8,7 @@ import android.content.IntentFilter;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v4.app.FragmentManager;
@@ -151,8 +152,72 @@ public class MyActivity extends ActionBarActivity implements GoToAccessibilitySe
             startActivityForResult(loginBuilder.build(), LOGIN_REQUEST);
         }
     }
+
+    /**
+     * Initializes push notification support from Parse Platform
+     * see https://parse.com/tutorials/android-push-notifications and https://parse.com/docs/push_guide#top/Android
+     */
+    private void initPush() {
+        ParsePush.subscribeInBackground("", new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e == null) {
+                    Log.d(TAG, "successfully subscribed to the broadcast channel.");
+                } else {
+                    Log.e(TAG, "failed to subscribe for push", e);
+                }
+            }
+        });
+
+    }
+
+    /**
+     * Updates current 'installation' object
+     * used to target Push Notifications
+     * see https://parse.com/docs/push_guide#top/Android
+     */
+    private void updateInstallationObject() {
+        ParseInstallation installation=ParseInstallation.getCurrentInstallation();
+        DeviceInfoManager deviceInfoManager=new DeviceInfoManager();
+
+        installation.put("ourDeviceId",deviceInfoManager.getDeviceId(this));
+        installation.put("runtime",deviceInfoManager.getCurrentRuntimeValue());
+        String simOperatorName=deviceInfoManager.getSimOperatorName(this);
+        if (simOperatorName!=null) {
+            installation.put("simOperatorName",simOperatorName);
+        }
+        String networkOperatorName=deviceInfoManager.getNetworkOperatorName(this);
+        if (networkOperatorName!=null) {
+            installation.put("networkOperatorName",networkOperatorName);
+        }
+        String simCountryISO=deviceInfoManager.getSimOperatorCountryISO(this);
+        if (simCountryISO!=null) {
+            installation.put("simCountryISO",simCountryISO);
+        }
+        String networkCountryISO=deviceInfoManager.getNetworkOperatorCountryISO(this);
+        if (networkCountryISO!=null) {
+            installation.put("networkCountryISO",networkCountryISO);
+        }
+        installation.put("appBuildFlavor",BuildConfig.FLAVOR);
+        //deviceType used in book readings reports
+        installation.put("deviceInfoString", BookReadingsRecorder.getDeviceInfoString());
+
+        installation.put("deviceMode",Build.MODEL);
+        installation.put("deviceManufacturer",Build.MANUFACTURER);
+        installation.put("deviceProduct",Build.PRODUCT);
+
+        //TODO: what else? some user groups?
+        //TODO: when we have 'user groups' use channels
+        //save updated object
+        ParseInstallation.getCurrentInstallation().saveInBackground();
+    }
     private void init(){
         self = this;
+
+        //init Parse Platform's push support
+        initPush();
+        //update Installation class
+        updateInstallationObject();
 
         titleTextView.setText(R.string.profile_title_logged_in);
         //even if user is not logged in we should configured other parse of interface
