@@ -39,6 +39,9 @@
 
     <string name="title_activity_about">О приложении</string>
     <string name="action_about">О приложении</string>
+    <string name="readingTrackerBuildOn">Собрано %2$s на %1$s в %3$s</string>
+    <string name="readingTrackerVersionLineDefault">Загрузка...</string>
+    <string name="readingTrackerVersion">Версия %1$s  (%2$s / %3$s) </string>
 
 
 </resources>

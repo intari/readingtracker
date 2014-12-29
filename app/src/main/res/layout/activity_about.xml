@@ -42,7 +42,34 @@
             android:id="@+id/readingTrackerSlogan"
             android:layout_gravity="center_horizontal|left"
             android:autoLink="web"/>
-        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/readingTrackerCopyright"
+            android:id="@+id/readingTrackerCC"
+            android:layout_gravity="center_horizontal|left"
+            android:autoLink="web"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/readingTrackerVersionLineDefault"
+            android:id="@+id/readingTrackerVersion"
+            android:layout_gravity="center_horizontal|left"
+            android:autoLink="web"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/readingTrackerVersionLineDefault"
+            android:id="@+id/readingTrackerBuildOn"
+            android:layout_gravity="center_horizontal|left"
+            android:autoLink="web"/>
+
+    </LinearLayout>
+
 
     <!-- settings should be here -->
 
@@ -55,14 +82,6 @@
         android:layout_below="@+id/readingTrackerInfo">
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="@string/readingTrackerCopyright"
-            android:id="@+id/readingTrackerCC"
-            android:layout_gravity="center_horizontal|left"
-            android:autoLink="web"/>
 
         <TextView
             android:layout_width="wrap_content"

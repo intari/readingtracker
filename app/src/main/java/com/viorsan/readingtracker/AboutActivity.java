@@ -5,8 +5,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import butterknife.ButterKnife;
+import butterknife.InjectView;
 
 /**
  * Created by Dmitriy Kazimirov, e-mail:dmitriy.kazimirov@viorsan.com on 28.12.14.
@@ -16,6 +18,9 @@ public class AboutActivity extends ActionBarActivity {
 
     private static final String TAG = "ReadingTracker::AboutActivity";
 
+    @InjectView(R.id.readingTrackerVersion) TextView readingTrackerVersionTextView;
+    @InjectView(R.id.readingTrackerBuildOn) TextView readingTrackerBuildOnTextView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +29,14 @@ public class AboutActivity extends ActionBarActivity {
 
         MyAnalytics.trackEvent("AboutActivityCreated");
         Log.d(TAG, "onCreate");
+    }
+
+    //Load version info
+    private void configureGUI() {
+        String buildStr=getResources().getString(R.string.readingTrackerBuildOn,BuildConfig.BUILD_HOST,BuildConfig.BUILD_USER, BuildConfig.BUILD_DATE_TIME);
+        String version=getResources().getString(R.string.readingTrackerVersion,BuildConfig.VERSION_NAME, BuildConfig.FLAVOR,BuildConfig.BUILD_TYPE);
+        readingTrackerVersionTextView.setText(version);
+        readingTrackerBuildOnTextView.setText(buildStr);
     }
 
 
@@ -61,6 +74,7 @@ public class AboutActivity extends ActionBarActivity {
     {
         super.onStart();
         Log.d(TAG, "start");
+        configureGUI();
 
         MyAnalytics.trackEvent("AboutActivityOnStart");
     }
