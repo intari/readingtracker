@@ -335,7 +335,7 @@ public class BookReadingsRecorder {
                  * And it took too much time so user likely was busy doing something else
                  * so only report to analytics system but NOT to Parse (because it could confuse stats)
                  */
-                MyAnalytics.trackTimedEventStart("pageReadTooLong",dimensions);
+                MyAnalytics.trackEvent("pageReadTooLong",dimensions);
 
                 return;
             }
@@ -421,7 +421,7 @@ public class BookReadingsRecorder {
              * but report details to (possibly) 3rd-party analytics system(s)
              * In future some of personal details will be masked
              */
-            MyAnalytics.trackTimedEventStart("pageRead",dimensions);
+            MyAnalytics.trackEvent("pageRead",dimensions);
 
 
 
