@@ -143,7 +143,7 @@ public class AccessibilityRecorderService extends AccessibilityService {
     }
     //https://developer.android.com/reference/android/view/accessibility/AccessibilityNodeInfo.html#getViewIdResourceName()
     private String getSourceViewId(AccessibilityEvent event) {
-        /*
+
         AccessibilityNodeInfo source=event.getSource();
         if (source!=null) {
             String viewId=source.getViewIdResourceName();
@@ -151,7 +151,7 @@ public class AccessibilityRecorderService extends AccessibilityService {
                 return viewId.toString();
             }
         }
-        */
+
         return null;
     }
 
@@ -201,7 +201,7 @@ public class AccessibilityRecorderService extends AccessibilityService {
                     if (sourceInfoText!=null) {
                         if (!sourceInfoText.equals(prevPageNumbers)) {
                             prevPageNumbers=sourceInfoText;
-                            Log.d(TAG,"alternate:assuming it's pagenumber overlay, real sourceview id is "+sourceViewId+". source text:"+sourceInfoText);
+                            Log.d(TAG,"alternate:assuming it's pagenumber overlay, real sourceViewId is "+sourceViewId+". source text:"+sourceInfoText);
                             Log.d(TAG,"calling processMantanoPagenumbers in alternate way#1");
                             processMantanoPagenumbers(sourceInfoText);
                         }
@@ -227,7 +227,7 @@ public class AccessibilityRecorderService extends AccessibilityService {
                                         if (text!=null) {
                                             if (!text.equals(prevPageNumbers)) {
                                                 prevPageNumbers=text;
-                                                Log.d(TAG, "calling processMantanoPagenumbers in alternate way#2 (got here via FrameLayout hack). text is " + text);
+                                                Log.d(TAG, "calling processMantanoPagenumbers in alternate way#2 (got here via FrameLayout hack). text is " + text+",real sourceViewId is "+sourceViewId);
                                                 processMantanoPagenumbers(text);
                                             }
                                         }
@@ -262,7 +262,7 @@ public class AccessibilityRecorderService extends AccessibilityService {
             }
             if (event.getEventType()==AccessibilityEvent.TYPE_VIEW_CLICKED) {
                if (eventClassName.equals("android.widget.RelativeLayout")) {
-                   Log.d(TAG,"alternate:assuming it's book_bloc_item_list, real sourceview id is "+sourceViewId+". source text:"+sourceInfoText);
+                   Log.d(TAG,"alternate:assuming it's book_bloc_item_list, real sourceViewId is "+sourceViewId+". source text:"+sourceInfoText);
                    List<CharSequence> unprocessedData=event.getText();
                    for (CharSequence s : event.getText()) {
                        Log.d(TAG, "alternate:Dumping event text:" + s);
@@ -278,6 +278,7 @@ public class AccessibilityRecorderService extends AccessibilityService {
             if (event.getEventType()==AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED) {
                 if (event.getClassName().toString().equals("com.mantano.android.library.activities.LibraryActivity")) {
                     Log.i(TAG, "Switch to library");
+                    Log.i(TAG,"classname is com.mantano.android.library.activities.LibraryActivity"+" sourceViewId is "+sourceViewId);
                     //prevent potential Mantano crash due to us take too much time
                     Thread reportThread=new Thread( new Runnable() {
                         @Override
@@ -293,6 +294,8 @@ public class AccessibilityRecorderService extends AccessibilityService {
 
                 } else if (event.getClassName().toString().equals("com.mantano.android.reader.activities.AsyncReaderActivity")) {
                     Log.i(TAG, "Switch to reading");
+
+                    Log.i(TAG,"classname is com.mantano.android.reader.activities.AsyncReaderActivity"+" sourceViewId is "+sourceViewId);
                     //prevent potential Mantano crash due to us take too much time
                     Thread reportThread=new Thread( new Runnable() {
                         @Override
