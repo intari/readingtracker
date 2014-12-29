@@ -24,6 +24,7 @@ public class MyAnalytics {
 
     private static HashMap<String, String> userData = new HashMap<String, String>();
 
+    private static boolean countlyStarted=false;
     private static MyApplication app;
     public static void init(MyApplication newApp,Context context) {
         Log.d(TAG,"init");
@@ -77,12 +78,19 @@ public class MyAnalytics {
         Log.d(TAG,"startAnalytics()");
         if (!app.testHarnessActive) {
             Countly.sharedInstance().onStart();
+            countlyStarted=true;
         }
     }
     public static void stopAnalytics() {
         Log.d(TAG,"stopAnalytics()");
         if (!app.testHarnessActive) {
-            Countly.sharedInstance().onStop();
+            if (countlyStarted) {
+                Countly.sharedInstance().onStop();
+                countlyStarted=false;
+            }
+            else {
+                Log.d(TAG,"Possible logic violation. stopAnalytics() was called before startAnalytics()");
+            }
         }
     }
     public static void trackAppOpened(android.content.Intent intent) {
