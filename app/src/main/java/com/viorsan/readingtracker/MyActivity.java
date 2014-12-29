@@ -48,6 +48,9 @@ public class MyActivity extends ActionBarActivity implements GoToAccessibilitySe
     public static final String USER_GENDER = "gender";
     public static final int TIME_BEFORE_ASKING_USER_TO_GO_TO_ACCESSIBILITY_SETTINGS = 5 * 1000;//5 seconds to wait before checking if we should ask user to go to Accessibility settings
     public static final int TIME_BEFORE_ASKING_FOR_MONITORING_STATUS_UPDATE = 5 * 1000;
+    public static final String COUNTLY_USERNAME = "username";
+    public static final String COUNTLY_EMAIL = "email";
+    public static final String COUNTLY_FULLNAME = "name";
     @InjectView(R.id.currentlyReadingMessage) TextView currentlyReadingTextView;
     @InjectView(R.id.accessGranted) TextView accessGrantedTextView;
     @InjectView(R.id.supportedEbookReaderInstalledStatus) TextView supportedEbookReaderInstalledTextView;
@@ -91,11 +94,25 @@ public class MyActivity extends ActionBarActivity implements GoToAccessibilitySe
         Log.d(TAG,"Signaling everybody that user was logged in");
         startService();
         //it will autostop if no user active
-        MyAnalytics.trackEvent("userLogin");
+        MyAnalytics.trackEvent("userLoggedIn");
         ParseUser currentUser=ParsePlatformUtils.getCurrentParseUser();
 
         if (currentUser!=null) {
             MyAnalytics.setUserId(currentUser.getUsername());
+            /* Countly Community does not support those data
+               It's currently Countly Enterprise but it's planned to be in Cloud
+               see http://support.count.ly/discussions/questions/5624-userdata-vs-cloud-edition
+
+             */
+            MyAnalytics.provideUserdata(COUNTLY_USERNAME,currentUser.getUsername());
+            if (currentUser.getEmail()!=null) {
+                MyAnalytics.provideUserdata(COUNTLY_EMAIL,currentUser.getEmail());
+            }
+            String fullName = currentUser.getString(FULL_USER_NAME);
+            if (fullName != null) {
+                MyAnalytics.provideUserdata(COUNTLY_FULLNAME,fullName);
+            }
+            MyAnalytics.sendUserData();
         }
         else
         {
@@ -160,11 +177,12 @@ public class MyActivity extends ActionBarActivity implements GoToAccessibilitySe
                 Log.i(TAG, "ParseUser here. Authenticated. ");
                 //set an ACL on the current user's data to not be publicly readable
                 currentUser.setACL(new ParseACL(currentUser));
+                MyAnalytics.trackEvent("userLoggedInArleady");
             }
             else
             {
                 Log.i(TAG, "ParseUser here. NOT Authenticated. ");
-
+                MyAnalytics.trackEvent("userLoggedInWithoutAuth");//in case I forget and re-enable anonymous users
             }
         }
         //initServiceReceiver();
