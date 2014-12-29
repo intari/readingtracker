@@ -358,10 +358,10 @@ public class MyActivity extends ActionBarActivity implements GoToAccessibilitySe
     {
       return (
               appInstalledOrNot(AccessibilityRecorderService.MANTANO_READER_PACKAGE_NAME)
-              /* ||
+               ||
               appInstalledOrNot(AccessibilityRecorderService.MANTANO_READER_ESSENTIALS_PACKAGE_NAME) ||
               appInstalledOrNot(AccessibilityRecorderService.MANTANO_READER_LITE_PACKAGE_NAME)
-              */
+
       );
 
     };

@@ -8,7 +8,7 @@
 <accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
 
                        android:accessibilityEventTypes="typeAllMask"
-                       android:packageNames="com.mantano.reader.android"
+                       android:packageNames="com.mantano.reader.android,com.mantano.reader.android.lite,com.mantano.reader.android.normal"
                        android:canRetrieveWindowContent="true"
                        android:description="@string/accessibilityDescription"
                        android:accessibilityFeedbackType="feedbackGeneric"
