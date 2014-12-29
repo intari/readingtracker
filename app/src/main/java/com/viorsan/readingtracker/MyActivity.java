@@ -177,6 +177,7 @@ public class MyActivity extends ActionBarActivity implements GoToAccessibilitySe
      * see https://parse.com/docs/push_guide#top/Android
      */
     private void updateInstallationObject() {
+        //TODO:ParseInstallation also needs to be wrapped in ParsePlatformUtils
         ParseInstallation installation=ParseInstallation.getCurrentInstallation();
         DeviceInfoManager deviceInfoManager=new DeviceInfoManager();
 
@@ -206,8 +207,15 @@ public class MyActivity extends ActionBarActivity implements GoToAccessibilitySe
         installation.put("deviceManufacturer",Build.MANUFACTURER);
         installation.put("deviceProduct",Build.PRODUCT);
 
+        // associate device with user
+        ParseUser currentUser=ParsePlatformUtils.getCurrentParseUser();
+        if (currentUser!=null) {
+            installation.put("user",ParseUser.getCurrentUser());
+        }
         //TODO: what else? some user groups?
         //TODO: when we have 'user groups' use channels
+        //TODO:use genres user likes? or authors user likes?
+        //TODO:make it possible to target user and not device
         //save updated object
         ParseInstallation.getCurrentInstallation().saveInBackground();
     }

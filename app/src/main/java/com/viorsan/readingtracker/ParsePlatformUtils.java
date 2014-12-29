@@ -40,4 +40,13 @@ public class ParsePlatformUtils {
         }
         return null;//we should never reach here if platform mode was correctly setup
     }
+
+    /**
+     * Makes appropriate 'channel name'
+     * @param name - source string
+     * @return string which can be used as channel name without errors
+     */
+    static public String makeChannelName(String name){
+        return name.replaceAll("\\s+","_");
+    }
 }
