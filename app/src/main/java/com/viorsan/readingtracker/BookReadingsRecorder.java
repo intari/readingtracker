@@ -136,10 +136,19 @@ public class BookReadingsRecorder {
             return null;
         }
     }
+
+    /**
+     * Get's 'deviceType' string for use in many reports
+     * This is static method because MyActivity.updateInstallationObject() also needs it
+     * @return 'deviceType' string
+     */
+    public static String getDeviceInfoString() {
+        return ""+Build.MANUFACTURER+" "+Build.MODEL;//+" ("+Build.PRODUCT+")";
+    }
     private void updateDeviceInfo() {
         DeviceInfoManager deviceInfoManager = new DeviceInfoManager();
         //yes, this will result in denormalized data. but I need it. and need bpm much less here
-        deviceInfoString=""+Build.MANUFACTURER+" "+Build.MODEL;//+" ("+Build.PRODUCT+")";
+        deviceInfoString=BookReadingsRecorder.getDeviceInfoString();
         Log.i(TAG,"Device information string is "+deviceInfoString+"|");
     }
 
