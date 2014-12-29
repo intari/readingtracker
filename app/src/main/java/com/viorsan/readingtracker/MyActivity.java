@@ -262,6 +262,7 @@ public class MyActivity extends ActionBarActivity implements GoToAccessibilitySe
 
         checkForUpdates();
 
+        /*
         try {
             PackageManager pm=getPackageManager();
             if (pm!=null) {
@@ -295,6 +296,7 @@ public class MyActivity extends ActionBarActivity implements GoToAccessibilitySe
         } catch (PackageManager.NameNotFoundException e) {
         } catch (NoSuchAlgorithmException e) {
         }
+        */
 
         /* debug support */
         messageReceiver = new BroadcastReceiver() {
