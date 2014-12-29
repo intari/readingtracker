@@ -50,6 +50,15 @@
             android:id="@+id/readingTrackerCC"
             android:layout_gravity="center_horizontal|left"
             android:autoLink="web"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/readingTrackerMailTo"
+            android:id="@+id/readingTrackerMailTo"
+            android:layout_gravity="center_horizontal|left"
+            android:inputType="textEmailAddress"
+            android:autoLink="all"/>
 
         <TextView
             android:layout_width="wrap_content"
