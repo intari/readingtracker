@@ -25,10 +25,10 @@
 <!--     <string name="readingTrackerToS" translatable="false">Reading Tracker web site: TODO put linkToS can be read here TODO: Link</string> -->
 
     <string name="readingTrackerSlogan" translatable="false">Now you are in control of what you read</string>
-    <string name="readingTrackerCopyright" translatable="false">Reading Tracker (c) 2014,2015 Dmitriy Kazimirov, mailto:dmitriy.kazimirov@viorsan.com </string>
+    <string name="readingTrackerCopyright" translatable="false">Reading Tracker (c) 2014,2015 Dmitriy Kazimirov, e-mail:dmitriy.kazimirov@viorsan.com </string>
     <string name="readingTrackerCopyrightLicense" translatable="false">Reading Tracker Application itself is licensed under GNU Public License version 3, permission is granted to link with all libraries below in credits</string>
 
-    <string name="readingTracker3rdparty" translatable="false">Following 3rd-part components were used:</string>
+    <string name="readingTracker3rdparty" translatable="false">Following 3rd-party components were used:</string>
     <string name="readingTrackerToS" translatable="false">Reading Tracker ToS can be read here TODO: Link</string>
     <string name="readingTrackerPrivacyPolicy" translatable="false">Reading Tracker\'s Privacy Policy can be read here TODO: Link</string>
     <string name="creditsIcons" translatable="false">Icons are based on materials from http://www.flaticon.com by http://www.freepik.com which were licensed under CC BY 3.0 (http://creativecommons.org/licenses/by/3.0/) </string>
