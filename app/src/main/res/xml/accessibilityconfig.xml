@@ -12,7 +12,7 @@
                        android:canRetrieveWindowContent="true"
                        android:description="@string/accessibilityDescription"
                        android:accessibilityFeedbackType="feedbackGeneric"
-                       android:accessibilityFlags="flagDefault"
+                       android:accessibilityFlags="flagDefault|flagReportViewIds"
                        android:notificationTimeout="0"
 
  />
