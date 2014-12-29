@@ -359,7 +359,7 @@ android {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode myVersionCode
-        versionName myVersionName+"."+myVersionCode+"-built_at-"+buildTime()+'-git-sha1-'+gitSha()
+        versionName myVersionName+"."+myVersionCode+'-git-sha1-'+gitSha()
     }
 
 
