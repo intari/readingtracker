@@ -21,6 +21,19 @@ Others are not supported yet.
 
 Please note authors of ebook readers don't endorse this app.
 
+# How to use application (assuming you use Google Play version):
+* Install one of supported ebook readers
+* Install this app
+* enable access to accessibility services for app
+* open & read books from reader's Library view
+* you could confirm everything was detecred correctly by opening app again and checking it saw details
+* when you close book you will get e-mail from my bot intari@viorsan.com
+
+# What about analytics, Evernote integration?
+Analytics will be possible in future versions.
+Ability to setup integration with Zapier web-hooks (support for Evernote was done this way) is not yet available in application's interface.
+
+
 
 # Which Android Permissions are used and why
   Permissions
