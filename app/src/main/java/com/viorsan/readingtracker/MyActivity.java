@@ -597,6 +597,7 @@ public class MyActivity extends ActionBarActivity implements GoToAccessibilitySe
     @Override
     public void onResume() {
         super.onResume();
+        Log.d(TAG,"onResume");
         // Logs 'install' and 'app activate' App Events.
         AppEventsLogger.activateApp(this);
         checkForUpdates();
@@ -608,6 +609,7 @@ public class MyActivity extends ActionBarActivity implements GoToAccessibilitySe
     @Override
     public void onPause() {
         super.onPause();
+        Log.d(TAG,"onPause");
         // Logs 'app deactivate' App Event.
         AppEventsLogger.deactivateApp(this);
         timerToWaitBeforeAskingForAccessibilitySettings.cancel();
@@ -638,14 +640,14 @@ public class MyActivity extends ActionBarActivity implements GoToAccessibilitySe
 
     protected void onStop()
     {
-        Log.d(TAG,"stop");
+        Log.d(TAG,"onStop");
         MyAnalytics.stopAnalyticsWithContext(this);
         super.onStop();
     }
     protected void onStart()
     {
         super.onStart();
-        Log.d(TAG, "start");
+        Log.d(TAG, "onStart");
         MyAnalytics.startAnalyticsWithContext(this);
         currentUser = ParsePlatformUtils.getCurrentParseUser();
         if (currentUser != null) {
@@ -655,9 +657,6 @@ public class MyActivity extends ActionBarActivity implements GoToAccessibilitySe
             showProfileLoggedOut();
             handleUserLogout();
         }
-        updateReaderStatus();
-        askForActivityMonitoringUpdate();
-
     }
 
 
