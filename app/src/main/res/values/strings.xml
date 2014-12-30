@@ -31,7 +31,7 @@
 
     <string name="readingTracker3rdparty" translatable="false">Following 3rd-party components were used:</string>
     <string name="readingTrackerToS" translatable="false">Reading Tracker ToS can be read here TODO: Link</string>
-    <string name="readingTrackerPrivacyPolicy" translatable="false">Reading Tracker\'s Privacy Policy can be read here TODO: Link</string>
+    <string name="readingTrackerPrivacyPolicy" translatable="false">Reading Tracker\'s Privacy Policy can be read here https://intari.github.io/readingtracker/#privacy-policy-for-playstore-version</string>
     <string name="creditsIcons" translatable="false">Icons are based on materials from http://www.flaticon.com by http://www.freepik.com which were licensed under CC BY 3.0 (http://creativecommons.org/licenses/by/3.0/) </string>
     <string name="creditsParsePlatform" translatable="false">Application uses Parse Platform by https://parse.com/about (c) Parse LLC </string>
     <string name="creditsParseUI" translatable="false">Application uses Modified Parse UI library from https://github.com/ParsePlatform/ParseUI-Android, Copyright (c) 2014, Parse, LLC. All rights reserved.</string>
