@@ -17,6 +17,10 @@ public class PushReceiver  extends ParsePushBroadcastReceiver {
     /**
      * handler for https://parse.com/docs/push_guide#receiving-responding/Android
      * called when user clicked on notification
+     * TODO:handle custom push options, see
+     * http://blog.parse.com/2014/09/30/android-push-gets-major-refresh/
+     * https://parse.com/docs/push_guide#options-data/Android
+     * 'uri' will be handled for us but for others we should at least show popup message
      * @param context
      * @param intent - intent which was
      */
@@ -26,6 +30,25 @@ public class PushReceiver  extends ParsePushBroadcastReceiver {
         MyAnalytics.startAnalyticsWithContext(context);
         MyAnalytics.trackAppOpened(intent);
         MyAnalytics.trackEvent("userClickedOnPushNotification");
+        if (intent!=null) {
+            String pushChannel=intent.getStringExtra(ParsePushBroadcastReceiver.KEY_PUSH_CHANNEL);
+            String pushData=intent.getStringExtra(ParsePushBroadcastReceiver.KEY_PUSH_DATA);
+            if (pushChannel!=null) {
+                Log.d(TAG,"PushChannel is "+pushChannel+"|");
+            }
+            else {
+                Log.d(TAG,"PushChannel is null");
+            }
+            if (pushData!=null) {
+                Log.d(TAG,"PushData is "+pushData+"|");
+            }
+            else {
+                Log.d(TAG,"PushData is null");
+            }
+        }
+        else {
+            Log.d(TAG,"intent is null");
+        }
         //just start main activity for now
         Intent i = new Intent(context, MyActivity.class);
         i.putExtras(intent.getExtras());
