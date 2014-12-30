@@ -11,15 +11,18 @@ Data are to [Parse](parse.com) cloud service for later processing and analysis.
 After that e-mails are send to me using [Mandrill](mandrillapp.com) and record is added to my [Evernote](evernote.com) notebook using [Zapier](zapier.com).
 In future various interesting graphs could be made once I collect enough statistics
 
-# Requirements for using
+# Application requirements
 * Android 4.3+ (last version of code with support for 4.2 is at https://github.com/intari/readingtracker/tree/Last_API_17_Android_4_2 , it's much easier to work at API Level 18)
+* Suppported e-book reader
+* Android tablet
 
-# Which e-book readers are supported for integration
+# Which e-book readers are supported for integration?
 Currently Mantano Reader Premium is supported (it's great. Please buy it. If you want to used it on multiple devices you should buy their cloud subscription too).
 Mantano Essentials and Mantano Lite should also work.
 Others are not supported yet.
 
 Please note authors of ebook readers don't endorse this app.
+
 
 # How to use application (assuming you use Google Play version):
 * Install one of supported ebook readers
@@ -27,11 +30,13 @@ Please note authors of ebook readers don't endorse this app.
 * enable access to accessibility services for app
 * open & read books from reader's Library view
 * you could confirm everything was detecred correctly by opening app again and checking it saw details
-* when you close book you will get e-mail from my bot intari@viorsan.com
+* when you close book you will get e-mail from my bot intari@viorsan.com.
+Bot's message will be in Russian if bot thinks you are speak Russian or in English.
+
 
 # What about analytics, Evernote integration?
 Analytics will be possible in future versions.
-Ability to setup integration with Zapier web-hooks (support for Evernote was done this way) is not yet available in application's interface.
+Ability to setup integration with [Zapier](zapier.com) web-hooks (support for [Evernote](evernote.com) was done this way) is not yet available in application's interface
 
 
 
@@ -39,7 +44,7 @@ Ability to setup integration with Zapier web-hooks (support for Evernote was don
   Permissions
   * RECEIVE_BOOT_COMPLETED  - to be able to catch moments when you start read
   * INTERNET - communication with our server
-  * ACCESS_NETWORK_STATE - usage analytics & error reporting.
+  * ACCESS_NETWORK_STATE - usage analytics and error reporting.
   * READ_PHONE_STATE - statistics
   * GET_TASKS - to knew when you switch from supported reading app to something other
   * WRITE_EXTERNAL_STORAGE - automatic updates of non-PlayStore versions using HockeyApp
@@ -60,7 +65,8 @@ Other things:
 # Privacy Policy (for PlayStore version)
 Data collected by application will only be used to provide services to app user.
 Collected data won't be sold, used for spam or other bad things.
-If applicable goverment authority asks for your data I could provide data collected by app from you.
+I reserve right to  provide data collected by app from you if applicable goverment authority asks for your data.
+
 Application uses several 3rd-party services (Parse, Mandrill, Countly) to provide some functionality.
 
 # Where are sources for CloudCode part?
