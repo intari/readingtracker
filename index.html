@@ -1,32 +1,36 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
+
   <head>
-    <meta charset="utf-8">
+    <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Reading Tracker by intari</title>
+    <meta name="description" content="Reading Tracker : Now you are in control of what you read">
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="javascripts/scale.fix.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <title>Reading Tracker</title>
   </head>
+
   <body>
-    <div class="wrapper">
-      <header>
-        <h1>Reading Tracker</h1>
-        <p>Now you are in control of what you read</p>
-        <p class="view"><a href="https://github.com/intari/readingtracker">View the Project on GitHub <small>intari/readingtracker</small></a></p>
-        <ul>
-          <li><a href="https://github.com/intari/readingtracker/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/intari/readingtracker/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/intari/readingtracker">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/intari/readingtracker">View on GitHub</a>
+
+          <h1 id="project_title">Reading Tracker</h1>
+          <h2 id="project_tagline">Now you are in control of what you read</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/intari/readingtracker/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/intari/readingtracker/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
         <h1>
 <a id="whats-this" class="anchor" href="#whats-this" aria-hidden="true"><span class="octicon octicon-link"></span></a>What's this?</h1>
 
@@ -36,7 +40,7 @@ So you could analyze this data for yourself.</p>
 <h1>
 <a id="how-it-works-non-technical" class="anchor" href="#how-it-works-non-technical" aria-hidden="true"><span class="octicon octicon-link"></span></a>How it works? (Non-technical)</h1>
 
-<p>In the begging there was a phrase "The Amazon Kindle reports which pages of which books the user looks at, and when"...but I wanted this information too, for e-books I read using e-book readers I read.</p>
+<p>In the bigging there was a phrase "The Amazon Kindle reports which pages of which books the user looks at, and when"...but I wanted this information too, for e-books I read using e-book readers I read.</p>
 
 <h1>
 <a id="how-it-works-technical" class="anchor" href="#how-it-works-technical" aria-hidden="true"><span class="octicon octicon-link"></span></a>How it works? (Technical)</h1>
@@ -54,38 +58,6 @@ In future various interesting graphs could be made once I collect enough statist
 </ul>
 
 <h1>
-<a id="requirements-for-building" class="anchor" href="#requirements-for-building" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requirements for building</h1>
-
-<ul>
-<li>Android SDK 21</li>
-<li>Configure correct API Keys, if don't do this, your build WILL fail</li>
-<li>cd $HOME</li>
-<li>mkdir .androidSigning/</li>
-<li>touch booktrackerAPIKeys</li>
-<li>
-<p>edit booktrackerAPIKeys to add:</p>
-
-<ul>
-<li>PARSE_APP_ID=your_parse_app_id (<a href="https://parse.com/">https://parse.com/</a> , Application used Parse as network backend</li>
-<li>PARSE_CLIENT_KEY=your_parse_client_key</li>
-<li>PARSE_MASTER_KEY=master_key_for your_parse_application (used for crash reporting)</li>
-<li>HOCKEYAPP_APP_ID=your_HockeApp_app_id (used to check for updates if they are distributed via HockeyApp)</li>
-<li>HOCKEYAPP_TOKEN=your_HockeyApp_token (for this app, used to automatically upload updated version here)</li>
-<li>PARSE_APP_ID_FOR_TEST_HARNESS=not currently used but something must be put here</li>
-<li>PARSE_CLIENT_KEY_FOR_TEST_HARNESS=not currently used but something must be put here</li>
-<li>PARSE_USERNAME_FOR_TEST_HARNESS=not currently used but something must be put here</li>
-<li>PARSE_PASSWORD_FOR_TEST_HARNESS=not currently used but something must be put here</li>
-<li>COUNTLY_SERVER = count.ly analytics server URL</li>
-<li>COUNTLY_APPKEY = count.ly analytics App Key</li>
-<li>FLURRY_APIKEY = Flurry's API Key (currently disabled but something must be here)</li>
-<li>VERSION_CODE_AUTH/VERSION_CODE_URL - see build.gradle, those are used to get monotonically increasing build numbers. It's likely you will want change those parts of build.gradle
-you can change paths in gradle.properties</li>
-</ul>
-</li>
-<li><p>or look at build.gradle to determine how to use env vars</p></li>
-</ul>
-
-<h1>
 <a id="which-e-book-readers-are-supported-for-integration" class="anchor" href="#which-e-book-readers-are-supported-for-integration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Which e-book readers are supported for integration</h1>
 
 <p>Currently Mantano Reader Premium is supported (it's great. Please buy it. If you want to used it on multiple devices you should buy their cloud subscription too).
@@ -95,9 +67,23 @@ Others are not supported yet.</p>
 <p>Please note authors of ebook readers don't endorse this app.</p>
 
 <h1>
-<a id="where-are-sources-for-cloudcode-part" class="anchor" href="#where-are-sources-for-cloudcode-part" aria-hidden="true"><span class="octicon octicon-link"></span></a>Where are sources for CloudCode part?</h1>
+<a id="how-to-use-application-assuming-you-use-google-play-version" class="anchor" href="#how-to-use-application-assuming-you-use-google-play-version" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to use application (assuming you use Google Play version):</h1>
 
-<p>Not in this repository yet</p>
+<ul>
+<li>Install one of supported ebook readers</li>
+<li>Install this app</li>
+<li>enable access to accessibility services for app</li>
+<li>open &amp; read books from reader's Library view</li>
+<li>you could confirm everything was detecred correctly by opening app again and checking it saw details</li>
+<li>when you close book you will get e-mail from my bot <a href="mailto:intari@viorsan.com">intari@viorsan.com</a>
+</li>
+</ul>
+
+<h1>
+<a id="what-about-analytics-evernote-integration" class="anchor" href="#what-about-analytics-evernote-integration" aria-hidden="true"><span class="octicon octicon-link"></span></a>What about analytics, Evernote integration?</h1>
+
+<p>Analytics will be possible in future versions.
+Ability to setup integration with Zapier web-hooks (support for Evernote was done this way) is not yet available in application's interface.</p>
 
 <h1>
 <a id="which-android-permissions-are-used-and-why" class="anchor" href="#which-android-permissions-are-used-and-why" aria-hidden="true"><span class="octicon octicon-link"></span></a>Which Android Permissions are used and why</h1>
@@ -135,13 +121,61 @@ Other things:</p>
 <ul>
 <li><a href="https://play.google.com/store/apps/details?id=com.viorsan.readingtracker">Google Play Store</a></li>
 </ul>
+
+<h1>
+<a id="privacy-policy-for-playstore-version" class="anchor" href="#privacy-policy-for-playstore-version" aria-hidden="true"><span class="octicon octicon-link"></span></a>Privacy Policy (for PlayStore version)</h1>
+
+<p>Data collected by application will only be used to provide services to app user.
+Collected data won't be sold, used for spam or other bad things.
+If applicable goverment authority asks for your data I could provide data collected by app from you.
+Application uses several 3rd-party services (Parse, Mandrill, Countly) to provide some functionality.</p>
+
+<h1>
+<a id="where-are-sources-for-cloudcode-part" class="anchor" href="#where-are-sources-for-cloudcode-part" aria-hidden="true"><span class="octicon octicon-link"></span></a>Where are sources for CloudCode part?</h1>
+
+<p>Not in this repository yet</p>
+
+<h1>
+<a id="requirements-for-building" class="anchor" href="#requirements-for-building" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requirements for building</h1>
+
+<ul>
+<li>Android SDK 21</li>
+<li>Configure correct API Keys, if don't do this, your build WILL fail</li>
+<li>cd $HOME</li>
+<li>mkdir .androidSigning/</li>
+<li>touch booktrackerAPIKeys</li>
+<li>edit booktrackerAPIKeys to add:
+
+<ul>
+<li>PARSE_APP_ID=your_parse_app_id (<a href="https://parse.com/">https://parse.com/</a> , Application used Parse as network backend</li>
+<li>PARSE_CLIENT_KEY=your_parse_client_key</li>
+<li>PARSE_MASTER_KEY=master_key_for your_parse_application (used for crash reporting)</li>
+<li>HOCKEYAPP_APP_ID=your_HockeApp_app_id (used to check for updates if they are distributed via HockeyApp)</li>
+<li>HOCKEYAPP_TOKEN=your_HockeyApp_token (for this app, used to automatically upload updated version here)</li>
+<li>PARSE_APP_ID_FOR_TEST_HARNESS=not currently used but something must be put here</li>
+<li>PARSE_CLIENT_KEY_FOR_TEST_HARNESS=not currently used but something must be put here</li>
+<li>PARSE_USERNAME_FOR_TEST_HARNESS=not currently used but something must be put here</li>
+<li>PARSE_PASSWORD_FOR_TEST_HARNESS=not currently used but something must be put here</li>
+<li>COUNTLY_SERVER = count.ly analytics server URL</li>
+<li>COUNTLY_APPKEY = count.ly analytics App Key</li>
+<li>FLURRY_APIKEY = Flurry's API Key (currently disabled but something must be here)</li>
+<li>VERSION_CODE_AUTH/VERSION_CODE_URL - see build.gradle, those are used to get monotonically increasing build numbers. It's likely you will want change those parts of build.gradle
+you can change paths in gradle.properties</li>
+</ul>
+</li>
+<li>or look at build.gradle to determine how to use env vars</li>
+</ul>
       </section>
     </div>
-    <footer>
-      <p>Project maintained by <a href="https://github.com/intari">intari</a></p>
-      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
-    </footer>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Reading Tracker maintained by <a href="https://github.com/intari">intari</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
@@ -152,6 +186,7 @@ Other things:</p>
             pageTracker._trackPageview();
             } catch(err) {}
           </script>
+
 
   </body>
 </html>
