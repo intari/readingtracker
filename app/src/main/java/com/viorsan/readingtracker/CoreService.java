@@ -35,14 +35,6 @@ public class CoreService extends Service  {
     public static final String USER_LOGGED_OUT_REPORT = "com.viorsan.readingtracker.user_logged_out";
     public static final String ERRORID_NO_CURRENT_PARSE_USER = "NO_CURRENT_PARSE_USER";
     public static final String ERRORCLASS_PARSE_INTERFACE = "PARSE_INTERFACE";
-    private long lastAppCheckTime;
-
-
-    // Constants that define the activity detection interval
-    public static final int MILLISECONDS_PER_SECOND = 1000;
-    public static final int DETECTION_INTERVAL_SECONDS = 20;
-    public static final int DETECTION_INTERVAL_MILLISECONDS =
-            MILLISECONDS_PER_SECOND * DETECTION_INTERVAL_SECONDS;
 
 
     private boolean userLoggedIn=false;
@@ -52,8 +44,6 @@ public class CoreService extends Service  {
     public static String ourDeviceID = "";
 
 
-    private static final String appID="ReadingTracker";
-
     CoreBroadcastReceiver broadcastReceiver = null;
 
     private String previousForegroundTask;//can have 'fake' data
@@ -62,39 +52,9 @@ public class CoreService extends Service  {
 
     private final IBinder mBinder = new LocalBinder();
 
-    private Long appActivationTime;
-    private long nextRequestId;
-    private long sessionId;
-    private final Object requestIdSyncObject=new Object();
-
     private BroadcastReceiver userLoggedOutReceiver;
 
 
-    private static final String CURRENT_SESSION_ID = "CURRENT_SESSION_ID";
-    private static final String CURRENT_REQUEST_ID = "CURRENT_REQUEST_ID";
-
-
-
-
-
-    public Long getRequestId() {
-        synchronized (requestIdSyncObject)
-        {
-            Long res=nextRequestId;
-            nextRequestId=nextRequestId+1L;
-            //store request identifier
-            SharedPreferences sharedPreferences = this.getSharedPreferences(CURRENT_SESSION_ID, Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putLong(CURRENT_REQUEST_ID,res);
-            editor.commit();
-
-            return res;
-        }
-    }
-
-    public Long getSessionId() {
-        return sessionId;
-    }
 
     CoreService getService() {
         return CoreService.this;
@@ -169,12 +129,7 @@ public class CoreService extends Service  {
     }
 
     public synchronized void updateActiveProcessList() {
-        long uptimeNow=SystemClock.uptimeMillis();
-
         updateActiveProcessListInner();
-
-        long checkFinishedTime=SystemClock.uptimeMillis();
-        lastAppCheckTime=checkFinishedTime;
     }
 
     private void updateActiveProcessListInner() {
@@ -199,13 +154,6 @@ public class CoreService extends Service  {
 
             /* Book Scrobbler logic */
             BookReadingsRecorder.getBookReadingsRecorder(this).checkIfReadingAppActive(this);
-
-
-            long now = SystemClock.elapsedRealtime();
-            //long timeSpent = now - appActivationTime;
-
-            appActivationTime = now;
-
 
             previousForegroundTask = newForegroundTask;
 
@@ -366,31 +314,7 @@ public class CoreService extends Service  {
         userLoggedIn=true;
 
 
-        sessionId = System.currentTimeMillis();
-        nextRequestId = 0L;
-        //TODO:check for session restart
 
-        Log.i(TAG, "Checking for session restart. new SID:" + sessionId + ". RID:" + nextRequestId);
-
-
-        SharedPreferences sharedPreferences = getSharedPreferences(CURRENT_SESSION_ID, Context.MODE_PRIVATE);
-        Long oldSID=sharedPreferences.getLong(CURRENT_SESSION_ID,sessionId);
-        if (oldSID!=sessionId)
-        {
-            Long oldRID=sharedPreferences.getLong(CURRENT_REQUEST_ID,Context.MODE_PRIVATE);
-            Log.i(TAG, "Session restart detected. was " + oldSID + " but now " + sessionId + ". Last stored RID was " + oldRID);
-
-
-        }
-        else
-        {
-           Log.i(TAG, "no session restart? at startup?!");
-        }
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putLong(CURRENT_SESSION_ID,Long.valueOf(sessionId));
-        editor.commit();
-
-   
         configureForeground();
 
 
@@ -403,7 +327,6 @@ public class CoreService extends Service  {
             previousForegroundTask = appProcesses.get(0).topActivity.getPackageName();
         }
 
-        appActivationTime = SystemClock.elapsedRealtime();
 
         BookReadingsRecorder.getBookReadingsRecorder(this).setMasterService(this);
 
