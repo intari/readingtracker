@@ -64,7 +64,7 @@
 
     <!-- Facebook support -->
     <string name="facebook_app_id" translatable="false">343039695901464</string>
-    <string name="logo">logo</string>
+    <string name="logo" translatable="false">logo</string>
 
     <string-array name="my_facebook_permissions" translatable="false">
         <item>public_profile</item>
