@@ -231,6 +231,11 @@ public class MyActivity extends ActionBarActivity implements GoToAccessibilitySe
         //TODO: when we have 'user groups' use channels
         //TODO:use genres user likes? or authors user likes?
         //TODO:make it possible to target user and not device
+
+        //configure access for this user only. Cloud Code functions could use MasterKey to enable access for themselves
+        ParseACL acl=new ParseACL(currentUser);
+        installation.setACL(acl);
+
         //save updated object
         ParseInstallation.getCurrentInstallation().saveInBackground();
     }
