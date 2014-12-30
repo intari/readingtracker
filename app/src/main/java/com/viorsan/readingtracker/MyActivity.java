@@ -29,7 +29,9 @@ import net.hockeyapp.android.UpdateManagerListener;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -53,6 +55,11 @@ public class MyActivity extends ActionBarActivity implements GoToAccessibilitySe
     public static final String COUNTLY_USERNAME = "username";
     public static final String COUNTLY_EMAIL = "email";
     public static final String COUNTLY_FULLNAME = "name";
+    public static final String LANGUAGE = "language";
+    public static final String COUNTRY = "country";
+    public static final String LOCALE = "locale";
+    public static final String USER_LOCALE_SETTINGS = "userLocaleSettings";
+    public static final String USERNAME = "username";
     @InjectView(R.id.currentlyReadingMessage) TextView currentlyReadingTextView;
     @InjectView(R.id.accessGranted) TextView accessGrantedTextView;
     @InjectView(R.id.supportedEbookReaderInstalledStatus) TextView supportedEbookReaderInstalledTextView;
@@ -265,6 +272,37 @@ public class MyActivity extends ActionBarActivity implements GoToAccessibilitySe
                 Log.i(TAG, "ParseUser here. NOT Authenticated. ");
                 MyAnalytics.trackEvent("userLoggedInWithoutAuth");//in case I forget and re-enable anonymous users
             }
+            //update user's locale settings
+            //it's likely every user's device will have same data (or at least country be same)
+            Locale locale=Locale.getDefault();
+            String userLanguage=locale.getLanguage();
+            String userCountry=locale.getCountry();
+            String userLocale=locale.toString();
+
+            //send analytics event so I knew is this changed a lot between users
+            Map<String, String> dimensions = new HashMap<String, String>();
+            dimensions.put(LANGUAGE,userLanguage);
+            dimensions.put(COUNTRY,userCountry);
+            dimensions.put(LOCALE,userLocale);
+            //May be I should use hashed version of current username to avoid revealing too much?
+            dimensions.put(USERNAME,currentUser.getUsername());
+            MyAnalytics.trackEvent(USER_LOCALE_SETTINGS, dimensions);
+
+            //save to current user information
+            currentUser.put(LANGUAGE, userLanguage);
+            currentUser.put(COUNTRY,userCountry);
+            currentUser.put(LOCALE,userLocale);
+
+            currentUser.saveInBackground(new SaveCallback() {
+                public void done(ParseException e) {
+                    if (e == null) {
+                        Log.d(TAG,"Successfully updated user information");
+                    } else {
+                        Log.e(TAG,"Failed to subscribe due to exception "+e.toString());
+                    }
+                }
+            });
+
         }
         //initServiceReceiver();
 
