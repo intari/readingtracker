@@ -230,6 +230,7 @@ public class BookReadingsRecorder {
            it's very likely user arleady subscribed so what?
            sometimes we have >1 author so takes this into account too
          */
+        /*
         String[] authors = currentBookAuthor.split(",", -1);
         for (String oneAuthor: authors) {
             String trimmedAuthor=ParsePlatformUtils.makeChannelName(oneAuthor.trim());
@@ -245,10 +246,12 @@ public class BookReadingsRecorder {
             });
 
         }
+        */
 
         /*
           but also subscribe to genres (tags) channels
          */
+        /*
         String[] bookTags = currentBookTags.split(",", -1);
         for (String tag: bookTags) {
             String trimmedTag=ParsePlatformUtils.makeChannelName(tag.trim());
@@ -263,6 +266,7 @@ public class BookReadingsRecorder {
                 }
             });
         }
+        */
 
         Map<String, String> dimensions = new HashMap<String, String>();
         dimensions.put(BOOK_TITLE,currentBookTitle);
