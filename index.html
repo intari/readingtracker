@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Reading Tracker by intari</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Reading Tracker</h1>
+        <p>Now you are in control of what you read</p>
+        <p class="view"><a href="https://github.com/intari/readingtracker">View the Project on GitHub <small>intari/readingtracker</small></a></p>
+        <ul>
+          <li><a href="https://github.com/intari/readingtracker/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/intari/readingtracker/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/intari/readingtracker">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="whats-this" class="anchor" href="#whats-this" aria-hidden="true"><span class="octicon octicon-link"></span></a>What's this?</h1>
+
+<p>Application to collect data on your reading habits. Which books you read. When you read. How much you read.
+So you could analyze this data for yourself.</p>
+
+<h1>
+<a id="how-it-works-non-technical" class="anchor" href="#how-it-works-non-technical" aria-hidden="true"><span class="octicon octicon-link"></span></a>How it works? (Non-technical)</h1>
+
+<p>In the begging there was a phrase "The Amazon Kindle reports which pages of which books the user looks at, and when"...but I wanted this information too, for e-books I read using e-book readers I read.</p>
+
+<h1>
+<a id="how-it-works-technical" class="anchor" href="#how-it-works-technical" aria-hidden="true"><span class="octicon octicon-link"></span></a>How it works? (Technical)</h1>
+
+<p>Android Accessibility APIs are used to 'read' parts of supported e-book reader's views.
+Data are to <a href="parse.com">Parse</a> cloud service for later processing and analysis.
+After that e-mails are send to me using <a href="mandrillapp.com">Mandrill</a> and record is added to my <a href="evernote.com">Evernote</a> notebook using <a href="zapier.com">Zapier</a>.
+In future various interesting graphs could be made once I collect enough statistics</p>
+
+<h1>
+<a id="requirements-for-using" class="anchor" href="#requirements-for-using" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requirements for using</h1>
+
+<ul>
+<li>Android 4.3+ (last version of code with support for 4.2 is at <a href="https://github.com/intari/readingtracker/tree/Last_API_17_Android_4_2">https://github.com/intari/readingtracker/tree/Last_API_17_Android_4_2</a> , it's much easier to work at API Level 18)</li>
+</ul>
+
+<h1>
+<a id="requirements-for-building" class="anchor" href="#requirements-for-building" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requirements for building</h1>
+
+<ul>
+<li>Android SDK 21</li>
+<li>Configure correct API Keys, if don't do this, your build WILL fail</li>
+<li>cd $HOME</li>
+<li>mkdir .androidSigning/</li>
+<li>touch booktrackerAPIKeys</li>
+<li>
+<p>edit booktrackerAPIKeys to add:</p>
+
+<ul>
+<li>PARSE_APP_ID=your_parse_app_id (<a href="https://parse.com/">https://parse.com/</a> , Application used Parse as network backend</li>
+<li>PARSE_CLIENT_KEY=your_parse_client_key</li>
+<li>PARSE_MASTER_KEY=master_key_for your_parse_application (used for crash reporting)</li>
+<li>HOCKEYAPP_APP_ID=your_HockeApp_app_id (used to check for updates if they are distributed via HockeyApp)</li>
+<li>HOCKEYAPP_TOKEN=your_HockeyApp_token (for this app, used to automatically upload updated version here)</li>
+<li>PARSE_APP_ID_FOR_TEST_HARNESS=not currently used but something must be put here</li>
+<li>PARSE_CLIENT_KEY_FOR_TEST_HARNESS=not currently used but something must be put here</li>
+<li>PARSE_USERNAME_FOR_TEST_HARNESS=not currently used but something must be put here</li>
+<li>PARSE_PASSWORD_FOR_TEST_HARNESS=not currently used but something must be put here</li>
+<li>COUNTLY_SERVER = count.ly analytics server URL</li>
+<li>COUNTLY_APPKEY = count.ly analytics App Key</li>
+<li>FLURRY_APIKEY = Flurry's API Key (currently disabled but something must be here)</li>
+<li>VERSION_CODE_AUTH/VERSION_CODE_URL - see build.gradle, those are used to get monotonically increasing build numbers. It's likely you will want change those parts of build.gradle
+you can change paths in gradle.properties</li>
+</ul>
+</li>
+<li><p>or look at build.gradle to determine how to use env vars</p></li>
+</ul>
+
+<h1>
+<a id="which-e-book-readers-are-supported-for-integration" class="anchor" href="#which-e-book-readers-are-supported-for-integration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Which e-book readers are supported for integration</h1>
+
+<p>Currently Mantano Reader Premium is supported (it's great. Please buy it. If you want to used it on multiple devices you should buy their cloud subscription too).
+Mantano Essentials and Mantano Lite should also work.
+Others are not supported yet.</p>
+
+<p>Please note authors of ebook readers don't endorse this app.</p>
+
+<h1>
+<a id="where-are-sources-for-cloudcode-part" class="anchor" href="#where-are-sources-for-cloudcode-part" aria-hidden="true"><span class="octicon octicon-link"></span></a>Where are sources for CloudCode part?</h1>
+
+<p>Not in this repository yet</p>
+
+<h1>
+<a id="which-android-permissions-are-used-and-why" class="anchor" href="#which-android-permissions-are-used-and-why" aria-hidden="true"><span class="octicon octicon-link"></span></a>Which Android Permissions are used and why</h1>
+
+<p>Permissions</p>
+
+<ul>
+<li>RECEIVE_BOOT_COMPLETED  - to be able to catch moments when you start read</li>
+<li>INTERNET - communication with our server</li>
+<li>ACCESS_NETWORK_STATE - usage analytics &amp; error reporting.</li>
+<li>READ_PHONE_STATE - statistics</li>
+<li>GET_TASKS - to knew when you switch from supported reading app to something other</li>
+<li>WRITE_EXTERNAL_STORAGE - automatic updates of non-PlayStore versions using HockeyApp</li>
+<li>BIND_ACCESSIBILITY_SERVICE - main app functionality. you will be asked to provide access to 'Accessibility Services' on startup. You could refuse but you will not be able to get your statistics from this device</li>
+<li>WAKE_LOCK / VIBRATE / GET_ACCOUNTS - Parse-based push notifications</li>
+</ul>
+
+<h1>
+<a id="licenses" class="anchor" href="#licenses" aria-hidden="true"><span class="octicon octicon-link"></span></a>Licenses</h1>
+
+<p>My own code is licensed under GPLv3, exception is given to link all libraries I link to (Parse,etc). I reserve right to change this at any time
+Other things:</p>
+
+<ul>
+<li>Parse Platform jars under their own EULA</li>
+<li>Flurry (to be removed) jars under their own EULA</li>
+<li>Countly Analytics Client SDKs are under MIT license <a href="http://resources.count.ly/v1.0/docs/licencing-faq">http://resources.count.ly/v1.0/docs/licencing-faq</a>
+</li>
+<li>Logo and Icon are based on images from <a href="flaticon.com">Flaticon</a> by <a href="freepik.com">Freepik</a> licensed under CC BY 3.0 so my logo and icon also under CC BY 3.0</li>
+</ul>
+
+<h1>
+<a id="is-it-in-google-play-store--other-android-markets" class="anchor" href="#is-it-in-google-play-store--other-android-markets" aria-hidden="true"><span class="octicon octicon-link"></span></a>Is it in Google Play Store / other Android Markets?</h1>
+
+<ul>
+<li><a href="https://play.google.com/store/apps/details?id=com.viorsan.readingtracker">Google Play Store</a></li>
+</ul>
+      </section>
+    </div>
+    <footer>
+      <p>Project maintained by <a href="https://github.com/intari">intari</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-58090418-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
