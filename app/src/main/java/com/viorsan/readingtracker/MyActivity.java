@@ -29,6 +29,7 @@ import net.hockeyapp.android.UpdateManagerListener;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Locale;
 
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -199,6 +200,13 @@ public class MyActivity extends ActionBarActivity implements GoToAccessibilitySe
         if (networkCountryISO!=null) {
             installation.put("networkCountryISO",networkCountryISO);
         }
+        String language= Locale.getDefault().getLanguage();
+        installation.put("language",language);
+        String country= Locale.getDefault().getCountry();
+        installation.put("country",country);
+        String locale=Locale.getDefault().toString();
+        installation.put("locale",locale);
+
         installation.put("appBuildFlavor",BuildConfig.FLAVOR);
         //deviceType used in book readings reports
         installation.put("deviceInfoString", BookReadingsRecorder.getDeviceInfoString());
