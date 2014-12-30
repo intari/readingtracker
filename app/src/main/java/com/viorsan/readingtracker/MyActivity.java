@@ -218,7 +218,7 @@ public class MyActivity extends ActionBarActivity implements GoToAccessibilitySe
         //deviceType used in book readings reports
         installation.put("deviceInfoString", BookReadingsRecorder.getDeviceInfoString());
 
-        installation.put("deviceMode",Build.MODEL);
+        installation.put("deviceModel",Build.MODEL);
         installation.put("deviceManufacturer",Build.MANUFACTURER);
         installation.put("deviceProduct",Build.PRODUCT);
 
