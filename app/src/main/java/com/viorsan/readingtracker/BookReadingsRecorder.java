@@ -7,13 +7,7 @@ import android.os.SystemClock;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
-import com.parse.ParseAnalytics;
-import com.parse.ParseCrashReporting;
-import com.parse.ParseException;
-import com.parse.ParseInstallation;
 import com.parse.ParseObject;
-import com.parse.ParsePush;
-import com.parse.SaveCallback;
 
 import java.util.HashMap;
 import java.util.List;
@@ -54,7 +48,7 @@ public class BookReadingsRecorder {
     public static final double MIN_SECONDS_TO_READ_PAGE = 1.0;
     public static final double MAX_SECONDS_TO_READ_PAGE = 180.0;
     public static final double MS_IN_SECOND = 1000.0;
-    public static final String STARTED_PAGE = "startedPage";
+    public static final String START_PAGE = "startPage";
     public static final String PAGES_READ = "pagesReadSinceSessionStart";
     public static final String END_PAGE = "endPage";
     public static final String NUM_PAGE_SWITCHES = "numPageSwitchesSinceSessionStart";
@@ -558,12 +552,12 @@ public class BookReadingsRecorder {
             report.put(READING_SESSION_TIME,totalTimeForCurrentBook/MS_IN_SECOND);
             report.put(DEVICE_TYPE,deviceInfoString);
             //Page on which reading session ended. same comments as for currentPage applies
-            report.put(END_PAGE,currentPage);
+            report.put(END_PAGE,Long.valueOf(currentPage));
 
-            report.put(STARTED_PAGE,startedPage);
+            report.put(START_PAGE,startedPage);
             long pagesRead=Long.valueOf(currentPage)-startedPage;
             report.put(PAGES_READ,pagesRead);//pages read, as in 'endPage-startPage'
-            report.put(NUM_PAGE_SWITCHES,Long.valueOf(numPagePageSwitches).toString());//number of times user switches page
+            report.put(NUM_PAGE_SWITCHES,Long.valueOf(numPagePageSwitches));//number of times user switches page
 
 
 
@@ -593,7 +587,7 @@ public class BookReadingsRecorder {
             dimensions.put(END_PAGE,currentPage);
             Double totalReadingSessionTime=totalTimeForCurrentBook/MS_IN_SECOND;
             dimensions.put(READING_SESSION_TIME,totalReadingSessionTime.toString());
-            dimensions.put(STARTED_PAGE,Long.valueOf(startedPage).toString());
+            dimensions.put(START_PAGE,Long.valueOf(startedPage).toString());
             dimensions.put(PAGES_READ,Long.valueOf(pagesRead).toString());
             dimensions.put(NUM_PAGE_SWITCHES,Long.valueOf(numPagePageSwitches).toString());
 
