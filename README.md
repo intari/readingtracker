@@ -16,9 +16,8 @@ In future various interesting graphs could be made once I collect enough statist
 * Suppported e-book reader
 * Android tablet
 
-# Which e-book readers are supported for integration?
-Currently Mantano Reader Premium is supported (it's great. Please buy it. If you want to used it on multiple devices you should buy their cloud subscription too).
-Mantano Essentials and Mantano Lite should also work.
+# Which e-book readers are supported?
+Currently all editions of Mantano Reader are supported (it's great. Please buy it. If you want to used it on multiple devices you should buy their cloud subscription too).
 Others are not supported yet.
 
 Please note authors of ebook readers don't endorse this app.
