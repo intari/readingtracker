@@ -24,7 +24,14 @@ buildscript {
     }
     dependencies {
         classpath 'com.parse.tools:gradle:1.+'
+        //http://kotlinlang.org/docs/reference/using-gradle.html
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:0.10.195'
+
+
     }
+}
+dependencies {
+    compile 'org.jetbrains.kotlin:kotlin-stdlib:0.10.195'
 }
 
 parse {
@@ -65,6 +72,13 @@ parse {
 }
 
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+/*
+compileKotlin {
+    kotlinOptions.annotations = file('annotations')
+}
+
+ */
 
 
 def gitSha() {
@@ -378,6 +392,8 @@ android {
         androidTest {
             setRoot('src/test')
         }
+        main.java.srcDirs += 'src/main/kotlin'
+
     }
 
     //code sign support, based off http://habrahabr.ru/post/205308/
