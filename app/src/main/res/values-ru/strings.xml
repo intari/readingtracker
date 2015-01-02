@@ -23,7 +23,7 @@
     <!-- GUI strings -->
     <string name="guiCurrentlyReadingShort">Чтение %1$s от %2$s</string>
     <string name="guiCurrentlyReadingLong">Чтение %1$s от %2$s (страница %3$s из %4$s) уже %5$.2f минут (скорость %6$.2f страниц в минуту)</string>
-    <string name="guiCurrentlyReadingZeroSpeed">Чтение %1$s от %2$s (страница %3$s из %4$s) уже %5$.2f минут</string>
+    <string name="guiCurrentlyReadingLongZeroSpeed">Чтение %1$s от %2$s (страница %3$s из %4$s) уже %5$.2f минут</string>
 
     <string name="goToAccessibilitySettingsMessage">Вы хотите открыть \'Специальные Возможности\' и разрешить доступ для \'Reading Tracker\'?</string>
     <string name="goToAccessibilitySettingsOK">Да, пожалуйста</string>
