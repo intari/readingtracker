@@ -387,11 +387,24 @@ public class MyActivity extends ActionBarActivity implements GoToAccessibilitySe
                 Double totalTime=intent.getDoubleExtra(BookReadingsRecorder.READING_SESSION_TIME,0);
                 String currentPageS=intent.getStringExtra(BookReadingsRecorder.CURRENT_PAGE);
                 String totalPageS=intent.getStringExtra(BookReadingsRecorder.TOTAL_PAGES);
+
+                Long pagesRead=intent.getLongExtra(BookReadingsRecorder.PAGES_READ,0);
+                Long numPagePageSwitches=intent.getLongExtra(BookReadingsRecorder.NUM_PAGE_SWITCHES,0);
+
+                double pagesPerSecond=pagesRead.doubleValue()/totalTime.doubleValue();
+
+
                 String msg;
                 if (currentPageS!=null) {
-                    //update
-                    //msg=String.format("%s от %s (%s/%s ). %.2f минут",bookTitle,bookAuthor,currentPageS,totalPageS,totalTime/60.0);
-                    msg=getResources().getString(R.string.guiCurrentlyReadingLong,bookTitle,bookAuthor,currentPageS,totalPageS,totalTime/60.0);
+                    if (pagesRead==0) {
+                        msg=getResources().getString(R.string.guiCurrentlyReadingLongZeroSpeed,bookTitle,bookAuthor,currentPageS,totalPageS,totalTime/60.0);
+                    }
+                    else {
+                        //update
+                        //msg=String.format("%s от %s (%s/%s ). %.2f минут",bookTitle,bookAuthor,currentPageS,totalPageS,totalTime/60.0);
+                        msg=getResources().getString(R.string.guiCurrentlyReadingLong,bookTitle,bookAuthor,currentPageS,totalPageS,totalTime/60.0,pagesPerSecond*60.0);
+
+                    }
                 }
                 else
                 {

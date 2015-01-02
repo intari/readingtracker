@@ -50,7 +50,9 @@
 
     <!-- GUI strings -->
     <string name="guiCurrentlyReadingShort">Reading %1$s by %2$s</string>
-    <string name="guiCurrentlyReadingLong">Reading %1$s by %2$s (page %3$s of %4$s) for %5$.2f minutes</string>
+    <string name="guiCurrentlyReadingLong">Reading %1$s by %2$s (page %3$s of %4$s) for %5$.2f minutes at %6$.2f pages per minute</string>
+    <string name="guiCurrentlyReadingLongZeroSpeed">Reading %1$s by %2$s (page %3$s of %4$s) for %5$.2f minutes</string>
+
     <string name="goToAccessibilitySettingsMessage">Do you want to open \'Accessibility Settings\' and allow access for  \'Reading Tracker\' here?</string>
     <string name="goToAccessibilitySettingsOK">Yes, please</string>
     <string name="goToAccessibilitySettingsCancel">No</string>
