@@ -58,15 +58,24 @@ public class BookReadingsRecorder {
     private static CoreService mMasterService=null;
     private BroadcastReceiver statusRequestReceiver;
 
+    /**
+     * Installs link with CoreService instance. This is remmant of old architecture.
+     * @param masterService - CoreService instance. Class will not be fully working without this
+     */
     /*
       yes, I knew I can use Intents (+LocalBroadcastManager) to avoid this
       or, even better, move Parse logic in separate singleton class (current version uses a lot of code in Master Service). Maybe in future
      */
-
     public static void setMasterService(CoreService masterService) {
         Log.i(TAG, "Setting up link to master service for BookReadignsRecorder");
         mMasterService=masterService;
     }
+
+    /**
+     * BookReadingsRecorder is singleton. So this function returns it's instance, creating it if necessary
+     * @param context - Context instance for use with updateStatusRequestReceiver (for using with LocalBroadcastManager)
+     * @return instance of BookReadingsRecorder to work with
+     */
     public static BookReadingsRecorder getBookReadingsRecorder(Context context) {
         if (self==null) {
             Log.i(TAG,"Class BookReadingsRecorder not created. doing so");
@@ -125,18 +134,7 @@ public class BookReadingsRecorder {
     long startedPage=0;//starting page, using to calculate amount of pages read
     long numPagePageSwitches=0;//total number of page switches
 
-    private MyApplication getMyApp() {
-        if (mMasterService!=null) {
-            return (MyApplication)mMasterService.getApplication();
-        }
-        else
-        {
-            Log.e(TAG,"getMyApp:No master service!!!");
-            return null;
-        }
-    }
-
-    /**
+     /**
      * Get's 'deviceType' string for use in many reports
      * This is static method because MyActivity.updateInstallationObject() also needs it
      * @return 'deviceType' string
@@ -151,6 +149,14 @@ public class BookReadingsRecorder {
         Log.i(TAG,"Device information string is "+deviceInfoString+"|");
     }
 
+    /**
+     * Stores last known information about book user read to SharedPreferences
+     * @param context - context to use with SharedPreferences
+     * @param timestamp - timestamp when this data were actual
+     * @param title - book title
+     * @param author - author or authors (can be , or & - separate)
+     * @param tags - genre tags
+     */
     private void writeLastBookInfo(Context context, long timestamp, String title,String author, String tags) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(BOOK_READING_PREFS, Context.MODE_PRIVATE);
 
@@ -174,6 +180,13 @@ public class BookReadingsRecorder {
             totalTimeForLastBook=totalTimeForCurrentBook;
         }
     }
+
+    /**
+     * Reads last known information about book read some time ago. This is usually done on startup
+     * Also sends necessary events to analytics services
+     * @param context - - context to use with SharedPreferences
+     * @param timestamp
+     */
     private void readLastBookInfo(Context context,long timestamp) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(BOOK_READING_PREFS, Context.MODE_PRIVATE);
         currentBookTitle=sharedPreferences.getString(BOOK_TITLE,"Unknown");
@@ -188,6 +201,16 @@ public class BookReadingsRecorder {
 
     }
 
+    /**
+     * Records new book being read. Stores initial data about book
+     * @param context - context to use with writeLastBookInfo
+     * @param timestamp - timestamp when this data were actual
+     * @param author - author or authors (can be , or & - separate)
+     * @param title - - book title
+     * @param tags - - genre tags
+     * @param pageNumbers - initial unprocessed version of current pagenumber(s). See recordPageSwitch()
+     * @throws InvalidArgumentsException
+     */
     public void recordNewBook(Context context,long timestamp, String author,String title, String tags,String pageNumbers) throws InvalidArgumentsException {
 
         if (author==null) {
@@ -276,6 +299,11 @@ public class BookReadingsRecorder {
         startedPage=Long.valueOf(currentPage);
 
     }
+
+    /**
+     * configured LocalBroadcastManager to listen for requests from UI to get status updates
+     * @param outerContext - Context instance for use with LocalBroadcastManager
+     */
     private void updateStatusRequestReceiver(Context outerContext) {
         statusRequestReceiver=new BroadcastReceiver() {
             @Override
@@ -291,6 +319,12 @@ public class BookReadingsRecorder {
                 statusRequestReceiver, new IntentFilter(AccessibilityRecorderService.ACTIVITY_MONITORING_STATUS_UPDATE_REQUEST)
         );
     }
+
+    /**
+     * Sends requested by UI status update to UI if we can do that
+     * @param context - context to use with LocalBroadcastManager
+     * @param now - currently unused
+     */
     private void sendStatusUpdateToUI(Context context, boolean now) {
 
         if (lastReadBookKnown) {
@@ -314,6 +348,19 @@ public class BookReadingsRecorder {
 
         }
     }
+
+    /**
+     * Records page switch
+     * extracts real current page number from pageNumbers
+     * sends analytics events
+     * sends information to Parse Platform
+     * sends status update to UI
+     *
+     * @param context - context to use with sendStatusUpdateToUI
+     * @param timestamp - timestamp when this data were actual
+     * @param pageNumbers - initial unprocessed version of current pagenumber(s).
+     * @throws InvalidArgumentsException
+     */
     public void recordPageSwitch(Context context,long timestamp, String pageNumbers) throws InvalidArgumentsException  {
 
         if (pageNumbers==null) {
@@ -498,6 +545,14 @@ public class BookReadingsRecorder {
         }
 
     }
+
+    /**
+     * Checks if one if one of supported reading apps are active.
+     * Records switchto/from app events.
+     * Sends analytics events
+     * usually called every few seconds
+     * @param context - used for accessing ACTIVITY_SERVICE and  startAnalyticsWithContext/stopAnalyticsWithContext
+     */
     public void checkIfReadingAppActive(Context context) {
         ActivityManager activityManager = (ActivityManager)context.getSystemService(context.ACTIVITY_SERVICE);
 
@@ -523,6 +578,13 @@ public class BookReadingsRecorder {
         }
 
     }
+
+    /**
+     * Planned to be used to record switch directly to currently reading book from other apps
+     * currently not fully implemented
+     * @param context
+     * @param timestamp
+     */
     public void recordSwitchBackToCurrentBook(Context context, long timestamp) {
         //TODO:this is switch back to reader app if it was arleady active
         //is this ever needed or other calls will help
@@ -535,6 +597,16 @@ public class BookReadingsRecorder {
         */
 
     }
+
+    /**
+     * Records switch away from current book due device sleep, user switch to other app or just user switching to reader app's library
+     * This mean that:
+     * 'ReadingSessionCompleted' is being sent to Parse Platform
+     * Analytics events are sent
+     * Will not actually save anything if masterService doesn't configured
+     * @param context
+     * @param timestamp - timestamp when this data were actual
+     */
     public void recordSwitchAwayFromBook(Context context,long timestamp) {
 
         if (!currentBookKnown) {
