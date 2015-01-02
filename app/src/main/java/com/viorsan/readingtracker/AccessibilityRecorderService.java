@@ -575,7 +575,7 @@ public class AccessibilityRecorderService extends AccessibilityService {
         super.onCreate();
         Log.i(TAG,"Book reading tracker:Accessibility Service is starting up, onCreate");
 
-        CoreService.writeLogBanner(TAG, getApplicationContext());
+        AppHelpers.writeLogBanner(TAG, getApplicationContext());
         if (ONLY_SCROBBLE) {
            Log.i(TAG, "scrobble-only mode");
         }

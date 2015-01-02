@@ -163,87 +163,7 @@ public class CoreService extends Service  {
 
 
 
-    //If you use this function from other classes this mean you KNOW what you are doing
-    public void saveReportToParse(ParseObject report) {
-        final ParseObject reportToSend=report;
-        Thread reportThread=new Thread( new Runnable() {
-            @Override
-            public void run() {
-                if (!saveReportToParseReal(reportToSend)) {
-                    Log.i(TAG, "Save report to Parse failed. Will retry. Report type was "+reportToSend.getClassName());
-                    if (mDelayReporter==null) {
-                        Log.i(TAG, "Cannot retry. DelayReporter is null");
-                        return;
 
-                    }
-                    else
-                    {
-                        mDelayReporter.postDelayed(new Runnable() {
-                            @Override
-                            public void run () {
-                                Log.i(TAG, "Retrying "+reportToSend.getClassName());
-                                if (!saveReportToParseReal(reportToSend)) {
-                                    Log.i(TAG, "Save report to Parse failed on retry. Will retry. Report type was "+reportToSend.getClassName());
-
-                                }
-                            }
-                        }, REPORT_SENDING_RETRY_MILLIS);
-                    }
-
-                }
-
-
-            };
-
-        });
-
-        reportThread.start();
-
-    }
-    private Boolean saveReportToParseReal(ParseObject report) {
-        if (!userLoggedIn) {
-            Log.d(TAG, "User is not logged in. Will not send reports");
-            return Boolean.FALSE;
-        }
-
-        report.put("deviceId",ourDeviceID);
-
-
-        java.util.Date date = new java.util.Date();
-
-        report.put("clientEventCreateTime", DateHelper.formatISO8601_iOS(date));
-        ParseUser currentUser=ParseUser.getCurrentUser();
-        if (currentUser==null) {
-            Log.i(TAG, "Cannot save report to Parse. No current user. Report type was "+report.getClassName());
-            FlurryAgent.onError(ERRORID_NO_CURRENT_PARSE_USER,"cannot save object of class "+report.getClassName()+" - no current user!", ERRORCLASS_PARSE_INTERFACE);
-            return Boolean.FALSE;
-        }
-        report.put("user",currentUser);
-
-        /* originating app details  */
-        report.put("appBuildType",BuildConfig.BUILD_TYPE);
-        report.put("appBuildFlavor",BuildConfig.FLAVOR);
-        report.put("appBuildVersionCode",BuildConfig.VERSION_CODE);
-        report.put("appBuildVersionName",BuildConfig.VERSION_NAME);
-        report.put("appBuildApplicationID",BuildConfig.APPLICATION_ID);
-        report.put("appBuildAuthority",buildAuthority());
-
-
-
-        final String reportClass=report.getClassName();
-        report.saveEventually(new SaveCallback() {
-            public void done(ParseException e) {
-                if (e == null) {
-                    //Log.i(TAG, "Saved report "+reportClass+" to parse. heartrate "+mCurrentHeartRate);
-                } else {
-                    Log.i(TAG, "Not saved report "+reportClass+"to parse: " + e.toString());
-                }
-            }
-        });
-
-        return  Boolean.TRUE;
-
-    }
 
 
 
@@ -257,44 +177,9 @@ public class CoreService extends Service  {
         toast.show();
     }
 
-    private static String buildAuthority() {
-        String authority = BuildConfig.APPLICATION_ID+".";
-        authority += BuildConfig.FLAVOR;
-        if (BuildConfig.DEBUG) {
-            authority += ".debug";
-        }
-        return authority;
-    }
-
-    static public void writeLogBanner(String tag, Context context) {
-        Log.i(TAG," (c) Dmitriy Kazimirov 2013-2014");
-        Log.i(TAG," e-mail: dmitriy.kazimirov@viorsan.com");
-
-        Log.i(TAG," BuildAuthority:"+buildAuthority());
-        Log.i(TAG," ApplicationId:"+BuildConfig.APPLICATION_ID);
-        Log.i(TAG," BuildType:"+BuildConfig.BUILD_TYPE);
-        Log.i(TAG," VersionCode:"+BuildConfig.VERSION_CODE);
-        Log.i(TAG," VersionName:"+BuildConfig.VERSION_NAME);
-        Log.i(TAG," Flavor:"+BuildConfig.FLAVOR);
-        if (BuildConfig.DEBUG) {
-            Log.i(TAG," BuildConfig:DEBUG");
-        }
-        else
-        {
-            Log.i(TAG," BuildConfig:RELEASE");
-        }
-        Log.i(TAG," BuilderType:"+BuildConfig.BUILDER_TYPE);
-        Log.i(TAG," Built on "+BuildConfig.BUILD_HOST+ " of type "+BuildConfig.BUILDER_TYPE+ " by user "+ BuildConfig.BUILD_USER);
-        Log.i(TAG," Flurry release:"+ FlurryAgent.getReleaseVersion());
 
 
 
-
-
-
-
-
-    }
     private void init() {
 
         Log.i(TAG,"Book reading tracker main service starting up");
@@ -328,8 +213,6 @@ public class CoreService extends Service  {
         }
 
 
-        BookReadingsRecorder.getBookReadingsRecorder(this).setMasterService(this);
-
 
         //TODO:don't do this in deep sleep
         new CountDownTimer(YEAR_IN_MS, PROCESSLIST_RESCAN_INTERVAL_MILLIS) {
@@ -353,8 +236,6 @@ public class CoreService extends Service  {
             public void onReceive(Context context, Intent intent) {
                 Log.d(TAG, "UI signaled that user is no longer here. Stopping service");
                 userLoggedIn=false;
-                //tell BookReadingsRecorder we no longer accept data (even if parse helper won't save them anyway)
-                BookReadingsRecorder.getBookReadingsRecorder(getBaseContext()).setMasterService(null);
                 Log.d(TAG, "BookReadings code signaled to stop sending us data. Stopping us");
 
                 //commit suicide

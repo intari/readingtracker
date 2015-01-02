@@ -55,21 +55,7 @@ public class BookReadingsRecorder {
 
 
     private static BookReadingsRecorder self=null;
-    private static CoreService mMasterService=null;
     private BroadcastReceiver statusRequestReceiver;
-
-    /**
-     * Installs link with CoreService instance. This is remmant of old architecture.
-     * @param masterService - CoreService instance. Class will not be fully working without this
-     */
-    /*
-      yes, I knew I can use Intents (+LocalBroadcastManager) to avoid this
-      or, even better, move Parse logic in separate singleton class (current version uses a lot of code in Master Service). Maybe in future
-     */
-    public static void setMasterService(CoreService masterService) {
-        Log.i(TAG, "Setting up link to master service for BookReadignsRecorder");
-        mMasterService=masterService;
-    }
 
     /**
      * BookReadingsRecorder is singleton. So this function returns it's instance, creating it if necessary
@@ -203,7 +189,7 @@ public class BookReadingsRecorder {
 
     /**
      * Records new book being read. Stores initial data about book
-     * @param context - context to use with writeLastBookInfo
+     * @param context - context to use with writeLastBookInfo/recordPageSwitch
      * @param timestamp - timestamp when this data were actual
      * @param author - author or authors (can be , or & - separate)
      * @param title - - book title
@@ -359,7 +345,7 @@ public class BookReadingsRecorder {
      * sends information to Parse Platform
      * sends status update to UI
      *
-     * @param context - context to use with sendStatusUpdateToUI
+     * @param context - context to use with sendStatusUpdateToUI/ParsePlatformUtils
      * @param timestamp - timestamp when this data were actual
      * @param pageNumbers - initial unprocessed version of current pagenumber(s).
      * @throws InvalidArgumentsException
@@ -501,13 +487,7 @@ public class BookReadingsRecorder {
              */
             report.put(NUM_PAGE_SWITCHES,numPagePageSwitches);
 
-            if (mMasterService!=null) {
-                mMasterService.saveReportToParse(report);
-            }
-            else
-            {
-                Log.e(TAG,"BookReadingsRecorder:RecordPageSwitch:No master service!!!");
-            }
+            ParsePlatformUtils.saveReportToParse(report,context);
 
             Map<String, String> dimensions = new HashMap<String, String>();
             dimensions.put(BOOK_TITLE,currentBookTitle);
@@ -606,7 +586,6 @@ public class BookReadingsRecorder {
      * This mean that:
      * 'ReadingSessionCompleted' is being sent to Parse Platform
      * Analytics events are sent
-     * Will not actually save anything if masterService doesn't configured
      * @param context
      * @param timestamp - timestamp when this data were actual
      */
@@ -637,16 +616,7 @@ public class BookReadingsRecorder {
 
 
             if (totalTimeForCurrentBook > MIN_SECONDS_TO_READ_PAGE) {
-
-                if (mMasterService!=null) {
-                    mMasterService.saveReportToParse(report);
-
-                }
-                else
-                {
-                    Log.i(TAG,"BookReadingsRecorder:RecordSwitchAwayFromBooks:No master service!!!");
-                }
-
+                ParsePlatformUtils.saveReportToParse(report,context);
             }
             else
             {
