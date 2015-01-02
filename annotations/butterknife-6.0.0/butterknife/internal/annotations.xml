@@ -1,0 +1,20 @@
+<root>
+    <item name='butterknife.internal.ButterKnifeProcessor JAVA_PREFIX'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='butterknife.internal.ButterKnifeProcessor boolean process(java.util.Set&lt;? extends javax.lang.model.element.TypeElement&gt;, javax.annotation.processing.RoundEnvironment) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='butterknife.internal.ButterKnifeProcessor void init(javax.annotation.processing.ProcessingEnvironment) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='butterknife.internal.ButterKnifeProcessor java.util.Set&lt;java.lang.String&gt; getSupportedAnnotationTypes()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='butterknife.internal.ButterKnifeProcessor SUFFIX'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='butterknife.internal.ButterKnifeProcessor ANDROID_PREFIX'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

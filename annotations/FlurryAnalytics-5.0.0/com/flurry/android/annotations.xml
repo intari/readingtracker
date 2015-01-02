@@ -1,0 +1,53 @@
+<root>
+    <item name='com.flurry.android.FlurryEventRecordStatus kFlurryEventFailed'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.flurry.android.FlurryAgent com.flurry.android.FlurryEventRecordStatus logEvent(java.lang.String, java.util.Map&lt;java.lang.String,java.lang.String&gt;, boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.flurry.android.PurchaseState kPurchased'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.flurry.android.PurchaseType kPurchase'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.flurry.android.PurchaseState kCancelled'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.flurry.android.FlurryEventRecordStatus kFlurryEventLoggingDelayed'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.flurry.android.PurchaseState kRestored'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.flurry.android.FlurryAgent com.flurry.android.FlurryEventRecordStatus logEvent(java.lang.String, java.util.Map&lt;java.lang.String,java.lang.String&gt;)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.flurry.android.PurchaseState kRefunded'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.flurry.android.FlurryEventRecordStatus kFlurryEventUniqueCountExceeded'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.flurry.android.FlurryAgent com.flurry.android.FlurryEventRecordStatus logEvent(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.flurry.android.FlurryEventRecordStatus kFlurryEventLogCountExceeded'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.flurry.android.FlurryEventRecordStatus kFlurryEventRecorded'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.flurry.android.PurchaseType kSubscription'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.flurry.android.FlurryAgent com.flurry.android.FlurryEventRecordStatus logEvent(java.lang.String, boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.flurry.android.FlurryEventRecordStatus kFlurryEventParamsCountExceeded'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.flurry.android.InstallReceiver void onReceive(android.content.Context, android.content.Intent) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

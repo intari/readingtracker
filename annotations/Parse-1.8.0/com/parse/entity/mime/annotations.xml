@@ -1,0 +1,95 @@
+<root>
+    <item name='com.parse.entity.mime.HttpMultipart HttpMultipart(java.lang.String, java.nio.charset.Charset, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.HttpMultipartMode STRICT'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.FormBodyPart FormBodyPart(java.lang.String, com.parse.entity.mime.content.ContentBody) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.Header java.util.List&lt;com.parse.entity.mime.MinimalField&gt; getFields()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.HttpMultipart java.lang.String getSubType()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.MIME CONTENT_DISPOSITION'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.MultipartEntity void addPart(java.lang.String, com.parse.entity.mime.content.ContentBody) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.HttpMultipart HttpMultipart(java.lang.String, java.nio.charset.Charset, java.lang.String) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.FormBodyPart java.lang.String getName()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.FormBodyPart com.parse.entity.mime.content.ContentBody getBody()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.HttpMultipart HttpMultipart(java.lang.String, java.lang.String) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.MIME CONTENT_TRANSFER_ENC'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.FormBodyPart void addField(java.lang.String, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.HttpMultipart HttpMultipart(java.lang.String, java.nio.charset.Charset, java.lang.String, com.parse.entity.mime.HttpMultipartMode) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.FormBodyPart com.parse.entity.mime.Header getHeader()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.MultipartEntity org.apache.http.Header getContentType()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.FormBodyPart void generateContentType(com.parse.entity.mime.content.ContentBody) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.MIME CONTENT_TYPE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.MultipartEntity void writeTo(java.io.OutputStream) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.HttpMultipart java.util.List&lt;com.parse.entity.mime.FormBodyPart&gt; getBodyParts()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.HttpMultipart java.lang.String getBoundary()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.FormBodyPart FormBodyPart(java.lang.String, com.parse.entity.mime.content.ContentBody) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.HttpMultipartMode BROWSER_COMPATIBLE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.HttpMultipart void writeTo(java.io.OutputStream) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.FormBodyPart void generateTransferEncoding(com.parse.entity.mime.content.ContentBody) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.MIME ENC_8BIT'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.FormBodyPart void generateContentDisp(com.parse.entity.mime.content.ContentBody) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.MultipartEntity void addPart(java.lang.String, com.parse.entity.mime.content.ContentBody) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.HttpMultipart HttpMultipart(java.lang.String, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.HttpMultipart HttpMultipart(java.lang.String, java.nio.charset.Charset, java.lang.String, com.parse.entity.mime.HttpMultipartMode) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.MIME ENC_BINARY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

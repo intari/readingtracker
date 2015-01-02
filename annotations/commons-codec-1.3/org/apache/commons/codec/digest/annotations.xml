@@ -1,0 +1,26 @@
+<root>
+    <item name='org.apache.commons.codec.digest.DigestUtils java.lang.String md5Hex(byte[])'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.apache.commons.codec.digest.DigestUtils java.lang.String md5Hex(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.apache.commons.codec.digest.DigestUtils byte[] md5(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.apache.commons.codec.digest.DigestUtils java.lang.String shaHex(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.apache.commons.codec.digest.DigestUtils java.lang.String shaHex(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.apache.commons.codec.digest.DigestUtils java.lang.String shaHex(byte[])'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.apache.commons.codec.digest.DigestUtils java.lang.String md5Hex(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.apache.commons.codec.digest.DigestUtils byte[] sha(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

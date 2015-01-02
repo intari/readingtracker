@@ -1,0 +1,44 @@
+<root>
+    <item name='com.parse.signpost.signature.SigningStrategy java.lang.String writeSignature(java.lang.String, com.parse.signpost.http.HttpRequest, com.parse.signpost.http.HttpParameters) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='com.parse.signpost.signature.HmacSha1MessageSigner java.lang.String getSignatureMethod()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.signature.SigningStrategy java.lang.String writeSignature(java.lang.String, com.parse.signpost.http.HttpRequest, com.parse.signpost.http.HttpParameters) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='com.parse.signpost.signature.OAuthMessageSigner byte[] decodeBase64(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.signature.AuthorizationHeaderSigningStrategy java.lang.String writeSignature(java.lang.String, com.parse.signpost.http.HttpRequest, com.parse.signpost.http.HttpParameters) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.signature.QueryStringSigningStrategy java.lang.String writeSignature(java.lang.String, com.parse.signpost.http.HttpRequest, com.parse.signpost.http.HttpParameters) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.signature.AuthorizationHeaderSigningStrategy java.lang.String writeSignature(java.lang.String, com.parse.signpost.http.HttpRequest, com.parse.signpost.http.HttpParameters) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.signature.QueryStringSigningStrategy java.lang.String writeSignature(java.lang.String, com.parse.signpost.http.HttpRequest, com.parse.signpost.http.HttpParameters) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.signature.OAuthMessageSigner java.lang.String base64Encode(byte[])'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.signature.PlainTextMessageSigner java.lang.String getSignatureMethod()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.signature.OAuthMessageSigner java.lang.String getSignatureMethod()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+</root>

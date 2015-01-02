@@ -1,0 +1,20 @@
+<root>
+    <item name='net.hockeyapp.android.tasks.DownloadFileTask java.net.URLConnection createConnection(java.net.URL)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='net.hockeyapp.android.tasks.CheckUpdateTask java.net.URLConnection createConnection(java.net.URL)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='net.hockeyapp.android.tasks.CheckUpdateTask java.net.URLConnection createConnection(java.net.URL) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='net.hockeyapp.android.tasks.DownloadFileTask java.net.URLConnection createConnection(java.net.URL) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='net.hockeyapp.android.tasks.DownloadFileTask void onPostExecute(java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='net.hockeyapp.android.tasks.DownloadFileTask void onPostExecute(java.lang.Boolean) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

@@ -1,0 +1,14 @@
+<root>
+    <item name='net.hockeyapp.android.views.UpdateView UpdateView(android.content.Context, android.util.AttributeSet) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='net.hockeyapp.android.views.UpdateView UpdateView(android.content.Context, boolean) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='net.hockeyapp.android.views.UpdateView UpdateView(android.content.Context) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='net.hockeyapp.android.views.UpdateView UpdateView(android.content.Context, boolean, boolean) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

@@ -1,0 +1,11 @@
+<root>
+    <item name='org.acra.collector.CrashReportDataFactory org.acra.collector.CrashReportData createCrashData(java.lang.Throwable, boolean, java.lang.Thread)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.collector.ConfigurationCollector java.lang.String collectConfiguration(android.content.Context) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.collector.ConfigurationCollector java.lang.String toString(android.content.res.Configuration) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

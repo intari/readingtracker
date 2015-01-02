@@ -1,0 +1,473 @@
+<root>
+    <item name='javax.jmdns.impl.DNSRecord.Text javax.jmdns.ServiceInfo getServiceInfo(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.ServiceInfoImpl java.lang.String[] getURLs(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.JmDNSImpl javax.jmdns.ServiceInfo getServiceInfo(java.lang.String, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.JmDNSImpl.ServiceTypeEntry java.util.Set&lt;java.util.Map.Entry&lt;java.lang.String,java.lang.String&gt;&gt; entrySet()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.ServiceEventImpl javax.jmdns.ServiceEvent clone()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.DNSRecord.Service void toString(java.lang.StringBuilder) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.JmmDNSImpl void requestServiceInfo(java.lang.String, java.lang.String, boolean) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='javax.jmdns.impl.DNSRecord.Address void toByteArray(java.io.DataOutputStream) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='javax.jmdns.impl.JmDNSImpl java.util.Map&lt;java.lang.String,javax.jmdns.ServiceInfo[]&gt; listBySubtype(java.lang.String, long) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.DNSIncoming DNSIncoming(java.net.DatagramPacket) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.JmDNSImpl.Operation RegisterServiceType'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.JmDNSImpl javax.jmdns.impl.DNSCache getCache()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.NetworkTopologyEventImpl java.lang.Object clone()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.JmmDNSImpl void requestServiceInfo(java.lang.String, java.lang.String, long) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='javax.jmdns.impl.JmDNSImpl javax.jmdns.ServiceInfo getServiceInfo(java.lang.String, java.lang.String, boolean, long) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.JmDNSImpl void requestServiceInfo(java.lang.String, java.lang.String, long) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.DNSRecord.Pointer javax.jmdns.ServiceInfo getServiceInfo(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.DNSEntry boolean sameSubtype(javax.jmdns.impl.DNSEntry) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.ServiceInfoImpl javax.jmdns.impl.ServiceInfoImpl clone()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.DNSRecord.Service javax.jmdns.ServiceEvent getServiceEvent(javax.jmdns.impl.JmDNSImpl)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.DNSQuestion boolean iAmTheOnlyOne(javax.jmdns.impl.JmDNSImpl) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='javax.jmdns.impl.JmDNSImpl void addServiceListener(java.lang.String, javax.jmdns.ServiceListener) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.DNSQuestion void addAnswers(javax.jmdns.impl.JmDNSImpl, java.util.Set&lt;javax.jmdns.impl.DNSRecord&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='javax.jmdns.impl.JmmDNSImpl void registerServiceType(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='javax.jmdns.impl.NameRegister.NameType SERVICE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.DNSRecord void toString(java.lang.StringBuilder) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.DNSQuestion void toString(java.lang.StringBuilder) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='javax.jmdns.impl.DNSTaskStarter void startServiceInfoResolver(javax.jmdns.impl.ServiceInfoImpl) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='javax.jmdns.impl.ServiceInfoImpl ServiceInfoImpl(java.lang.String, java.lang.String, java.lang.String, int, int, int, boolean, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.DNSRecord.Service javax.jmdns.ServiceInfo getServiceInfo(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.NameRegister.NameType HOST'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.JmDNSImpl void requestServiceInfo(java.lang.String, java.lang.String, boolean, long) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.DNSEntry void toByteArray(java.io.DataOutputStream) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.HostInfo boolean conflictWithRecord(javax.jmdns.impl.DNSRecord.Address) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.DNSRecord.Pointer javax.jmdns.ServiceEvent getServiceEvent(javax.jmdns.impl.JmDNSImpl)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.JmDNSImpl javax.jmdns.ServiceInfo getServiceInfo(java.lang.String, java.lang.String, boolean) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.ServiceInfoImpl java.util.Map&lt;javax.jmdns.ServiceInfo.Fields,java.lang.String&gt; decodeQualifiedNameMapForType(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.JmmDNSImpl javax.jmdns.ServiceInfo[] list(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='javax.jmdns.impl.ServiceInfoImpl java.lang.String[] getHostAddresses()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.JmDNSImpl.Operation Remove'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.JmmDNSImpl java.util.Map&lt;java.lang.String,javax.jmdns.ServiceInfo[]&gt; listBySubtype(java.lang.String, long) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='javax.jmdns.impl.DNSRecord.HostInformation void toString(java.lang.StringBuilder) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.JmmDNSImpl void inetAddressAdded(javax.jmdns.NetworkTopologyEvent) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.DNSEntry java.lang.String getSubtype()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.ServiceInfoImpl ServiceInfoImpl(java.lang.String, java.lang.String, java.lang.String, int, int, int, boolean, byte[]) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.DNSRecord.Pointer boolean isSameEntry(javax.jmdns.impl.DNSEntry) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='javax.jmdns.impl.DNSRecord.Pointer void toString(java.lang.StringBuilder) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.DNSEntry boolean isSameEntry(javax.jmdns.impl.DNSEntry) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.DNSCache java.lang.Object clone()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.JmDNSImpl void send(javax.jmdns.impl.DNSOutgoing) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.JmDNSImpl void registerService(javax.jmdns.ServiceInfo) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.JmDNSImpl void updateRecord(long, javax.jmdns.impl.DNSRecord, javax.jmdns.impl.JmDNSImpl.Operation) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.NetworkTopologyEventImpl javax.jmdns.impl.NetworkTopologyEventImpl clone()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.JmmDNSImpl void requestServiceInfo(java.lang.String, java.lang.String, boolean, long) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='javax.jmdns.impl.JmmDNSImpl java.util.Map&lt;java.lang.String,javax.jmdns.ServiceInfo[]&gt; listBySubtype(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='javax.jmdns.impl.JmDNSImpl java.util.Random getRandom()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.DNSRecord.IPv4Address javax.jmdns.ServiceInfo getServiceInfo(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.ServiceInfoImpl java.util.Collection&lt;javax.jmdns.impl.DNSRecord&gt; answers(boolean, int, javax.jmdns.impl.HostInfo) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.JmDNSImpl.ServiceTypeEntry java.lang.Object clone()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.ServiceInfoImpl ServiceInfoImpl(java.lang.String, java.lang.String, java.lang.String, int, int, int, boolean, java.lang.String) 7'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.JmDNSImpl javax.jmdns.ServiceInfo[] list(java.lang.String, long) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.JmDNSImpl void requestServiceInfo(java.lang.String, java.lang.String, boolean) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.ServiceInfoImpl java.util.Map&lt;javax.jmdns.ServiceInfo.Fields,java.lang.String&gt; decodeQualifiedNameMap(java.lang.String, java.lang.String, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.DNSEntry void toString(java.lang.StringBuilder) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='javax.jmdns.impl.DNSRecord.Text javax.jmdns.ServiceEvent getServiceEvent(javax.jmdns.impl.JmDNSImpl)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.JmDNSImpl boolean registerServiceType(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.DNSEntry int compareTo(javax.jmdns.impl.DNSEntry) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.DNSOutgoing void addAdditionalAnswer(javax.jmdns.impl.DNSIncoming, javax.jmdns.impl.DNSRecord) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.JmDNSImpl void unregisterService(javax.jmdns.ServiceInfo) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.DNSTaskStarter.Factory javax.jmdns.impl.DNSTaskStarter newDNSTaskStarter(javax.jmdns.impl.JmDNSImpl)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.JmmDNSImpl void inetAddressRemoved(javax.jmdns.NetworkTopologyEvent) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.DNSStatefulObject javax.jmdns.impl.JmDNSImpl getDns()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='javax.jmdns.impl.JmDNSImpl void removeServiceListener(java.lang.String, javax.jmdns.ServiceListener) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.ServiceInfoImpl java.lang.String[] getURLs()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.DNSTaskStarter.DNSTaskStarterImpl void startServiceInfoResolver(javax.jmdns.impl.ServiceInfoImpl) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.DNSIncoming javax.jmdns.impl.DNSIncoming clone()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.JmDNSImpl java.util.Map&lt;java.lang.String,javax.jmdns.ServiceInfo&gt; getServices()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.DNSRecord.Address javax.jmdns.ServiceInfo getServiceInfo(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.DNSIncoming.MessageInputStream byte[] readBytes(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.JmDNSImpl void startServiceInfoResolver(javax.jmdns.impl.ServiceInfoImpl) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='javax.jmdns.impl.ServiceInfoImpl java.util.Map&lt;javax.jmdns.ServiceInfo.Fields,java.lang.String&gt; checkQualifiedNameMap(java.util.Map&lt;javax.jmdns.ServiceInfo.Fields,java.lang.String&gt;)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.HostInfo java.util.Collection&lt;javax.jmdns.impl.DNSRecord&gt; answers(boolean, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.DNSQuestion javax.jmdns.impl.DNSQuestion newQuestion(java.lang.String, javax.jmdns.impl.constants.DNSRecordType, javax.jmdns.impl.constants.DNSRecordClass, boolean) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.DNSRecord.Service void toByteArray(java.io.DataOutputStream) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.JmDNSImpl javax.jmdns.ServiceInfo[] list(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.JmDNSImpl java.util.Map&lt;java.lang.String,javax.jmdns.ServiceInfo[]&gt; listBySubtype(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.ServiceInfoImpl ServiceInfoImpl(java.util.Map&lt;javax.jmdns.ServiceInfo.Fields,java.lang.String&gt;, int, int, int, boolean, java.util.Map&lt;java.lang.String,?&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.DNSRecord EMPTY_TXT'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.JmDNSImpl java.util.Map&lt;java.lang.String,javax.jmdns.ServiceInfo[]&gt; listBySubtype(java.lang.String, long)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.JmDNSImpl javax.jmdns.impl.JmDNSImpl getDns()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.JmDNSImpl javax.jmdns.ServiceInfo getServiceInfo(java.lang.String, java.lang.String, long) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.DNSRecord javax.jmdns.ServiceEvent getServiceEvent(javax.jmdns.impl.JmDNSImpl)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='javax.jmdns.impl.JmmDNSImpl void requestServiceInfo(java.lang.String, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='javax.jmdns.impl.JmmDNSImpl java.util.Map&lt;java.lang.String,javax.jmdns.ServiceInfo[]&gt; listBySubtype(java.lang.String, long)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.DNSRecord.Address javax.jmdns.ServiceEvent getServiceEvent(javax.jmdns.impl.JmDNSImpl)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.ServiceInfoImpl javax.jmdns.ServiceInfo clone()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.ServiceInfoImpl java.util.Collection&lt;javax.jmdns.impl.DNSRecord&gt; answers(boolean, int, javax.jmdns.impl.HostInfo)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.JmDNSImpl void renewServiceCollector(javax.jmdns.impl.DNSRecord) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.JmmDNSImpl void removeServiceListener(java.lang.String, javax.jmdns.ServiceListener) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='javax.jmdns.impl.DNSRecord.HostInformation javax.jmdns.ServiceInfo getServiceInfo(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.DNSQuestion javax.jmdns.impl.DNSQuestion newQuestion(java.lang.String, javax.jmdns.impl.constants.DNSRecordType, javax.jmdns.impl.constants.DNSRecordClass, boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.DNSRecord.HostInformation javax.jmdns.ServiceEvent getServiceEvent(javax.jmdns.impl.JmDNSImpl)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.DNSOutgoing void addAuthorativeAnswer(javax.jmdns.impl.DNSRecord) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.DNSMessage java.lang.String print(byte[]) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.HostInfo javax.jmdns.impl.HostInfo newHostInfo(java.net.InetAddress, javax.jmdns.impl.JmDNSImpl, java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.JmmDNSImpl java.util.Map&lt;java.lang.String,javax.jmdns.ServiceInfo[]&gt; listBySubtype(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.JmDNSImpl.Operation Noop'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.ServiceInfoImpl java.util.Map&lt;javax.jmdns.ServiceInfo.Fields,java.lang.String&gt; checkQualifiedNameMap(java.util.Map&lt;javax.jmdns.ServiceInfo.Fields,java.lang.String&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.ServiceEventImpl javax.jmdns.impl.ServiceEventImpl clone()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.JmDNSImpl java.util.Map&lt;java.lang.String,javax.jmdns.impl.JmDNSImpl.ServiceTypeEntry&gt; getServiceTypes()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.JmmDNSImpl javax.jmdns.ServiceInfo[] list(java.lang.String, long) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='javax.jmdns.impl.JmDNSImpl void requestServiceInfo(java.lang.String, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.JmDNSImpl.Operation Add'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.DNSMessage java.util.Collection&lt;? extends javax.jmdns.impl.DNSRecord&gt; getAllAnswers()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.JmDNSImpl java.util.Map&lt;java.lang.String,javax.jmdns.ServiceInfo[]&gt; listBySubtype(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.DNSOutgoing void addQuestion(javax.jmdns.impl.DNSQuestion) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.DNSRecord javax.jmdns.ServiceInfo getServiceInfo(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='javax.jmdns.impl.ServiceInfoImpl java.util.Map&lt;javax.jmdns.ServiceInfo.Fields,java.lang.String&gt; getQualifiedNameMap()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.DNSCache java.util.Collection&lt;javax.jmdns.impl.DNSEntry&gt; allValues()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.JmmDNSImpl void addServiceListener(java.lang.String, javax.jmdns.ServiceListener) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='javax.jmdns.impl.ServiceInfoImpl java.util.Map&lt;javax.jmdns.ServiceInfo.Fields,java.lang.String&gt; decodeQualifiedNameMap(java.lang.String, java.lang.String, java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.JmDNSImpl.ServiceTypeEntry javax.jmdns.impl.JmDNSImpl.ServiceTypeEntry clone()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.DNSIncoming java.lang.Object clone()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.DNSRecord.IPv6Address javax.jmdns.ServiceInfo getServiceInfo(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.JmmDNSImpl void registerService(javax.jmdns.ServiceInfo) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.ServiceEventImpl java.lang.Object clone()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.JmmDNSImpl void unregisterService(javax.jmdns.ServiceInfo) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.DNSRecord.Address void toString(java.lang.StringBuilder) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.ServiceInfoImpl java.lang.Object clone()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.JmDNSImpl.Operation Update'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.ServiceInfoImpl ServiceInfoImpl(java.lang.String, java.lang.String, java.lang.String, int, int, int, boolean, java.util.Map&lt;java.lang.String,?&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.JmDNSImpl javax.jmdns.impl.DNSOutgoing addAnswer(javax.jmdns.impl.DNSIncoming, java.net.InetAddress, int, javax.jmdns.impl.DNSOutgoing, javax.jmdns.impl.DNSRecord)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.DNSRecord.Text void toString(java.lang.StringBuilder) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.ServiceInfoImpl java.util.Map&lt;javax.jmdns.ServiceInfo.Fields,java.lang.String&gt; decodeQualifiedNameMapForType(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.DNSCache EmptyCache'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

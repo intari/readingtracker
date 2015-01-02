@@ -1,0 +1,71 @@
+<root>
+    <item name='net.hockeyapp.android.FeedbackActivity android.view.ViewGroup getLayoutView()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='net.hockeyapp.android.Constants TAG'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='net.hockeyapp.android.UpdateActivity android.view.ViewGroup getLayoutView()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='net.hockeyapp.android.Constants SDK_VERSION'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='net.hockeyapp.android.Constants BASE_URL'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='net.hockeyapp.android.UpdateActivityInterface android.view.View getLayoutView()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='net.hockeyapp.android.FeedbackActivityInterface android.view.View getLayoutView()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='net.hockeyapp.android.UpdateFragment net.hockeyapp.android.UpdateFragment newInstance(org.json.JSONArray, java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='net.hockeyapp.android.Constants SDK_NAME'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='net.hockeyapp.android.UpdateFragment android.view.View onCreateView(android.view.LayoutInflater, android.view.ViewGroup, android.os.Bundle)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='net.hockeyapp.android.UpdateFragment android.view.View getLayoutView()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='net.hockeyapp.android.UpdateManagerListener java.lang.Class&lt;? extends net.hockeyapp.android.UpdateFragment&gt; getUpdateFragmentClass()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='net.hockeyapp.android.UpdateFragment net.hockeyapp.android.UpdateFragment newInstance(org.json.JSONArray, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='net.hockeyapp.android.UpdateActivity android.view.View getLayoutView()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='net.hockeyapp.android.ExceptionHandler void saveException(java.lang.Throwable, net.hockeyapp.android.CrashManagerListener) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='net.hockeyapp.android.UpdateManagerListener java.lang.Class&lt;? extends net.hockeyapp.android.UpdateActivity&gt; getUpdateActivityClass()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='net.hockeyapp.android.FeedbackManagerListener java.lang.Class&lt;? extends net.hockeyapp.android.FeedbackActivity&gt; getFeedbackActivityClass()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='net.hockeyapp.android.ExpiryInfoActivity android.view.View getLayoutView()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='net.hockeyapp.android.FeedbackActivity android.view.View getLayoutView()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='net.hockeyapp.android.Strings ENGLISH'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='net.hockeyapp.android.FeedbackActivity void onClick(android.view.View) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

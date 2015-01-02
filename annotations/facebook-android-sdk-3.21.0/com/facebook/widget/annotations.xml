@@ -1,0 +1,401 @@
+<root>
+    <item name='com.facebook.widget.WebDialog.FeedDialogBuilder FeedDialogBuilder(android.content.Context, com.facebook.Session) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.WebDialog.RequestsDialogBuilder com.facebook.widget.WebDialog build()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog.OpenGraphActionDialogBuilder OpenGraphActionDialogBuilder(android.app.Activity, com.facebook.model.OpenGraphAction, java.lang.String) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog.Builder CONCRETE setRequestCode(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FriendPickerFragment FRIEND_PICKER_TYPE_KEY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.LikeView.HorizontalAlignment RIGHT'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog.Builder android.os.Bundle setBundleExtras(android.os.Bundle) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog.MessageDialogFeature java.lang.String getAction()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.PlacePickerFragment RESULTS_LIMIT_BUNDLE_KEY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog.PhotoMessageDialogBuilder com.facebook.widget.FacebookDialog.PhotoMessageDialogBuilder setPlace(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.LoginButton.ToolTipMode DISPLAY_ALWAYS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.PickerFragment TITLE_TEXT_BUNDLE_KEY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog.MessageDialogFeature MESSAGE_DIALOG'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog boolean getNativeDialogDidComplete(android.os.Bundle) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FriendPickerFragment.FriendPickerType TAGGABLE_FRIENDS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.PickerFragment void onSaveInstanceState(android.os.Bundle) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.LoginButton.ToolTipMode DEFAULT'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog.Builder CONCRETE addImageAttachment(java.lang.String, java.io.File)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.WebDialog.RequestsDialogBuilder RequestsDialogBuilder(android.content.Context, com.facebook.Session) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog.OpenGraphActionDialogBuilder OpenGraphActionDialogBuilder(android.app.Activity, com.facebook.model.OpenGraphAction, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog.Builder appCall'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.WebDialog.FeedDialogBuilder com.facebook.widget.WebDialog build()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.PlacePickerFragment void onInflate(android.app.Activity, android.util.AttributeSet, android.os.Bundle) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.WebDialog android.os.Bundle parseResponseUri(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FriendPickerFragment.FriendPickerType FRIENDS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.WebDialog.RequestsDialogBuilder com.facebook.widget.WebDialog.RequestsDialogBuilder setMessage(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.WebDialog.Builder com.facebook.widget.WebDialog build()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.GraphObjectAdapter.SectionAndItem com.facebook.widget.GraphObjectAdapter.SectionAndItem.Type getType()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FriendPickerFragment void onInflate(android.app.Activity, android.util.AttributeSet, android.os.Bundle) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog.MessageDialogFeature PHOTOS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.UserSettingsFragment android.view.View onCreateView(android.view.LayoutInflater, android.view.ViewGroup, android.os.Bundle) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.WebDialog.FeedDialogBuilder com.facebook.widget.WebDialog.FeedDialogBuilder setCaption(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog.DialogFeature java.lang.String getAction()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='com.facebook.widget.FriendPickerFragment MULTI_SELECT_BUNDLE_KEY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.WebDialog.RequestsDialogBuilder com.facebook.widget.WebDialog.RequestsDialogBuilder setTitle(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog.Builder android.os.Bundle setBundleExtras(android.os.Bundle)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog.PhotoMessageDialogBuilder com.facebook.widget.FacebookDialog.PhotoDialogBuilderBase setFriends(java.util.List)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.LikeView.Style STANDARD'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.WebDialog.RequestsDialogBuilder com.facebook.widget.WebDialog.RequestsDialogBuilder setData(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.LikeView.AuxiliaryViewPosition INLINE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog.OpenGraphMessageDialogFeature java.lang.String getAction()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog.OpenGraphMessageDialogBuilder OpenGraphMessageDialogBuilder(android.app.Activity, com.facebook.model.OpenGraphAction, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog RESULT_ARGS_DIALOG_COMPLETION_GESTURE_KEY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog java.lang.String getNativeDialogCompletionGesture(android.os.Bundle) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog.Builder Builder(android.app.Activity) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog.MessageDialogBuilder com.facebook.widget.FacebookDialog.ShareDialogBuilderBase setFriends(java.util.List)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.LikeView.AuxiliaryViewPosition TOP'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog.OpenGraphActionDialogFeature java.lang.String getAction()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog.Builder CONCRETE addVideoAttachment(java.lang.String, java.io.File)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog.MessageDialogBuilder MessageDialogBuilder(android.app.Activity) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.WebDialog.RequestsDialogBuilder RequestsDialogBuilder(android.content.Context, com.facebook.Session, android.os.Bundle) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog.ShareDialogFeature java.lang.String getAction()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog.Builder CONCRETE addImageAttachment(java.lang.String, android.graphics.Bitmap)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.LoginButton LoginButton(android.content.Context, android.util.AttributeSet) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog.OpenGraphMessageDialogFeature OG_MESSAGE_DIALOG'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.ToolTipPopup.Style BLUE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.PickerFragment SHOW_TITLE_BAR_BUNDLE_KEY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog.ShareDialogBuilder ShareDialogBuilder(android.app.Activity) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.LikeView.HorizontalAlignment CENTER'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog.ShareDialogFeature PHOTOS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog.PhotoMessageDialogBuilder PhotoMessageDialogBuilder(android.app.Activity) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.WebDialog.FeedDialogBuilder com.facebook.widget.WebDialog.FeedDialogBuilder setName(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog.OpenGraphActionDialogBuilder OpenGraphActionDialogBuilder(android.app.Activity, com.facebook.model.OpenGraphAction, java.lang.String, java.lang.String) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog.Builder android.os.Bundle getMethodArguments()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog java.lang.String getNativeDialogPostId(android.os.Bundle) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.LikeView.Style BUTTON'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog.MessageDialogBuilder com.facebook.widget.FacebookDialog.MessageDialogBuilder setFriends(java.util.List&lt;java.lang.String&gt;)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.ProfilePictureView android.os.Parcelable onSaveInstanceState()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog.PendingCall void writeToParcel(android.os.Parcel, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.WebDialog.FeedDialogBuilder com.facebook.widget.WebDialog.FeedDialogBuilder setTo(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.PickerFragment void onInflate(android.app.Activity, android.util.AttributeSet, android.os.Bundle) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog COMPLETION_GESTURE_CANCEL'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog RESULT_ARGS_DIALOG_COMPLETE_KEY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.WebDialog.FeedDialogBuilder com.facebook.widget.WebDialog.FeedDialogBuilder setFrom(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.PickerFragment android.view.View onCreateView(android.view.LayoutInflater, android.view.ViewGroup, android.os.Bundle)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog.PhotoMessageDialogBuilder com.facebook.widget.FacebookDialog.PhotoDialogBuilderBase setPlace(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog.OpenGraphActionDialogBuilder OpenGraphActionDialogBuilder(android.app.Activity, com.facebook.model.OpenGraphAction, java.lang.String, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.ToolTipPopup ToolTipPopup(java.lang.String, android.view.View) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog.ShareDialogFeature SHARE_DIALOG'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.LikeView.HorizontalAlignment LEFT'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.PickerFragment SHOW_PICTURES_BUNDLE_KEY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.ToolTipPopup.Style BLACK'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog.Builder CONCRETE setApplicationName(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog.Builder java.util.List&lt;java.lang.String&gt; addImageAttachmentFiles(java.util.Collection&lt;java.io.File&gt;)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.PickerFragment EXTRA_FIELDS_BUNDLE_KEY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FriendPickerFragment void setSelection(java.util.List&lt;com.facebook.model.GraphUser&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog.VideoShareDialogBuilder VideoShareDialogBuilder(android.app.Activity) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.PlacePickerFragment SHOW_SEARCH_BOX_BUNDLE_KEY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.PickerFragment android.view.View onCreateView(android.view.LayoutInflater, android.view.ViewGroup, android.os.Bundle) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog boolean handleActivityResult(android.content.Context, com.facebook.widget.FacebookDialog.PendingCall, int, android.content.Intent, com.facebook.widget.FacebookDialog.Callback) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.GraphObjectAdapter.SectionAndItem.Type SECTION_HEADER'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog.OpenGraphMessageDialogBuilder OpenGraphMessageDialogBuilder(android.app.Activity, com.facebook.model.OpenGraphAction, java.lang.String) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog.MessageDialogBuilder com.facebook.widget.FacebookDialog.ShareDialogBuilderBase setPlace(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.WebDialog.Builder Builder(android.content.Context, com.facebook.Session, java.lang.String, android.os.Bundle) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.LikeView.Style BOX_COUNT'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog.PendingCall CREATOR'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.ProfilePictureView void onRestoreInstanceState(android.os.Parcelable) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.PickerFragment java.util.Set&lt;java.lang.String&gt; getExtraFields()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog.PhotoMessageDialogBuilder com.facebook.widget.FacebookDialog.PhotoMessageDialogBuilder setFriends(java.util.List&lt;java.lang.String&gt;)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.WebDialog.FeedDialogBuilder com.facebook.widget.WebDialog.FeedDialogBuilder setLink(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog.Builder com.facebook.widget.FacebookDialog build()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.PlacePickerFragment LOCATION_BUNDLE_KEY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog.OpenGraphActionDialogFeature OG_ACTION_DIALOG'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.LikeView.AuxiliaryViewPosition BOTTOM'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.WebDialog.FeedDialogBuilder com.facebook.widget.WebDialog.FeedDialogBuilder setDescription(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog.Builder java.util.List&lt;java.lang.String&gt; addImageAttachments(java.util.Collection&lt;android.graphics.Bitmap&gt;)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.WebDialog.FeedDialogBuilder FeedDialogBuilder(android.content.Context, com.facebook.Session, android.os.Bundle) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.UserSettingsFragment android.view.View onCreateView(android.view.LayoutInflater, android.view.ViewGroup, android.os.Bundle)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog.Builder activity'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.WebDialog.FeedDialogBuilder com.facebook.widget.WebDialog.FeedDialogBuilder setSource(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.GraphObjectAdapter.SectionAndItem.Type GRAPH_OBJECT'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.LoginButton.ToolTipMode NEVER_DISPLAY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.GraphObjectAdapter.SectionAndItem.Type ACTIVITY_CIRCLE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog.Builder java.util.List&lt;java.lang.String&gt; addImageAttachmentFiles(java.util.Collection&lt;java.io.File&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.WebDialog.FeedDialogBuilder com.facebook.widget.WebDialog.FeedDialogBuilder setPicture(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog.Builder CONCRETE setFragment(android.support.v4.app.Fragment)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog.PhotoShareDialogBuilder PhotoShareDialogBuilder(android.app.Activity) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog.Builder java.util.List&lt;java.lang.String&gt; addImageAttachments(java.util.Collection&lt;android.graphics.Bitmap&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog.Callback void onError(com.facebook.widget.FacebookDialog.PendingCall, java.lang.Exception, android.os.Bundle) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='com.facebook.widget.FriendPickerFragment USER_ID_BUNDLE_KEY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.PlacePickerFragment SEARCH_TEXT_BUNDLE_KEY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.PickerFragment DONE_BUTTON_TEXT_BUNDLE_KEY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.PlacePickerFragment RADIUS_IN_METERS_BUNDLE_KEY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog RESULT_ARGS_DIALOG_COMPLETION_ID_KEY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog.ShareDialogFeature VIDEO'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FriendPickerFragment.FriendPickerType INVITABLE_FRIENDS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.WebDialog.RequestsDialogBuilder com.facebook.widget.WebDialog.RequestsDialogBuilder setTo(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.widget.FacebookDialog.MessageDialogBuilder com.facebook.widget.FacebookDialog.MessageDialogBuilder setPlace(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

@@ -1,0 +1,356 @@
+<root>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_RRSIG'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_UINFO'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_UNSPEC'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_NIMLOC'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSState CANCELING_2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordClass CLASS_CS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_MB'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_A6'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSOperationCode javax.jmdns.impl.constants.DNSOperationCode operationCodeForFlags(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_AFSDB'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSOperationCode Unassigned'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordClass CLASS_HS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSState CANCELING_3'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_IXFR'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordClass CLASS_ANY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSResultCode NoError'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_NS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSLabel Compressed'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_HINFO'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordClass CLASS_UNKNOWN'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_MD'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_TXT'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_TSIG'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordClass javax.jmdns.impl.constants.DNSRecordClass classForIndex(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSState CLOSED'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_OPT'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_SIG'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_PX'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSConstants MDNS_GROUP'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordClass javax.jmdns.impl.constants.DNSRecordClass classForName(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSConstants MDNS_GROUP_IPV6'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSOptionCode LLQ'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_PTR'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSResultCode ServFail'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSLabel Standard'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_IGNORE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_APL'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_DNAME'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSOptionCode UL'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSOperationCode Update'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSState ANNOUNCED'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSOptionCode Unknown'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_MR'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSResultCode NotZone'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSResultCode Unknown'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_UID'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_ATMA'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_MINFO'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSState ANNOUNCING_2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_NXT'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSResultCode javax.jmdns.impl.constants.DNSResultCode resultCodeForFlags(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_DS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_MAILA'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSResultCode FormErr'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_NULL'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_SOA'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSLabel Extended'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_MF'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSOptionCode NSID'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSOperationCode Notify'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSLabel javax.jmdns.impl.constants.DNSLabel labelForByte(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_NSAP_PTR'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_A'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_NAPTR'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_CNAME'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordClass CLASS_NONE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_KX'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_CERT'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSResultCode NotImp'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSOptionCode Owner'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_KEY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_NSEC'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_ISDN'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSState ANNOUNCING_1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSResultCode YXRRSet'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSResultCode Refused'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_SRV'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_MG'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_DNSKEY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_MAILB'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_MX'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_WKS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSState PROBING_3'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_AAAA'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSState javax.jmdns.impl.constants.DNSState revert()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSResultCode NXRRSet'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_RP'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSResultCode NotAuth'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSState CANCELED'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordClass CLASS_IN'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_GPOS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_EID'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordClass CLASS_CH'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSOperationCode IQuery'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_ANY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_GID'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSLabel Unknown'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSResultCode YXDomain'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_SSHFP'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSState CANCELING_1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSState PROBING_2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_NSAP'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_LOC'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType javax.jmdns.impl.constants.DNSRecordType typeForIndex(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSOptionCode javax.jmdns.impl.constants.DNSOptionCode resultCodeForFlags(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSState CLOSING'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSResultCode javax.jmdns.impl.constants.DNSResultCode resultCodeForFlags(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSOperationCode Query'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_SINK'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSState javax.jmdns.impl.constants.DNSState advance()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_AXFR'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType javax.jmdns.impl.constants.DNSRecordType typeForName(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSResultCode NXDomain'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSState PROBING_1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSOperationCode Status'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_RT'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_X25'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.constants.DNSRecordType TYPE_TKEY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

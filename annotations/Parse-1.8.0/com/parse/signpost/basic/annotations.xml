@@ -1,0 +1,26 @@
+<root>
+    <item name='com.parse.signpost.basic.DefaultOAuthConsumer com.parse.signpost.http.HttpRequest wrap(java.lang.Object)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.basic.DefaultOAuthProvider com.parse.signpost.http.HttpRequest createRequest(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.basic.UrlStringRequestAdapter java.lang.String getMethod()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.basic.DefaultOAuthProvider com.parse.signpost.http.HttpResponse sendRequest(com.parse.signpost.http.HttpRequest) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.basic.DefaultOAuthProvider void closeConnection(com.parse.signpost.http.HttpRequest, com.parse.signpost.http.HttpResponse) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.basic.HttpURLConnectionRequestAdapter java.util.Map&lt;java.lang.String,java.lang.String&gt; getAllHeaders()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.basic.DefaultOAuthConsumer com.parse.signpost.http.HttpRequest wrap(java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.basic.DefaultOAuthProvider com.parse.signpost.http.HttpResponse sendRequest(com.parse.signpost.http.HttpRequest)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

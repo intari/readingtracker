@@ -1,0 +1,716 @@
+<root>
+    <item name='com.facebook.internal.NativeProtocol android.os.Bundle getBridgeArgumentsFromIntent(android.content.Intent) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.AnalyticsEvents PARAMETER_LIKE_VIEW_CURRENT_ACTION'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.Utility android.net.Uri buildUri(java.lang.String, java.lang.String, android.os.Bundle) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol EXTRA_APPLICATION_NAME'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.AnalyticsEvents PARAMETER_LIKE_VIEW_HORIZONTAL_ALIGNMENT'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol EXTRA_FRIEND_TAGS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.AnalyticsEvents EVENT_NATIVE_DIALOG_START'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.ImageRequest.Callback void onCompleted(com.facebook.internal.ImageResponse) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol RESULT_ARGS_EXPIRES_SECONDS_SINCE_EPOCH'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol EXTRA_DATA_FAILURES_FATAL'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol METHOD_ARGS_PHOTOS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.Utility void deleteDirectory(java.io.File) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.BundleJSONConverter android.os.Bundle convertToBundle(org.json.JSONObject)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.ServerProtocol DIALOG_PARAM_REDIRECT_URI'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol METHOD_ARGS_OBJECT_ID'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.Utility void putObjectInBundle(android.os.Bundle, java.lang.String, java.lang.Object) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol int computeLatestAvailableVersionFromVersionSpec(java.util.TreeSet&lt;java.lang.Integer&gt;, int, int[]) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol METHOD_ARGS_PLACE_TAG'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.LikeActionController ERROR_INVALID_OBJECT_ID'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.LikeBoxCountView.LikeBoxCountViewCaretPosition TOP'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol EXTRA_IMAGE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.AnalyticsEvents EVENT_LIKE_VIEW_DIALOG_DID_SUCCEED'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol EXTRA_PROTOCOL_VERSION'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol METHOD_ARGS_LINK'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol ACTION_OGMESSAGEPUBLISH_DIALOG_REPLY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.ServerProtocol FALLBACK_DIALOG_DISPLAY_VALUE_TOUCH'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol METHOD_ARGS_ACTION'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.AnalyticsEvents EVENT_NATIVE_DIALOG_TYPE_PHOTO_SHARE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.Validate void oneOf(java.lang.Object, java.lang.String, java.lang.Object...) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol BRIDGE_ARG_APP_NAME_STRING'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol ACTION_MESSAGE_DIALOG'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.ImageDownloader void prioritizeRequest(com.facebook.internal.ImageRequest) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.LikeActionController ACTION_LIKE_ACTION_CONTROLLER_DID_RESET'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol BRIDGE_ARG_ERROR_TYPE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol EXTRA_UNLIKE_TOKEN'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol STATUS_ERROR_TYPE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.AnalyticsEvents EVENT_LIKE_VIEW_ERROR'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.LikeBoxCountView void onDraw(android.graphics.Canvas) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.LikeBoxCountView.LikeBoxCountViewCaretPosition BOTTOM'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol EXTRA_EXPIRES_SECONDS_SINCE_EPOCH'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.AnalyticsEvents EVENT_LOGIN_VIEW_USAGE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol FACEBOOK_PROXY_AUTH_APP_ID_KEY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.ServerProtocol DIALOG_PARAM_CLIENT_ID'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol ACTION_FEED_DIALOG'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol android.os.Bundle getErrorDataFromResultIntent(android.content.Intent) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.FileLruCache java.io.InputStream interceptAndPut(java.lang.String, java.io.InputStream)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol ERROR_NETWORK_ERROR'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol METHOD_ARGS_FRIEND_TAGS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.AnalyticsEvents EVENT_LIKE_VIEW_DID_LIKE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol AUDIENCE_ME'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.AnalyticsEvents EVENT_NATIVE_DIALOG_TYPE_OG_SHARE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.BundleJSONConverter org.json.JSONObject convertToJSON(android.os.Bundle)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol EXTRA_PREVIEW_PROPERTY_NAME'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.AnalyticsEvents PARAMETER_LIKE_VIEW_ERROR_JSON'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.SessionAuthorizationType READ'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.AnalyticsEvents EVENT_USER_SETTINGS_USAGE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.ServerProtocol DIALOG_PARAM_E2E'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol BRIDGE_ARG_ACTION_ID_STRING'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol EXTRA_PROTOCOL_METHOD_RESULTS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.Utility void setAppEventAttributionParameters(com.facebook.model.GraphObject, com.facebook.internal.AttributionIdentifiers, java.lang.String, boolean) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.AnalyticsEvents EVENT_NATIVE_LOGIN_DIALOG_COMPLETE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.BundleJSONConverter.Setter void setOnBundle(android.os.Bundle, java.lang.String, java.lang.Object) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol AUDIENCE_EVERYONE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol EXTRA_OBJECT_ID'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.Utility void setAppEventExtendedDeviceInfoParameters(com.facebook.model.GraphObject, android.content.Context) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol EXTRA_ACTION'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol ACTION_FEED_DIALOG_REPLY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol EXTRA_TITLE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.ServerProtocol FALLBACK_DIALOG_PARAM_VERSION'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.ServerProtocol DIALOG_PARAM_RESPONSE_TYPE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.AnalyticsEvents PARAMETER_DIALOG_OUTCOME_VALUE_FAILED'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.ServerProtocol GRAPH_API_VERSION'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.ServerProtocol DIALOG_PARAM_SCOPE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.AnalyticsEvents EVENT_LIKE_VIEW_DID_UNLIKE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol METHOD_ARGS_SUBTITLE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.ServerProtocol java.lang.String getAPIVersion()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.ServerProtocol DIALOG_REREQUEST_AUTH_TYPE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.BundleJSONConverter org.json.JSONObject convertToJSON(android.os.Bundle) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.ServerProtocol DIALOG_PARAM_LEGACY_OVERRIDE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.AnalyticsEvents EVENT_NATIVE_DIALOG_TYPE_VIDEO_SHARE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol ACTION_LIKE_DIALOG'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.AnalyticsEvents PARAMETER_DIALOG_OUTCOME_VALUE_CANCELLED'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.ServerProtocol DIALOG_PARAM_RETURN_SCOPES'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.AnalyticsEvents EVENT_LIKE_VIEW_DID_PRESENT_DIALOG'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol EXTRA_ACCESS_TOKEN'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.AnalyticsEvents EVENT_NATIVE_DIALOG_COMPLETE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.AnalyticsEvents PARAMETER_WEB_LOGIN_SWITCHBACK_TIME'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol METHOD_ARGS_TITLE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.ServerProtocol FALLBACK_DIALOG_PARAM_BRIDGE_ARGS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.AnalyticsEvents PARAMETER_DIALOG_OUTCOME_VALUE_COMPLETED'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.AnalyticsEvents EVENT_WEB_LOGIN_COMPLETE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol EXTRA_PROTOCOL_METHOD_ARGS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.ImageRequest.Builder com.facebook.internal.ImageRequest.Builder setCallerTag(java.lang.Object)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.ServerProtocol FALLBACK_DIALOG_PARAM_METHOD_ARGS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.Validate void notEmptyAndContainsNoNulls(java.util.Collection&lt;T&gt;, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.FacebookWebFallbackDialog android.os.Bundle parseResponseUri(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.Utility java.lang.String safeGetStringFromResponse(com.facebook.model.GraphObject, java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol RESULT_ARGS_PERMISSIONS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol OPEN_GRAPH_CREATE_OBJECT_KEY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol METHOD_ARGS_DATA_FAILURES_FATAL'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.Utility android.os.Bundle parseUrlQueryString(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.PlatformServiceClient void populateRequestBundle(android.os.Bundle) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol ACTION_MESSAGE_DIALOG_REPLY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol ACTION_LIKE_DIALOG_REPLY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol ERROR_SERVICE_DISABLED'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.AnalyticsEvents PARAMETER_APP_ID'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol android.os.Bundle getSuccessResultsFromIntent(android.content.Intent) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.Utility void setAppEventExtendedDeviceInfoParameters(com.facebook.model.GraphObject, android.content.Context) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol EXTRA_REF'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol BRIDGE_ARG_ERROR_DESCRIPTION'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol int computeLatestAvailableVersionFromVersionSpec(java.util.TreeSet&lt;java.lang.Integer&gt;, int, int[]) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.Utility void putObjectInBundle(android.os.Bundle, java.lang.String, java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol STATUS_ERROR_SUBCODE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol ACTION_OGACTIONPUBLISH_DIALOG_REPLY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.ServerProtocol DIALOG_PARAM_DISPLAY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol EXTRA_GET_INSTALL_DATA_PACKAGE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.ServerProtocol FALLBACK_DIALOG_PARAM_APP_ID'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.ServerProtocol DIALOG_PATH'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol EXTRA_SOCIAL_SENTENCE_WITH_LIKE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.PendingCallStore void saveInstanceState(android.os.Bundle) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.Utility java.util.ArrayList&lt;T&gt; arrayList(T...) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.AnalyticsEvents PARAMETER_DIALOG_OUTCOME'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.PlatformServiceClient PlatformServiceClient(android.content.Context, int, int, int, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.AnalyticsEvents EVENT_NATIVE_DIALOG_TYPE_MESSAGE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.ImageDownloader boolean cancelRequest(com.facebook.internal.ImageRequest) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.Validate void notEmpty(java.util.Collection&lt;T&gt;, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol ACTION_OGACTIONPUBLISH_DIALOG'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol EXTRA_LIKE_COUNT_STRING_WITH_LIKE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.ServerProtocol FALLBACK_DIALOG_PARAM_METHOD_RESULTS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.BundleJSONConverter.Setter void setOnJSON(org.json.JSONObject, java.lang.String, java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol ERROR_USER_CANCELED'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.AnalyticsEvents EVENT_NATIVE_DIALOG_TYPE_OG_MESSAGE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.LikeBoxCountView.LikeBoxCountViewCaretPosition LEFT'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.AnalyticsEvents PARAMETER_NATIVE_LOGIN_DIALOG_COMPLETE_TIME'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.AnalyticsEvents EVENT_LIKE_VIEW_DID_TAP'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol IMAGE_USER_GENERATED_KEY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.FileLruCache java.io.InputStream get(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.AnalyticsEvents PARAMETER_CALL_ID'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.AnalyticsEvents PARAMETER_ACTION_ID'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol boolean isErrorResult(android.content.Intent) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol BRIDGE_ARG_ERROR_JSON'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol BRIDGE_ARG_ERROR_BUNDLE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.ImageRequest.Builder Builder(android.content.Context, java.net.URI) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.AnalyticsEvents PARAMETER_LIKE_VIEW_AUXILIARY_POSITION'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.AnalyticsEvents PARAMETER_NATIVE_LOGIN_DIALOG_START_TIME'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol FACEBOOK_PROXY_AUTH_E2E_KEY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol EXTRA_DESCRIPTION'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.AnalyticsEvents PARAMETER_WEB_LOGIN_E2E'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol ACTION_OGMESSAGEPUBLISH_DIALOG'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol METHOD_ARGS_ACTION_TYPE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol EXTRA_PROTOCOL_CALL_ID'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.ServerProtocol DIALOG_PARAM_AUTH_TYPE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.BundleJSONConverter.Setter void setOnJSON(org.json.JSONObject, java.lang.String, java.lang.Object) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='com.facebook.internal.BundleJSONConverter.Setter void setOnBundle(android.os.Bundle, java.lang.String, java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol EXTRA_PERMISSIONS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol IMAGE_URL_KEY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.Utility java.util.ArrayList&lt;T&gt; arrayList(T...)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.FileLruCache FileLruCache(android.content.Context, java.lang.String, com.facebook.internal.FileLruCache.Limits) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol int getProtocolVersionFromIntent(android.content.Intent) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.Validate void containsNoNulls(java.util.Collection&lt;T&gt;, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.ImageRequest.Builder com.facebook.internal.ImageRequest build()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol METHOD_ARGS_VIDEO'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol EXTRA_SOCIAL_SENTENCE_WITHOUT_LIKE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.BundleJSONConverter android.os.Bundle convertToBundle(org.json.JSONObject) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.ServerProtocol FALLBACK_DIALOG_PARAM_KEY_HASH'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol STATUS_ERROR_CODE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol METHOD_ARGS_PREVIEW_PROPERTY_NAME'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.LikeBoxCountView void setCaretPosition(com.facebook.internal.LikeBoxCountView.LikeBoxCountViewCaretPosition) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.Utility java.lang.Object getStringPropertyAsJSON(org.json.JSONObject, java.lang.String, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.ImageRequest.Builder com.facebook.internal.ImageRequest.Builder setAllowCachedRedirects(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol ERROR_PROTOCOL_ERROR'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol EXTRA_LIKE_COUNT_STRING_WITHOUT_LIKE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.LikeActionController ACTION_OBJECT_ID_KEY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol BRIDGE_ARG_ERROR_SUBCODE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.Validate void notNull(java.lang.Object, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol EXTRA_ACTION_TYPE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.AnalyticsEvents PARAMETER_LIKE_VIEW_STYLE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol STATUS_ERROR_JSON'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.AnalyticsEvents EVENT_LIKE_VIEW_DID_PRESENT_FALLBACK'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.ServerProtocol DIALOG_RESPONSE_TYPE_TOKEN'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.LikeActionController.CreationCallback void onComplete(com.facebook.internal.LikeActionController) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='com.facebook.internal.ServerProtocol DIALOG_PARAM_APP_ID'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol STATUS_ERROR_DESCRIPTION'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.ImageRequest.Builder com.facebook.internal.ImageRequest.Builder setCallback(com.facebook.internal.ImageRequest.Callback)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol FACEBOOK_PROXY_AUTH_PERMISSIONS_KEY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.AnalyticsEvents EVENT_NATIVE_DIALOG_TYPE_PHOTO_MESSAGE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.Utility java.util.List&lt;T&gt; asListNoNulls(T...)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.AnalyticsEvents EVENT_FRIEND_PICKER_USAGE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol METHOD_ARGS_DESCRIPTION'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol EXTRA_PROTOCOL_BRIDGE_ARGS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.AnalyticsEvents EVENT_PLACE_PICKER_USAGE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.ServerProtocol DIALOG_RETURN_SCOPES_TRUE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol EXTRA_SUBTITLE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.Utility java.lang.String getMetadataApplicationId(android.content.Context) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.AnalyticsEvents PARAMETER_LIKE_VIEW_OBJECT_ID'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.AnalyticsEvents EVENT_NATIVE_DIALOG_TYPE_SHARE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.Utility java.lang.String getHashedDeviceAndAppID(android.content.Context, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol EXTRA_APPLICATION_ID'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.LikeBoxCountView.LikeBoxCountViewCaretPosition RIGHT'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol RESULT_ARGS_ACCESS_TOKEN'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol ERROR_APPLICATION_ERROR'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol AUDIENCE_FRIENDS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.FileLruCache java.io.OutputStream openPutStream(java.lang.String, java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.AnalyticsEvents EVENT_LIKE_VIEW_DID_UNDO_QUICKLY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.AnalyticsEvents EVENT_NATIVE_DIALOG_TYPE_LIKE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol BRIDGE_ARG_ERROR_CODE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol EXTRA_LINK'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.Utility java.util.List&lt;T&gt; asListNoNulls(T...) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol METHOD_ARGS_IMAGE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.AnalyticsEvents PARAMETER_DIALOG_OUTCOME_VALUE_UNKNOWN'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.PlatformServiceClient void handleMessage(android.os.Message) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.Validate void containsNoNullOrEmpty(java.util.Collection&lt;java.lang.String&gt;, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.PlatformServiceClient android.content.Context getContext()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.AnalyticsEvents EVENT_NATIVE_LOGIN_DIALOG_START'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.PendingCallStore void restoreFromSavedInstanceState(android.os.Bundle) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol METHOD_ARGS_REF'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol EXTRA_OBJECT_IS_LIKED'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.ImageRequest java.net.URI getProfilePictureUrl(java.lang.String, int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.ServerProtocol DIALOG_PARAM_DEFAULT_AUDIENCE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.LikeActionController ACTION_LIKE_ACTION_CONTROLLER_DID_ERROR'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol EXTRA_PLACE_TAG'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol ERROR_PERMISSION_DENIED'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol ERROR_UNKNOWN_ERROR'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol EXTRA_PROTOCOL_ACTION'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.FileLruCache java.io.InputStream get(java.lang.String, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.SessionAuthorizationType PUBLISH'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.ServerProtocol DIALOG_PARAM_ACCESS_TOKEN'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.Logger LOG_TAG_BASE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.AnalyticsEvents EVENT_LIKE_VIEW_CANNOT_PRESENT_DIALOG'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.NativeProtocol EXTRA_PHOTOS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.internal.LikeActionController ACTION_LIKE_ACTION_CONTROLLER_UPDATED'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

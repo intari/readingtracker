@@ -1,0 +1,131 @@
+<root>
+    <item name='ly.count.android.api.UserData PICTURE_KEY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='ly.count.android.api.Countly COUNTLY_SDK_VERSION_STRING'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='ly.count.android.api.Countly ly.count.android.api.Countly setLoggingEnabled(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='ly.count.android.api.Countly ly.count.android.api.Countly init(android.content.Context, java.lang.String, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='ly.count.android.api.Countly ly.count.android.api.Countly init(android.content.Context, java.lang.String, java.lang.String) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='ly.count.android.api.Countly ly.count.android.api.Countly init(android.content.Context, java.lang.String, java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='ly.count.android.api.Countly ly.count.android.api.Countly init(android.content.Context, java.lang.String, java.lang.String, java.lang.String, ly.count.android.api.DeviceId.Type)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='ly.count.android.api.UserData ORG_KEY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='ly.count.android.api.Countly ly.count.android.api.Countly sharedInstance()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='ly.count.android.api.UserData java.lang.String getPicturePathFromQuery(java.net.URL) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='ly.count.android.api.Countly TAG'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='ly.count.android.api.Countly ly.count.android.api.Countly init(android.content.Context, java.lang.String, java.lang.String, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='ly.count.android.api.DeviceId void switchToIdType(ly.count.android.api.DeviceId.Type, android.content.Context, ly.count.android.api.CountlyStore) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='ly.count.android.api.UserData NAME_KEY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='ly.count.android.api.Countly ly.count.android.api.Countly init(android.content.Context, java.lang.String, java.lang.String, java.lang.String) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='ly.count.android.api.Countly.CountlyMessagingMode PRODUCTION'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='ly.count.android.api.Countly void setUserData(android.os.Bundle) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='ly.count.android.api.Countly void recordEvent(java.lang.String, java.util.Map&lt;java.lang.String,java.lang.String&gt;, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='ly.count.android.api.UserData PHONE_KEY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='ly.count.android.api.Countly void recordEvent(java.lang.String, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='ly.count.android.api.Countly ly.count.android.api.Countly initMessaging(android.app.Activity, java.lang.Class&lt;? extends android.app.Activity&gt;, java.lang.String, ly.count.android.api.Countly.CountlyMessagingMode)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='ly.count.android.api.CountlyStore java.util.List&lt;ly.count.android.api.Event&gt; eventsList()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='ly.count.android.api.Countly ly.count.android.api.Countly setDisableUpdateSessionRequests(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='ly.count.android.api.DeviceId.Type OPEN_UDID'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='ly.count.android.api.Countly ly.count.android.api.Countly initMessaging(android.app.Activity, java.lang.Class&lt;? extends android.app.Activity&gt;, java.lang.String, java.lang.String[], ly.count.android.api.Countly.CountlyMessagingMode)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='ly.count.android.api.Countly.CountlyMessagingMode TEST'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='ly.count.android.api.Countly void recordEvent(java.lang.String, java.util.Map&lt;java.lang.String,java.lang.String&gt;, int, double) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='ly.count.android.api.UserData USERNAME_KEY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='ly.count.android.api.Countly void recordEvent(java.lang.String, int, double) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='ly.count.android.api.Countly DEFAULT_APP_VERSION'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='ly.count.android.api.DeviceId.Type ADVERTISING_ID'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='ly.count.android.api.Countly ly.count.android.api.Countly init(android.content.Context, java.lang.String, java.lang.String, java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='ly.count.android.api.UserData PICTURE_PATH_KEY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='ly.count.android.api.UserData BYEAR_KEY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='ly.count.android.api.DeviceId.Type DEVELOPER_SUPPLIED'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='ly.count.android.api.DeviceId void init(android.content.Context, ly.count.android.api.CountlyStore, boolean) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='ly.count.android.api.DeviceId DeviceId(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='ly.count.android.api.Countly void recordEvent(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='ly.count.android.api.UserData EMAIL_KEY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='ly.count.android.api.DeviceId DeviceId(ly.count.android.api.DeviceId.Type) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='ly.count.android.api.Countly ly.count.android.api.Countly init(android.content.Context, java.lang.String, java.lang.String, java.lang.String, ly.count.android.api.DeviceId.Type) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='ly.count.android.api.UserData GENDER_KEY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='ly.count.android.api.Countly ly.count.android.api.Countly init(android.content.Context, java.lang.String, java.lang.String, java.lang.String, ly.count.android.api.DeviceId.Type) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

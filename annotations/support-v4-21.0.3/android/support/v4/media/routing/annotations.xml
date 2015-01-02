@@ -1,0 +1,119 @@
+<root>
+    <item name='android.support.v4.media.routing.MediaRouterJellybeanMr1.RouteInfo android.view.Display getPresentationDisplay(java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.media.routing.MediaRouterJellybean.RouteCategory java.util.List getRoutes(java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.media.routing.MediaRouterJellybean.UserRouteInfo void setPlaybackType(java.lang.Object, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.media.routing.MediaRouterJellybean.RouteInfo void requestUpdateVolume(java.lang.Object, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.media.routing.MediaRouterJellybean.UserRouteInfo void setVolume(java.lang.Object, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.media.routing.MediaRouterJellybeanMr2.RouteInfo java.lang.CharSequence getDescription(java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.media.routing.MediaRouterJellybean.RouteCategory java.util.List getRoutes(java.lang.Object)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.media.routing.MediaRouterJellybean.RouteInfo java.lang.CharSequence getStatus(java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.media.routing.MediaRouterJellybean.RouteGroup java.util.List getGroupedRoutes(java.lang.Object)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.media.routing.MediaRouterJellybeanMr1.ActiveScanWorkaround ActiveScanWorkaround(android.content.Context, android.os.Handler) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.media.routing.MediaRouterJellybean.RouteInfo int getPlaybackType(java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.media.routing.MediaRouterJellybean.UserRouteInfo void setVolumeCallback(java.lang.Object, java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.media.routing.MediaRouterJellybean.RouteInfo int getPlaybackStream(java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.media.routing.MediaRouterJellybean.RouteGroup java.util.List getGroupedRoutes(java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.media.routing.MediaRouterJellybean.RouteInfo java.lang.CharSequence getName(java.lang.Object, android.content.Context) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.media.routing.MediaRouterJellybean.RouteInfo java.lang.Object getCategory(java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.media.routing.MediaRouterJellybean.RouteInfo java.lang.Object getGroup(java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.media.routing.MediaRouterJellybean.UserRouteInfo void setIconDrawable(java.lang.Object, android.graphics.drawable.Drawable) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.media.routing.MediaRouterJellybean.RouteInfo java.lang.Object getTag(java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.media.routing.MediaRouterJellybean.RouteInfo int getVolume(java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.media.routing.MediaRouterJellybean.UserRouteInfo void setPlaybackStream(java.lang.Object, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.media.routing.MediaRouterJellybean.RouteCategory java.lang.CharSequence getName(java.lang.Object, android.content.Context) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.media.routing.MediaRouterJellybean.RouteCategory boolean isGroupable(java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.media.routing.MediaRouterJellybeanMr2.RouteInfo boolean isConnecting(java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.media.routing.MediaRouterJellybean.UserRouteInfo void setVolumeMax(java.lang.Object, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.media.routing.MediaRouterJellybean.UserRouteInfo void setName(java.lang.Object, java.lang.CharSequence) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.media.routing.MediaRouterJellybean.RouteInfo android.graphics.drawable.Drawable getIconDrawable(java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.media.routing.MediaRouterJellybean.UserRouteInfo void setRemoteControlClient(java.lang.Object, java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.media.routing.MediaRouterJellybean.UserRouteInfo void setStatus(java.lang.Object, java.lang.CharSequence) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.media.routing.MediaRouterJellybean.RouteCategory int getSupportedTypes(java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.media.routing.MediaRouterJellybean.RouteInfo int getSupportedTypes(java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.media.routing.MediaRouterJellybean.RouteInfo int getVolumeHandling(java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.media.routing.MediaRouterJellybeanMr2.UserRouteInfo void setDescription(java.lang.Object, java.lang.CharSequence) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.media.routing.MediaRouterJellybean.RouteInfo int getVolumeMax(java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.media.routing.MediaRouterJellybeanMr1.RouteInfo boolean isEnabled(java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.media.routing.MediaRouterJellybean.RouteInfo void setTag(java.lang.Object, java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.media.routing.MediaRouterJellybean.SelectRouteWorkaround void selectRoute(java.lang.Object, int, java.lang.Object) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.media.routing.MediaRouterJellybean.UserRouteInfo void setVolumeHandling(java.lang.Object, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.media.routing.MediaRouterJellybean.RouteInfo void requestSetVolume(java.lang.Object, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

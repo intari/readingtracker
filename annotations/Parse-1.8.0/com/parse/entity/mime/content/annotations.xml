@@ -1,0 +1,143 @@
+<root>
+    <item name='com.parse.entity.mime.content.StringBody com.parse.entity.mime.content.StringBody create(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.content.ContentDescriptor java.lang.String getTransferEncoding()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='com.parse.entity.mime.content.InputStreamBody InputStreamBody(java.io.InputStream, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.content.StringBody com.parse.entity.mime.content.StringBody create(java.lang.String, java.nio.charset.Charset) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.content.FileBody FileBody(java.io.File, java.lang.String) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.content.ContentBody void writeTo(java.io.OutputStream) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='com.parse.entity.mime.content.StringBody StringBody(java.lang.String, java.lang.String, java.nio.charset.Charset) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.content.ByteArrayBody java.lang.String getTransferEncoding()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.content.FileBody java.io.InputStream getInputStream()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.content.FileBody void writeTo(java.io.OutputStream, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.content.AbstractContentBody java.lang.String getMimeType()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.content.ByteArrayBody ByteArrayBody(byte[], java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.content.FileBody FileBody(java.io.File) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.content.FileBody FileBody(java.io.File, java.lang.String, java.lang.String) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.content.FileBody FileBody(java.io.File, java.lang.String, java.lang.String, java.lang.String) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.content.StringBody StringBody(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.content.FileBody FileBody(java.io.File, java.lang.String, java.lang.String, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.content.InputStreamBody InputStreamBody(java.io.InputStream, java.lang.String, java.lang.String) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.content.StringBody com.parse.entity.mime.content.StringBody create(java.lang.String, java.nio.charset.Charset)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.content.StringBody void writeTo(java.io.OutputStream) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.content.StringBody java.io.Reader getReader()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.content.ByteArrayBody ByteArrayBody(byte[], java.lang.String, java.lang.String) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.content.StringBody void writeTo(java.io.OutputStream, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.content.StringBody com.parse.entity.mime.content.StringBody create(java.lang.String, java.lang.String, java.nio.charset.Charset) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.content.InputStreamBody void writeTo(java.io.OutputStream, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.content.AbstractContentBody AbstractContentBody(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.content.ByteArrayBody void writeTo(java.io.OutputStream) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.content.StringBody com.parse.entity.mime.content.StringBody create(java.lang.String, java.lang.String, java.nio.charset.Charset)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.content.StringBody StringBody(java.lang.String, java.lang.String, java.nio.charset.Charset) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.content.StringBody java.lang.String getTransferEncoding()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.content.FileBody FileBody(java.io.File, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.content.InputStreamBody java.io.InputStream getInputStream()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.content.StringBody StringBody(java.lang.String, java.nio.charset.Charset) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.content.StringBody com.parse.entity.mime.content.StringBody create(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.content.FileBody java.io.File getFile()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.content.FileBody FileBody(java.io.File, java.lang.String, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.content.InputStreamBody void writeTo(java.io.OutputStream) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.content.FileBody void writeTo(java.io.OutputStream) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.content.ContentDescriptor java.lang.String getMimeType()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='com.parse.entity.mime.content.ByteArrayBody ByteArrayBody(byte[], java.lang.String, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.content.FileBody java.lang.String getTransferEncoding()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.content.InputStreamBody InputStreamBody(java.io.InputStream, java.lang.String, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.content.InputStreamBody java.lang.String getTransferEncoding()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.entity.mime.content.StringBody com.parse.entity.mime.content.StringBody create(java.lang.String, java.lang.String, java.nio.charset.Charset) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

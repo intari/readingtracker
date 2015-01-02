@@ -1,0 +1,5 @@
+<root>
+    <item name='com.parse.signpost.exception.OAuthCommunicationException OAuthCommunicationException(java.lang.Exception) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

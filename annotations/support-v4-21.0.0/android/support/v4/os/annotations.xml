@@ -1,0 +1,14 @@
+<root>
+    <item name='android.support.v4.os.ParcelableCompat android.os.Parcelable.Creator&lt;T&gt; newCreator(android.support.v4.os.ParcelableCompatCreatorCallbacks&lt;T&gt;)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.os.AsyncTaskCompat android.os.AsyncTask&lt;Params,Progress,Result&gt; executeParallel(android.os.AsyncTask&lt;Params,Progress,Result&gt;, Params...)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.os.AsyncTaskCompat android.os.AsyncTask&lt;Params,Progress,Result&gt; executeParallel(android.os.AsyncTask&lt;Params,Progress,Result&gt;, Params...) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.os.EnvironmentCompat MEDIA_UNKNOWN'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

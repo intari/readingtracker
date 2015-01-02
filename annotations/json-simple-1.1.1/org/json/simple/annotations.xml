@@ -1,0 +1,23 @@
+<root>
+    <item name='org.json.simple.JSONObject void writeJSONString(java.util.Map, java.io.Writer) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.json.simple.JSONObject void writeJSONString(java.io.Writer) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.json.simple.JSONArray void writeJSONString(java.util.List, java.io.Writer) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.json.simple.ItemList void addAll(org.json.simple.ItemList) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.json.simple.JSONArray void writeJSONString(java.io.Writer) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.json.simple.JSONStreamAware void writeJSONString(java.io.Writer) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+</root>

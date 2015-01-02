@@ -1,0 +1,23 @@
+<root>
+    <item name='android.support.v4.media.MediaMetadataCompatApi21.Builder java.lang.Object newInstance()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.media.MediaMetadataCompatApi21.Builder void putBitmap(java.lang.Object, java.lang.String, android.graphics.Bitmap) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.media.MediaMetadataCompatApi21.Builder void putText(java.lang.Object, java.lang.String, java.lang.CharSequence) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.media.MediaMetadataCompatApi21.Builder void putRating(java.lang.Object, java.lang.String, java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.media.MediaMetadataCompatApi21.Builder java.lang.Object build(java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.media.MediaMetadataCompatApi21.Builder void putString(java.lang.Object, java.lang.String, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.media.MediaMetadataCompatApi21.Builder void putLong(java.lang.Object, java.lang.String, long) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

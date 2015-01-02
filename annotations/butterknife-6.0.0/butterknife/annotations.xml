@@ -1,0 +1,92 @@
+<root>
+    <item name='butterknife.ButterKnife T findById(android.app.Dialog, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='butterknife.ButterKnife.Finder VIEW'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='butterknife.OnTextChanged.Callback BEFORE_TEXT_CHANGED'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='butterknife.ButterKnife.Finder ACTIVITY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='butterknife.OnItemSelected.Callback NOTHING_SELECTED'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='butterknife.ButterKnife void reset(java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='butterknife.ButterKnife void inject(android.view.View) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='butterknife.OnPageChange.Callback PAGE_SCROLLED'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='butterknife.ButterKnife.Finder android.content.Context getContext(java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='butterknife.ButterKnife void inject(java.lang.Object, android.app.Dialog) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='butterknife.ButterKnife void inject(java.lang.Object, android.app.Activity) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='butterknife.OnItemSelected.Callback ITEM_SELECTED'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='butterknife.ButterKnife void inject(android.app.Activity) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='butterknife.OnPageChange.Callback PAGE_SELECTED'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='butterknife.ButterKnife.Finder java.util.List&lt;T&gt; listOf(T...)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='butterknife.ButterKnife.Finder DIALOG'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='butterknife.ButterKnife void apply(java.util.List&lt;T&gt;, butterknife.ButterKnife.Action&lt;? super T&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='butterknife.ButterKnife void inject(java.lang.Object, android.view.View) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='butterknife.ButterKnife void apply(java.util.List&lt;T&gt;, butterknife.ButterKnife.Setter&lt;? super T,V&gt;, V) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='butterknife.ButterKnife T findById(android.view.View, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='butterknife.ButterKnife void inject(android.app.Dialog) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='butterknife.OnTextChanged.Callback TEXT_CHANGED'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='butterknife.ButterKnife T findById(android.app.Activity, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='butterknife.ButterKnife.Finder android.view.View findOptionalView(java.lang.Object, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='butterknife.OnPageChange.Callback PAGE_SCROLL_STATE_CHANGED'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='butterknife.OnTextChanged.Callback AFTER_TEXT_CHANGED'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='butterknife.ButterKnife.Finder android.view.View findRequiredView(java.lang.Object, int, java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='butterknife.ButterKnife void apply(java.util.List&lt;T&gt;, android.util.Property&lt;? super T,V&gt;, V) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

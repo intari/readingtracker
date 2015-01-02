@@ -1,0 +1,104 @@
+<root>
+    <item name='bolts.AppLinkNavigation bolts.Task&lt;bolts.AppLinkNavigation.NavigationResult&gt; navigateInBackground(android.content.Context, android.net.Uri, bolts.AppLinkResolver) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='bolts.AppLinkNavigation bolts.Task&lt;bolts.AppLinkNavigation.NavigationResult&gt; navigateInBackground(android.content.Context, java.net.URL, bolts.AppLinkResolver) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='bolts.AppLinkNavigation bolts.AppLinkNavigation.NavigationResult navigate(android.content.Context, bolts.AppLink) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='bolts.Task bolts.Task&lt;java.lang.Void&gt; whenAll(java.util.Collection&lt;? extends bolts.Task&lt;?&gt;&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='bolts.Task UI_THREAD_EXECUTOR'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='bolts.Bolts VERSION'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='bolts.AppLinks android.os.Bundle getAppLinkExtras(android.content.Intent) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='bolts.AppLinkNavigation AppLinkNavigation(bolts.AppLink, android.os.Bundle, android.os.Bundle) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='bolts.AppLinkNavigation bolts.AppLinkNavigation.NavigationResult navigate(android.content.Context) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='bolts.MeasurementEvent MEASUREMENT_EVENT_NOTIFICATION_NAME'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='bolts.Continuation TContinuationResult then(bolts.Task&lt;TTaskResult&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='bolts.MeasurementEvent MEASUREMENT_EVENT_ARGS_KEY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='bolts.MeasurementEvent APP_LINK_NAVIGATE_OUT_EVENT_NAME'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='bolts.AppLinkNavigation bolts.AppLinkNavigation.NavigationResult navigate(android.content.Context, bolts.AppLink) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='bolts.AppLinkNavigation bolts.Task&lt;bolts.AppLinkNavigation.NavigationResult&gt; navigateInBackground(android.content.Context, java.net.URL) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='bolts.AppLinkNavigation.NavigationResult WEB'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='bolts.Task bolts.Task&lt;TResult&gt; call(java.util.concurrent.Callable&lt;TResult&gt;, java.util.concurrent.Executor) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='bolts.AppLinkNavigation bolts.Task&lt;bolts.AppLinkNavigation.NavigationResult&gt; navigateInBackground(android.content.Context, java.net.URL, bolts.AppLinkResolver) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='bolts.AppLinks android.net.Uri getTargetUrlFromInboundIntent(android.content.Context, android.content.Intent) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='bolts.AppLinkNavigation bolts.AppLinkNavigation.NavigationResult navigate(android.content.Context, bolts.AppLink)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='bolts.AppLinkNavigation.NavigationResult FAILED'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='bolts.AppLinkNavigation.NavigationResult APP'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='bolts.MeasurementEvent APP_LINK_NAVIGATE_IN_EVENT_NAME'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='bolts.AppLinkNavigation bolts.Task&lt;bolts.AppLinkNavigation.NavigationResult&gt; navigateInBackground(android.content.Context, java.lang.String, bolts.AppLinkResolver) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='bolts.Task bolts.Task&lt;TResult&gt;.TaskCompletionSource create()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='bolts.Task bolts.Task&lt;TOut&gt; cast()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='bolts.AppLinks android.os.Bundle getAppLinkData(android.content.Intent) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='bolts.MeasurementEvent MEASUREMENT_EVENT_NAME_KEY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='bolts.AppLinkNavigation bolts.AppLinkNavigation.NavigationResult navigate(android.content.Context)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='bolts.AppLinkNavigation android.os.Bundle getAppLinkData()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='bolts.AppLinks android.net.Uri getTargetUrl(android.content.Intent) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='bolts.AppLinkNavigation android.os.Bundle getExtras()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='bolts.AppLinkNavigation bolts.AppLink getAppLink()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

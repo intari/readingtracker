@@ -1,0 +1,23 @@
+<root>
+    <item name='javax.jmdns.impl.tasks.resolver.DNSResolverTask void start(java.util.Timer) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='javax.jmdns.impl.tasks.resolver.DNSResolverTask java.lang.String description()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='javax.jmdns.impl.tasks.resolver.TypeResolver java.lang.String description()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.tasks.resolver.ServiceResolver java.lang.String description()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.tasks.resolver.ServiceInfoResolver ServiceInfoResolver(javax.jmdns.impl.JmDNSImpl, javax.jmdns.impl.ServiceInfoImpl) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

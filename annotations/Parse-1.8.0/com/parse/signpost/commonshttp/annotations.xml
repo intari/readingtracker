@@ -1,0 +1,26 @@
+<root>
+    <item name='com.parse.signpost.commonshttp.HttpRequestAdapter java.util.Map&lt;java.lang.String,java.lang.String&gt; getAllHeaders()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.commonshttp.CommonsHttpOAuthConsumer com.parse.signpost.http.HttpRequest wrap(java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.commonshttp.CommonsHttpOAuthProvider com.parse.signpost.http.HttpResponse sendRequest(com.parse.signpost.http.HttpRequest)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.commonshttp.CommonsHttpOAuthConsumer com.parse.signpost.http.HttpRequest wrap(java.lang.Object)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.commonshttp.CommonsHttpOAuthProvider com.parse.signpost.http.HttpRequest createRequest(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.commonshttp.CommonsHttpOAuthProvider com.parse.signpost.http.HttpResponse sendRequest(com.parse.signpost.http.HttpRequest) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.commonshttp.CommonsHttpOAuthProvider void closeConnection(com.parse.signpost.http.HttpRequest, com.parse.signpost.http.HttpResponse) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+</root>

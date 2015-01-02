@@ -1,0 +1,17 @@
+<root>
+    <item name='org.OpenUDID.OpenUDID_manager void sync(android.content.Context) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.OpenUDID.OpenUDID_service android.os.IBinder onBind(android.content.Intent)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.OpenUDID.OpenUDID_manager TAG'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.OpenUDID.OpenUDID_manager PREF_KEY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.OpenUDID.OpenUDID_manager PREFS_NAME'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

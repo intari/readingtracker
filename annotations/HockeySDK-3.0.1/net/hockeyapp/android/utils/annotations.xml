@@ -1,0 +1,35 @@
+<root>
+    <item name='net.hockeyapp.android.utils.PrefsUtil net.hockeyapp.android.utils.PrefsUtil getInstance()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='net.hockeyapp.android.utils.PrefsUtil void applyChanges(android.content.SharedPreferences.Editor) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='net.hockeyapp.android.utils.FeedbackParser net.hockeyapp.android.utils.FeedbackParser getInstance()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='net.hockeyapp.android.utils.Util PREFS_KEY_NAME_EMAIL_SUBJECT'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='net.hockeyapp.android.utils.Util PREFS_NAME_EMAIL_SUBJECT'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='net.hockeyapp.android.utils.UiThreadUtil net.hockeyapp.android.utils.UiThreadUtil getInstance()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='net.hockeyapp.android.utils.Util PREFS_KEY_FEEDBACK_TOKEN'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='net.hockeyapp.android.utils.ConnectionManager net.hockeyapp.android.utils.ConnectionManager getInstance()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='net.hockeyapp.android.utils.Util PREFS_FEEDBACK_TOKEN'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='net.hockeyapp.android.utils.DeviceUtils net.hockeyapp.android.utils.DeviceUtils getInstance()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='net.hockeyapp.android.utils.ViewHelper android.graphics.drawable.Drawable getGradient()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

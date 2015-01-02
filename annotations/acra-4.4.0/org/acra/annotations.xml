@@ -1,0 +1,170 @@
+<root>
+    <item name='org.acra.ReportField TOTAL_MEM_SIZE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ReportField PRODUCT'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ReportField CUSTOM_DATA'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ReportField MEDIA_CODEC_LIST'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ReportField FILE_PATH'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ReportField SETTINGS_SECURE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ReportField DISPLAY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ACRA DEFAULT_REPORT_FIELDS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ReportField INSTALLATION_ID'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ReportField SETTINGS_SYSTEM'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ReportField REPORT_ID'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ReportField BUILD'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ReportField USER_APP_START_DATE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ReportField LOGCAT'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ReportField DUMPSYS_MEMINFO'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ReportField CRASH_CONFIGURATION'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ReportField APP_VERSION_CODE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ReportField INITIAL_CONFIGURATION'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ReportField USER_COMMENT'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ReportField ENVIRONMENT'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ReportField SHARED_PREFERENCES'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ReportingInteractionMode NOTIFICATION'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ACRAConstants DEFAULT_GOOGLE_FORM_URL_FORMAT'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ReportField DEVICE_ID'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ACRAConstants NULL_VALUE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ACRA DEFAULT_MAIL_REPORT_FIELDS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ReportingInteractionMode TOAST'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ReportField DEVICE_FEATURES'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ReportField STACK_TRACE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ReportField DROPBOX'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ReportField PHONE_MODEL'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ReportField IS_SILENT'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ACRA PREF_ALWAYS_ACCEPT'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ACRA PREF_LAST_VERSION_NR'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ReportField AVAILABLE_MEM_SIZE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ReportField THREAD_DETAILS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ACRA PREF_USER_EMAIL_ADDRESS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ACRAConstants DEFAULT_STRING_VALUE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ReportField APP_VERSION_NAME'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ReportField PACKAGE_NAME'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ReportingInteractionMode DIALOG'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ReportField USER_CRASH_DATE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ReportField USER_EMAIL'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ACRA PREF_ENABLE_DEVICE_ID'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ReportField BRAND'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ReportField APPLICATION_LOG'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ACRA PREF_ENABLE_SYSTEM_LOGS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ReportField ANDROID_VERSION'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ACRAConstants REPORTFILE_EXTENSION'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ACRAConstants DEFAULT_APPLICATION_LOGFILE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ReportField RADIOLOG'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ACRA org.acra.ACRAConfiguration getNewDefaultConfig(android.app.Application)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ACRA PREF_ENABLE_ACRA'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ReportingInteractionMode SILENT'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ReportField EVENTSLOG'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='org.acra.ACRA PREF_DISABLE_ACRA'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

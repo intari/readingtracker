@@ -1,0 +1,59 @@
+<root>
+    <item name='javax.jmdns.impl.tasks.DNSTask javax.jmdns.impl.DNSOutgoing addAnswer(javax.jmdns.impl.DNSOutgoing, javax.jmdns.impl.DNSIncoming, javax.jmdns.impl.DNSRecord) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.tasks.DNSTask javax.jmdns.impl.DNSOutgoing addAdditionalAnswer(javax.jmdns.impl.DNSOutgoing, javax.jmdns.impl.DNSIncoming, javax.jmdns.impl.DNSRecord) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.tasks.DNSTask javax.jmdns.impl.DNSOutgoing addAnswer(javax.jmdns.impl.DNSOutgoing, javax.jmdns.impl.DNSRecord, long)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.tasks.DNSTask javax.jmdns.impl.DNSOutgoing addAuthoritativeAnswer(javax.jmdns.impl.DNSOutgoing, javax.jmdns.impl.DNSRecord) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.tasks.DNSTask javax.jmdns.impl.DNSOutgoing addQuestion(javax.jmdns.impl.DNSOutgoing, javax.jmdns.impl.DNSQuestion) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.tasks.DNSTask javax.jmdns.impl.DNSOutgoing addAdditionalAnswer(javax.jmdns.impl.DNSOutgoing, javax.jmdns.impl.DNSIncoming, javax.jmdns.impl.DNSRecord)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.tasks.DNSTask javax.jmdns.impl.DNSOutgoing addAnswer(javax.jmdns.impl.DNSOutgoing, javax.jmdns.impl.DNSRecord, long) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.tasks.DNSTask javax.jmdns.impl.DNSOutgoing addAuthoritativeAnswer(javax.jmdns.impl.DNSOutgoing, javax.jmdns.impl.DNSRecord)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.tasks.DNSTask javax.jmdns.impl.DNSOutgoing addQuestion(javax.jmdns.impl.DNSOutgoing, javax.jmdns.impl.DNSQuestion) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.tasks.DNSTask javax.jmdns.impl.DNSOutgoing addAuthoritativeAnswer(javax.jmdns.impl.DNSOutgoing, javax.jmdns.impl.DNSRecord) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.tasks.DNSTask void start(java.util.Timer) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='javax.jmdns.impl.tasks.DNSTask javax.jmdns.impl.DNSOutgoing addAnswer(javax.jmdns.impl.DNSOutgoing, javax.jmdns.impl.DNSIncoming, javax.jmdns.impl.DNSRecord)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.tasks.DNSTask javax.jmdns.impl.DNSOutgoing addQuestion(javax.jmdns.impl.DNSOutgoing, javax.jmdns.impl.DNSQuestion)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.tasks.DNSTask javax.jmdns.impl.DNSOutgoing addAdditionalAnswer(javax.jmdns.impl.DNSOutgoing, javax.jmdns.impl.DNSIncoming, javax.jmdns.impl.DNSRecord) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='javax.jmdns.impl.tasks.Responder void start(java.util.Timer) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='javax.jmdns.impl.tasks.RecordReaper void start(java.util.Timer) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+</root>

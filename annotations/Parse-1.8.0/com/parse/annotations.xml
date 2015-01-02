@@ -1,0 +1,776 @@
+<root>
+    <item name='com.parse.ParseFacebookUtils.Permissions.Extended READ_REQUESTS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.Friends GROUPS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.PushService void subscribe(android.content.Context, java.lang.String, java.lang.Class&lt;? extends android.app.Activity&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseQuery com.parse.ParseQuery&lt;T&gt; getQuery(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.Extended PUBLISH_ACTIONS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.User ONLINE_PRESENCE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseACL void setReadAccess(java.lang.String, boolean) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseACL ParseACL(com.parse.ParseUser) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseQuery com.parse.ParseQuery&lt;T&gt; or(java.util.List&lt;com.parse.ParseQuery&lt;T&gt;&gt;)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils void link(com.parse.ParseUser, java.util.Collection&lt;java.lang.String&gt;, android.app.Activity) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseRole void put(java.lang.String, java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.User QUESTIONS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseInstallation com.parse.ParseQuery&lt;com.parse.ParseInstallation&gt; getQuery()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseQuery.CachePolicy CACHE_ELSE_NETWORK'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.User VIDEOS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseUser com.parse.ParseUser become(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseObject void put(java.lang.String, java.lang.Object) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.User RELATIONSHIPS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseAnalytics bolts.Task&lt;java.lang.Void&gt; trackEventInBackground(java.lang.String, java.util.Map&lt;java.lang.String,java.lang.String&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.Friends HOMETOWN'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseQuery com.parse.ParseQuery&lt;T&gt; whereMatchesQuery(java.lang.String, com.parse.ParseQuery&lt;?&gt;)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseQuery com.parse.ParseQuery&lt;T&gt; whereMatches(java.lang.String, java.lang.String, java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.NotificationCompat.Builder.BigTextStyle com.parse.NotificationCompat.Builder.BigTextStyle setBigContentTitle(java.lang.CharSequence)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils bolts.Task&lt;java.lang.Void&gt; unlinkInBackground(com.parse.ParseUser) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.PushService void subscribe(android.content.Context, java.lang.String, java.lang.Class&lt;? extends android.app.Activity&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseTwitterUtils bolts.Task&lt;java.lang.Void&gt; unlinkInBackground(com.parse.ParseUser) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseACL void setRoleReadAccess(com.parse.ParseRole, boolean) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.User LOCATION'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.User ACTIVITIES'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils void link(com.parse.ParseUser, java.util.Collection&lt;java.lang.String&gt;, android.app.Activity, int, com.parse.SaveCallback) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseQuery com.parse.ParseQuery&lt;T&gt; whereContainedIn(java.lang.String, java.util.Collection&lt;? extends java.lang.Object&gt;)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseQuery com.parse.ParseQuery&lt;com.parse.ParseUser&gt; getUserQuery()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseRole void put(java.lang.String, java.lang.Object) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseQueryAdapter void setPageOnQuery(int, com.parse.ParseQuery&lt;T&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils bolts.Task&lt;java.lang.Void&gt; linkInBackground(com.parse.ParseUser, android.app.Activity) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseGeoPoint double distanceInKilometersTo(com.parse.ParseGeoPoint) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.PushService void subscribe(android.content.Context, java.lang.String, java.lang.Class&lt;? extends android.app.Activity&gt;) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseObject void deleteAllInBackground(java.util.List&lt;T&gt;, com.parse.DeleteCallback) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.Friends BIRTHDAY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseQuery com.parse.ParseQuery&lt;T&gt; whereMatches(java.lang.String, java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParsePushBroadcastReceiver ACTION_PUSH_OPEN'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseQuery.CachePolicy IGNORE_CACHE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseAnalytics void trackEvent(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseObject ParseObject(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseQuery com.parse.ParseQuery&lt;T&gt; orderByDescending(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.Friends RELATIONSHIPS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.Friends RELIGION_POLITICS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.GetCallback void done(T, com.parse.ParseException) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='com.parse.ParseQuery com.parse.ParseQuery&lt;T&gt; orderByAscending(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseRole void setName(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.User STATUS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseACL void setReadAccess(com.parse.ParseUser, boolean) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.PushRoutes.Route org.json.JSONObject toJSON()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseQuery com.parse.ParseQuery&lt;T&gt; whereEqualTo(java.lang.String, java.lang.Object)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseQuery com.parse.ParseQuery&lt;T&gt; or(java.util.List&lt;com.parse.ParseQuery&lt;T&gt;&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParsePushBroadcastReceiver ACTION_PUSH_DELETE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.User LIKES'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.Extended XMPP_LOGIN'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils bolts.Task&lt;java.lang.Void&gt; saveLatestSessionDataInBackground(com.parse.ParseUser) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParsePushBroadcastReceiver KEY_PUSH_DATA'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseQuery com.parse.ParseQuery&lt;T&gt; addDescendingOrder(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseTwitterUtils bolts.Task&lt;java.lang.Void&gt; linkInBackground(android.content.Context, com.parse.ParseUser) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParsePush bolts.Task&lt;java.lang.Void&gt; sendMessageInBackground(java.lang.String, com.parse.ParseQuery&lt;com.parse.ParseInstallation&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.User EVENTS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseQuery.CachePolicy CACHE_ONLY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseACL void setRoleWriteAccess(com.parse.ParseRole, boolean) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseAnalytics void trackEvent(java.lang.String, java.util.Map&lt;java.lang.String,java.lang.String&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseQuery.CachePolicy CACHE_THEN_NETWORK'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseBroadcastReceiver void onReceive(android.content.Context, android.content.Intent) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.Friends PHOTOS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.PushConnection.ConnectedState com.parse.PushConnection.State runState()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseQuery com.parse.ParseQuery&lt;T&gt; whereStartsWith(java.lang.String, java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.PushService void subscribe(android.content.Context, java.lang.String, java.lang.Class&lt;? extends android.app.Activity&gt;, int) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseQueryAdapter.QueryFactory com.parse.ParseQuery&lt;T&gt; create()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.Extended PUBLISH_STREAM'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.Page MANAGE_PAGES'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseObject void deleteAll(java.util.List&lt;T&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseUser com.parse.ParseUser logIn(java.lang.String, java.lang.String) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils void link(com.parse.ParseUser, android.app.Activity, int, com.parse.SaveCallback) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseQuery com.parse.ParseQuery&lt;T&gt; whereLessThanOrEqualTo(java.lang.String, java.lang.Object)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.Extended OFFLINE_ACCESS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParsePush void setChannels(java.util.Collection&lt;java.lang.String&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParsePush void sendMessageInBackground(java.lang.String, com.parse.ParseQuery&lt;com.parse.ParseInstallation&gt;, com.parse.SendCallback) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseQuery com.parse.ParseQuery&lt;T&gt; whereExists(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseQuery com.parse.ParseQuery&lt;T&gt; whereWithinKilometers(java.lang.String, com.parse.ParseGeoPoint, double)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.User EMAIL'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.PushConnection.ConnectState com.parse.PushConnection.State runState()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseQuery com.parse.ParseQuery&lt;T&gt; whereContains(java.lang.String, java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseQuery com.parse.ParseQuery&lt;T&gt; whereNear(java.lang.String, com.parse.ParseGeoPoint)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParsePushBroadcastReceiver KEY_PUSH_CHANNEL'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseACL void setWriteAccess(java.lang.String, boolean) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseQuery com.parse.ParseQuery&lt;T&gt; whereContainsAll(java.lang.String, java.util.Collection&lt;?&gt;)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFile ParseFile(byte[]) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseQuery com.parse.ParseQuery&lt;T&gt; whereNotContainedIn(java.lang.String, java.util.Collection&lt;? extends java.lang.Object&gt;)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseUser com.parse.ParseUser logIn(java.lang.String, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.Friends LOCATION'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.NotificationCompat.Builder com.parse.NotificationCompat.Builder setAutoCancel(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.User INTERESTS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.NotificationCompat.Builder com.parse.NotificationCompat.Builder setPriority(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ConnectivityNotifier.ConnectivityListener void networkConnectivityStatusChanged(android.content.Intent) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='com.parse.ParseQuery com.parse.ParseQuery&lt;T&gt; whereEndsWith(java.lang.String, java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseInstallation void put(java.lang.String, java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.NotificationCompat.Builder com.parse.NotificationCompat.Builder setContentText(java.lang.CharSequence)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils bolts.Task&lt;java.lang.Void&gt; linkInBackground(com.parse.ParseUser, android.app.Activity, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.Friends QUESTIONS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseTwitterUtils boolean isLinked(com.parse.ParseUser) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.NotificationCompat.Builder.BigTextStyle com.parse.NotificationCompat.Builder.BigTextStyle bigText(java.lang.CharSequence)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils void link(com.parse.ParseUser, android.app.Activity, com.parse.SaveCallback) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseObject void fetchAllInBackground(java.util.List&lt;T&gt;, com.parse.FindCallback&lt;T&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseRole ParseRole(java.lang.String, com.parse.ParseACL) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseQuery.CachePolicy NETWORK_ELSE_CACHE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils bolts.Task&lt;java.lang.Void&gt; linkInBackground(com.parse.ParseUser, java.util.Collection&lt;java.lang.String&gt;, android.app.Activity, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseQuery com.parse.ParseQuery&lt;T&gt; getQuery(java.lang.Class&lt;T&gt;)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseObject bolts.Task&lt;java.lang.Void&gt; deleteAllInBackground(java.util.List&lt;T&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.Friends LIKES'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseUser void logInInBackground(java.lang.String, java.lang.String, com.parse.LogInCallback) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseACL boolean getReadAccess(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseAnalytics void trackEventInBackground(java.lang.String, com.parse.SaveCallback) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseQuery com.parse.ParseQuery&lt;T&gt; whereGreaterThan(java.lang.String, java.lang.Object)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.Friends WEBSITE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.Friends EDUCATION_HISTORY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseInstallation void put(java.lang.String, java.lang.Object) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.NotificationCompat.Builder com.parse.NotificationCompat.Builder setLargeIcon(android.graphics.Bitmap)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.User NOTES'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseTwitterUtils void unlink(com.parse.ParseUser) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.User BIRTHDAY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseUser void put(java.lang.String, java.lang.Object) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseUser void put(java.lang.String, java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseUser void becomeInBackground(java.lang.String, com.parse.LogInCallback) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseUser void setEmail(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils void link(com.parse.ParseUser, android.app.Activity, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.User WORK_HISTORY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.Extended PUBLISH_CHECKINS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseUser void logInInBackground(java.lang.String, java.lang.String, com.parse.LogInCallback) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseACL void setWriteAccess(com.parse.ParseUser, boolean) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseQuery com.parse.ParseQuery&lt;T&gt; whereWithinGeoBox(java.lang.String, com.parse.ParseGeoPoint, com.parse.ParseGeoPoint)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseQuery com.parse.ParseQuery&lt;T&gt; setLimit(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseRole com.parse.ParseQuery&lt;com.parse.ParseRole&gt; getQuery()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.User PHOTOS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.Extended CREATE_EVENT'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.PushRoutes.Route Route(java.lang.String, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseQuery com.parse.ParseQuery&lt;T&gt; whereNotEqualTo(java.lang.String, java.lang.Object)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.PushService void setDefaultPushCallback(android.content.Context, java.lang.Class&lt;? extends android.app.Activity&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFile ParseFile(java.lang.String, byte[], java.lang.String) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseQuery com.parse.ParseQuery&lt;T&gt; whereDoesNotMatchKeyInQuery(java.lang.String, java.lang.String, com.parse.ParseQuery&lt;?&gt;)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.User RELIGION_POLITICS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParsePushBroadcastReceiver ACTION_PUSH_RECEIVE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.NotificationCompat.Builder com.parse.NotificationCompat.Builder setDeleteIntent(android.app.PendingIntent)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseTwitterUtils void link(com.parse.ParseUser, android.content.Context) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseObject bolts.Task&lt;java.util.List&lt;T&gt;&gt; fetchAllInBackground(java.util.List&lt;T&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseAnalytics bolts.Task&lt;java.lang.Void&gt; trackEventInBackground(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParsePush bolts.Task&lt;java.lang.Void&gt; sendDataInBackground(org.json.JSONObject, com.parse.ParseQuery&lt;com.parse.ParseInstallation&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.Extended MANAGE_NOTIFICATIONS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseEventuallyQueue.TestHelper java.lang.String getEventString(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseGeoPoint double distanceInMilesTo(com.parse.ParseGeoPoint) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.NotificationCompat.Builder com.parse.NotificationCompat.Builder setDefaults(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseQuery com.parse.ParseQuery&lt;T&gt; addAscendingOrder(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.Friends ONLINE_PRESENCE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.Extended READ_MAILBOX'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils void saveLatestSessionData(com.parse.ParseUser) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseObject void fetchAllIfNeededInBackground(java.util.List&lt;T&gt;, com.parse.FindCallback&lt;T&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParsePushBroadcastReceiver PROPERTY_PUSH_ICON'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.User WEBSITE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.User ABOUT_ME'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils void unlinkInBackground(com.parse.ParseUser, com.parse.SaveCallback) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseQueryAdapter ParseQueryAdapter(android.content.Context, java.lang.String) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseQuery com.parse.ParseQuery&lt;T&gt; whereLessThan(java.lang.String, java.lang.Object)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.Friends VIDEOS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.User RELATIONSHIP_DETAILS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseObject com.parse.ParseRelation&lt;T&gt; getRelation(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.User HOMETOWN'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseQuery com.parse.ParseQuery&lt;T&gt; whereDoesNotExist(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseQuery com.parse.ParseQuery&lt;T&gt; whereWithinRadians(java.lang.String, com.parse.ParseGeoPoint, double)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParsePushBroadcastReceiver void onReceive(android.content.Context, android.content.Intent) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseQuery.CachePolicy NETWORK_ONLY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.Friends ACTIVITIES'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParsePush bolts.Task&lt;java.lang.Void&gt; subscribeInBackground(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseRole ParseRole(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseQuery com.parse.ParseQuery&lt;T&gt; whereMatches(java.lang.String, java.lang.String, java.lang.String) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseQuery com.parse.ParseQuery&lt;T&gt; fromLocalDatastore()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.Friends NOTES'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseUser bolts.Task&lt;com.parse.ParseUser&gt; becomeInBackground(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.NotificationCompat.Builder com.parse.NotificationCompat.Builder setSmallIcon(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseObject java.util.List&lt;T&gt; fetchAllIfNeeded(java.util.List&lt;T&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils void link(com.parse.ParseUser, java.util.Collection&lt;java.lang.String&gt;, android.app.Activity, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.Extended RSVP_EVENT'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils bolts.Task&lt;java.lang.Void&gt; linkInBackground(com.parse.ParseUser, java.util.Collection&lt;java.lang.String&gt;, android.app.Activity) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseQuery com.parse.ParseQuery&lt;T&gt; whereMatchesKeyInQuery(java.lang.String, java.lang.String, com.parse.ParseQuery&lt;?&gt;)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils boolean isLinked(com.parse.ParseUser) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.Friends EVENTS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.PushService void subscribe(android.content.Context, java.lang.String, java.lang.Class&lt;? extends android.app.Activity&gt;, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseRelation com.parse.ParseQuery&lt;T&gt; getQuery()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.Extended READ_STREAM'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseACL boolean getWriteAccess(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseObject java.util.List&lt;T&gt; fetchAll(java.util.List&lt;T&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseQuery com.parse.ParseQuery&lt;T&gt; whereGreaterThanOrEqualTo(java.lang.String, java.lang.Object)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.Extended MANAGE_FRIEND_LISTS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseQuery com.parse.ParseQuery&lt;T&gt; fromPin(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.Friends WORK_HISTORY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.User EDUCATION_HISTORY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils void link(com.parse.ParseUser, android.app.Activity) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParsePushBroadcastReceiver void onPushOpen(android.content.Context, android.content.Intent) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.Extended ADS_MANAGEMENT'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseUser bolts.Task&lt;com.parse.ParseUser&gt; logInInBackground(java.lang.String, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseQueryAdapter android.view.View getView(int, android.view.View, android.view.ViewGroup)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseTwitterUtils void link(com.parse.ParseUser, android.content.Context, com.parse.SaveCallback) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseGeoPoint double distanceInRadiansTo(com.parse.ParseGeoPoint) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseQueryAdapter ParseQueryAdapter(android.content.Context, java.lang.String, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseObject DEFAULT_PIN'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.NotificationCompat.Builder com.parse.NotificationCompat.Builder setWhen(long)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseObject void registerSubclass(java.lang.Class&lt;? extends com.parse.ParseObject&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.NotificationCompat.Builder com.parse.NotificationCompat.Builder setContentTitle(java.lang.CharSequence)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseACL boolean getRoleWriteAccess(com.parse.ParseRole) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseUser bolts.Task&lt;com.parse.ParseUser&gt; logInInBackground(java.lang.String, java.lang.String) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.User GROUPS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseAnonymousUtils boolean isLinked(com.parse.ParseUser) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseEventuallyQueue.TestHelper java.util.List&lt;java.lang.String&gt; getUnexpectedEvents()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseACL boolean getRoleReadAccess(com.parse.ParseRole) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.Friends INTERESTS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParsePush void unsubscribeInBackground(java.lang.String, com.parse.SaveCallback) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseUser void setUsername(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.NotificationCompat.Builder com.parse.NotificationCompat.Builder setContentIntent(android.app.PendingIntent)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils void link(com.parse.ParseUser, java.util.Collection&lt;java.lang.String&gt;, android.app.Activity, com.parse.SaveCallback) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils void unlink(com.parse.ParseUser) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParsePush void sendDataInBackground(org.json.JSONObject, com.parse.ParseQuery&lt;com.parse.ParseInstallation&gt;, com.parse.SendCallback) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseAnalytics void trackEventInBackground(java.lang.String, java.util.Map&lt;java.lang.String,java.lang.String&gt;, com.parse.SaveCallback) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.PushService void unsubscribe(android.content.Context, java.lang.String) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseQuery com.parse.ParseQuery&lt;T&gt; fromPin()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParsePush void setQuery(com.parse.ParseQuery&lt;com.parse.ParseInstallation&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseUser com.parse.ParseQuery&lt;com.parse.ParseUser&gt; getQuery()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.Friends ABOUT_ME'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.User CHECKINS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.NotificationCompat.Builder.BigTextStyle com.parse.NotificationCompat.Builder.BigTextStyle setSummaryText(java.lang.CharSequence)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFile ParseFile(java.lang.String, byte[]) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.Extended READ_FRIEND_LISTS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseQuery com.parse.ParseQuery&lt;T&gt; whereDoesNotMatchQuery(java.lang.String, com.parse.ParseQuery&lt;?&gt;)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseQueryAdapter android.view.View getNextPageView(android.view.View, android.view.ViewGroup)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.NotificationCompat.Builder com.parse.NotificationCompat.Builder setStyle(com.parse.NotificationCompat.Builder.Style)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.Extended READ_INSIGHTS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils void saveLatestSessionData(com.parse.ParseUser, com.parse.SaveCallback) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseObject void put(java.lang.String, java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseQuery com.parse.ParseQuery&lt;T&gt; setSkip(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseTwitterUtils void unlinkInBackground(com.parse.ParseUser, com.parse.SaveCallback) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFile ParseFile(byte[], java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.Friends RELATIONSHIP_DETAILS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParsePush bolts.Task&lt;java.lang.Void&gt; unsubscribeInBackground(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.Friends STATUS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseObject bolts.Task&lt;java.util.List&lt;T&gt;&gt; fetchAllIfNeededInBackground(java.util.List&lt;T&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseQuery com.parse.ParseQuery&lt;T&gt; whereWithinMiles(java.lang.String, com.parse.ParseGeoPoint, double)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParsePush void subscribeInBackground(java.lang.String, com.parse.SaveCallback) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseQueryAdapter android.view.View getItemView(T, android.view.View, android.view.ViewGroup)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.PushConnection.WaitRetryState com.parse.PushConnection.State runState()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseFacebookUtils.Permissions.Friends CHECKINS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.NotificationCompat.Builder com.parse.NotificationCompat.Builder setSmallIcon(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.ParseObject void setACL(com.parse.ParseACL) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

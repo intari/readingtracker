@@ -1,0 +1,188 @@
+<root>
+    <item name='com.parse.signpost.OAuth OAUTH_TOKEN'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.AbstractOAuthConsumer com.parse.signpost.http.HttpRequest sign(com.parse.signpost.http.HttpRequest) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.OAuth OAUTH_VERIFIER'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.OAuth com.parse.signpost.http.HttpParameters decodeForm(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.OAuth java.lang.String prepareOAuthHeader(java.lang.String...) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.AbstractOAuthConsumer void setMessageSigner(com.parse.signpost.signature.OAuthMessageSigner) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.OAuth java.lang.String addQueryParameters(java.lang.String, java.util.Map&lt;java.lang.String,java.lang.String&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.AbstractOAuthConsumer void collectHeaderParameters(com.parse.signpost.http.HttpRequest, com.parse.signpost.http.HttpParameters) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.OAuth OAUTH_TIMESTAMP'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.OAuth OAUTH_NONCE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.OAuth java.util.Map&lt;java.lang.String,java.lang.String&gt; toMap(java.util.Collection&lt;T&gt;)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.OAuthProvider void retrieveAccessToken(com.parse.signpost.OAuthConsumer, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='com.parse.signpost.AbstractOAuthConsumer com.parse.signpost.http.HttpRequest sign(com.parse.signpost.http.HttpRequest)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.AbstractOAuthConsumer com.parse.signpost.http.HttpRequest wrap(java.lang.Object)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='com.parse.signpost.AbstractOAuthProvider com.parse.signpost.http.HttpRequest createRequest(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='com.parse.signpost.OAuth OAUTH_TOKEN_SECRET'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.OAuth java.lang.String addQueryParameters(java.lang.String, java.lang.String...) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.AbstractOAuthProvider void retrieveAccessToken(com.parse.signpost.OAuthConsumer, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.OAuth HTTP_AUTHORIZATION_HEADER'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.OAuth OAUTH_VERSION'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.AbstractOAuthConsumer void collectBodyParameters(com.parse.signpost.http.HttpRequest, com.parse.signpost.http.HttpParameters) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.OAuth VERSION_1_0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.OAuth com.parse.signpost.http.HttpParameters oauthHeaderToParamsMap(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.OAuth OUT_OF_BAND'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.AbstractOAuthConsumer void collectHeaderParameters(com.parse.signpost.http.HttpRequest, com.parse.signpost.http.HttpParameters) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.OAuth java.lang.String formEncode(java.util.Collection&lt;T&gt;)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.OAuthConsumer com.parse.signpost.http.HttpRequest sign(java.lang.Object)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='com.parse.signpost.OAuth FORM_ENCODED'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.OAuth java.lang.String addQueryParameters(java.lang.String, java.lang.String...) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.AbstractOAuthConsumer com.parse.signpost.http.HttpRequest sign(java.lang.Object)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.OAuth OAUTH_CALLBACK_CONFIRMED'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.OAuthProvider java.lang.String retrieveRequestToken(com.parse.signpost.OAuthConsumer, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='com.parse.signpost.OAuth OAUTH_CALLBACK'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.OAuth ENCODING'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.AbstractOAuthConsumer com.parse.signpost.http.HttpRequest wrap(java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='com.parse.signpost.AbstractOAuthProvider void closeConnection(com.parse.signpost.http.HttpRequest, com.parse.signpost.http.HttpResponse) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='com.parse.signpost.AbstractOAuthProvider java.lang.String retrieveRequestToken(com.parse.signpost.OAuthConsumer, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.OAuth OAUTH_SIGNATURE_METHOD'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.OAuth OAUTH_SIGNATURE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.OAuth OAUTH_CONSUMER_KEY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.AbstractOAuthProvider void retrieveToken(com.parse.signpost.OAuthConsumer, java.lang.String, java.lang.String...) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.OAuthConsumer com.parse.signpost.http.HttpRequest sign(com.parse.signpost.http.HttpRequest)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='com.parse.signpost.AbstractOAuthProvider com.parse.signpost.http.HttpResponse sendRequest(com.parse.signpost.http.HttpRequest)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='com.parse.signpost.AbstractOAuthProvider com.parse.signpost.http.HttpResponse sendRequest(com.parse.signpost.http.HttpRequest) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='com.parse.signpost.OAuthConsumer void setMessageSigner(com.parse.signpost.signature.OAuthMessageSigner) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='com.parse.signpost.OAuth com.parse.signpost.http.HttpParameters decodeForm(java.io.InputStream)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.OAuthConsumer com.parse.signpost.http.HttpRequest sign(com.parse.signpost.http.HttpRequest) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='com.parse.signpost.AbstractOAuthConsumer void collectQueryParameters(com.parse.signpost.http.HttpRequest, com.parse.signpost.http.HttpParameters) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.OAuth java.lang.String addQueryParameters(java.lang.String, java.util.Map&lt;java.lang.String,java.lang.String&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.parse.signpost.AbstractOAuthConsumer void completeOAuthParameters(com.parse.signpost.http.HttpParameters) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

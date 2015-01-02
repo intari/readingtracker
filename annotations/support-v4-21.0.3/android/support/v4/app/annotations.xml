@@ -1,0 +1,29 @@
+<root>
+    <item name='android.support.v4.app.NotificationCompatKitKat.Builder Builder(android.content.Context, android.app.Notification, java.lang.CharSequence, java.lang.CharSequence, java.lang.CharSequence, android.widget.RemoteViews, int, android.app.PendingIntent, android.app.PendingIntent, android.graphics.Bitmap, int, int, boolean, boolean, boolean, int, java.lang.CharSequence, boolean, java.util.ArrayList&lt;java.lang.String&gt;, android.os.Bundle, java.lang.String, boolean, java.lang.String) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.app.NotificationCompatKitKat.Builder void addAction(android.support.v4.app.NotificationCompatBase.Action) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.app.NotificationCompatApi21.Builder Builder(android.content.Context, android.app.Notification, java.lang.CharSequence, java.lang.CharSequence, java.lang.CharSequence, android.widget.RemoteViews, int, android.app.PendingIntent, android.app.PendingIntent, android.graphics.Bitmap, int, int, boolean, boolean, boolean, int, java.lang.CharSequence, boolean, java.lang.String, java.util.ArrayList&lt;java.lang.String&gt;, android.os.Bundle, int, int, android.app.Notification, java.lang.String, boolean, java.lang.String) 19'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.app.NotificationCompatApi20.Builder void addAction(android.support.v4.app.NotificationCompatBase.Action) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.app.NotificationCompatJellybean.Builder void addAction(android.support.v4.app.NotificationCompatBase.Action) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.app.NotificationCompatApi21.Builder void addAction(android.support.v4.app.NotificationCompatBase.Action) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.app.NotificationCompatJellybean.Builder Builder(android.content.Context, android.app.Notification, java.lang.CharSequence, java.lang.CharSequence, java.lang.CharSequence, android.widget.RemoteViews, int, android.app.PendingIntent, android.app.PendingIntent, android.graphics.Bitmap, int, int, boolean, boolean, int, java.lang.CharSequence, boolean, android.os.Bundle, java.lang.String, boolean, java.lang.String) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.app.NotificationCompatApi20.Builder Builder(android.content.Context, android.app.Notification, java.lang.CharSequence, java.lang.CharSequence, java.lang.CharSequence, android.widget.RemoteViews, int, android.app.PendingIntent, android.app.PendingIntent, android.graphics.Bitmap, int, int, boolean, boolean, boolean, int, java.lang.CharSequence, boolean, java.util.ArrayList&lt;java.lang.String&gt;, android.os.Bundle, java.lang.String, boolean, java.lang.String) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.app.NotificationCompatApi21.Builder Builder(android.content.Context, android.app.Notification, java.lang.CharSequence, java.lang.CharSequence, java.lang.CharSequence, android.widget.RemoteViews, int, android.app.PendingIntent, android.app.PendingIntent, android.graphics.Bitmap, int, int, boolean, boolean, boolean, int, java.lang.CharSequence, boolean, java.lang.String, java.util.ArrayList&lt;java.lang.String&gt;, android.os.Bundle, int, int, android.app.Notification, java.lang.String, boolean, java.lang.String) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

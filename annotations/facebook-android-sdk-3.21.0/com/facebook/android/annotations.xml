@@ -1,0 +1,86 @@
+<root>
+    <item name='com.facebook.android.Util java.lang.String openUrl(java.lang.String, java.lang.String, android.os.Bundle) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.android.Facebook CANCEL_URI'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.android.Facebook java.lang.String request(java.lang.String, android.os.Bundle, java.lang.String) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.android.Facebook ATTRIBUTION_ID_COLUMN_NAME'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.android.Facebook void dialog(android.content.Context, java.lang.String, com.facebook.android.Facebook.DialogListener) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.android.BuildConfig PACKAGE_NAME'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.android.BuildConfig VERSION_NAME'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.android.BuildConfig FLAVOR'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.android.Util org.json.JSONObject parseJson(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.android.Facebook void dialog(android.content.Context, java.lang.String, android.os.Bundle, com.facebook.android.Facebook.DialogListener) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.android.Facebook boolean extendAccessToken(android.content.Context, com.facebook.android.Facebook.ServiceListener) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.android.Facebook java.lang.String request(android.os.Bundle) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.android.Facebook void dialog(android.content.Context, java.lang.String, android.os.Bundle, com.facebook.android.Facebook.DialogListener) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.android.Facebook java.lang.String request(java.lang.String, android.os.Bundle, java.lang.String) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.android.Facebook java.lang.String request(java.lang.String, android.os.Bundle) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.android.Facebook void setSession(com.facebook.Session) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.android.Facebook SINGLE_SIGN_ON_DISABLED'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.android.Facebook void dialog(android.content.Context, java.lang.String, com.facebook.android.Facebook.DialogListener) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.android.Facebook EXPIRES'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.android.BuildConfig BUILD_TYPE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.android.Facebook REDIRECT_URI'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.android.Facebook TOKEN'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.android.Util android.os.Bundle parseUrl(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.android.Util android.os.Bundle decodeUrl(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.android.Util org.json.JSONObject parseJson(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.android.Facebook Facebook(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.android.Facebook FB_APP_SIGNATURE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.android.Facebook void dialog(android.content.Context, java.lang.String, android.os.Bundle, com.facebook.android.Facebook.DialogListener) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

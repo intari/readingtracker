@@ -1,0 +1,23 @@
+<root>
+    <item name='android.support.v4.view.ViewParentCompatICS boolean requestSendAccessibilityEvent(android.view.ViewParent, android.view.View, android.view.accessibility.AccessibilityEvent) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.view.WindowInsetsCompat android.support.v4.view.WindowInsetsCompat replaceSystemWindowInsets(android.graphics.Rect)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.view.WindowInsetsCompat android.support.v4.view.WindowInsetsCompat replaceSystemWindowInsets(int, int, int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.view.WindowInsetsCompat android.support.v4.view.WindowInsetsCompat consumeSystemWindowInsets()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.view.ViewCompatKitKat int getAccessibilityLiveRegion(android.view.View) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.view.WindowInsetsCompat android.support.v4.view.WindowInsetsCompat consumeStableInsets()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v4.view.ViewCompatKitKat void setAccessibilityLiveRegion(android.view.View, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

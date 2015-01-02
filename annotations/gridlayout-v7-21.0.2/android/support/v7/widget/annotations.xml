@@ -1,0 +1,89 @@
+<root>
+    <item name='android.support.v7.widget.GridLayout BOTTOM'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v7.widget.GridLayout GridLayout(android.content.Context, android.util.AttributeSet) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v7.widget.GridLayout.LayoutParams LayoutParams(android.content.Context, android.util.AttributeSet) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v7.widget.GridLayout android.support.v7.widget.GridLayout.LayoutParams generateLayoutParams(android.util.AttributeSet)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v7.widget.GridLayout android.support.v7.widget.GridLayout.Spec spec(int, float)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v7.widget.GridLayout android.support.v7.widget.GridLayout.Spec spec(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v7.widget.GridLayout android.support.v7.widget.GridLayout.Spec spec(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v7.widget.GridLayout android.support.v7.widget.GridLayout.LayoutParams generateDefaultLayoutParams()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v7.widget.GridLayout android.view.ViewGroup.LayoutParams generateLayoutParams(android.util.AttributeSet)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v7.widget.GridLayout android.view.ViewGroup.LayoutParams generateLayoutParams(android.view.ViewGroup.LayoutParams)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v7.widget.GridLayout.LayoutParams LayoutParams(android.support.v7.widget.GridLayout.LayoutParams) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v7.widget.GridLayout BASELINE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v7.widget.GridLayout GridLayout(android.content.Context) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v7.widget.GridLayout android.view.ViewGroup.LayoutParams generateDefaultLayoutParams()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v7.widget.GridLayout LEFT'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v7.widget.GridLayout android.support.v7.widget.GridLayout.Spec spec(int, android.support.v7.widget.GridLayout.Alignment)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v7.widget.GridLayout android.support.v7.widget.GridLayout.LayoutParams generateLayoutParams(android.view.ViewGroup.LayoutParams)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v7.widget.GridLayout android.support.v7.widget.GridLayout.Spec spec(int, int, android.support.v7.widget.GridLayout.Alignment)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v7.widget.GridLayout CENTER'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v7.widget.GridLayout GridLayout(android.content.Context, android.util.AttributeSet, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v7.widget.GridLayout android.support.v7.widget.GridLayout.Spec spec(int, android.support.v7.widget.GridLayout.Alignment, float)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v7.widget.GridLayout android.support.v7.widget.GridLayout.Spec spec(int, int, android.support.v7.widget.GridLayout.Alignment, float)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v7.widget.GridLayout START'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v7.widget.GridLayout TOP'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v7.widget.GridLayout END'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v7.widget.GridLayout RIGHT'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v7.widget.GridLayout.LayoutParams void setBaseAttributes(android.content.res.TypedArray, int, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v7.widget.GridLayout android.support.v7.widget.GridLayout.Spec spec(int, int, float)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='android.support.v7.widget.GridLayout FILL'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

@@ -1,0 +1,5 @@
+<root>
+    <item name='net.hockeyapp.android.adapters.MessagesAdapter android.view.View getView(int, android.view.View, android.view.ViewGroup)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

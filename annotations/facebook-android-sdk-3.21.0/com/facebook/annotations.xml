@@ -1,0 +1,827 @@
+<root>
+    <item name='com.facebook.LoggingBehavior INCLUDE_RAW_RESPONSES'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.LoggingBehavior DEVELOPER_ERRORS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.TokenCachingStrategy void putPermissions(android.os.Bundle, java.util.List&lt;java.lang.String&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppEventsConstants EVENT_NAME_COMPLETED_REGISTRATION'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request.GraphUserCallback void onCompleted(com.facebook.model.GraphUser, com.facebook.Response) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='com.facebook.Request com.facebook.Request newUpdateOpenGraphObjectRequest(com.facebook.Session, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, com.facebook.model.GraphObject, com.facebook.Request.Callback)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request com.facebook.Request newCustomAudienceThirdPartyIdRequest(com.facebook.Session, android.content.Context, com.facebook.Request.Callback) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request com.facebook.Request newUpdateOpenGraphObjectRequest(com.facebook.Session, com.facebook.model.OpenGraphObject, com.facebook.Request.Callback)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request com.facebook.Request newCustomAudienceThirdPartyIdRequest(com.facebook.Session, android.content.Context, com.facebook.Request.Callback)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Settings void setLimitEventAndDataUsage(android.content.Context, boolean) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Session.OpenRequest com.facebook.Session.OpenRequest setLoginBehavior(com.facebook.SessionLoginBehavior)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppEventsLogger com.facebook.AppEventsLogger newLogger(android.content.Context, java.lang.String, com.facebook.Session) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppLinkData void fetchDeferredAppLinkData(android.content.Context, com.facebook.AppLinkData.CompletionHandler) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.TokenCachingStrategy void putToken(android.os.Bundle, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppEventsConstants EVENT_NAME_SESSION_INTERRUPTIONS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Session.OpenRequest com.facebook.Session.OpenRequest setPermissions(java.util.List&lt;java.lang.String&gt;)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppEventsConstants EVENT_PARAM_CONTENT_ID'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppLinkData void fetchDeferredAppLinkData(android.content.Context, java.lang.String, com.facebook.AppLinkData.CompletionHandler) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request com.facebook.RequestAsyncTask executeUploadPhotoRequestAsync(com.facebook.Session, android.graphics.Bitmap, com.facebook.Request.Callback)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.SessionState CLOSED'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Response.PagingDirection PREVIOUS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Session.NewPermissionsRequest com.facebook.Session.AuthorizationRequest setRequestCode(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.TokenCachingStrategy java.util.Date getExpirationDate(android.os.Bundle) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request java.util.List&lt;com.facebook.Response&gt; executeBatchAndWait(com.facebook.RequestBatch)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Session.OpenRequest com.facebook.Session.AuthorizationRequest setRequestCode(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Session com.facebook.Session openActiveSessionWithAccessToken(android.content.Context, com.facebook.AccessToken, com.facebook.Session.StatusCallback)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.LoggingBehavior CACHE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request com.facebook.Request newUploadPhotoRequest(com.facebook.Session, android.graphics.Bitmap, com.facebook.Request.Callback)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppEventsConstants EVENT_PARAM_SEARCH_STRING'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppEventsLogger void activateApp(android.content.Context, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppEventsLogger.FlushBehavior EXPLICIT_ONLY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.FacebookRequestError com.facebook.FacebookException getException()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppEventsLogger com.facebook.AppEventsLogger newLogger(android.content.Context, com.facebook.Session)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AccessTokenSource TEST_USER'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppEventsConstants EVENT_NAME_SEARCHED'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppEventsConstants EVENT_NAME_RATED'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Session WEB_VIEW_FAILING_URL_KEY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request com.facebook.RequestAsyncTask executePlacesSearchRequestAsync(com.facebook.Session, android.location.Location, int, int, java.lang.String, com.facebook.Request.GraphPlaceListCallback)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.FacebookRequestError.Category OTHER'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request java.util.List&lt;com.facebook.Response&gt; executeConnectionAndWait(java.net.HttpURLConnection, com.facebook.RequestBatch)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request java.util.List&lt;com.facebook.Response&gt; executeConnectionAndWait(java.net.HttpURLConnection, java.util.Collection&lt;com.facebook.Request&gt;)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.TokenCachingStrategy LAST_REFRESH_DATE_KEY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppEventsConstants EVENT_PARAM_PAYMENT_INFO_AVAILABLE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request com.facebook.RequestAsyncTask executeBatchAsync(com.facebook.Request...) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.HttpMethod POST'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppLinkData void fetchDeferredAppLinkData(android.content.Context, java.lang.String, com.facebook.AppLinkData.CompletionHandler) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.SessionState OPENING'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppEventsConstants EVENT_PARAM_DESCRIPTION'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppEventsLogger void activateApp(android.content.Context, java.lang.String) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request com.facebook.RequestAsyncTask executePostRequestAsync(com.facebook.Session, java.lang.String, com.facebook.model.GraphObject, com.facebook.Request.Callback)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.TokenCachingStrategy void putSource(android.os.Bundle, com.facebook.AccessTokenSource) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request java.util.List&lt;com.facebook.Response&gt; executeConnectionAndWait(java.net.HttpURLConnection, com.facebook.RequestBatch) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppEventsConstants EVENT_NAME_ADDED_PAYMENT_INFO'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppEventsConstants EVENT_NAME_DEACTIVATED_APP'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AccessTokenSource FACEBOOK_APPLICATION_NATIVE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Session.StatusCallback void call(com.facebook.Session, com.facebook.SessionState, java.lang.Exception) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='com.facebook.Session.Builder com.facebook.Session build()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.NativeAppCallContentProvider java.lang.String getAttachmentUrl(java.lang.String, java.util.UUID, java.lang.String) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request com.facebook.Request newPostOpenGraphObjectRequest(com.facebook.Session, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, com.facebook.model.GraphObject, com.facebook.Request.Callback)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.TokenCachingStrategy DECLINED_PERMISSIONS_KEY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request java.net.HttpURLConnection toHttpConnection(java.util.Collection&lt;com.facebook.Request&gt;)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request com.facebook.RequestAsyncTask executeConnectionAsync(java.net.HttpURLConnection, com.facebook.RequestBatch)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.BoltsMeasurementEventListener void onReceive(android.content.Context, android.content.Intent) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.TokenCachingStrategy void putLastRefreshDate(android.os.Bundle, java.util.Date) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppEventsConstants EVENT_PARAM_VALUE_NO'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppEventsLogger void deactivateApp(android.content.Context, java.lang.String) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.FacebookRequestError.Category AUTHENTICATION_RETRY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppEventsConstants EVENT_PARAM_SUCCESS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Session.NewPermissionsRequest com.facebook.Session.NewPermissionsRequest setCallback(com.facebook.Session.StatusCallback)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Session ACTION_ACTIVE_SESSION_OPENED'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.FacebookRequestError.Category AUTHENTICATION_REOPEN_SESSION'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request com.facebook.RequestAsyncTask executeConnectionAsync(java.net.HttpURLConnection, com.facebook.RequestBatch) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AccessToken com.facebook.AccessToken createFromNativeLinkingIntent(android.content.Intent) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.TestSession com.facebook.TestSession createSessionWithPrivateUser(android.app.Activity, java.util.List&lt;java.lang.String&gt;)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Session ACTION_ACTIVE_SESSION_CLOSED'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request com.facebook.Request newDeleteObjectRequest(com.facebook.Session, java.lang.String, com.facebook.Request.Callback)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.SessionDefaultAudience FRIENDS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.TestSession com.facebook.TestSession createSessionWithSharedUser(android.app.Activity, java.util.List&lt;java.lang.String&gt;)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.UiLifecycleHelper void onSaveInstanceState(android.os.Bundle) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.FacebookRequestError.Category BAD_REQUEST'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Session.OpenRequest com.facebook.Session.AuthorizationRequest setCallback(com.facebook.Session.StatusCallback)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.TokenCachingStrategy com.facebook.AccessTokenSource getSource(android.os.Bundle) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request.Callback void onCompleted(com.facebook.Response) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='com.facebook.AppEventsConstants EVENT_NAME_VIEWED_CONTENT'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request com.facebook.RequestAsyncTask executeBatchAsync(com.facebook.RequestBatch) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppEventsConstants EVENT_NAME_ACTIVATED_APP'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request com.facebook.Request newCustomAudienceThirdPartyIdRequest(com.facebook.Session, android.content.Context, java.lang.String, com.facebook.Request.Callback) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Session.Builder com.facebook.Session.Builder setTokenCachingStrategy(com.facebook.TokenCachingStrategy)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppEventsLogger com.facebook.AppEventsLogger newLogger(android.content.Context, com.facebook.Session) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.HttpMethod GET'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.SessionDefaultAudience EVERYONE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.SessionState CREATED'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.LoggingBehavior INSIGHTS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request com.facebook.Request newMyFriendsRequest(com.facebook.Session, com.facebook.Request.GraphUserListCallback)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request com.facebook.Request newUpdateOpenGraphObjectRequest(com.facebook.Session, com.facebook.model.OpenGraphObject, com.facebook.Request.Callback) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Response.PagingDirection NEXT'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.TokenCachingStrategy long getLastRefreshMilliseconds(android.os.Bundle) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.NativeAppCallAttachmentStore void addAttachmentFilesForCall(android.content.Context, java.util.UUID, java.util.Map&lt;java.lang.String,java.io.File&gt;) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppEventsConstants EVENT_NAME_TIME_BETWEEN_SESSIONS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Session.NewPermissionsRequest com.facebook.Session.NewPermissionsRequest setDefaultAudience(com.facebook.SessionDefaultAudience)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppLinkData ARGUMENTS_TAPTIME_KEY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request com.facebook.Request newUploadPhotoRequest(com.facebook.Session, java.io.File, com.facebook.Request.Callback)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request com.facebook.Request newUploadStagingResourceWithImageRequest(com.facebook.Session, android.graphics.Bitmap, com.facebook.Request.Callback)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.InsightsLogger com.facebook.InsightsLogger newLogger(android.content.Context, java.lang.String, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request com.facebook.RequestAsyncTask executeConnectionAsync(android.os.Handler, java.net.HttpURLConnection, com.facebook.RequestBatch) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request com.facebook.RequestAsyncTask executeUploadPhotoRequestAsync(com.facebook.Session, java.io.File, com.facebook.Request.Callback)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Session.OpenRequest com.facebook.Session.AuthorizationRequest setPermissions(java.util.List)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.TokenCachingStrategy void putToken(android.os.Bundle, java.lang.String) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.TokenCachingStrategy java.lang.String getToken(android.os.Bundle) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request com.facebook.RequestAsyncTask executeBatchAsync(com.facebook.RequestBatch)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request com.facebook.Request newPostRequest(com.facebook.Session, java.lang.String, com.facebook.model.GraphObject, com.facebook.Request.Callback)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.SessionDefaultAudience NONE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Response NON_JSON_RESPONSE_PROPERTY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.NativeAppCallAttachmentStore void addAttachmentFilesForCall(android.content.Context, java.util.UUID, java.util.Map&lt;java.lang.String,java.io.File&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Session.NewPermissionsRequest com.facebook.Session.AuthorizationRequest setLoginBehavior(com.facebook.SessionLoginBehavior)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.FacebookRequestError.Category SERVER'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Session.OpenRequest com.facebook.Session.AuthorizationRequest setDefaultAudience(com.facebook.SessionDefaultAudience)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request com.facebook.RequestAsyncTask executeConnectionAsync(android.os.Handler, java.net.HttpURLConnection, com.facebook.RequestBatch) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.TokenCachingStrategy void putLastRefreshDate(android.os.Bundle, java.util.Date) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.SessionState OPENED'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppEventsLogger void deactivateApp(android.content.Context, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.BoltsMeasurementEventListener void onReceive(android.content.Context, android.content.Intent) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Settings CLIENT_TOKEN_PROPERTY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request com.facebook.RequestAsyncTask executeConnectionAsync(android.os.Handler, java.net.HttpURLConnection, com.facebook.RequestBatch)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppEventsLogger APP_EVENTS_EXTRA_FLUSH_RESULT'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.TokenCachingStrategy long getExpirationMilliseconds(android.os.Bundle) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request com.facebook.Request newPlacesSearchRequest(com.facebook.Session, android.location.Location, int, int, java.lang.String, com.facebook.Request.GraphPlaceListCallback)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request com.facebook.RequestAsyncTask executeGraphPathRequestAsync(com.facebook.Session, java.lang.String, com.facebook.Request.Callback)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request java.net.HttpURLConnection toHttpConnection(com.facebook.Request...)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AccessTokenSource NONE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.NativeAppCallAttachmentStore java.io.File openAttachment(java.util.UUID, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Settings boolean getLimitEventAndDataUsage(android.content.Context) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Session WEB_VIEW_ERROR_CODE_KEY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppLinkData com.facebook.AppLinkData createFromActivity(android.app.Activity) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppEventsConstants EVENT_NAME_ADDED_TO_WISHLIST'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request com.facebook.RequestAsyncTask executeConnectionAsync(java.net.HttpURLConnection, com.facebook.RequestBatch) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.HttpMethod DELETE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppEventsConstants EVENT_PARAM_NUM_ITEMS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request com.facebook.RequestAsyncTask executeMyFriendsRequestAsync(com.facebook.Session, com.facebook.Request.GraphUserListCallback)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppEventsLogger com.facebook.AppEventsLogger newLogger(android.content.Context, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.NativeAppCallAttachmentStore void addAttachmentFilesForCall(android.content.Context, java.util.UUID, java.util.Map&lt;java.lang.String,java.io.File&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AccessTokenSource CLIENT_TOKEN'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request java.util.List&lt;com.facebook.Response&gt; executeBatchAndWait(java.util.Collection&lt;com.facebook.Request&gt;)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.FacebookAppLinkResolver bolts.Task&lt;java.util.Map&lt;android.net.Uri,bolts.AppLink&gt;&gt; getAppLinkFromUrlsInBackground(java.util.List&lt;android.net.Uri&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppEventsConstants EVENT_NAME_INITIATED_CHECKOUT'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request java.util.List&lt;com.facebook.Response&gt; executeBatchAndWait(com.facebook.Request...) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppEventsLogger com.facebook.AppEventsLogger newLogger(android.content.Context) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request com.facebook.Request newPostOpenGraphActionRequest(com.facebook.Session, com.facebook.model.OpenGraphAction, com.facebook.Request.Callback) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.TokenCachingStrategy USER_FBID_KEY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppEventsLogger boolean getLimitEventUsage(android.content.Context) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request com.facebook.Request newPostOpenGraphActionRequest(com.facebook.Session, com.facebook.model.OpenGraphAction, com.facebook.Request.Callback)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request com.facebook.Request newMeRequest(com.facebook.Session, com.facebook.Request.GraphUserCallback)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppEventsLogger com.facebook.AppEventsLogger newLogger(android.content.Context)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AccessToken com.facebook.AccessToken createFromExistingAccessToken(java.lang.String, java.util.Date, java.util.Date, com.facebook.AccessTokenSource, java.util.List&lt;java.lang.String&gt;)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.UiLifecycleHelper UiLifecycleHelper(android.app.Activity, com.facebook.Session.StatusCallback) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.FacebookRequestError.Category PERMISSION'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppEventsConstants EVENT_PARAM_REGISTRATION_METHOD'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.TokenCachingStrategy java.util.Date getLastRefreshDate(android.os.Bundle) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.InsightsLogger com.facebook.InsightsLogger newLogger(android.content.Context, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppEventsConstants EVENT_NAME_COMPLETED_TUTORIAL'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request com.facebook.RequestAsyncTask executeBatchAsync(com.facebook.Request...)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request com.facebook.Request newUploadVideoRequest(com.facebook.Session, java.io.File, com.facebook.Request.Callback)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.SharedPreferencesTokenCachingStrategy void save(android.os.Bundle) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AccessTokenSource FACEBOOK_APPLICATION_SERVICE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request java.net.HttpURLConnection toHttpConnection(java.util.Collection&lt;com.facebook.Request&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request com.facebook.Request newGraphPathRequest(com.facebook.Session, java.lang.String, com.facebook.Request.Callback)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppEventsConstants EVENT_PARAM_LEVEL'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request com.facebook.Request newStatusUpdateRequest(com.facebook.Session, java.lang.String, com.facebook.model.GraphPlace, java.util.List&lt;com.facebook.model.GraphUser&gt;, com.facebook.Request.Callback)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AccessTokenSource WEB_VIEW'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request com.facebook.RequestAsyncTask executeMeRequestAsync(com.facebook.Session, com.facebook.Request.GraphUserCallback)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Session.NewPermissionsRequest com.facebook.Session.AuthorizationRequest setCallback(com.facebook.Session.StatusCallback)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request com.facebook.RequestAsyncTask executeStatusUpdateRequestAsync(com.facebook.Session, java.lang.String, com.facebook.Request.Callback)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.FacebookRequestError.Category THROTTLING'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Session.OpenRequest com.facebook.Session.OpenRequest setCallback(com.facebook.Session.StatusCallback)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.TestSession com.facebook.TestSession createSessionWithPrivateUser(android.app.Activity, java.util.List&lt;java.lang.String&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppEventsConstants EVENT_PARAM_VALUE_YES'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Session.NewPermissionsRequest com.facebook.Session.NewPermissionsRequest setLoginBehavior(com.facebook.SessionLoginBehavior)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.NonCachingTokenCachingStrategy void save(android.os.Bundle) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='com.facebook.SessionLoginBehavior SSO_WITH_FALLBACK'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.SessionLoginBehavior SSO_ONLY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request java.net.HttpURLConnection toHttpConnection(com.facebook.RequestBatch) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppEventsConstants EVENT_PARAM_MAX_RATING_VALUE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request com.facebook.RequestAsyncTask executeAsync()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.RequestBatch RequestBatch(com.facebook.RequestBatch) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.TokenCachingStrategy void putExpirationMilliseconds(android.os.Bundle, long) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AccessTokenSource FACEBOOK_APPLICATION_WEB'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.TestSession com.facebook.TestSession createSessionWithSharedUser(android.app.Activity, java.util.List&lt;java.lang.String&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.SharedPreferencesTokenCachingStrategy SharedPreferencesTokenCachingStrategy(android.content.Context, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.SessionState OPENED_TOKEN_UPDATED'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.RequestBatch java.util.List&lt;com.facebook.Response&gt; executeAndWait()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppEventsConstants EVENT_PARAM_SOURCE_APPLICATION'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.TestSession com.facebook.TestSession createSessionWithSharedUser(android.app.Activity, java.util.List&lt;java.lang.String&gt;, java.lang.String) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request com.facebook.Request newUploadVideoRequest(com.facebook.Session, java.io.File, com.facebook.Request.Callback) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppEventsLogger com.facebook.AppEventsLogger newLogger(android.content.Context, java.lang.String, com.facebook.Session)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.SessionDefaultAudience ONLY_ME'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Settings void setExecutor(java.util.concurrent.Executor) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request java.util.List&lt;com.facebook.Response&gt; executeBatchAndWait(com.facebook.Request...)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppEventsLogger void deactivateApp(android.content.Context) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request com.facebook.Request newPostOpenGraphObjectRequest(com.facebook.Session, com.facebook.model.OpenGraphObject, com.facebook.Request.Callback) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.TokenCachingStrategy java.util.List&lt;java.lang.String&gt; getPermissions(android.os.Bundle) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Response SUCCESS_KEY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Settings APPLICATION_ID_PROPERTY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.TokenCachingStrategy void putExpirationDate(android.os.Bundle, java.util.Date) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppLinkData ARGUMENTS_REFERER_DATA_KEY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppEventsLogger ACTION_APP_EVENTS_FLUSHED'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.SharedPreferencesTokenCachingStrategy SharedPreferencesTokenCachingStrategy(android.content.Context) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request com.facebook.RequestAsyncTask executeBatchAsync(java.util.Collection&lt;com.facebook.Request&gt;)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.InsightsLogger com.facebook.InsightsLogger newLogger(android.content.Context, java.lang.String, java.lang.String, com.facebook.Session) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request com.facebook.Request newUploadStagingResourceWithImageRequest(com.facebook.Session, java.io.File, com.facebook.Request.Callback)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppEventsLogger.FlushBehavior AUTO'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.FacebookRequestError com.facebook.FacebookRequestError.Category getCategory()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.NativeAppCallAttachmentStore void addAttachmentsForCall(android.content.Context, java.util.UUID, java.util.Map&lt;java.lang.String,android.graphics.Bitmap&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Session.OpenRequest com.facebook.Session.OpenRequest setPermissions(java.lang.String...)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request com.facebook.Request newCustomAudienceThirdPartyIdRequest(com.facebook.Session, android.content.Context, java.lang.String, com.facebook.Request.Callback)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Session.Builder com.facebook.Session.Builder setApplicationId(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.TokenCachingStrategy void putDeclinedPermissions(android.os.Bundle, java.util.List&lt;java.lang.String&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Settings java.lang.String getSdkVersion()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Session boolean onActivityResult(android.app.Activity, int, int, android.content.Intent) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.LoggingBehavior REQUESTS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.TokenCachingStrategy void putExpirationDate(android.os.Bundle, java.util.Date) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.LoggingBehavior INCLUDE_ACCESS_TOKENS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Session ACTION_ACTIVE_SESSION_SET'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.FacebookBroadcastReceiver void onReceive(android.content.Context, android.content.Intent) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request com.facebook.Request newPostOpenGraphObjectRequest(com.facebook.Session, com.facebook.model.OpenGraphObject, com.facebook.Request.Callback)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppEventsConstants EVENT_NAME_SPENT_CREDITS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppEventsLogger APP_EVENTS_EXTRA_NUM_EVENTS_FLUSHED'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppEventsConstants EVENT_NAME_ACHIEVED_LEVEL'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.TokenCachingStrategy PERMISSIONS_KEY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.TokenCachingStrategy void putLastRefreshMilliseconds(android.os.Bundle, long) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request com.facebook.Request newStatusUpdateRequest(com.facebook.Session, java.lang.String, com.facebook.Request.Callback)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.TokenCachingStrategy TOKEN_SOURCE_KEY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.NativeAppCallAttachmentStore void addAttachmentsForCall(android.content.Context, java.util.UUID, java.util.Map&lt;java.lang.String,android.graphics.Bitmap&gt;) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.FacebookRequestError.Category CLIENT'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppEventsConstants EVENT_NAME_UNLOCKED_ACHIEVEMENT'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.TokenCachingStrategy void putDeclinedPermissions(android.os.Bundle, java.util.List&lt;java.lang.String&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppEventsConstants EVENT_NAME_ADDED_TO_CART'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppEventsConstants EVENT_NAME_PURCHASED'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppEventsLogger void activateApp(android.content.Context) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.TokenCachingStrategy void save(android.os.Bundle) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='com.facebook.Request java.net.HttpURLConnection toHttpConnection(com.facebook.RequestBatch)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.RequestBatch com.facebook.RequestAsyncTask executeAsync()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.SessionLoginBehavior SUPPRESS_SSO'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.TokenCachingStrategy EXPIRATION_DATE_KEY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.SessionState CREATED_TOKEN_LOADED'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Session.OpenRequest com.facebook.Session.OpenRequest setDefaultAudience(com.facebook.SessionDefaultAudience)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppEventsConstants EVENT_PARAM_CONTENT_TYPE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppLinkData void fetchDeferredAppLinkData(android.content.Context, com.facebook.AppLinkData.CompletionHandler) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppEventsLogger void setLimitEventUsage(android.content.Context, boolean) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Session.NewPermissionsRequest com.facebook.Session.NewPermissionsRequest setRequestCode(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppLinkData ARGUMENTS_NATIVE_URL'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Session.NewPermissionsRequest com.facebook.Session.AuthorizationRequest setDefaultAudience(com.facebook.SessionDefaultAudience)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Session.OpenRequest com.facebook.Session.OpenRequest setRequestCode(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Request java.util.List&lt;com.facebook.Response&gt; executeBatchAndWait(com.facebook.RequestBatch) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.TestSession com.facebook.TestSession createSessionWithSharedUser(android.app.Activity, java.util.List&lt;java.lang.String&gt;, java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.LoggingBehavior APP_EVENTS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.LoginActivity void onSaveInstanceState(android.os.Bundle) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppEventsConstants EVENT_PARAM_CURRENCY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.InsightsLogger com.facebook.InsightsLogger newLogger(android.content.Context, java.lang.String, java.lang.String, com.facebook.Session)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.TokenCachingStrategy TOKEN_KEY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Session.OpenRequest com.facebook.Session.AuthorizationRequest setPermissions(java.lang.String[])'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.TokenCachingStrategy void putPermissions(android.os.Bundle, java.util.List&lt;java.lang.String&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.LegacyHelper void extendTokenCompleted(com.facebook.Session, android.os.Bundle) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Session ACTION_ACTIVE_SESSION_UNSET'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.SessionState CLOSED_LOGIN_FAILED'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.Session.OpenRequest com.facebook.Session.AuthorizationRequest setLoginBehavior(com.facebook.SessionLoginBehavior)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.InsightsLogger com.facebook.InsightsLogger newLogger(android.content.Context, java.lang.String, java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppLinkData ARGUMENTS_NATIVE_CLASS_KEY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.AppEventsLogger com.facebook.AppEventsLogger newLogger(android.content.Context, java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.InsightsLogger com.facebook.InsightsLogger newLogger(android.content.Context, java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='com.facebook.NativeAppCallAttachmentStore void addAttachmentsForCall(android.content.Context, java.util.UUID, java.util.Map&lt;java.lang.String,android.graphics.Bitmap&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>
