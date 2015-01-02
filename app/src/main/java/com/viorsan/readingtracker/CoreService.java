@@ -37,10 +37,6 @@ public class CoreService extends Service  {
     public static final String ERRORCLASS_PARSE_INTERFACE = "PARSE_INTERFACE";
 
 
-    private boolean userLoggedIn=false;
-
-    private Handler mDelayReporter=null;
-
     public static String ourDeviceID = "";
 
 
