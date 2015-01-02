@@ -468,10 +468,13 @@ dependencies {
     compile project(':ParseLoginUI')
 
     //Robolectric tests
+    androidTestCompile('org.robolectric:robolectric:2.4') {
+        exclude module: "commons-logging"
+        exclude module: "httpclient"
+    }
     androidTestCompile('junit:junit:4.11')
-    androidTestCompile('org.robolectric:robolectric:2.4')
     // add the stripped version of android.jar, 'fix' per https://gist.github.com/avbk/d82c44ed8bef5782dbe5
-    androidTestCompile files("../testlibs/android-17-stripped.jar")
+    androidTestCompile files("../testlibs/android-18-stripped.jar")
 
 }
 
