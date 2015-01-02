@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 
-@Config(emulateSdk = Build.VERSION_CODES.JELLY_BEAN_MR2) //Robolectric support API level 18,17, 16, but not 19
+@Config(emulateSdk = Build.VERSION_CODES.JELLY_BEAN_MR2, reportSdk = Build.VERSION_CODES.JELLY_BEAN_MR2) //Robolectric support API level 18,17, 16, but not 19
 @RunWith(RobolectricTestRunner.class)
 public class ReadingTrackerUnitTests {
     @Before
