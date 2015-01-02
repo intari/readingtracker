@@ -36,6 +36,8 @@ public class CoreService extends Service  {
     public static final String ERRORID_NO_CURRENT_PARSE_USER = "NO_CURRENT_PARSE_USER";
     public static final String ERRORCLASS_PARSE_INTERFACE = "PARSE_INTERFACE";
 
+    private BroadcastReceiver currentlyReadingMessageReceiver;
+    private Notification note=null;
 
     public static String ourDeviceID = "";
 
@@ -175,7 +177,6 @@ public class CoreService extends Service  {
 
 
 
-
     private void init() {
 
         Log.i(TAG,"Book reading tracker main service starting up");
@@ -192,7 +193,7 @@ public class CoreService extends Service  {
             stopSelf();
             return;
         }
-        userLoggedIn=true;
+
 
 
 
@@ -231,7 +232,6 @@ public class CoreService extends Service  {
             @Override
             public void onReceive(Context context, Intent intent) {
                 Log.d(TAG, "UI signaled that user is no longer here. Stopping service");
-                userLoggedIn=false;
                 Log.d(TAG, "BookReadings code signaled to stop sending us data. Stopping us");
 
                 //commit suicide
@@ -246,9 +246,8 @@ public class CoreService extends Service  {
         );
 
 
-        //prepare handler for posting data in case of delays
-        mDelayReporter=new Handler();
 
+        registerForReadingUpdates();
 
         showToast(getResources().getString(R.string.app_started_notification));
     }
@@ -308,7 +307,7 @@ public class CoreService extends Service  {
 
 
     private void configureForeground() {
-        Notification note = new Notification(R.drawable.readingtracker,
+        note = new Notification(R.drawable.readingtracker,
                 getResources().getString(R.string.app_started_notification),
                 System.currentTimeMillis());
 
@@ -321,6 +320,57 @@ public class CoreService extends Service  {
 
         startForeground(R.drawable.readingtracker, note);
     }
+    private void registerForReadingUpdates() {
+        final CoreService self=this;
+        currentlyReadingMessageReceiver=new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                String bookTitle=intent.getStringExtra(BookReadingsRecorder.BOOK_TITLE);
+                String bookAuthor=intent.getStringExtra(BookReadingsRecorder.BOOK_AUTHOR);
+                String bookTags=intent.getStringExtra(BookReadingsRecorder.BOOK_TAGS);
+                Double totalTime=intent.getDoubleExtra(BookReadingsRecorder.READING_SESSION_TIME,0);
+                String currentPageS=intent.getStringExtra(BookReadingsRecorder.CURRENT_PAGE);
+                String totalPageS=intent.getStringExtra(BookReadingsRecorder.TOTAL_PAGES);
+
+                Long pagesRead=intent.getLongExtra(BookReadingsRecorder.PAGES_READ,0);
+                Long numPagePageSwitches=intent.getLongExtra(BookReadingsRecorder.NUM_PAGE_SWITCHES,0);
+
+                double pagesPerSecond=pagesRead.doubleValue()/totalTime.doubleValue();
+
+
+                String msg;
+                if (currentPageS!=null) {
+                    if (pagesRead==0) {
+                        msg=getResources().getString(R.string.tapMeCurrentlyReadingLongZeroSpeed,bookTitle,bookAuthor,currentPageS,totalPageS,totalTime/60.0);
+                    }
+                    else {
+                        msg=getResources().getString(R.string.tapMeCurrentlyReadingLong,bookTitle,bookAuthor,currentPageS,totalPageS,totalTime/60.0,pagesPerSecond*60.0);
+                    }
+                }
+                else
+                {
+                    msg=getResources().getString(R.string.tapMeCurrentlyReadingShort,bookTitle,bookAuthor);
+                }
+                Log.i(TAG,"Got reading update:"+msg);
+                PendingIntent pi = PendingIntent.getActivity(self, 0, new Intent(self, MyActivity.class), 0);
+
+                note.setLatestEventInfo(context, getResources().getText(R.string.app_name),
+                        msg, pi);
+                note.flags |= Notification.FLAG_NO_CLEAR;
+                note.flags |= Notification.FLAG_ONGOING_EVENT;
+                //update notification
+                NotificationManager manager=(NotificationManager)context.getSystemService(NOTIFICATION_SERVICE);
+                manager.notify(R.drawable.readingtracker,note);
+
+
+            }
+        };
+
+        LocalBroadcastManager.getInstance(this).registerReceiver(
+                currentlyReadingMessageReceiver,new IntentFilter(BookReadingsRecorder.BOOK_READING_STATUS_UPDATE)
+        );
+    }
+
 
     private void processBroadcastInternal(Intent intent) {
         if (intent == null) return;
