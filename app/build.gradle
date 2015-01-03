@@ -80,7 +80,10 @@ compileKotlin {
 
  */
 
-
+/**
+ * Get SHA1 hash of head revision whch we build
+ * @return hash of head
+ */
 def gitSha() {
     def res = 'git rev-parse HEAD'.execute([], project.rootDir).text.trim()
 
@@ -94,18 +97,27 @@ def gitSha() {
 
     return res
 }
-
+/**
+ * Get short version of last commit message
+ * @return short version of last commit message
+ */
 def gitLastCommit() {
     return 'git log -1 --no-merges --pretty=oneline --abbrev-commit'.execute().text.trim()
 }
-
+/**
+ * Get build time in short form
+ * @return build time in short form
+ */
 def buildTime() {
     def df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm'Z'")
     df.setTimeZone(TimeZone.getTimeZone("UTC")) //RTZ5 (Omsk) is UTC+6 per https://ru.wikipedia.org/wiki/Время_в_России
     return df.format(new Date())
 }
 
-//more human readable version
+/**
+ * Get more readable form of build time like 2014/12/31 23:59
+ * @return time of build in more human-readable form
+ */
 def buildTimeHumanReadable() {
     def df = new SimpleDateFormat("yyyy/MM/dd HH:mm")
     df.setTimeZone(TimeZone.getTimeZone("UTC")) //RTZ5 (Omsk) is UTC+6 per https://ru.wikipedia.org/wiki/Время_в_России
