@@ -237,6 +237,9 @@ android {
         //Flurry
         def flurryApiKey=""
 
+        //full sha1 of build version
+        def gitSha=gitSha()
+
         if (System.getenv('RUNNING_UNDER_TRAVIS')=='YES') {
             //internal and travis
             parseAppId=System.getenv('PARSE_APP_ID_TRAVIS')
@@ -269,13 +272,15 @@ android {
 
                 buildConfigField "String","BUILDER_TYPE","\"Travis CI\""
 
+                buildConfigField "String","BUILD_GIT_SHA1", "\""+gitSha+"\""
+
                 //try to get version code from network (using configured env vars)
                 //versionCodeNetworkURL=System.getenv('VERSION_CODE_URL')
                 //versionCodeNetworkAuth=System.getenv('VERSION_CODE_AUTH')
                 //I'm NOT interested in this until I start use Travis CI not only for tests but for submission to hockeyapp too
                 myVersionCode=0
 
-                println "Building Travis-CI-based build "+myVersionName+"."+myVersionCode+"-git-sha1-"+gitSha()
+                println "Building Travis-CI-based build "+myVersionName+" build "+myVersionCode+" with full sha1 "+gitSha
             }
         }
         else { //internal or playStore, not Travis CI so we have files in their places
@@ -377,6 +382,9 @@ android {
 
                 buildConfigField "String","FLURRY_API_KEY","\""+flurryApiKey+"\""
 
+
+                buildConfigField "String","BUILD_GIT_SHA1", "\""+gitSha+"\""
+
                 if (System.getenv('RUNNING_UNDER_INTERNAL_JENKINS')=='YES') {
                     buildConfigField "String","BUILDER_TYPE","\"jenkins\""
                 }
@@ -386,7 +394,7 @@ android {
                 }
                 buildConfigField "String","BUILD_HOST", "\""+getHostname()+"\""
                 buildConfigField "String","BUILD_USER", "\""+getUsername()+"\""
-                println "Building internal build "+myVersionName+"."+myVersionCode+"-git-sha1-"+gitSha()
+                println "Building internal build "+myVersionName+" build "+myVersionCode+" with full sha1 "+gitSha
             }
            //builds for PlayStore
            playStore {
@@ -400,6 +408,9 @@ android {
                buildConfigField "String","COUNTLY_APP_KEY","\""+countlyAppKey+"\""
                buildConfigField "String","FLURRY_API_KEY","\""+flurryApiKey+"\""
 
+
+               buildConfigField "String","BUILD_GIT_SHA1", "\""+gitSha+"\""
+
                buildConfigField "String","BUILDER_TYPE","\"internal\""
 
                //I don't actually use it in PlayStore builds
@@ -409,7 +420,7 @@ android {
                buildConfigField "String","PARSE_PASSWORD_FOR_TEST_HARNESS","\""+""+"\""
 
 
-               println "Building playStore build "+myVersionName+"."+myVersionCode+"-git-sha1-"+gitSha()
+               println "Building playStore build "+myVersionName+"  build "+myVersionCode+" with full sha1 "+gitSha
            } //playStore
 
         } //internal-or-playstore-but-not-travis-ci
@@ -424,7 +435,7 @@ android {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode myVersionCode
-        versionName myVersionName+"."+myVersionCode+'-git-sha1-'+gitSha()
+        versionName myVersionName
     }
 
 
