@@ -59,7 +59,7 @@ public class HelloWorldEspressoTest extends ActivityInstrumentationTestCase2<MyA
     /**
      * Check that login button actually works
      */
-    public void testLoginButton() {
+    public void testLoginButton() throws InterruptedException {
         Log.d(TAG,"Testing login button");
         //check we not logged in
         onView(withId(R.id.login_or_logout_button))
@@ -78,9 +78,12 @@ public class HelloWorldEspressoTest extends ActivityInstrumentationTestCase2<MyA
                 .perform(typeText(BuildConfig.PARSE_PASSWORD_FOR_TEST_HARNESS),
                         closeSoftKeyboard());
 
+        Log.d(TAG,"Login button pressed now checking");
+        Thread.sleep(100,0);//Highscreen Boost IIse, or Android 4.3, or my stupidity but without this test will fail
+        Log.d(TAG,"Done sleeping. checking  button pressed now checking");
+
         onView(withId(R.id.parse_login_button))
                 .perform(click());
-        Log.d(TAG,"Login button pressed now checking");
         //we should now be on initial screen
         //but in logged in state
 
