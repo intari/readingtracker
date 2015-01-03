@@ -84,10 +84,14 @@ compileKotlin {
 def gitSha() {
     def res = 'git rev-parse HEAD'.execute([], project.rootDir).text.trim()
 
-    def diff = 'git diff'.execute([], project.rootDir).text.trim()
-    if (diff != null && diff.length() > 0) {
-        res += "-dirty"
+    //ignore extra files if it's Jenkinks
+    if (System.getenv('RUNNING_UNDER_INTERNAL_JENKINS')!='YES') {
+        def diff = 'git diff'.execute([], project.rootDir).text.trim()
+        if (diff != null && diff.length() > 0) {
+            res += "-dirty"
+        }
     }
+
     return res
 }
 
@@ -519,7 +523,7 @@ hockeyapp {
             // regular internal build
             else {
 
-            }  
+            }
 
           }
         else {
