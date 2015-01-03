@@ -144,7 +144,7 @@ def getUsername() {
  * Gets the version name from the latest Git tag in case I want to use this scheme
  * @return latest git tag
  */
-def getVersionName = { ->
+def getVersionName()  {
     def stdout = new ByteArrayOutputStream()
     exec {
         commandLine 'git', 'describe', '--tags'
@@ -274,6 +274,8 @@ android {
                 //versionCodeNetworkAuth=System.getenv('VERSION_CODE_AUTH')
                 //I'm NOT interested in this until I start use Travis CI not only for tests but for submission to hockeyapp too
                 myVersionCode=0
+
+                println "Building Travis-CI-based build "+myVersionName+"."+myVersionCode+"-git-sha1-"+gitSha()
             }
         }
         else { //internal or playStore, not Travis CI so we have files in their places
@@ -384,7 +386,7 @@ android {
                 }
                 buildConfigField "String","BUILD_HOST", "\""+getHostname()+"\""
                 buildConfigField "String","BUILD_USER", "\""+getUsername()+"\""
-
+                println "Building internal build "+myVersionName+"."+myVersionCode+"-git-sha1-"+gitSha()
             }
            //builds for PlayStore
            playStore {
@@ -406,6 +408,8 @@ android {
                buildConfigField "String","PARSE_USERNAME_FOR_TEST_HARNESS","\""+""+"\""
                buildConfigField "String","PARSE_PASSWORD_FOR_TEST_HARNESS","\""+""+"\""
 
+
+               println "Building playStore build "+myVersionName+"."+myVersionCode+"-git-sha1-"+gitSha()
            } //playStore
 
         } //internal-or-playstore-but-not-travis-ci
