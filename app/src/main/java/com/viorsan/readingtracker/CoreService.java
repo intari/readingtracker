@@ -339,6 +339,7 @@ public class CoreService extends Service  {
 
 
                 String msg;
+                String title;
                 if (currentPageS!=null) {
                     if (pagesRead==0) {
                         msg=getResources().getString(R.string.tapMeCurrentlyReadingLongZeroSpeed,bookTitle,bookAuthor,currentPageS,totalPageS,totalTime/60.0);
@@ -351,10 +352,12 @@ public class CoreService extends Service  {
                 {
                     msg=getResources().getString(R.string.tapMeCurrentlyReadingShort,bookTitle,bookAuthor);
                 }
+                title=getResources().getString(R.string.titleCurrentlyReading,bookTitle,bookAuthor);
+
                 Log.i(TAG,"Got reading update:"+msg);
                 PendingIntent pi = PendingIntent.getActivity(self, 0, new Intent(self, MyActivity.class), 0);
 
-                note.setLatestEventInfo(context, getResources().getText(R.string.app_name),
+                note.setLatestEventInfo(context, title,
                         msg, pi);
                 note.flags |= Notification.FLAG_NO_CLEAR;
                 note.flags |= Notification.FLAG_ONGOING_EVENT;

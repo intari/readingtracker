@@ -25,9 +25,11 @@
     <string name="guiCurrentlyReadingLong">Чтение %1$s от %2$s (страница %3$s из %4$s) уже %5$.2f минут (скорость %6$.2f страниц в минуту)</string>
     <string name="guiCurrentlyReadingLongZeroSpeed">Чтение %1$s от %2$s (страница %3$s из %4$s) уже %5$.2f минут</string>
 
-    <string name="tapMeCurrentlyReadingLong">%5$.2f мин. @ %6$.2f стр.в мин. (%3$s/%4$s) %1$s от %2$s</string>
+    <string name="tapMeCurrentlyReadingLong">%5$.2f минут @ %6$.2f страниц в минуту (%3$s/%4$s) %1$s от %2$s</string>
     <string name="tapMeCurrentlyReadingShort">%1$s от %2$s</string>
-    <string name="tapMeCurrentlyReadingLongZeroSpeed">(%3$s/%4$s) %5$.2f мин. %1$s от %2$s</string>
+    <string name="tapMeCurrentlyReadingLongZeroSpeed">%5$.2f минут(%3$s/%4$s) %1$s от %2$s</string>
+    <string name="titleCurrentlyReading">%1$s от %2$s</string>
+
 
     <string name="goToAccessibilitySettingsMessage">Вы хотите открыть \'Специальные Возможности\' и разрешить доступ для \'Reading Tracker\'?</string>
     <string name="goToAccessibilitySettingsOK">Да, пожалуйста</string>
