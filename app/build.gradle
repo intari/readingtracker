@@ -438,6 +438,8 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode myVersionCode
         versionName myVersionName
+        testInstrumentationRunner
+        "android.support.test.runner.AndroidJUnitRunner"
     }
 
 
@@ -531,14 +533,22 @@ dependencies {
     compile 'com.facebook.android:facebook-android-sdk:3.21.0'
     compile project(':ParseLoginUI')
 
-    //Robolectric tests
+    //Robolectric Unit tests
     androidTestCompile('org.robolectric:robolectric:2.4') {
         exclude module: "commons-logging"
         exclude module: "httpclient"
     }
-    androidTestCompile('junit:junit:4.11')
+    androidTestCompile('junit:junit:4.11') {
+        exclude module: 'hamcrest-core'
+    }
+
+    //Espresso on-device tests
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.0'
+    androidTestCompile 'com.android.support.test:testing-support-lib:0.1'
+
     // add the stripped version of android.jar, 'fix' per https://gist.github.com/avbk/d82c44ed8bef5782dbe5
-    androidTestCompile files("../testlibs/android-18-stripped.jar")
+    // robolectric ONLY. not regular.TODO: restore if/when I will use it
+    //androidTestCompile files("../testlibs/android-18-stripped.jar")
 
 }
 
