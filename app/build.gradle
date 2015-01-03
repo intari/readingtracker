@@ -419,6 +419,8 @@ android {
                buildConfigField "String","PARSE_USERNAME_FOR_TEST_HARNESS","\""+""+"\""
                buildConfigField "String","PARSE_PASSWORD_FOR_TEST_HARNESS","\""+""+"\""
 
+               buildConfigField "String","BUILD_HOST", "\""+getHostname()+"\""
+               buildConfigField "String","BUILD_USER", "\""+getUsername()+"\""
 
                println "Building playStore build "+myVersionName+"  build "+myVersionCode+" with full sha1 "+gitSha
            } //playStore
