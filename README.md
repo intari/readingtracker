@@ -6,7 +6,7 @@ So you could analyze this data for yourself.
 * [![Build Status](http://jessica3.viorsan.com:8080/buildStatus/icon?job=ReadingTracker)](http://jessica3.viorsan.com:8080/job/ReadingTracker/)
 
 # How it works? (Non-technical)
-In the begging there was a phrase "The Amazon Kindle reports which pages of which books the user looks at, and when"...but I wanted this information too, for e-books I read using e-book readers I read.
+In the beginning there was a phrase "The Amazon Kindle reports which pages of which books the user looks at, and when"...but I wanted this information too, for e-books I read using e-book readers I read.
 
 # How it works? (Technical)
 Android Accessibility APIs are used to 'read' parts of supported e-book reader's views.
