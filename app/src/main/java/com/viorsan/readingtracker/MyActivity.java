@@ -616,6 +616,7 @@ public class MyActivity extends ActionBarActivity implements GoToAccessibilitySe
     public void onResume() {
         super.onResume();
         Log.d(TAG,"onResume");
+        updateUserLoggedInState();
         // Logs 'install' and 'app activate' App Events.
         AppEventsLogger.activateApp(this);
         checkForUpdates();
@@ -667,6 +668,8 @@ public class MyActivity extends ActionBarActivity implements GoToAccessibilitySe
         super.onStart();
         Log.d(TAG, "onStart");
         MyAnalytics.startAnalyticsWithContext(this);
+    }
+    private void updateUserLoggedInState() {
         currentUser = ParsePlatformUtils.getCurrentParseUser();
         if (currentUser != null) {
             showProfileLoggedIn();
@@ -676,7 +679,6 @@ public class MyActivity extends ActionBarActivity implements GoToAccessibilitySe
             handleUserLogout();
         }
     }
-
 
 
 
