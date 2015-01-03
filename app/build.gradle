@@ -236,7 +236,13 @@ android {
                     buildConfigField "String","COUNTLY_APP_KEY","\""+countlyAppKey+"\""
                     buildConfigField "String","FLURRY_API_KEY","\""+flurryApiKey+"\""
 
-                    buildConfigField "String","BUILDER_TYPE","\"internal\""
+                    if (System.getenv('RUNNING_UNDER_INTERNAL_JENKINS')=='YES') {
+                        buildConfigField "String","BUILDER_TYPE","\"internal-jenkins\""
+                    }
+                    else
+                    {
+                        buildConfigField "String","BUILDER_TYPE","\"internal\""
+                    }
                     //we now have all info, ask for version code
                     myVersionCode=getVersionCodeFromNetwork(versionCodeNetworkAuth,versionCodeNetworkURL).toInteger()
 
@@ -496,6 +502,7 @@ hockeyapp {
                 throw new GradleException("HockeyApp API Token not configured (this is required for automatic build submission)");
             }
             //configure plugin
+            // common settings for 'real' builds
             apiToken = hockeyappToken;
             releaseType = 2
             notify = 1
@@ -504,7 +511,17 @@ hockeyapp {
             commitSha=gitSha()
             //WARNING:Cyrillic is not supported here (plugin issue), TODO: report this
             notes = "* Automatic build at "+buildTimeHumanReadable()+" UTC\r\n* Changes:"+gitLastCommit()+"\r\n* git sha1:"+gitSha()
-        }
+
+            // internal-jenkins
+            if (System.getenv('RUNNING_UNDER_INTERNAL_JENKINS')=='YES') {
+                buildServerUrl = System.getenv('BUILD_URL')
+            }
+            // regular internal build
+            else {
+
+            }
+
+          }
         else {
             if (System.getenv('RUNNING_UNDER_TRAVIS')=='YES') {
                 apiToken = System.getenv('HOCKEYAPP_TOKEN_TRAVIS');
