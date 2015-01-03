@@ -19,7 +19,7 @@ import org.robolectric.annotation.Config;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotEquals;
+//import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
@@ -42,11 +42,13 @@ public class ParseEmulationBaseTest {
     public void done() {
 
     }
+    /*
     @Test
     public void testParsePlatformIsInEmulationMode() {
         ParsePlatformUtils.ParsePlatformMode currentMode= ParsePlatformUtils.getParsePlatformMode();
         assertNotEquals("Parse Platform is not in native mode",currentMode, ParsePlatformUtils.ParsePlatformMode.NORMAL);
     }
+    */
 
     @Test
     public void testVeryComplex() {
