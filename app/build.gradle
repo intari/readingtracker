@@ -396,6 +396,37 @@ android {
                 buildConfigField "String","BUILD_USER", "\""+getUsername()+"\""
                 println "Building internal build "+myVersionName+" build "+myVersionCode+" with full sha1 "+gitSha
             }
+           //Espresso testing
+           testing {
+
+               buildConfigField "String","PARSE_APP_ID", "\""+parseAppId+"\""
+               buildConfigField "String","PARSE_CLIENT_KEY","\""+parseClientKey+"\""
+               buildConfigField "String","HOCKEYAPP_APP_ID", "\""+hockeyAppAppId+"\""
+               buildConfigField "String","BUILD_DATE_TIME","\""+buildDateTime+" UTC\""
+               buildConfigField "String","PARSE_APP_ID_FOR_TEST_HARNESS", "\""+parseAppIdForTestHarness+"\""
+               buildConfigField "String","PARSE_CLIENT_KEY_FOR_TEST_HARNESS","\""+parseClientKeyForTestHarness+"\""
+               buildConfigField "String","PARSE_USERNAME_FOR_TEST_HARNESS","\""+parseUserNameForTestHarness+"\""
+               buildConfigField "String","PARSE_PASSWORD_FOR_TEST_HARNESS","\""+parsePasswordForTestHarness+"\""
+
+               buildConfigField "String","COUNTLY_SERVER", "\""+countlyServer+"\""
+               buildConfigField "String","COUNTLY_APP_KEY","\""+countlyAppKey+"\""
+
+               buildConfigField "String","FLURRY_API_KEY","\""+flurryApiKey+"\""
+
+
+               buildConfigField "String","BUILD_GIT_SHA1", "\""+gitSha+"\""
+
+               if (System.getenv('RUNNING_UNDER_INTERNAL_JENKINS')=='YES') {
+                   buildConfigField "String","BUILDER_TYPE","\"jenkins\""
+               }
+               else
+               {
+                   buildConfigField "String","BUILDER_TYPE","\"internal\""
+               }
+               buildConfigField "String","BUILD_HOST", "\""+getHostname()+"\""
+               buildConfigField "String","BUILD_USER", "\""+getUsername()+"\""
+               println "Building internal(automated tests) build "+myVersionName+" build "+myVersionCode+" with full sha1 "+gitSha
+           }
            //builds for PlayStore
            playStore {
 

@@ -39,6 +39,7 @@ public class HelloWorldEspressoTest extends ActivityInstrumentationTestCase2<MyA
     @Override
     public void setUp() throws Exception {
         super.setUp();
+        getActivity();
         Log.d(TAG,"Setting up test...");
     }
 
