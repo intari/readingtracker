@@ -519,7 +519,7 @@ hockeyapp {
             // regular internal build
             else {
 
-            } 
+            }  
 
           }
         else {
