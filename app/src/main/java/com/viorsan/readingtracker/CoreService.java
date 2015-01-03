@@ -37,7 +37,6 @@ public class CoreService extends Service  {
     public static final String ERRORCLASS_PARSE_INTERFACE = "PARSE_INTERFACE";
 
     private BroadcastReceiver currentlyReadingMessageReceiver;
-    private Notification note=null;
 
     public static String ourDeviceID = "";
 
@@ -307,7 +306,7 @@ public class CoreService extends Service  {
 
 
     private void configureForeground() {
-        note = new Notification(R.drawable.readingtracker,
+        Notification note = new Notification(R.drawable.readingtracker,
                 getResources().getString(R.string.app_started_notification),
                 System.currentTimeMillis());
 
@@ -355,6 +354,11 @@ public class CoreService extends Service  {
                 title=getResources().getString(R.string.titleCurrentlyReading,bookTitle,bookAuthor);
 
                 Log.i(TAG,"Got reading update:"+msg);
+
+                Notification note = new Notification(R.drawable.readingtracker,
+                        getResources().getString(R.string.app_started_notification),
+                        System.currentTimeMillis());
+
                 PendingIntent pi = PendingIntent.getActivity(self, 0, new Intent(self, MyActivity.class), 0);
 
                 note.setLatestEventInfo(context, title,
