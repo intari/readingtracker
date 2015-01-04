@@ -255,33 +255,32 @@ android {
 
 
 
+            //test mode only
+            //Espresso testing
+            testing {
 
-            internal {
-                buildConfigField "String","PARSE_APP_ID", "\""+parseAppId+"\""
-                buildConfigField "String","PARSE_CLIENT_KEY","\""+parseClientKey+"\""
+                buildConfigField "String","PARSE_APP_ID", "\""+parseAppIdForTestHarness+"\""
+                buildConfigField "String","PARSE_CLIENT_KEY","\""+parseClientKeyForTestHarness+"\""
                 buildConfigField "String","HOCKEYAPP_APP_ID", "\""+hockeyAppAppId+"\""
                 buildConfigField "String","BUILD_DATE_TIME","\""+buildDateTime+" UTC\""
-                buildConfigField "String","PARSE_APP_ID_FOR_TEST_HARNESS", "\""+parseAppIdForTestHarness+"\""
-                buildConfigField "String","PARSE_CLIENT_KEY_FOR_TEST_HARNESS","\""+parseClientKeyForTestHarness+"\""
                 buildConfigField "String","PARSE_USERNAME_FOR_TEST_HARNESS","\""+parseUserNameForTestHarness+"\""
                 buildConfigField "String","PARSE_PASSWORD_FOR_TEST_HARNESS","\""+parsePasswordForTestHarness+"\""
 
                 buildConfigField "String","COUNTLY_SERVER", "\""+countlyServer+"\""
                 buildConfigField "String","COUNTLY_APP_KEY","\""+countlyAppKey+"\""
-                buildConfigField "String","FLURRY_API_KEY","\""+""+"\""
 
-                buildConfigField "String","BUILDER_TYPE","\"Travis CI\""
+                buildConfigField "String","FLURRY_API_KEY","\""+flurryApiKey+"\""
 
                 buildConfigField "String","BUILD_GIT_SHA1", "\""+gitSha+"\""
 
-                //try to get version code from network (using configured env vars)
-                //versionCodeNetworkURL=System.getenv('VERSION_CODE_URL')
-                //versionCodeNetworkAuth=System.getenv('VERSION_CODE_AUTH')
-                //I'm NOT interested in this until I start use Travis CI not only for tests but for submission to hockeyapp too
-                myVersionCode=0
+                buildConfigField "String","BUILDER_TYPE","\"Travis CI\""
 
+                buildConfigField "String","BUILD_HOST", "\""+getHostname()+"\""
+                buildConfigField "String","BUILD_USER", "\""+getUsername()+"\""
+                myVersionCode=0
                 println "Building Travis-CI-based build "+myVersionName+" build "+myVersionCode+" with full sha1 "+gitSha
             }
+
         }
         else { //internal or playStore, not Travis CI so we have files in their places
 
@@ -366,6 +365,7 @@ android {
             //non-flavor-specific
 
             //flavor-specifc
+
             //internal test builds
             internal {
                 buildConfigField "String","PARSE_APP_ID", "\""+parseAppId+"\""
