@@ -36,7 +36,7 @@ public class CoreService extends Service  {
     public static final String ERRORID_NO_CURRENT_PARSE_USER = "NO_CURRENT_PARSE_USER";
     public static final String ERRORCLASS_PARSE_INTERFACE = "PARSE_INTERFACE";
 
-    private BroadcastReceiver currentlyReadingMessageReceiver;
+    private BroadcastReceiver currentlyReadingMessageReceiver=null;
 
     public static String ourDeviceID = "";
 
@@ -49,7 +49,7 @@ public class CoreService extends Service  {
 
     private final IBinder mBinder = new LocalBinder();
 
-    private BroadcastReceiver userLoggedOutReceiver;
+    private BroadcastReceiver userLoggedOutReceiver=null;
 
 
 
@@ -406,8 +406,12 @@ public class CoreService extends Service  {
 
     private void stopReceivers() {
         Log.d(TAG,"Unregistering receivers");
-        unregisterReceiver(broadcastReceiver);
-        LocalBroadcastManager.getInstance(this).unregisterReceiver(userLoggedOutReceiver);
+        if (broadcastReceiver!=null) {
+            unregisterReceiver(broadcastReceiver);
+        }
+        if (userLoggedOutReceiver!=null) {
+            LocalBroadcastManager.getInstance(this).unregisterReceiver(userLoggedOutReceiver);
+        }
         Log.d(TAG,"Unregistered receivers");
 
     }
