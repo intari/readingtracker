@@ -20,7 +20,7 @@ public class MyApplication extends android.app.Application {
     @Override
     public void onCreate() {
 
-        System.out.println(TAG +":OnCreate");
+        Log.d(TAG,":OnCreate");
         //Test harness could disallow us to do this
         if (useParseCrashReporting) {
             // Enable Parse-based Crash Reporting
