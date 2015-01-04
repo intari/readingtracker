@@ -4,8 +4,8 @@ language: android
 jdk: oraclejdk7
 env:
   matrix:
-    - env: LOGGED_IN_TO_PARSE_PLATFORM=YES
-    - env: LOGGED_IN_TO_PARSE_PLATFORM=NO
+#    - env: LOGGED_IN_TO_PARSE_PLATFORM=YES
+#    - env: LOGGED_IN_TO_PARSE_PLATFORM=NO
     #- ANDROID_TARGET=android-19  ANDROID_ABI=armeabi-v7a
 
 # I want faster builds of course, http://blog.travis-ci.com/2014-12-17-faster-builds-with-container-based-infrastructure/
@@ -62,10 +62,12 @@ before_script:
 
 install: 
     - gradle clean 
-    - gradle build
+#    - gradle build
 
 script: 
+    - gradle connectedAndroidTestTestingDebug
     - gradle check
+
 
     
     
