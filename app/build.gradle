@@ -372,8 +372,6 @@ android {
                 buildConfigField "String","PARSE_CLIENT_KEY","\""+parseClientKey+"\""
                 buildConfigField "String","HOCKEYAPP_APP_ID", "\""+hockeyAppAppId+"\""
                 buildConfigField "String","BUILD_DATE_TIME","\""+buildDateTime+" UTC\""
-                buildConfigField "String","PARSE_APP_ID_FOR_TEST_HARNESS", "\""+parseAppIdForTestHarness+"\""
-                buildConfigField "String","PARSE_CLIENT_KEY_FOR_TEST_HARNESS","\""+parseClientKeyForTestHarness+"\""
                 buildConfigField "String","PARSE_USERNAME_FOR_TEST_HARNESS","\""+parseUserNameForTestHarness+"\""
                 buildConfigField "String","PARSE_PASSWORD_FOR_TEST_HARNESS","\""+parsePasswordForTestHarness+"\""
 
@@ -399,12 +397,10 @@ android {
            //Espresso testing
            testing {
 
-               buildConfigField "String","PARSE_APP_ID", "\""+parseAppId+"\""
-               buildConfigField "String","PARSE_CLIENT_KEY","\""+parseClientKey+"\""
+               buildConfigField "String","PARSE_APP_ID", "\""+parseAppIdForTestHarness+"\""
+               buildConfigField "String","PARSE_CLIENT_KEY","\""+parseClientKeyForTestHarness+"\""
                buildConfigField "String","HOCKEYAPP_APP_ID", "\""+hockeyAppAppId+"\""
                buildConfigField "String","BUILD_DATE_TIME","\""+buildDateTime+" UTC\""
-               buildConfigField "String","PARSE_APP_ID_FOR_TEST_HARNESS", "\""+parseAppIdForTestHarness+"\""
-               buildConfigField "String","PARSE_CLIENT_KEY_FOR_TEST_HARNESS","\""+parseClientKeyForTestHarness+"\""
                buildConfigField "String","PARSE_USERNAME_FOR_TEST_HARNESS","\""+parseUserNameForTestHarness+"\""
                buildConfigField "String","PARSE_PASSWORD_FOR_TEST_HARNESS","\""+parsePasswordForTestHarness+"\""
 
@@ -445,8 +441,6 @@ android {
                buildConfigField "String","BUILDER_TYPE","\"internal\""
 
                //I don't actually use it in PlayStore builds
-               buildConfigField "String","PARSE_APP_ID_FOR_TEST_HARNESS", "\""+""+"\""
-               buildConfigField "String","PARSE_CLIENT_KEY_FOR_TEST_HARNESS","\""+""+"\""
                buildConfigField "String","PARSE_USERNAME_FOR_TEST_HARNESS","\""+""+"\""
                buildConfigField "String","PARSE_PASSWORD_FOR_TEST_HARNESS","\""+""+"\""
 
