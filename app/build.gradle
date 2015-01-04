@@ -571,6 +571,15 @@ android.applicationVariants.all { variant ->
     }
 }
 
+//log details about tests
+gradle.projectsEvaluated {
+    tasks.withType(Test) { task ->
+        task.afterTest { desc, result ->
+            println "Executing test ${desc.name} [${desc.className}] with result: ${result.resultType}"
+        }
+    }
+}
+
 //our regular dependencies
 dependencies {
     compile 'com.google.code.gson:gson:2.2.2'
