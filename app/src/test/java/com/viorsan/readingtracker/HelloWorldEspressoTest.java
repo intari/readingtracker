@@ -20,18 +20,19 @@ import android.support.test.espresso.matcher.ViewMatchers;
 
 import android.test.suitebuilder.annotation.LargeTest;
 import android.util.Log;
+import com.viorsan.readingtracker.MyActivity;
 
 /**
  * Created by Dmitriy Kazimirov, e-mail:dmitriy.kazimirov@viorsan.com on 04.01.15.
  */
 
 @LargeTest
-public class HelloWorldEspressoTest extends ActivityInstrumentationTestCase2<MyActivity> {
+public class HelloWorldEspressoTest extends MyInstrumentationTestCase { // ActivityInstrumentationTestCase2<MyActivity> {
 
     public static final String TAG = "ReadingTrackerTests::HelloWorldEspressoTest";
 
     public HelloWorldEspressoTest() {
-        super(MyActivity.class);
+        super();//MyActivity.class);
         Log.d(TAG,"in test constructor, called super");
 
     }
