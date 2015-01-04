@@ -602,8 +602,13 @@ public class MyActivity extends ActionBarActivity implements GoToAccessibilitySe
             Intent intent=new Intent(AccessibilityRecorderService.ACTIVITY_MONITORING_STATUS_UPDATE_REQUEST);
             LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
 
-            //wait a little, so service will send us details
-            timerToWaitBeforeAskingForAccessibilitySettings.start();
+            if (!"testing".equals(BuildConfig.FLAVOR)) {
+                //wait a little, so service will send us details
+                timerToWaitBeforeAskingForAccessibilitySettings.start();
+            }
+            else {
+                Log.d(TAG,"will not ask system to enable accessibility settings if we run test session");
+            }
 
         }
         else
