@@ -10,26 +10,20 @@ public class MyTestApplication extends ApplicationTestCase<MyApplication> {
 
     public static final String TAG = "ReadingTracker::MyTestApplication";
 
-    private void Log(String msg) {
-        Log.d(TAG,msg);
-        System.out.println(TAG+" "+msg);
-
-    }
     public MyTestApplication() {
         super(MyApplication.class);
-
-        Log("constructor, super called");
+        Log.d(TAG,"constructor, super called");
     }
 
     @Override
     protected void setUp() throws Exception {
-        Log("setUp(), will call createApplication()");
+        Log.d(TAG,"setUp(), will call createApplication()");
         createApplication();
-        Log("setUp(), called createApplication()");
+        Log.d(TAG,"setUp(), called createApplication()");
     }
     @Override
     protected void tearDown() throws Exception {
-        Log("tearDown()");
+        Log.d(TAG,"tearDown()");
         super.tearDown();
 
     }
