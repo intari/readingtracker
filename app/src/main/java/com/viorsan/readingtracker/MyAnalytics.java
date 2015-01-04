@@ -1,6 +1,5 @@
 package com.viorsan.readingtracker;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,7 +15,7 @@ import ly.count.android.api.Countly;
 /**
  * Created by Dmitriy Kazimirov, e-mail:dmitriy.kazimirov@viorsan.com on 21.12.14.
  * Wrapper for Parse Analytics and (in future) other analytics systems
- * Also takes in account running under test harness
+ * Also takes in account running in situations where analytics should be disabled
  *
  */
 public class MyAnalytics {
@@ -33,7 +32,7 @@ public class MyAnalytics {
     public static void init(MyApplication newApp,Context context) {
         Log.d(TAG,"init");
         app=newApp;
-        if (!app.testHarnessActive) {
+        if (!app.disableAnalytics) {
             Countly.sharedInstance().init(context, BuildConfig.COUNTLY_SERVER, BuildConfig.COUNTLY_APP_KEY);
 
             if (flurryEnabled) {
@@ -55,12 +54,12 @@ public class MyAnalytics {
         userData.put(key,value);
     }
     public static void setUserId(String userId) {
-        if (!app.testHarnessActive) {
+        if (!app.disableAnalytics) {
             FlurryAgent.setUserId(userId);
         }
     }
     public static void sendUserData() {
-        if (!app.testHarnessActive) {
+        if (!app.disableAnalytics) {
             Bundle bundle=new Bundle();
             for (String key:userData.keySet()) {
                 bundle.putString(key,userData.get(key));
@@ -75,7 +74,7 @@ public class MyAnalytics {
      */
     public static void startAnalyticsWithContext(Context context) {
         Log.d(TAG,"startAnalyticsWithContext()");
-        if (!app.testHarnessActive) {
+        if (!app.disableAnalytics) {
             if (flurryEnabled) {
                 FlurryAgent.onStartSession(context);
             }
@@ -89,7 +88,7 @@ public class MyAnalytics {
      */
     public static void stopAnalyticsWithContext(Context context) {
         Log.d(TAG,"stopAnalyticsWithContext()");
-        if (!app.testHarnessActive) {
+        if (!app.disableAnalytics) {
             if (flurryEnabled) {
                 FlurryAgent.onEndSession(context);
             }
@@ -101,7 +100,7 @@ public class MyAnalytics {
      */
     public static void startAnalytics() {
         Log.d(TAG,"startAnalytics()");
-        if (!app.testHarnessActive) {
+        if (!app.disableAnalytics) {
             Countly.sharedInstance().onStart();
             countlyStarted=true;
         }
@@ -112,7 +111,7 @@ public class MyAnalytics {
      */
     public static void stopAnalytics() {
         Log.d(TAG,"stopAnalytics()");
-        if (!app.testHarnessActive) {
+        if (!app.disableAnalytics) {
             if (countlyStarted) {
                 Countly.sharedInstance().onStop();
                 countlyStarted=false;
@@ -130,8 +129,8 @@ public class MyAnalytics {
             System.out.println(TAG+":trackAppOpened: app is null");
             return;
         }
-        //don't track anything if test harness active
-        if (!app.testHarnessActive) {
+        //don't track anything if this is disabled on global level
+        if (!app.disableAnalytics) {
             Log.d(TAG,"Sending intent "+intent.toString()+" to analytics service");
             ParseAnalytics.trackAppOpened(intent);
             Map<String, String> dimensions = new HashMap<String, String>();
@@ -167,8 +166,8 @@ public class MyAnalytics {
             System.out.println(TAG+":trackEvent (withDimensions): app is null");
             return;
         }
-        //don't track anything if test harness active
-        if (!app.testHarnessActive) {
+        //don't track anything if this is disabled on global level
+        if (!app.disableAnalytics) {
             Log.d(TAG,"Sending event "+name+" (with dimensions) to analytics service");
             ParseAnalytics.trackEvent(name,dimensions);
             Countly.sharedInstance().recordEvent(name,dimensions,1);
@@ -192,8 +191,8 @@ public class MyAnalytics {
             System.out.println(TAG+":trackTimedEventStart: app is null");
             return;
         }
-        //don't track anything if test harness active
-        if (!app.testHarnessActive) {
+        //don't track anything if this is disabled on global level
+        if (!app.disableAnalytics) {
             Log.d(TAG,"Sending start of event "+name+"  to analytics service");
             //ParseAnalytics.trackEvent(name,dimensions);
             //Countly.sharedInstance().recordEvent(name,dimensions,1);
@@ -218,8 +217,8 @@ public class MyAnalytics {
             System.out.println(TAG+":trackTimedEventStart (withDimensions): app is null");
             return;
         }
-        //don't track anything if test harness active
-        if (!app.testHarnessActive) {
+        //don't track anything if this is disabled on global level
+        if (!app.disableAnalytics) {
             Log.d(TAG,"Sending start of event "+name+" (with dimensions) to analytics service");
             //ParseAnalytics.trackEvent(name,dimensions);
             //Countly.sharedInstance().recordEvent(name,dimensions,1);
@@ -242,8 +241,8 @@ public class MyAnalytics {
             System.out.println(TAG+":trackTimedEventStop: app is null");
             return;
         }
-        //don't track anything if test harness active
-        if (!app.testHarnessActive) {
+        //don't track anything if this is disabled on global level
+        if (!app.disableAnalytics) {
             Log.d(TAG,"Sending stop of event "+name+" (with dimensions) to analytics service");
             //ParseAnalytics.trackEvent(name,dimensions);
             //Countly.sharedInstance().recordEvent(name,dimensions,1);
@@ -267,8 +266,8 @@ public class MyAnalytics {
             System.out.println(TAG+":trackTimedEventStop (withDimensions): app is null");
             return;
         }
-        //don't track anything if test harness active
-        if (!app.testHarnessActive) {
+        //don't track anything if this is disabled on global level
+        if (!app.disableAnalytics) {
             Log.d(TAG,"Sending stop of event "+name+" (with dimensions) to analytics service");
             //ParseAnalytics.trackEvent(name,dimensions);
             //Countly.sharedInstance().recordEvent(name,dimensions,1);
@@ -290,8 +289,8 @@ public class MyAnalytics {
             System.out.println(TAG+":trackEvent: app is null");
             return;
         }
-        //don't track anything if test harness active
-        if (!app.testHarnessActive) {
+        //don't track anything if this is disabled on global level
+        if (!app.disableAnalytics) {
             Log.d(TAG,"Sending event "+name+" to analytics service");
             ParseAnalytics.trackEvent(name);
             Countly.sharedInstance().recordEvent(name,1);
