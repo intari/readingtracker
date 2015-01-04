@@ -14,15 +14,36 @@ import com.parse.*;
 
 public class MyApplication extends android.app.Application {
     public static final String TAG = "ReadingTracker::MyApplication";
-    protected boolean useParseCrashReporting=true;//should we activate Parse's crash reporting ourselves?
-    protected boolean initParse=true;//should we init Parse ourselves?
+
+    static protected boolean useParseCrashReporting=true;//should we activate Parse's crash reporting ourselves?
+    static protected boolean initParse=true;//should we init Parse ourselves?
     protected boolean disableAnalytics=false;//true - no analytics should be used
+
+    public static void setUseParseCrashReporting(boolean newValue) {
+        useParseCrashReporting=newValue;
+        if (useParseCrashReporting) {
+            Log.d(TAG,"Parse crash reporting enabled by giher forces");
+        }
+        else {
+            Log.d(TAG,"Parse crash reporting disabled by higher forces");
+        }
+    }
+    public static void setInitParse(boolean newValue) {
+        initParse=newValue;
+        if (initParse) {
+            Log.d(TAG,"Parse init enabled by higher forces");
+        }
+        else {
+            Log.d(TAG,"Parse init disabled by higher forces");
+        }
+    }
+
     @Override
     public void onCreate() {
 
         Log.d(TAG,":OnCreate");
         //Test harness could disallow us to do this
-        if (useParseCrashReporting) {
+        if (MyApplication.useParseCrashReporting) {
             // Enable Parse-based Crash Reporting
             Log.d(TAG,"Activating Parse's crash reporting");
             ParseCrashReporting.enable(this);
@@ -31,7 +52,7 @@ public class MyApplication extends android.app.Application {
             System.out.println(TAG+":Don't activating Parse's crash reporting.");
         }
 
-        if (initParse) {
+        if (MyApplication.initParse) {
             Log.d(TAG,"Performing Parse's initialization");
             //enable local datastore (we are write-mostly anyway)
             //Parse.enableLocalDatastore(this);
@@ -41,7 +62,7 @@ public class MyApplication extends android.app.Application {
             //ParseUser.enableAutomaticUser();
         }
         else {
-            System.out.println(TAG+":Don't performing Parse's initialization. ");
+            Log.d(TAG,"Don't performing Parse's initialization. ");
         }
 
         //activate extra logging to debug login system
