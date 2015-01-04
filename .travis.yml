@@ -5,8 +5,10 @@ jdk: oraclejdk7
 env:
   matrix:
 #    - env: LOGGED_IN_TO_PARSE_PLATFORM=YES
-#    - env: LOGGED_IN_TO_PARSE_PLATFORM=NO
+#    - env: LOGGED_IN_TO_PARSE_PLATFORM=NO    
      - ANDROID_TARGET=android-19  ANDROID_ABI=armeabi-v7a
+     - ANDROID_TARGET=android-18  ANDROID_ABI=armeabi-v7a
+     - ANDROID_TARGET=android-21  ANDROID_ABI=armeabi-v7a
 
 # I want faster builds of course, http://blog.travis-ci.com/2014-12-17-faster-builds-with-container-based-infrastructure/
 sudo: false
