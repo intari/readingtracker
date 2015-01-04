@@ -7,7 +7,6 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:1.0.0'
         classpath 'de.felixschulze.gradle:gradle-hockeyapp-plugin:3.0'
-        classpath 'org.robolectric:robolectric-gradle-plugin:0.14.+'
     }
 }
 

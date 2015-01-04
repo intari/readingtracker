@@ -194,18 +194,6 @@ def getVersionCodeFromNetworkReal(auth,url) {
     return cmd.execute().text.trim()
 }
 
-apply plugin: 'robolectric'
-
-robolectric {
-    include '**/*Test.class'
-    exclude '**/espresso/**/*.class'
-
-    // use afterTest to listen to the test execution results
-    afterTest { descriptor, result ->
-        println "Executing test for {$descriptor.name} with result: ${result.resultType}"
-    }
-}
-
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -622,10 +610,6 @@ dependencies {
     androidTestCompile 'org.hamcrest:hamcrest-integration:1.1'
     androidTestCompile 'org.hamcrest:hamcrest-core:1.1'
     androidTestCompile 'org.hamcrest:hamcrest-library:1.1'
-
-    // add the stripped version of android.jar, 'fix' per https://gist.github.com/avbk/d82c44ed8bef5782dbe5
-    // robolectric ONLY. not regular.TODO: restore if/when I will use it
-    //androidTestCompile files("../testlibs/android-18-stripped.jar")
 
 }
 
