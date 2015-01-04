@@ -17,8 +17,11 @@ public class MyApplication extends android.app.Application {
 
     static protected boolean useParseCrashReporting=true;//should we activate Parse's crash reporting ourselves?
     static protected boolean initParse=true;//should we init Parse ourselves?
-    protected boolean disableAnalytics=false;//true - no analytics should be used
+    static protected boolean analyticsEnabled=true;//true - no analytics should be used
 
+    public static boolean isAnalyticsEnabled() {
+        return analyticsEnabled;
+    }
     public static void setUseParseCrashReporting(boolean newValue) {
         useParseCrashReporting=newValue;
         if (useParseCrashReporting) {
@@ -35,6 +38,15 @@ public class MyApplication extends android.app.Application {
         }
         else {
             Log.d(TAG,"Parse init disabled by higher forces");
+        }
+    }
+    public static void setAnalyticsEnabled(boolean newValue) {
+        analyticsEnabled=newValue;
+        if (!analyticsEnabled) {
+            Log.d(TAG,"analytitcs force disable by higher forces");
+        }
+        else {
+            Log.d(TAG,"analytics force enabled by higher forces (doesn't make a lot of sense)");
         }
     }
 
@@ -75,8 +87,11 @@ public class MyApplication extends android.app.Application {
 
         super.onCreate();
 
-        MyAnalytics.init(this,getApplicationContext());
-        MyAnalytics.startAnalytics();
+        if (MyApplication.isAnalyticsEnabled()) {
+            MyAnalytics.init(this,getApplicationContext());
+            MyAnalytics.startAnalytics();
+
+        }
 
     }
     @Override public void onTerminate() {

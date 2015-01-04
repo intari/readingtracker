@@ -25,6 +25,7 @@ public class MyTestApplication extends ApplicationTestCase<MyApplication> {
         MyApplication.setUseParseCrashReporting(false);
         MyApplication.setInitParse(false);
         Parse.initialize(getSystemContext(),BuildConfig.PARSE_APP_ID,BuildConfig.PARSE_CLIENT_KEY);
+        MyApplication.setAnalyticsEnabled(false);
         Log.d(TAG,"setUp(), will call createApplication()");
         createApplication();
         Log.d(TAG,"setUp(), called createApplication()");

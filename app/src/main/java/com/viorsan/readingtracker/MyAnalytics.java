@@ -32,7 +32,8 @@ public class MyAnalytics {
     public static void init(MyApplication newApp,Context context) {
         Log.d(TAG,"init");
         app=newApp;
-        if (!app.disableAnalytics) {
+
+        if (MyApplication.isAnalyticsEnabled()) {
             Countly.sharedInstance().init(context, BuildConfig.COUNTLY_SERVER, BuildConfig.COUNTLY_APP_KEY);
 
             if (flurryEnabled) {
@@ -54,12 +55,12 @@ public class MyAnalytics {
         userData.put(key,value);
     }
     public static void setUserId(String userId) {
-        if (!app.disableAnalytics) {
+        if (MyApplication.isAnalyticsEnabled()) {
             FlurryAgent.setUserId(userId);
         }
     }
     public static void sendUserData() {
-        if (!app.disableAnalytics) {
+        if (MyApplication.isAnalyticsEnabled()) {
             Bundle bundle=new Bundle();
             for (String key:userData.keySet()) {
                 bundle.putString(key,userData.get(key));
@@ -74,7 +75,7 @@ public class MyAnalytics {
      */
     public static void startAnalyticsWithContext(Context context) {
         Log.d(TAG,"startAnalyticsWithContext()");
-        if (!app.disableAnalytics) {
+        if (MyApplication.isAnalyticsEnabled()) {
             if (flurryEnabled) {
                 FlurryAgent.onStartSession(context);
             }
@@ -88,7 +89,7 @@ public class MyAnalytics {
      */
     public static void stopAnalyticsWithContext(Context context) {
         Log.d(TAG,"stopAnalyticsWithContext()");
-        if (!app.disableAnalytics) {
+        if (MyApplication.isAnalyticsEnabled()) {
             if (flurryEnabled) {
                 FlurryAgent.onEndSession(context);
             }
@@ -100,7 +101,7 @@ public class MyAnalytics {
      */
     public static void startAnalytics() {
         Log.d(TAG,"startAnalytics()");
-        if (!app.disableAnalytics) {
+        if (MyApplication.isAnalyticsEnabled()) {
             Countly.sharedInstance().onStart();
             countlyStarted=true;
         }
@@ -111,7 +112,7 @@ public class MyAnalytics {
      */
     public static void stopAnalytics() {
         Log.d(TAG,"stopAnalytics()");
-        if (!app.disableAnalytics) {
+        if (MyApplication.isAnalyticsEnabled()) {
             if (countlyStarted) {
                 Countly.sharedInstance().onStop();
                 countlyStarted=false;
@@ -130,7 +131,7 @@ public class MyAnalytics {
             return;
         }
         //don't track anything if this is disabled on global level
-        if (!app.disableAnalytics) {
+        if (MyApplication.isAnalyticsEnabled()) {
             Log.d(TAG,"Sending intent "+intent.toString()+" to analytics service");
             ParseAnalytics.trackAppOpened(intent);
             Map<String, String> dimensions = new HashMap<String, String>();
@@ -167,7 +168,7 @@ public class MyAnalytics {
             return;
         }
         //don't track anything if this is disabled on global level
-        if (!app.disableAnalytics) {
+        if (MyApplication.isAnalyticsEnabled()) {
             Log.d(TAG,"Sending event "+name+" (with dimensions) to analytics service");
             ParseAnalytics.trackEvent(name,dimensions);
             Countly.sharedInstance().recordEvent(name,dimensions,1);
@@ -192,7 +193,7 @@ public class MyAnalytics {
             return;
         }
         //don't track anything if this is disabled on global level
-        if (!app.disableAnalytics) {
+        if (MyApplication.isAnalyticsEnabled()) {
             Log.d(TAG,"Sending start of event "+name+"  to analytics service");
             //ParseAnalytics.trackEvent(name,dimensions);
             //Countly.sharedInstance().recordEvent(name,dimensions,1);
@@ -218,7 +219,7 @@ public class MyAnalytics {
             return;
         }
         //don't track anything if this is disabled on global level
-        if (!app.disableAnalytics) {
+        if (MyApplication.isAnalyticsEnabled()) {
             Log.d(TAG,"Sending start of event "+name+" (with dimensions) to analytics service");
             //ParseAnalytics.trackEvent(name,dimensions);
             //Countly.sharedInstance().recordEvent(name,dimensions,1);
@@ -242,7 +243,7 @@ public class MyAnalytics {
             return;
         }
         //don't track anything if this is disabled on global level
-        if (!app.disableAnalytics) {
+        if (MyApplication.isAnalyticsEnabled()) {
             Log.d(TAG,"Sending stop of event "+name+" (with dimensions) to analytics service");
             //ParseAnalytics.trackEvent(name,dimensions);
             //Countly.sharedInstance().recordEvent(name,dimensions,1);
@@ -267,7 +268,7 @@ public class MyAnalytics {
             return;
         }
         //don't track anything if this is disabled on global level
-        if (!app.disableAnalytics) {
+        if (MyApplication.isAnalyticsEnabled()) {
             Log.d(TAG,"Sending stop of event "+name+" (with dimensions) to analytics service");
             //ParseAnalytics.trackEvent(name,dimensions);
             //Countly.sharedInstance().recordEvent(name,dimensions,1);
@@ -290,7 +291,7 @@ public class MyAnalytics {
             return;
         }
         //don't track anything if this is disabled on global level
-        if (!app.disableAnalytics) {
+        if (MyApplication.isAnalyticsEnabled()) {
             Log.d(TAG,"Sending event "+name+" to analytics service");
             ParseAnalytics.trackEvent(name);
             Countly.sharedInstance().recordEvent(name,1);
