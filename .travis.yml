@@ -11,6 +11,12 @@ env:
 # I want faster builds of course, http://blog.travis-ci.com/2014-12-17-faster-builds-with-container-based-infrastructure/
 sudo: false
     
+    
+    
+# Disable notifications via e-mail http://docs.travis-ci.com/user/notifications/
+notifications:
+  email: false
+  
 android:
   components:
     # Uncomment the lines below if you want to
