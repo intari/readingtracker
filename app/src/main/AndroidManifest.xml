@@ -30,6 +30,11 @@
         android:name="com.viorsan.readingtracker.permission.C2D_MESSAGE" />
     <uses-permission android:name="com.viorsan.readingtracker.permission.C2D_MESSAGE" />
 
+    <!-- For espresso testing purposes, this is removed in live builds, but not in dev builds -->
+    <uses-permission android:name="android.permission.SET_ANIMATION_SCALE" />
+
+
+
     <!--
      Icon is from http://www.flaticon.com/free-icon/marionette-puppet-silhouette_33882
      License according to source is
