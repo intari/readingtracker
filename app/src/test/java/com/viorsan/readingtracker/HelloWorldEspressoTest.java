@@ -56,7 +56,11 @@ public class HelloWorldEspressoTest extends MyInstrumentationTestCase { // Activ
         onView(withId(R.id.login_or_logout_button))
                 .check(matches(isClickable()));
     }
-
+    //this should work
+    public void testLoginLogoutButtonStateLoggedOut() {
+        onView(withId(R.id.login_or_logout_button))
+                .check(matches(withText(R.string.profile_logout_button_label)));
+    }
     /**
      * Check that login button actually works
      */
