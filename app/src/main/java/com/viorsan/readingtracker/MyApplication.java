@@ -63,6 +63,8 @@ public class MyApplication extends android.app.Application {
         else {
             System.out.println(TAG+":Don't activating Parse's crash reporting.");
         }
+        
+        AppHelpers.writeLogBanner("", getApplicationContext());
 
         if (MyApplication.initParse) {
             Log.d(TAG,"Performing Parse's initialization");

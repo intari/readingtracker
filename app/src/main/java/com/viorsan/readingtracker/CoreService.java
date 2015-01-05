@@ -176,8 +176,7 @@ public class CoreService extends Service  {
     private void init() {
 
         Log.i(TAG,"Book reading tracker main service starting up");
-        AppHelpers.writeLogBanner("", getApplicationContext());
-
+      
         ParseConfigHelper.refreshConfig();
         MyAnalytics.startAnalyticsWithContext(this);
         
