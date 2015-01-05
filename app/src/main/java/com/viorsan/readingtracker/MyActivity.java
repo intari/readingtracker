@@ -76,7 +76,7 @@ public class MyActivity extends ActionBarActivity implements GoToAccessibilitySe
     private BroadcastReceiver currentlyReadingMessageReceiver;
 
     private Activity self;
-    private static final String TAG = "ReadingTracker::Activity";
+    private static final String TAG = "ReadingTracker::MyActivity";
 
     private static final int LOGIN_REQUEST = 0;
 
