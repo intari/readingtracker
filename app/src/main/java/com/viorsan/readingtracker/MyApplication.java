@@ -53,7 +53,7 @@ public class MyApplication extends android.app.Application {
     @Override
     public void onCreate() {
 
-        Log.d(TAG,":OnCreate");
+        Log.d(TAG,"OnCreate");
         //Test harness could disallow us to do this
         if (MyApplication.useParseCrashReporting) {
             // Enable Parse-based Crash Reporting
@@ -61,9 +61,9 @@ public class MyApplication extends android.app.Application {
             ParseCrashReporting.enable(this);
         }
         else {
-            System.out.println(TAG+":Don't activating Parse's crash reporting.");
+            Log.d(TAG,"Don't activating Parse's crash reporting.");
         }
-        
+
         AppHelpers.writeLogBanner("", getApplicationContext());
 
         if (MyApplication.initParse) {
@@ -97,7 +97,7 @@ public class MyApplication extends android.app.Application {
 
     }
     @Override public void onTerminate() {
-        System.out.println(TAG +":OnTerminate");
+        Log.d(TAG,"OnTerminate");
         MyAnalytics.stopAnalytics();
 
         super.onTerminate();
