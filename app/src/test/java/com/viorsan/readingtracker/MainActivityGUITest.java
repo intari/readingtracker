@@ -100,7 +100,7 @@ public class MainActivityGUITest extends MyInstrumentationTestCase { // Activity
 
         Log.d(TAG,"Login button pressed now checking");
         onView(isRoot()).perform(waitId(R.id.parse_login, SECONDS_15));
-        //Thread.sleep(DEFAULT_SLEEP_TIME,0);//Highscreen Boost IIse, or Android 4.3, or my stupidity but without this test will fail
+        Thread.sleep(DEFAULT_SLEEP_TIME,0);//Highscreen Boost IIse, or Android 4.3, or my stupidity but without this test will fail
         Log.d(TAG,"Done sleeping. checking  button pressed now checking");
 
         onView(withId(R.id.parse_login_button))
