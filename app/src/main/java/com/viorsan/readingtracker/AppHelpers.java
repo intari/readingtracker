@@ -5,6 +5,8 @@ import android.util.Log;
 
 import com.flurry.android.FlurryAgent;
 
+import java.util.Locale;
+
 import ly.count.android.api.Countly;
 
 /**
@@ -43,6 +45,15 @@ public class AppHelpers {
         Log.i(TAG," Built on "+BuildConfig.BUILD_HOST+ " of type "+BuildConfig.BUILDER_TYPE+ " by user "+ BuildConfig.BUILD_USER+" at "+BuildConfig.BUILD_DATE_TIME);
         Log.i(TAG," Flurry release:"+ FlurryAgent.getReleaseVersion());
         Log.i(TAG," Countly version:"+ Countly.COUNTLY_SDK_VERSION_STRING);
+        //log extra device details
+        DeviceInfoManager deviceInfoManager=new DeviceInfoManager();
+        Log.i(TAG, "Language:"+ Locale.getDefault().getLanguage());
+        Log.i(TAG," Country:"+Locale.getDefault().getCountry());
+        Log.i(TAG," Locale:"+Locale.getDefault().toString());
+
+        Log.i(TAG," Device info string:"+BookReadingsRecorder.getDeviceInfoString());
+        Log.i(TAG," Runtime type:"+deviceInfoManager.getCurrentRuntimeValue());
+
 
     }
 }
