@@ -11,10 +11,6 @@ import org.junit.Test;
 @SmallTest
 public class SimpleTest {
     @Test
-    public void testFail() {
-        Assert.assertEquals("2+2=5 in this universe!",2+2,5);
-    }
-    @Test
     public void testPass() {
         Assert.assertEquals(2+2,4);
     }
