@@ -30,8 +30,8 @@ android:
     - build-tools-21.1.2
 
     # The SDK version used to compile your project
-    - android-21
-    #- Google Inc.:Google APIs:21 
+    #- android-21
+    - Google Inc.:Google APIs:21 
     
     # Additional components
     - extra-google-google_play_services
