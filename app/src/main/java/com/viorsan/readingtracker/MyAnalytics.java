@@ -127,7 +127,6 @@ public class MyAnalytics {
     public static void trackAppOpened(android.content.Intent intent) {
         if (app==null) {
             Log.e(TAG,"trackAppOpened: app is null");
-            System.out.println(TAG+":trackAppOpened: app is null");
             return;
         }
         //don't track anything if this is disabled on global level
@@ -152,7 +151,7 @@ public class MyAnalytics {
             Countly.sharedInstance().recordEvent(APP_OPENED,dimensions,1);
         }
         else {
-            System.out.println(TAG + ":trackAppOpened not sending intent " + intent.toString() + " to analytics service" + ". Test harness said so");
+            Log.d(TAG, "trackAppOpened not sending intent " + intent.toString() + " to analytics service" + ". Test harness said so");
         }
     }
 
@@ -164,7 +163,6 @@ public class MyAnalytics {
     public static void trackEvent(String name, java.util.Map<java.lang.String,java.lang.String> dimensions) {
         if (app==null) {
             Log.e(TAG,"trackEvent (with dimensions): app is null");
-            System.out.println(TAG+":trackEvent (withDimensions): app is null");
             return;
         }
         //don't track anything if this is disabled on global level
@@ -177,7 +175,7 @@ public class MyAnalytics {
             }
         }
         else {
-            System.out.println(TAG + ":trackEvent not sending event " + name + " (with dimensions) to analytics service" + ". Test harness said so");
+            Log.d(TAG,"trackEvent not sending event " + name + " (with dimensions) to analytics service" + ". Test harness said so");
         }
     }
 
@@ -189,8 +187,7 @@ public class MyAnalytics {
     public static void trackTimedEventStart(String name) {
         if (app==null) {
             Log.e(TAG,"trackTimedEventStart: app is null");
-            System.out.println(TAG+":trackTimedEventStart: app is null");
-            return;
+             return;
         }
         //don't track anything if this is disabled on global level
         if (MyApplication.isAnalyticsEnabled()) {
@@ -202,7 +199,7 @@ public class MyAnalytics {
             }
         }
         else {
-            System.out.println(TAG + ":trackTimedEventStart not sending event " + name + "  to analytics service" + ". Test harness said so");
+            Log.d(TAG,"trackTimedEventStart not sending event " + name + "  to analytics service" + ". Test harness said so");
         }
     }
 
@@ -215,7 +212,6 @@ public class MyAnalytics {
     public static void trackTimedEventStart(String name, java.util.Map<java.lang.String,java.lang.String> dimensions) {
         if (app==null) {
             Log.e(TAG,"trackTimedEventStart (with dimensions): app is null");
-            System.out.println(TAG+":trackTimedEventStart (withDimensions): app is null");
             return;
         }
         //don't track anything if this is disabled on global level
@@ -228,7 +224,7 @@ public class MyAnalytics {
             }
         }
         else {
-            System.out.println(TAG + ":trackTimedEventStart not sending event " + name + " (with dimensions) to analytics service" + ". Test harness said so");
+           Log.d(TAG,"trackTimedEventStart not sending event " + name + " (with dimensions) to analytics service" + ". Test harness said so");
         }
     }
     /**
@@ -239,7 +235,6 @@ public class MyAnalytics {
     public static void trackTimedEventStop(String name) {
         if (app==null) {
             Log.e(TAG,"trackTimedEventStop: app is null");
-            System.out.println(TAG+":trackTimedEventStop: app is null");
             return;
         }
         //don't track anything if this is disabled on global level
@@ -252,7 +247,7 @@ public class MyAnalytics {
             }
         }
         else {
-            System.out.println(TAG + ":trackTimedEventStop not sending event " + name + " (with dimensions) to analytics service" + ". Test harness said so");
+            Log.d(TAG, "trackTimedEventStop not sending event " + name + " (with dimensions) to analytics service" + ". Test harness said so");
         }
     }
     /**
@@ -264,7 +259,6 @@ public class MyAnalytics {
     public static void trackTimedEventStop(String name, java.util.Map<java.lang.String,java.lang.String> dimensions) {
         if (app==null) {
             Log.e(TAG,"trackTimedEventStop (with dimensions): app is null");
-            System.out.println(TAG+":trackTimedEventStop (withDimensions): app is null");
             return;
         }
         //don't track anything if this is disabled on global level
@@ -277,7 +271,7 @@ public class MyAnalytics {
             }
         }
         else {
-            System.out.println(TAG + ":trackTimedEventStop not sending event " + name + " (with dimensions) to analytics service" + ". Test harness said so");
+            Log.d(TAG,"trackTimedEventStop not sending event " + name + " (with dimensions) to analytics service" + ". Test harness said so");
         }
     }
     /**
@@ -287,7 +281,6 @@ public class MyAnalytics {
     public static void trackEvent(String name) {
         if (app==null) {
             Log.e(TAG,"trackEvent: app is null");
-            System.out.println(TAG+":trackEvent: app is null");
             return;
         }
         //don't track anything if this is disabled on global level
@@ -300,7 +293,7 @@ public class MyAnalytics {
             }
         }
         else {
-            System.out.println(TAG + ":trackEvent not sending event " + name + " to analytics service" + ". Test harness said so");
+            Log.d(TAG, "trackEvent not sending event " + name + " to analytics service" + ". Test harness said so");
         }
 
     }
