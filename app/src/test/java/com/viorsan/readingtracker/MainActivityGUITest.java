@@ -33,7 +33,6 @@ public class MainActivityGUITest extends MyInstrumentationTestCase { // Activity
 
     public MainActivityGUITest() {
         super();//MainActivity.class);
-        Log.d(TAG,"in test constructor, called super");
 
     }
 
@@ -41,7 +40,6 @@ public class MainActivityGUITest extends MyInstrumentationTestCase { // Activity
     public void setUp() throws Exception {
         super.setUp();
         getActivity();
-        Log.d(TAG,"Setting up test...");
     }
 
     public void testCurrentlyReadingMessageDisplayed() {
