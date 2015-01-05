@@ -17,16 +17,19 @@ TODO: technical description
 * CloudCode functions  used to send e-mails when you switch away from book,etc
 
 
+## Is code ever builds?
+* According to my Jenkinks instance:[![Build Status](http://jessica3.viorsan.com:8080/buildStatus/icon?job=ReadingTracker)](http://jessica3.viorsan.com:8080/job/ReadingTracker/)
+
 ## Is code ever works?
 * Checked on:
- * HP Slate 21 (not "Pro") with Android 4.2
+ * HP Slate 21 (not "Pro") with Android 4.4
  * Sony Xperia Tablet Z2 (stock firmware) with с Android 4.4
  * Sony Xperia Z Ultra with CyanogenMod
  * Nexus 5/7/10...with CyanogenMod or with stock
 
 * I used slightly different method for Android 4.2 because Accessibility API works in slightly different way here (Target Android version would be 4.3 if not for my HP Slate 21)
+* 4.2 is no longer supported, sources of last version with 4.2 support is at https://github.com/intari/readingtracker/tree/Last_API_17_Android_4_2
 
-* According to Travis CI current build status is ![current build status according to Travis CI](https://travis-ci.org/intari/readingtracker.svg?branch=master) or look yourself how it gets build at https://travis-ci.org/intari/readingtracker
 
 ## How it is licensed?
 * For now only GPLv3 https://www.gnu.org/licenses/gpl-3.0.html
