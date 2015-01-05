@@ -74,8 +74,8 @@ public class MyAnalytics {
      * @param context - context to use. cannot be application's context. must be Activity/Service one or at least base
      */
     public static void startAnalyticsWithContext(Context context) {
-        Log.d(TAG,"startAnalyticsWithContext()");
         if (MyApplication.isAnalyticsEnabled()) {
+            Log.d(TAG,"startAnalyticsWithContext()");
             if (flurryEnabled) {
                 FlurryAgent.onStartSession(context);
             }
@@ -88,8 +88,8 @@ public class MyAnalytics {
      * @param context - context to use. cannot be application's context. must be Activity/Service one or at least base
      */
     public static void stopAnalyticsWithContext(Context context) {
-        Log.d(TAG,"stopAnalyticsWithContext()");
         if (MyApplication.isAnalyticsEnabled()) {
+            Log.d(TAG,"stopAnalyticsWithContext()");
             if (flurryEnabled) {
                 FlurryAgent.onEndSession(context);
             }
@@ -100,8 +100,8 @@ public class MyAnalytics {
      * starts 3rd party analytics. for analytics systems which don't need context
      */
     public static void startAnalytics() {
-        Log.d(TAG,"startAnalytics()");
         if (MyApplication.isAnalyticsEnabled()) {
+            Log.d(TAG,"startAnalytics()");
             Countly.sharedInstance().onStart();
             countlyStarted=true;
         }
@@ -111,8 +111,8 @@ public class MyAnalytics {
      * pauses 3rd party analytics (and possibile stops). for analytics systems which don't need context
      */
     public static void stopAnalytics() {
-        Log.d(TAG,"stopAnalytics()");
         if (MyApplication.isAnalyticsEnabled()) {
+            Log.d(TAG,"stopAnalytics()");
             if (countlyStarted) {
                 Countly.sharedInstance().onStop();
                 countlyStarted=false;
