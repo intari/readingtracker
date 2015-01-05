@@ -27,11 +27,11 @@ import com.viorsan.readingtracker.MyActivity;
  */
 
 @LargeTest
-public class HelloWorldEspressoTest extends MyInstrumentationTestCase { // ActivityInstrumentationTestCase2<MyActivity> {
+public class MyActivityGUITest extends MyInstrumentationTestCase { // ActivityInstrumentationTestCase2<MyActivity> {
 
-    public static final String TAG = "ReadingTrackerTests::HelloWorldEspressoTest";
+    public static final String TAG = "ReadingTrackerTests::MyActivityGUITest";
 
-    public HelloWorldEspressoTest() {
+    public MyActivityGUITest() {
         super();//MyActivity.class);
         Log.d(TAG,"in test constructor, called super");
 
@@ -52,6 +52,21 @@ public class HelloWorldEspressoTest extends MyInstrumentationTestCase { // Activ
         onView(withId(R.id.accessGranted))
                 .check(matches(isDisplayed()));
     }
+
+    public void testSupportedEbookReaderInstalledStatusDisplayed() {
+        onView(withId(R.id.supportedEbookReaderInstalledStatus))
+                .check(matches(isDisplayed()));
+    }
+    public void testProfileTitleDisplayed() {
+        onView(withId(R.id.profile_title))
+                .check(matches(isDisplayed()));
+    }
+
+    public void testProfileNameDisplayed() {
+        onView(withId(R.id.profile_name))
+                .check(matches(isDisplayed()));
+    }
+
     public void testLoginLogoutButtonClickable() {
         onView(withId(R.id.login_or_logout_button))
                 .check(matches(isClickable()));
