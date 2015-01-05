@@ -77,8 +77,13 @@ Code will not build correctly without them.
   * COUNTLY_APPKEY = count.ly analytics App Key
   * TODO:describe others
   you can change paths in gradle.properties
-
 * or look at build.gradle to determine how to use env vars
+
+## grantAnimationPermission / Espresso Tests are failing...
+if you Espresso tests and your device is not configured to disable animations manually you should uncomment lines around 'grantAnimationPermission' in build.gradle.
+See [This Gist](https://gist.github.com/intari/2a3f0b79ba95aa31f95a) for example.
+See [Disabling Animations](https://code.google.com/p/android-test-kit/wiki/DisablingAnimations) to knew why this is needed
+
 
 ## It does not build on Windows
 currently getVersionCodeFromNetwork() from build.gradle doesn't work on Windows
