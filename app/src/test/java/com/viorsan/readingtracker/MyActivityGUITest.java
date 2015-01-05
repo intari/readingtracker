@@ -10,9 +10,12 @@ import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.assertThat;
 import static android.support.test.espresso.matcher.ViewMatchers.isClickable;
+import static android.support.test.espresso.matcher.ViewMatchers.isRoot;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static com.viorsan.readingtracker.TestHelpers.SECONDS_15;
+import static com.viorsan.readingtracker.TestHelpers.waitId;
 import static org.hamcrest.CoreMatchers.*;
 
 import android.test.ActivityInstrumentationTestCase2;
@@ -103,7 +106,8 @@ public class MyActivityGUITest extends MyInstrumentationTestCase { // ActivityIn
                         closeSoftKeyboard());
 
         Log.d(TAG,"Login button pressed now checking");
-        Thread.sleep(DEFAULT_SLEEP_TIME,0);//Highscreen Boost IIse, or Android 4.3, or my stupidity but without this test will fail
+        onView(isRoot()).perform(waitId(R.id.parse_login,SECONDS_15));
+        //Thread.sleep(DEFAULT_SLEEP_TIME,0);//Highscreen Boost IIse, or Android 4.3, or my stupidity but without this test will fail
         Log.d(TAG,"Done sleeping. checking  button pressed now checking");
 
         onView(withId(R.id.parse_login_button))
@@ -112,6 +116,7 @@ public class MyActivityGUITest extends MyInstrumentationTestCase { // ActivityIn
         //but in logged in state
         Log.d(TAG,"Wait a little until we complete login");
         //TODO:'idling resources!'
+        onView(isRoot()).perform(waitId(R.id.MyActivity,SECONDS_15));
         Thread.sleep(DEFAULT_SLEEP_TIME,0);
         Log.d(TAG,"Should now be logged in");
         ParseUser currentUser=ParsePlatformUtils.getCurrentParseUser();
