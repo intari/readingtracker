@@ -23,7 +23,8 @@ public class SimpleTest {
     public void testPass() {
         Assert.assertEquals(2+2,4);
     }
-    @Test void testVeryComplex() {
+    @Test
+    public void testVeryComplex() {
         Assert.assertTrue(Boolean.TRUE);
     }
     
