@@ -3,7 +3,7 @@ Application to collect data on your reading habits. Which books you read. When y
 So you could analyze this data for yourself.
 
 # Current build status:
-* [![Build Status](http://jessica3.viorsan.com:8080/buildStatus/icon?job=ReadingTracker)](http://jessica3.viorsan.com:8080/job/ReadingTracker/)
+* According to my Jenkinks instance:[![Build Status](http://jessica3.viorsan.com:8080/buildStatus/icon?job=ReadingTracker)](http://jessica3.viorsan.com:8080/job/ReadingTracker/)
 
 # How it works? (Non-technical)
 In the beginning there was a phrase "The Amazon Kindle reports which pages of which books the user looks at, and when"...but I wanted this information too, for e-books I read using e-book readers I read.
