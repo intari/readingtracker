@@ -113,7 +113,7 @@ public class MainActivityGUITest extends MyInstrumentationTestCase { // Activity
         Thread.sleep(DEFAULT_SLEEP_TIME,0);
         Log.d(TAG,"Should now be logged in");
         ParseUser currentUser=ParsePlatformUtils.getCurrentParseUser();
-        assertThat("Parse's currentUser should not be null after login",currentUser,is(not(null)));
+        assertNotNull("Parse's currentUser should not be null after login",currentUser);
 
         Log.d(TAG, "Validating we were logged in correctly");
         onView(withId(R.id.login_or_logout_button))
