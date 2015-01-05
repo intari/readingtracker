@@ -43,7 +43,7 @@ So you could analyze this data for yourself.</p>
 <h1>
 <a id="how-it-works-non-technical" class="anchor" href="#how-it-works-non-technical" aria-hidden="true"><span class="octicon octicon-link"></span></a>How it works? (Non-technical)</h1>
 
-<p>In the begging there was a phrase "The Amazon Kindle reports which pages of which books the user looks at, and when"...but I wanted this information too, for e-books I read using e-book readers I read.</p>
+<p>In the beginning there was a phrase "The Amazon Kindle reports which pages of which books the user looks at, and when"...but I wanted this information too, for e-books I read using e-book readers I read.</p>
 
 <h1>
 <a id="how-it-works-technical" class="anchor" href="#how-it-works-technical" aria-hidden="true"><span class="octicon octicon-link"></span></a>How it works? (Technical)</h1>
@@ -143,33 +143,7 @@ I reserve right to  provide data collected by app from you if applicable goverme
 <h1>
 <a id="requirements-for-building" class="anchor" href="#requirements-for-building" aria-hidden="true"><span class="octicon octicon-link"></span></a>Requirements for building</h1>
 
-<ul>
-<li>Android SDK 21</li>
-<li>Configure correct API Keys, if don't do this, your build WILL fail</li>
-<li>cd $HOME</li>
-<li>mkdir .androidSigning/</li>
-<li>touch booktrackerAPIKeys</li>
-<li>edit booktrackerAPIKeys to add:
-
-<ul>
-<li>PARSE_APP_ID=your_parse_app_id (<a href="https://parse.com/">https://parse.com/</a> , Application used Parse as network backend</li>
-<li>PARSE_CLIENT_KEY=your_parse_client_key</li>
-<li>PARSE_MASTER_KEY=master_key_for your_parse_application (used for crash reporting)</li>
-<li>HOCKEYAPP_APP_ID=your_HockeApp_app_id (used to check for updates if they are distributed via HockeyApp)</li>
-<li>HOCKEYAPP_TOKEN=your_HockeyApp_token (for this app, used to automatically upload updated version here)</li>
-<li>PARSE_APP_ID_FOR_TEST_HARNESS=not currently used but something must be put here</li>
-<li>PARSE_CLIENT_KEY_FOR_TEST_HARNESS=not currently used but something must be put here</li>
-<li>PARSE_USERNAME_FOR_TEST_HARNESS=not currently used but something must be put here</li>
-<li>PARSE_PASSWORD_FOR_TEST_HARNESS=not currently used but something must be put here</li>
-<li>COUNTLY_SERVER = count.ly analytics server URL</li>
-<li>COUNTLY_APPKEY = count.ly analytics App Key</li>
-<li>FLURRY_APIKEY = Flurry's API Key (currently disabled but something must be here)</li>
-<li>VERSION_CODE_AUTH/VERSION_CODE_URL - see build.gradle, those are used to get monotonically increasing build numbers. It's likely you will want change those parts of build.gradle
-you can change paths in gradle.properties</li>
-</ul>
-</li>
-<li>or look at build.gradle to determine how to use env vars</li>
-</ul>
+<p>see end of  <a href="https://github.com/intari/readingtracker/blob/master/README_old.md">README_old</a></p>
       </section>
     </div>
     <footer>
