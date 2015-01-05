@@ -151,7 +151,7 @@ public class MyAnalytics {
             Countly.sharedInstance().recordEvent(APP_OPENED,dimensions,1);
         }
         else {
-            Log.d(TAG, "trackAppOpened not sending intent " + intent.toString() + " to analytics service" + ". Test harness said so");
+            Log.d(TAG, "trackAppOpened not sending intent " + intent.toString() + " to analytics service");
         }
     }
 
@@ -175,7 +175,7 @@ public class MyAnalytics {
             }
         }
         else {
-            Log.d(TAG,"trackEvent not sending event " + name + " (with dimensions) to analytics service" + ". Test harness said so");
+            Log.d(TAG,"trackEvent not sending event " + name + " (with dimensions) to analytics service");
         }
     }
 
@@ -199,7 +199,7 @@ public class MyAnalytics {
             }
         }
         else {
-            Log.d(TAG,"trackTimedEventStart not sending event " + name + "  to analytics service" + ". Test harness said so");
+            Log.d(TAG,"trackTimedEventStart not sending event " + name + "  to analytics service");
         }
     }
 
@@ -224,7 +224,7 @@ public class MyAnalytics {
             }
         }
         else {
-           Log.d(TAG,"trackTimedEventStart not sending event " + name + " (with dimensions) to analytics service" + ". Test harness said so");
+           Log.d(TAG,"trackTimedEventStart not sending event " + name + " (with dimensions) to analytics service");
         }
     }
     /**
@@ -247,7 +247,7 @@ public class MyAnalytics {
             }
         }
         else {
-            Log.d(TAG, "trackTimedEventStop not sending event " + name + " (with dimensions) to analytics service" + ". Test harness said so");
+            Log.d(TAG, "trackTimedEventStop not sending event " + name + " (with dimensions) to analytics service");
         }
     }
     /**
@@ -271,7 +271,7 @@ public class MyAnalytics {
             }
         }
         else {
-            Log.d(TAG,"trackTimedEventStop not sending event " + name + " (with dimensions) to analytics service" + ". Test harness said so");
+            Log.d(TAG,"trackTimedEventStop not sending event " + name + " (with dimensions) to analytics service" );
         }
     }
     /**
@@ -293,7 +293,7 @@ public class MyAnalytics {
             }
         }
         else {
-            Log.d(TAG, "trackEvent not sending event " + name + " to analytics service" + ". Test harness said so");
+            Log.d(TAG, "trackEvent not sending event " + name + " to analytics service");
         }
 
     }
