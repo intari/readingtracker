@@ -75,24 +75,4 @@ Application uses several 3rd-party services (Parse, Mandrill, Countly) to provid
 Not in this repository yet
 
 # Requirements for building
-* Android SDK 21
-* Configure correct API Keys, if don't do this, your build WILL fail
-* cd $HOME
-* mkdir .androidSigning/
-* touch booktrackerAPIKeys
-* edit booktrackerAPIKeys to add:
-  * PARSE_APP_ID=your_parse_app_id (https://parse.com/ , Application used Parse as network backend
-  * PARSE_CLIENT_KEY=your_parse_client_key
-  * PARSE_MASTER_KEY=master_key_for your_parse_application (used for crash reporting)
-  * HOCKEYAPP_APP_ID=your_HockeApp_app_id (used to check for updates if they are distributed via HockeyApp)
-  * HOCKEYAPP_TOKEN=your_HockeyApp_token (for this app, used to automatically upload updated version here)
-  * PARSE_APP_ID_FOR_TEST_HARNESS=not currently used but something must be put here
-  * PARSE_CLIENT_KEY_FOR_TEST_HARNESS=not currently used but something must be put here
-  * PARSE_USERNAME_FOR_TEST_HARNESS=not currently used but something must be put here
-  * PARSE_PASSWORD_FOR_TEST_HARNESS=not currently used but something must be put here
-  * COUNTLY_SERVER = count.ly analytics server URL
-  * COUNTLY_APPKEY = count.ly analytics App Key
-  * FLURRY_APIKEY = Flurry's API Key (currently disabled but something must be here)
-  * VERSION_CODE_AUTH/VERSION_CODE_URL - see build.gradle, those are used to get monotonically increasing build numbers. It's likely you will want change those parts of build.gradle
-    you can change paths in gradle.properties
-* or look at build.gradle to determine how to use env vars
+see end of  [README_old] (https://github.com/intari/readingtracker/blob/master/README_old.md)
