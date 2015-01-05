@@ -519,7 +519,12 @@ android {
     }
 }
 
-
+/*
+  This was taken care of on my build scripts level
+  And you could manually remove comments around next task
+  or you could configure your devices to disable animations by hand manually
+*/
+/*
 task grantAnimationPermission(type: Exec, dependsOn: 'installTestingDebug') { // or install{productFlavour}{buildType}
     // commandLine "adb shell pm grant $android.defaultConfig.packageName android.permission.SET_ANIMATION_SCALE".split(' ')
     commandLine "adb shell pm grant $android.defaultConfig.applicationId android.permission.SET_ANIMATION_SCALE".split(' ')
@@ -530,7 +535,7 @@ tasks.whenTaskAdded { task ->
         task.dependsOn grantAnimationPermission
     }
 }
-
+*/
 
 def copyAndReplaceText(source, dest, Closure replaceText) {
     dest.write(replaceText(source.text))
