@@ -5,7 +5,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.os.Build;
@@ -13,7 +12,6 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.content.LocalBroadcastManager;
-import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -27,8 +25,6 @@ import com.parse.ui.ParseLoginBuilder;
 import net.hockeyapp.android.UpdateManager;
 import net.hockeyapp.android.UpdateManagerListener;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -47,7 +43,7 @@ import butterknife.OnClick;
  * This Activity extends from {@link ActionBarActivity}, which provides all of the function
  * necessary to display a compatible Action Bar on devices running Android v2.1+.
  */
-public class MyActivity extends ActionBarActivity implements GoToAccessibilitySettingsDialogFragment.GoToAccessibilitySettingsDialogListener {
+public class MainActivity extends ActionBarActivity implements GoToAccessibilitySettingsDialogFragment.GoToAccessibilitySettingsDialogListener {
     public static final String FULL_USER_NAME = "name";
     public static final String USER_GENDER = "gender";
     public static final int TIME_BEFORE_ASKING_USER_TO_GO_TO_ACCESSIBILITY_SETTINGS = 5 * 1000;//5 seconds to wait before checking if we should ask user to go to Accessibility settings
@@ -76,7 +72,7 @@ public class MyActivity extends ActionBarActivity implements GoToAccessibilitySe
     private BroadcastReceiver currentlyReadingMessageReceiver;
 
     private Activity self;
-    private static final String TAG = "ReadingTracker::MyActivity";
+    private static final String TAG = "ReadingTracker::MainActivity";
 
     private static final int LOGIN_REQUEST = 0;
 
@@ -150,7 +146,7 @@ public class MyActivity extends ActionBarActivity implements GoToAccessibilitySe
             // User clicked to log in.
             MyAnalytics.trackEvent("userClickedLoginButton");
             ParseLoginBuilder loginBuilder = new ParseLoginBuilder(
-                    MyActivity.this);
+                    MainActivity.this);
             /*loginBuilder
                     .setFacebookLoginEnabled(true)
                     .setParseLoginEnabled(true);

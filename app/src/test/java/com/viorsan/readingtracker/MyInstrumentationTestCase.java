@@ -7,13 +7,13 @@ import android.util.Log;
  * Created by Dmitriy Kazimirov, e-mail:dmitriy.kazimirov@viorsan.com on 04.01.15.
  */
 
-public class MyInstrumentationTestCase extends ActivityInstrumentationTestCase2<MyActivity> {
+public class MyInstrumentationTestCase extends ActivityInstrumentationTestCase2<MainActivity> {
 
     public static final String TAG = "ReadingTracker::MyInstrumentationTestCase";
     private SystemAnimations systemAnimations;
 
     public MyInstrumentationTestCase() {
-        super(MyActivity.class);
+        super(MainActivity.class);
     }
 
     @Override

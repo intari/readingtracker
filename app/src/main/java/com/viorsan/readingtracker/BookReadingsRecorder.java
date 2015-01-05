@@ -122,7 +122,7 @@ public class BookReadingsRecorder {
 
      /**
      * Get's 'deviceType' string for use in many reports
-     * This is static method because MyActivity.updateInstallationObject() also needs it
+     * This is static method because MainActivity.updateInstallationObject() also needs it
      * @return 'deviceType' string
      */
     public static String getDeviceInfoString() {

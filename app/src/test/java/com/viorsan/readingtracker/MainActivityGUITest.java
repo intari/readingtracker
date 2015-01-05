@@ -1,7 +1,6 @@
 package com.viorsan.readingtracker;
 
 import com.parse.ParseUser;
-import com.viorsan.readingtracker.MyActivity;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
@@ -18,28 +17,22 @@ import static com.viorsan.readingtracker.TestHelpers.SECONDS_15;
 import static com.viorsan.readingtracker.TestHelpers.waitId;
 import static org.hamcrest.CoreMatchers.*;
 
-import android.test.ActivityInstrumentationTestCase2;
-
-import android.support.test.espresso.action.ViewActions;
-import android.support.test.espresso.matcher.ViewMatchers;
-
 
 import android.test.suitebuilder.annotation.LargeTest;
 import android.util.Log;
-import com.viorsan.readingtracker.MyActivity;
 
 /**
  * Created by Dmitriy Kazimirov, e-mail:dmitriy.kazimirov@viorsan.com on 04.01.15.
  */
 
 @LargeTest
-public class MyActivityGUITest extends MyInstrumentationTestCase { // ActivityInstrumentationTestCase2<MyActivity> {
+public class MainActivityGUITest extends MyInstrumentationTestCase { // ActivityInstrumentationTestCase2<MainActivity> {
 
-    public static final String TAG = "ReadingTrackerTests::MyActivityGUITest";
+    public static final String TAG = "ReadingTrackerTests::MainActivityGUITest";
     public static final int DEFAULT_SLEEP_TIME = 1337;//sometimes even 100 ms ok
 
-    public MyActivityGUITest() {
-        super();//MyActivity.class);
+    public MainActivityGUITest() {
+        super();//MainActivity.class);
         Log.d(TAG,"in test constructor, called super");
 
     }
@@ -106,7 +99,7 @@ public class MyActivityGUITest extends MyInstrumentationTestCase { // ActivityIn
                         closeSoftKeyboard());
 
         Log.d(TAG,"Login button pressed now checking");
-        onView(isRoot()).perform(waitId(R.id.parse_login,SECONDS_15));
+        onView(isRoot()).perform(waitId(R.id.parse_login, SECONDS_15));
         //Thread.sleep(DEFAULT_SLEEP_TIME,0);//Highscreen Boost IIse, or Android 4.3, or my stupidity but without this test will fail
         Log.d(TAG,"Done sleeping. checking  button pressed now checking");
 
@@ -116,7 +109,7 @@ public class MyActivityGUITest extends MyInstrumentationTestCase { // ActivityIn
         //but in logged in state
         Log.d(TAG,"Wait a little until we complete login");
         //TODO:'idling resources!'
-        onView(isRoot()).perform(waitId(R.id.MyActivity,SECONDS_15));
+        onView(isRoot()).perform(waitId(R.id.MainActivity,SECONDS_15));
         Thread.sleep(DEFAULT_SLEEP_TIME,0);
         Log.d(TAG,"Should now be logged in");
         ParseUser currentUser=ParsePlatformUtils.getCurrentParseUser();

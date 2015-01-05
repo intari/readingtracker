@@ -1,17 +1,14 @@
 package com.viorsan.readingtracker;
 
 import android.app.*;
-import android.os.Handler;
 import android.os.IBinder;
 
 import android.content.*;
 import android.os.*;
 import android.support.v4.content.LocalBroadcastManager;
-import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.flurry.android.FlurryAgent;
 import com.parse.*;
 
 import java.util.*;
@@ -310,7 +307,7 @@ public class CoreService extends Service  {
                 getResources().getString(R.string.app_started_notification),
                 System.currentTimeMillis());
 
-        PendingIntent pi = PendingIntent.getActivity(this, 0, new Intent(this, MyActivity.class), 0);
+        PendingIntent pi = PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), 0);
 
         note.setLatestEventInfo(this, getResources().getText(R.string.app_name),
                 getResources().getText(R.string.tap_me), pi);
@@ -359,7 +356,7 @@ public class CoreService extends Service  {
                         getResources().getString(R.string.app_started_notification),
                         System.currentTimeMillis());
 
-                PendingIntent pi = PendingIntent.getActivity(self, 0, new Intent(self, MyActivity.class), 0);
+                PendingIntent pi = PendingIntent.getActivity(self, 0, new Intent(self, MainActivity.class), 0);
 
                 note.setLatestEventInfo(context, title,
                         msg, pi);

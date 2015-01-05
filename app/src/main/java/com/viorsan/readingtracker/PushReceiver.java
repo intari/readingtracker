@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
-import com.parse.ParseAnalytics;
 import com.parse.ParsePushBroadcastReceiver;
 
 /**
@@ -50,7 +49,7 @@ public class PushReceiver  extends ParsePushBroadcastReceiver {
             Log.d(TAG,"intent is null");
         }
         //just start main activity for now
-        Intent i = new Intent(context, MyActivity.class);
+        Intent i = new Intent(context, MainActivity.class);
         i.putExtras(intent.getExtras());
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(i);
