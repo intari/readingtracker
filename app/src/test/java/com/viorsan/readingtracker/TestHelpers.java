@@ -22,6 +22,8 @@ public class TestHelpers {
     public static final long SECONDS_3  = 3*MILLIS_IN_SECOND;
     public static final long SECONDS_7  = 7*MILLIS_IN_SECOND;
     public static final long SECONDS_15 =15*MILLIS_IN_SECOND;
+    public static final long SECONDS_30 =30*MILLIS_IN_SECOND;
+
 
     /**
      * Perform action of waiting for a specific view id
