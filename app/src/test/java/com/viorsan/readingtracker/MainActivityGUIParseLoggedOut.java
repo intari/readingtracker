@@ -1,5 +1,10 @@
 package com.viorsan.readingtracker;
 
+/**
+ * Created by Dmitriy Kazimirov, e-mail:dmitriy.kazimirov@viorsan.com on 06.01.15.
+ */
+
+import com.parse.ParseException;
 import com.parse.ParseUser;
 
 import static android.support.test.espresso.Espresso.onView;
@@ -23,15 +28,15 @@ import android.util.Log;
 
 /**
  * Created by Dmitriy Kazimirov, e-mail:dmitriy.kazimirov@viorsan.com on 04.01.15.
+ * Tests MainActivity's GUI if user inititally not logged in to Parse Platform (including GUI login)
  */
-
 @LargeTest
-public class MainActivityGUITest extends MyInstrumentationTestCase { // ActivityInstrumentationTestCase2<MainActivity> {
+public class MainActivityGUIParseLoggedOut extends MyInstrumentationTestCase { // ActivityInstrumentationTestCase2<MainActivity> {
 
-    public static final String TAG = "ReadingTrackerTests::MainActivityGUITest";
+    public static final String TAG = "ReadingTrackerTests::MainActivityGUIParseLoggedOut";
     public static final int DEFAULT_SLEEP_TIME = 1337;//sometimes even 100 ms ok
 
-    public MainActivityGUITest() {
+    public MainActivityGUIParseLoggedOut() {
         super();//MainActivity.class);
 
     }
@@ -40,6 +45,8 @@ public class MainActivityGUITest extends MyInstrumentationTestCase { // Activity
     public void setUp() throws Exception {
         super.setUp();
         getActivity();
+        //Logout from Parse
+        ParseUser.logOut();
     }
 
     public void testCurrentlyReadingMessageDisplayed() {
@@ -55,29 +62,26 @@ public class MainActivityGUITest extends MyInstrumentationTestCase { // Activity
         onView(withId(R.id.supportedEbookReaderInstalledStatus))
                 .check(matches(isDisplayed()));
     }
-    public void testProfileTitleDisplayed() {
-        onView(withId(R.id.profile_title))
-                .check(matches(isDisplayed()));
-    }
-
-    public void testProfileNameDisplayed() {
-        onView(withId(R.id.profile_name))
-                .check(matches(isDisplayed()));
-    }
 
     public void testLoginLogoutButtonClickable() {
         onView(withId(R.id.login_or_logout_button))
                 .check(matches(isClickable()));
     }
-    //this should work
-    public void testLoginLogoutButtonStateLoggedOut() {
+
+    /**
+     * Test that LoginLogout correct in logged out state
+     * Logout from Parse if necessary
+     */
+    public void testLoginLogoutButtonStateNotLoggedIn() {
+        Log.d(TAG,"checking login button in correct state - it should be not logged in");
         onView(withId(R.id.login_or_logout_button))
-                .check(matches(withText(R.string.profile_logout_button_label)));
+                .check(matches(withText(R.string.profile_login_button_label)));
     }
+
     /**
      * Check that login button actually works
      */
-    public void testLoginButton() throws InterruptedException {
+    public void testLoginButtonWorksInitialStateLoggedOut() throws InterruptedException {
         Log.d(TAG,"Testing login button");
         //check we not logged in
         onView(withId(R.id.login_or_logout_button))
@@ -115,7 +119,7 @@ public class MainActivityGUITest extends MyInstrumentationTestCase { // Activity
 
         Log.d(TAG, "Validating we were logged in correctly");
         onView(withId(R.id.login_or_logout_button))
-            .check(matches(withText(R.string.profile_logout_button_label)));
+                .check(matches(withText(R.string.profile_logout_button_label)));
 
         Log.d(TAG,"Logging out");
         onView(withId(R.id.login_or_logout_button))
@@ -124,3 +128,4 @@ public class MainActivityGUITest extends MyInstrumentationTestCase { // Activity
     }
 
 }
+
