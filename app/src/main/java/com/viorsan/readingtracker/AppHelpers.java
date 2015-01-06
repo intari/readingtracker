@@ -47,7 +47,7 @@ public class AppHelpers {
         Log.i(TAG," Countly version:"+ Countly.COUNTLY_SDK_VERSION_STRING);
         //log extra device details
         DeviceInfoManager deviceInfoManager=new DeviceInfoManager();
-        Log.i(TAG, "Language:"+ Locale.getDefault().getLanguage());
+        Log.i(TAG," Language:"+ Locale.getDefault().getLanguage());
         Log.i(TAG," Country:"+Locale.getDefault().getCountry());
         Log.i(TAG," Locale:"+Locale.getDefault().toString());
 
