@@ -385,6 +385,8 @@ android {
            //Espresso testing
            testing {
 
+
+               applicationId "com.viorsan.readingtracker.espresso"
                buildConfigField "String","PARSE_APP_ID", "\""+parseAppIdForTestHarness+"\""
                buildConfigField "String","PARSE_CLIENT_KEY","\""+parseClientKeyForTestHarness+"\""
                buildConfigField "String","HOCKEYAPP_APP_ID", "\""+hockeyAppAppId+"\""
