@@ -479,7 +479,7 @@ android {
 
     }
 
-    //code sign support, based off http://habrahabr.ru/post/205308/
+    //code sign support
     //Load values used for application signing
     if(project.hasProperty("debugSigningPropertiesPath") && project.hasProperty("releaseSigningPropertiesPath")) {
 
