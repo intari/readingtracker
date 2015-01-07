@@ -145,6 +145,11 @@ public class DeviceInfoManager {
         }
     }
 
+    /**
+     * Get our internal device identifier (if possible, IMEI, if not and if Android_ID is not broken - Android_id or custom)
+     * @param context - Android's context to use  for getting Android_ID / working with sharing prefs
+     * @return deviceId
+     */
     public String getDeviceId(Context context) {
         TelephonyManager telephonyManager = (TelephonyManager)context.getSystemService(Context.TELEPHONY_SERVICE);
 

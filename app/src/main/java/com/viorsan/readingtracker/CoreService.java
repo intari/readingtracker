@@ -172,16 +172,22 @@ public class CoreService extends Service  {
     }
 
 
-
+    /**
+     * Initializes CoreService
+     */
     private void init() {
 
         Log.i(TAG,"Book reading tracker main service starting up");
-      
+
+        //initialize updates for server-side configs
         ParseConfigHelper.refreshConfig();
+
         MyAnalytics.startAnalyticsWithContext(this);
-        
+
+        //write our device id
         ourDeviceID = new DeviceInfoManager().getDeviceId(this);
 
+        //die if not user logged in
         ParseUser currentUser=ParseUser.getCurrentUser();
         if (currentUser==null) {
             Log.i(TAG, "Not logged in. Service will NOT be started");
@@ -190,13 +196,12 @@ public class CoreService extends Service  {
         }
 
 
-
-
+        //configure icon
         configureForeground();
 
 
+        //find out previous active task
         ActivityManager activityManager = (ActivityManager)getSystemService(ACTIVITY_SERVICE);
-
         if (activityManager == null) {
             previousForegroundTask = BuildConfig.APPLICATION_ID;
         } else {
@@ -206,7 +211,7 @@ public class CoreService extends Service  {
 
 
 
-        //TODO:don't do this in deep sleep
+        //confugure process list updater
         new CountDownTimer(YEAR_IN_MS, PROCESSLIST_RESCAN_INTERVAL_MILLIS) {
             public void onTick(long msUntilFinish) {
 
@@ -223,6 +228,7 @@ public class CoreService extends Service  {
 
         registerReceiver(broadcastReceiver, getFilters());
 
+        //register 'userLoggedOut' receiver so we can die if user logs out
         userLoggedOutReceiver =  new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
@@ -242,17 +248,26 @@ public class CoreService extends Service  {
 
 
 
+        //ask for registration for reading updates
         registerForReadingUpdates();
 
         showToast(getResources().getString(R.string.app_started_notification));
     }
 
 
+    /**
+     * Log memory pressure events
+     */
     @Override
     public void onLowMemory()
     {
         Log.w(TAG, "onLowMemory");
     }
+
+    /**
+     * Log memory pressure events
+     * @param level
+     */
     @Override
     public void onTrimMemory(int level) {
         switch (level)
@@ -277,6 +292,11 @@ public class CoreService extends Service  {
                 break;
         }
     }
+
+    /**
+     * Collects list of IntentFilters to use
+     * @return list of intents we want to look at
+     */
     private IntentFilter getFilters() {
         IntentFilter intentFilter = new IntentFilter();
 
@@ -300,9 +320,11 @@ public class CoreService extends Service  {
     }
 
 
-
+    /**
+     * Performs configuration of App's notification icon to run forever
+     */
     private void configureForeground() {
-        Notification note = new Notification(R.drawable.readingtracker,
+        Notification note = new Notification(R.drawable.push_icon,
                 getResources().getString(R.string.app_started_notification),
                 System.currentTimeMillis());
 
@@ -313,8 +335,13 @@ public class CoreService extends Service  {
         note.flags |= Notification.FLAG_NO_CLEAR;
         note.flags |= Notification.FLAG_ONGOING_EVENT;
 
-        startForeground(R.drawable.readingtracker, note);
+        startForeground(R.drawable.push_icon, note);
     }
+
+    /**
+     * Register handlers to update notification message based on reports from BookReading service
+     * So user can see pages per minute, title, current page,etc
+     */
     private void registerForReadingUpdates() {
         final CoreService self=this;
         currentlyReadingMessageReceiver=new BroadcastReceiver() {
@@ -363,7 +390,7 @@ public class CoreService extends Service  {
                 note.flags |= Notification.FLAG_ONGOING_EVENT;
                 //update notification
                 NotificationManager manager=(NotificationManager)context.getSystemService(NOTIFICATION_SERVICE);
-                manager.notify(R.drawable.readingtracker,note);
+                manager.notify(R.drawable.push_icon,note);
 
 
             }
@@ -375,6 +402,10 @@ public class CoreService extends Service  {
     }
 
 
+    /**
+     * Handles & dispatches received broadcasts
+     * @param intent broadcast intent to handle
+     */
     private void processBroadcastInternal(Intent intent) {
         if (intent == null) return;
         if (intent.getAction() == null) return;
@@ -400,6 +431,9 @@ public class CoreService extends Service  {
 
     }
 
+    /**
+     * Unregisters Broadcast Receivers
+     */
     private void stopReceivers() {
         Log.d(TAG,"Unregistering receivers");
         if (broadcastReceiver!=null) {
