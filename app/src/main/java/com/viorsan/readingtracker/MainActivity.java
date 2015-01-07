@@ -143,7 +143,7 @@ public class MainActivity extends ActionBarActivity implements GoToAccessibility
         Log.d(TAG,"Signaling everybody that user was logged out");
         Intent intent = new Intent(CoreService.USER_LOGGED_OUT_REPORT);
         LocalBroadcastManager.getInstance(getBaseContext()).sendBroadcast(intent);
-        Log.d(TAG,"Signeled everybody that user was logged out");
+        Log.d(TAG,"Signaled everybody that user was logged out");
         MyAnalytics.trackEvent("userLogout");
     }
     @OnClick(R.id.login_or_logout_button)
@@ -619,7 +619,7 @@ public class MainActivity extends ActionBarActivity implements GoToAccessibility
                 timerToWaitBeforeAskingForAccessibilitySettings.start();
             }
             else {
-                Log.d(TAG,"will not ask system to enable accessibility settings if we run test session");
+                Log.d(TAG,"will not ask system to enable accessibility settings if we are in test session");
             }
 
         }
