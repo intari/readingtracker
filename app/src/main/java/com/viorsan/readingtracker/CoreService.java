@@ -351,7 +351,7 @@ public class CoreService extends Service  {
 
                 Log.i(TAG,"Got reading update:"+msg);
 
-                Notification note = new Notification(R.drawable.readingtracker,
+                Notification note = new Notification(R.drawable.push_icon,
                         getResources().getString(R.string.app_started_notification),
                         System.currentTimeMillis());
 
