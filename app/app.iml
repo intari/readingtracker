@@ -107,6 +107,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="HockeySDK-3.0.1" level="project" />
     <orderEntry type="library" exported="" name="FlurryAnalytics-5.0.0" level="project" />
+    <orderEntry type="library" exported="" scope="TEST" name="genymotion-api-1.0.1" level="project" />
     <orderEntry type="library" exported="" name="facebook-android-sdk-3.21.0" level="project" />
     <orderEntry type="library" exported="" name="support-v4-21.0.3" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="testing-support-lib-0.1" level="project" />

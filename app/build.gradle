@@ -33,6 +33,11 @@ buildscript {
 
     }
 }
+repositories {
+    maven{
+        url "http://api.genymotion.com/repositories/releases/"
+    }
+}
 dependencies {
     compile 'org.jetbrains.kotlin:kotlin-stdlib:0.10.195'
 }
@@ -601,6 +606,8 @@ dependencies {
     compile 'com.facebook.android:facebook-android-sdk:3.21.0'
     compile project(':ParseLoginUI')
 
+    //Genymotion
+    androidTestCompile 'com.genymotion.api:genymotion-api:1.0.1'
 
     /*
     androidTestCompile('junit:junit:4.11') {
