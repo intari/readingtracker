@@ -7,6 +7,7 @@ for device in $devices
 do
     echo "Unlocking device $device"
     adb -s $device shell input keyevent 82
+    adb -s $device shell input keyevent 4
     pids="$pids $!"
 done
 
