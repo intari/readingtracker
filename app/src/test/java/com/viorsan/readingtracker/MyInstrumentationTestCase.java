@@ -18,22 +18,15 @@ public class MyInstrumentationTestCase extends ActivityInstrumentationTestCase2<
 
     @Override
     protected void setUp() throws Exception {
-        Log.d(TAG,"setUp() before super()");
         super.setUp();
-        Log.d(TAG,"setUp() before disabling animations");
         systemAnimations = new SystemAnimations(getInstrumentation().getContext());
         systemAnimations.disableAll();
-        Log.d(TAG,"setUp() before getActivity");
         getActivity();
-        Log.d(TAG,"setUp() after getActivity");
-
     }
 
     @Override
     protected void tearDown() throws Exception {
-        Log.d(TAG,"tearDown(), before super()");
         super.tearDown();
         systemAnimations.enableAll();
-        Log.d(TAG,"tearDown(), after enabling animations");
     }
 }
