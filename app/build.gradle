@@ -646,7 +646,7 @@ hockeyapp {
             // common settings for 'real' builds
             apiToken = hockeyappToken;
             releaseType = 2
-            notify = 1
+            notify = 0
             status = 2
             notesType = 1
             commitSha=gitSha()
