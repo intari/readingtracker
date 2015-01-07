@@ -20,6 +20,7 @@ apply plugin: 'com.parse'
 buildscript {
     repositories {
         mavenCentral()
+        jcenter()
         maven {
             url 'https://maven.parse.com/repo'
         }
@@ -28,7 +29,7 @@ buildscript {
         classpath 'com.parse.tools:gradle:1.+'
         //http://kotlinlang.org/docs/reference/using-gradle.html
         classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:0.10.195'
-
+        classpath 'com.github.forsety:adr:0.1'
 
     }
 }
@@ -617,7 +618,14 @@ dependencies {
 
 }
 
+//adr https://github.com/Forsety/android-drawable-resizer
+apply plugin: 'com.github.forsety.adr'
 
+adr {
+    minDensity "mdpi"
+    baseDensity "xxxhdpi"
+    generateTvDpi true
+}
 
 //Per  https://github.com/x2on/gradle-hockeyapp-plugin/issues/30 it's dependencies must be in root project
 apply plugin: 'de.felixschulze.gradle.hockeyapp'
