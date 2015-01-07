@@ -95,6 +95,13 @@ public class MainActivity extends ActionBarActivity implements GoToAccessibility
     private MyApplication getMyApp() {
         return (MyApplication)getApplication();
     }
+
+    /**
+     * Support for user login
+     * Starts CoreService (notification, etc)
+     * Sends analytics event
+     * Performs sanity check and sets user data for analytics from Parse data
+     */
     private void handleUserLogin()  {
         Log.d(TAG,"Signaling everybody that user was logged in");
         startService();
@@ -125,6 +132,12 @@ public class MainActivity extends ActionBarActivity implements GoToAccessibility
             Log.d(TAG,"handleUserLogin but no current user?!");
         }
     }
+
+    /**
+     * Support for user logout.
+     * Sends Local Broadcast so everybody who need will knew
+     * Sends analytics event
+     */
     private void handleUserLogout() {
         //ask core service to stop
         Log.d(TAG,"Signaling everybody that user was logged out");
@@ -480,6 +493,9 @@ public class MainActivity extends ActionBarActivity implements GoToAccessibility
         loginOrLogoutButton.setText(R.string.profile_login_button_label);
     }
 
+    /**
+     * Checks status variable and shows in GUI is our monitoring service connected or not
+     */
     private void updateMonitoringStatus() {
         if (activityRecorderConnected=true) {
             accessGrantedTextView.setText(getResources().getText(R.string.accessGrantedOK));
@@ -637,6 +653,7 @@ public class MainActivity extends ActionBarActivity implements GoToAccessibility
 
     /**
      * Register handlers for update checking from Hockeyapp
+     * needed for non-playstore debug builds
      */
     private void checkForUpdates() {
         UpdateManager.register(this, BuildConfig.HOCKEYAPP_APP_ID, new UpdateManagerListener() {
@@ -670,6 +687,11 @@ public class MainActivity extends ActionBarActivity implements GoToAccessibility
         Log.d(TAG, "onStart");
         MyAnalytics.startAnalyticsWithContext(this);
     }
+
+    /**
+     * Updates user's login state in GUI and calls necessary handlers
+     * called from onResume
+     */
     private void updateUserLoggedInState() {
         currentUser = ParsePlatformUtils.getCurrentParseUser();
         if (currentUser != null) {
