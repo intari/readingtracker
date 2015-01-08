@@ -95,6 +95,7 @@ public class MainActivityGUIParseLoggedOut extends MyInstrumentationTestCase { /
         onView(withId(R.id.login_username_input))
                 .perform(typeText(BuildConfig.PARSE_USERNAME_FOR_TEST_HARNESS)
                 );
+        Thread.sleep(DEFAULT_SLEEP_TIME,0);//on some devices test via appthwack.com shows we can have issues here
 
         onView(withId(R.id.login_password_input))
                 .perform(typeText(BuildConfig.PARSE_PASSWORD_FOR_TEST_HARNESS),
