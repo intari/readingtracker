@@ -1,7 +1,7 @@
 #http://docs.travis-ci.com/user/languages/android/
 
 language: android
-jdk: oraclejdk7
+jdk: oraclejdk8
 env:
   matrix:
 #    - env: LOGGED_IN_TO_PARSE_PLATFORM=YES
