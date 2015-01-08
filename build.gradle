@@ -20,9 +20,9 @@ allprojects {
 
 ext {
     compileSdkVersion = "Google Inc.:Google APIs:21"
-    buildToolsVersion = "24.0.2"
+    buildToolsVersion = "21.1.2"
 
     minSdkVersion = 18
-    targetSdkVersion = 21
+    targetSdkVersion = 19
 }
 
