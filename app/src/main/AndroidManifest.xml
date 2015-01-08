@@ -7,8 +7,6 @@
          android:versionCode="102"
           android:versionName="1.0"
     -->
-    <uses-sdk android:targetSdkVersion="19" />
-    
     <!-- required for ParseAnalytics.trackEvent -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
