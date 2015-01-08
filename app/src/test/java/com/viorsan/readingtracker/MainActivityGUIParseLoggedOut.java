@@ -26,6 +26,8 @@ import static org.hamcrest.CoreMatchers.*;
 import android.test.suitebuilder.annotation.LargeTest;
 import android.util.Log;
 
+import java.io.IOException;
+
 /**
  * Created by Dmitriy Kazimirov, e-mail:dmitriy.kazimirov@viorsan.com on 04.01.15.
  * Tests MainActivity's GUI if user inititally not logged in to Parse Platform (including GUI login)
@@ -35,7 +37,7 @@ public class MainActivityGUIParseLoggedOut extends MyInstrumentationTestCase { /
 
     public static final String TAG = "ReadingTrackerTests::MainActivityGUIParseLoggedOut";
     public static final int DEFAULT_SLEEP_TIME = 1337;//sometimes even 100 ms ok
-
+    private MainActivity activity=null;
     public MainActivityGUIParseLoggedOut() {
         super();//MainActivity.class);
 
@@ -44,7 +46,7 @@ public class MainActivityGUIParseLoggedOut extends MyInstrumentationTestCase { /
     @Override
     public void setUp() throws Exception {
         super.setUp();
-        getActivity();
+        activity=getActivity();
         //Logout from Parse
         ParseUser.logOut();
     }
@@ -81,7 +83,7 @@ public class MainActivityGUIParseLoggedOut extends MyInstrumentationTestCase { /
     /**
      * Check that login button actually works
      */
-    public void testLoginButtonWorksInitialStateLoggedOut() throws InterruptedException {
+    public void testLoginButtonWorksInitialStateLoggedOut() throws InterruptedException, IOException {
         Log.d(TAG,"Testing login button");
         //check we not logged in
         onView(withId(R.id.login_or_logout_button))
@@ -95,7 +97,7 @@ public class MainActivityGUIParseLoggedOut extends MyInstrumentationTestCase { /
         onView(withId(R.id.login_username_input))
                 .perform(typeText(BuildConfig.PARSE_USERNAME_FOR_TEST_HARNESS)
                 );
-        Thread.sleep(DEFAULT_SLEEP_TIME,0);//on some devices test via appthwack.com shows we can have issues here
+        Thread.sleep(DEFAULT_SLEEP_TIME, 0);//on some devices test via appthwack.com shows we can have issues here
 
         onView(withId(R.id.login_password_input))
                 .perform(typeText(BuildConfig.PARSE_PASSWORD_FOR_TEST_HARNESS),
@@ -125,6 +127,8 @@ public class MainActivityGUIParseLoggedOut extends MyInstrumentationTestCase { /
         Log.d(TAG,"Logging out");
         onView(withId(R.id.login_or_logout_button))
                 .perform(click());
+        //try to take screenshot
+        Screenshot.capture(TAG+"_testLoginButtonWorksInitialStateLoggedOut.png",activity);
 
     }
 
