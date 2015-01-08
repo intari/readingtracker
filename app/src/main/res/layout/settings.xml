@@ -8,7 +8,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/readingTrackerLogo"
         android:src="@drawable/logo"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_gravity="center_horizontal"
+        android:contentDescription="@string/logo"
+        />
 
     <TextView
         android:layout_width="wrap_content"
