@@ -31,17 +31,13 @@ class Screenshot {
 
     static String getTimestamp() {
         SimpleDateFormat df = new SimpleDateFormat("yyyy_MM_dd_HH_mm");
-        df.setTimeZone(TimeZone.getTimeZone("UTC")); 
+        df.setTimeZone(TimeZone.getTimeZone("UTC"));
         return df.format(new Date());
     }
     static void capture(String name,Activity activity) throws IOException {
-        File path = Environment.getExternalStoragePublicDirectory(
-                Environment.DIRECTORY_PICTURES);
         name=name.replaceAll("/","");
         name=name.replaceAll(":","");
-        File file=new File(path,getTimestamp()+name);
-        // Make sure the Pictures directory exists.
-        path.mkdirs();
+        File file=new File("/sdcard/",getTimestamp()+name);
         //capture
         capture(file,activity);
     }

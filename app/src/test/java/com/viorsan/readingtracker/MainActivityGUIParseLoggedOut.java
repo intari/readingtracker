@@ -36,6 +36,8 @@ import java.io.IOException;
 public class MainActivityGUIParseLoggedOut extends MyInstrumentationTestCase { // ActivityInstrumentationTestCase2<MainActivity> {
 
     public static final String TAG = "ReadingTrackerTests::MainActivityGUIParseLoggedOut";
+    public static final String SCREENSHOTS_PREFIX="MainActivityGUIParseLoggedOut";
+
     public static final int DEFAULT_SLEEP_TIME = 1337;//sometimes even 100 ms ok
     private MainActivity activity=null;
     public MainActivityGUIParseLoggedOut() {
@@ -83,10 +85,11 @@ public class MainActivityGUIParseLoggedOut extends MyInstrumentationTestCase { /
     /**
      * Check that login button actually works
      */
-    public void testLoginButtonWorksInitialStateLoggedOut() throws InterruptedException, IOException {
+    public void testLoginButtonWorks() throws InterruptedException, IOException {
+        String SCREENSHOTS_SUFFIX="_testLoginButtonWorks_";
         Log.d(TAG,"Testing login button");
         //try to take screenshot
-        Screenshot.capture(TAG+"_testLoginButtonWorksInitialStateLoggedOut_initialState.png",activity);
+        Screenshot.capture(SCREENSHOTS_PREFIX+SCREENSHOTS_SUFFIX+"initialState.png",activity);
 
         //check we not logged in
         onView(withId(R.id.login_or_logout_button))
@@ -124,7 +127,7 @@ public class MainActivityGUIParseLoggedOut extends MyInstrumentationTestCase { /
         assertNotNull("Parse's currentUser should not be null after login",currentUser);
 
         //try to take screenshot
-        Screenshot.capture(TAG+"_testLoginButtonWorksInitialStateLoggedOut_after_login.png",activity);
+        Screenshot.capture(SCREENSHOTS_PREFIX+SCREENSHOTS_SUFFIX+"after_login.png",activity);
 
         Log.d(TAG, "Validating we were logged in correctly");
         onView(withId(R.id.login_or_logout_button))
@@ -135,7 +138,7 @@ public class MainActivityGUIParseLoggedOut extends MyInstrumentationTestCase { /
                 .perform(click());
 
         //try to take screenshot
-        Screenshot.capture(TAG+"_testLoginButtonWorksInitialStateLoggedOut_after_logout.png",activity);
+        Screenshot.capture(SCREENSHOTS_PREFIX+SCREENSHOTS_SUFFIX+"after_logout.png",activity);
 
     }
 
