@@ -25,7 +25,7 @@
 <!--     <string name="readingTrackerToS" translatable="false">Reading Tracker web site: TODO put linkToS can be read here TODO: Link</string> -->
 
     <string name="readingTrackerSlogan" translatable="false">Now you are in control of what you read</string>
-    <string name="readingTrackerCopyright">Reading Tracker (c) 2014,2015 Dmitriy Kazimirov</string>
+    <string name="readingTrackerCopyright">Reading Tracker © 2014,2015 Dmitriy Kazimirov</string>
     <string name="readingTrackerMailTo" translatable="false">e-mail: dmitriy.kazimirov@vioran.com</string>
     <string name="readingTrackerCopyrightLicense" translatable="false">Reading Tracker Application itself is licensed under GNU Public License version 3, permission is granted to link with all libraries below in credits</string>
 
@@ -33,11 +33,11 @@
     <string name="readingTrackerToS" translatable="false">Reading Tracker ToS can be read here TODO: Link</string>
     <string name="readingTrackerPrivacyPolicy" translatable="false">Reading Tracker\'s Privacy Policy can be read here https://intari.github.io/readingtracker/#privacy-policy-for-playstore-version</string>
     <string name="creditsIcons" translatable="false">Icons are based on materials from http://www.flaticon.com by http://www.freepik.com, licensed under CC BY 3.0</string>
-    <string name="creditsParsePlatform" translatable="false">Application uses Parse Platform by https://parse.com/about (c) Parse LLC </string>
-    <string name="creditsParseUI" translatable="false">Application uses Modified Parse UI library from https://github.com/ParsePlatform/ParseUI-Android, (c) 2014, Parse, LLC </string>
-    <string name="creditsAOSP" translatable="false">Application uses some code from The Android Open Source Project (c) The Android Open Source Project, under Apache License 2.0 </string>
+    <string name="creditsParsePlatform" translatable="false">Application uses Parse Platform by https://parse.com/about © Parse LLC </string>
+    <string name="creditsParseUI" translatable="false">Application uses Modified Parse UI library from https://github.com/ParsePlatform/ParseUI-Android, © 2014, Parse, LLC </string>
+    <string name="creditsAOSP" translatable="false">Application uses some code from The Android Open Source Project © The Android Open Source Project, under Apache License 2.0 </string>
 
-    <string name="readingTrackerVersionLineDefault">Loading...</string>
+    <string name="readingTrackerVersionLineDefault">Loading…</string>
 
     <string name="readingTrackerVersion">Version %1$s (%2$s / %3$s)</string>
     <string name="readingTrackerBuildOn">Built on %1$s by %2$s at %3$s</string>
