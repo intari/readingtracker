@@ -37,7 +37,7 @@ class Screenshot {
     static void capture(String name,Activity activity) throws IOException {
         name=name.replaceAll("/","");
         name=name.replaceAll(":","");
-        File file=new File(Environment.getExternalStorageDirectory().getPath(),getTimestamp()+name);
+        File file=new File("/sdcard/",getTimestamp()+name);
         //capture
         capture(file,activity);
     }
