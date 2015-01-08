@@ -16,6 +16,19 @@ public class AppHelpers {
 
     public static final String TAG = "ReadingTracker::AppHelpers";
 
+    /**
+     * Checks if app runs 'testing' build. This is needed because test framework not always do what needs to be done
+     * @return true - it's automated testing build
+     */
+    public static Boolean isRunningTestBuild() {
+        if (!"testing".equals(BuildConfig.FLAVOR)) {
+            return false;
+        }
+        else
+        {
+            return true ;
+        }
+    }
     public static String buildAuthority() {
         String authority = BuildConfig.APPLICATION_ID+".";
         authority += BuildConfig.FLAVOR;
