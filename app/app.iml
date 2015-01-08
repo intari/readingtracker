@@ -106,10 +106,10 @@
     <orderEntry type="jdk" jdkName="Android 5.0.1 Google APIs" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="HockeySDK-3.0.1" level="project" />
-    <orderEntry type="library" exported="" name="support-v4-21.0.0" level="project" />
     <orderEntry type="library" exported="" name="FlurryAnalytics-5.0.0" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="genymotion-api-1.0.1" level="project" />
     <orderEntry type="library" exported="" name="facebook-android-sdk-3.21.0" level="project" />
+    <orderEntry type="library" exported="" name="support-v4-21.0.3" level="project" />
     <orderEntry type="library" exported="" name="multidex-1.0.1" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="testing-support-lib-0.1" level="project" />
     <orderEntry type="library" exported="" name="Parse-1.8.0" level="project" />
@@ -117,18 +117,18 @@
     <orderEntry type="library" exported="" scope="TEST" name="javawriter-2.1.1" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="hamcrest-library-1.1" level="project" />
     <orderEntry type="library" exported="" name="acra-4.4.0" level="project" />
+    <orderEntry type="library" exported="" name="appcompat-v7-21.0.3" level="project" />
     <orderEntry type="library" exported="" name="ParseCrashReporting-1.8.0" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="jsr305-2.0.1" level="project" />
     <orderEntry type="library" exported="" name="kotlin-stdlib-0.10.195" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="junit-dep-4.10" level="project" />
     <orderEntry type="library" exported="" name="sdk-android-14.12" level="project" />
-    <orderEntry type="library" exported="" name="appcompat-v7-19.0.1" level="project" />
     <orderEntry type="library" exported="" name="gson-2.2.2" level="project" />
     <orderEntry type="library" exported="" name="kotlin-runtime-0.10.195" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="hamcrest-core-1.1" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="espresso-idling-resource-2.0" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="espresso-core-2.0" level="project" />
-    <orderEntry type="library" exported="" name="support-annotations-21.0.0" level="project" />
+    <orderEntry type="library" exported="" name="support-annotations-21.0.3" level="project" />
     <orderEntry type="library" exported="" name="jmdns-3.4.1" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="javax.inject-1" level="project" />
     <orderEntry type="library" exported="" name="butterknife-6.0.0" level="project" />

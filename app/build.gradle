@@ -593,8 +593,8 @@ dependencies {
     compile 'com.jakewharton:butterknife:6.0.0' //https://jakewharton.github.io/butterknife/
     compile 'ly.count:sdk-android:+'
 
-    compile "com.android.support:support-v4:19.0.+"
-    compile "com.android.support:appcompat-v7:19.0.+"
+    compile "com.android.support:support-v4:21.0.+"
+    compile "com.android.support:appcompat-v7:21.0.+"
     compile "com.android.support:multidex:1.0.+"
 
     //Parse Platform
