@@ -27,7 +27,7 @@ android:
     - tools
 
     # The BuildTools version used by your project
-    - build-tools-21.1.2
+    - build-tools-24.0.2
 
     # The SDK version used to compile your project
     #- android-21
@@ -74,7 +74,7 @@ before_script:
 
 install: 
     - gradle clean 
-#    - gradle build
+    - gradle build
 
 script: 
     - gradle connectedAndroidTestTestingDebug
