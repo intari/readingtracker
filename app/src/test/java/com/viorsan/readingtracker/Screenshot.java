@@ -8,6 +8,7 @@ package com.viorsan.readingtracker;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.os.Environment;
 import android.os.Looper;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -16,6 +17,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
 import java.util.concurrent.CountDownLatch;
 
 import static android.graphics.Bitmap.CompressFormat.PNG;
@@ -25,8 +29,20 @@ import static com.viorsan.readingtracker.Chmod.chmodPlusR;
 class Screenshot {
     public final static String TAG="ReadingTracker::Screenshot";
 
+    static String getTimestamp() {
+        SimpleDateFormat df = new SimpleDateFormat("yyyy_MM_dd_HH_mm");
+        df.setTimeZone(TimeZone.getTimeZone("UTC")); 
+        return df.format(new Date());
+    }
     static void capture(String name,Activity activity) throws IOException {
-        File file=new File(name);
+        File path = Environment.getExternalStoragePublicDirectory(
+                Environment.DIRECTORY_PICTURES);
+        name=name.replaceAll("/","");
+        name=name.replaceAll(":","");
+        File file=new File(path,getTimestamp()+name);
+        // Make sure the Pictures directory exists.
+        path.mkdirs();
+        //capture
         capture(file,activity);
     }
     static void capture(File file, Activity activity) throws IOException {

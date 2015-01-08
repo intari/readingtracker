@@ -85,6 +85,9 @@ public class MainActivityGUIParseLoggedOut extends MyInstrumentationTestCase { /
      */
     public void testLoginButtonWorksInitialStateLoggedOut() throws InterruptedException, IOException {
         Log.d(TAG,"Testing login button");
+        //try to take screenshot
+        Screenshot.capture(TAG+"_testLoginButtonWorksInitialStateLoggedOut_initialState.png",activity);
+
         //check we not logged in
         onView(withId(R.id.login_or_logout_button))
                 .check(matches(withText(R.string.profile_login_button_label)));
@@ -120,6 +123,9 @@ public class MainActivityGUIParseLoggedOut extends MyInstrumentationTestCase { /
         ParseUser currentUser=ParsePlatformUtils.getCurrentParseUser();
         assertNotNull("Parse's currentUser should not be null after login",currentUser);
 
+        //try to take screenshot
+        Screenshot.capture(TAG+"_testLoginButtonWorksInitialStateLoggedOut_after_login.png",activity);
+
         Log.d(TAG, "Validating we were logged in correctly");
         onView(withId(R.id.login_or_logout_button))
                 .check(matches(withText(R.string.profile_logout_button_label)));
@@ -127,8 +133,9 @@ public class MainActivityGUIParseLoggedOut extends MyInstrumentationTestCase { /
         Log.d(TAG,"Logging out");
         onView(withId(R.id.login_or_logout_button))
                 .perform(click());
+
         //try to take screenshot
-        Screenshot.capture(TAG+"_testLoginButtonWorksInitialStateLoggedOut.png",activity);
+        Screenshot.capture(TAG+"_testLoginButtonWorksInitialStateLoggedOut_after_logout.png",activity);
 
     }
 
