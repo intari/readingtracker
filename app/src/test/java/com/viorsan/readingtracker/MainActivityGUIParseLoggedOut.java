@@ -97,7 +97,8 @@ public class MainActivityGUIParseLoggedOut extends MyInstrumentationTestCase { /
                 );
 
         onView(withId(R.id.login_password_input))
-                .perform(typeText(BuildConfig.PARSE_PASSWORD_FOR_TEST_HARNESS));
+                .perform(typeText(BuildConfig.PARSE_PASSWORD_FOR_TEST_HARNESS),
+                        closeSoftKeyboard());
 
         Log.d(TAG,"Login button pressed now checking");
         onView(isRoot()).perform(waitId(R.id.parse_login, SECONDS_30));
