@@ -37,7 +37,6 @@ class Screenshot {
     static void capture(String name,Activity activity) throws IOException {
         name=name.replaceAll("/","");
         name=name.replaceAll(":","");
-        Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).mkdirs();
         File file=new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).getPath(),name+"_"+getTimestamp());
         //capture
         capture(file,activity);
