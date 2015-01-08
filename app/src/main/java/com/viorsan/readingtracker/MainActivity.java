@@ -318,45 +318,9 @@ public class MainActivity extends ActionBarActivity implements GoToAccessibility
             });
 
         }
-        //initServiceReceiver();
 
         checkForUpdates();
 
-        /*
-        try {
-            PackageManager pm=getPackageManager();
-            if (pm!=null) {
-                PackageInfo info = pm.getPackageInfo(BuildConfig.APPLICATION_ID,     PackageManager.GET_SIGNATURES);
-                if (info!=null) {
-                    if (info.signatures!=null) {
-                        for (android.content.pm.Signature signature : info.signatures) {
-                            MessageDigest md = MessageDigest.getInstance("SHA");
-                            md.update(signature.toByteArray());
-                            String sign=Base64.encodeToString(md.digest(), Base64.DEFAULT);
-                            Log.i(TAG, "Key hash is " + sign);
-                            //Toast.makeText(getApplicationContext(),sign,     Toast.LENGTH_LONG).show();
-                        }
-                    }
-                    else
-                    {
-                        //This happens with (for example) Robolectric
-                        Log.d(TAG,"Cannot get package signatures (info.signatures is null)");
-                        System.out.println(TAG+":Cannot get package signatures (info.signatures is null)");
-                    }
-                }
-                else {
-                    Log.d(TAG,"Cannot get package info");
-                }
-            }
-            else
-            {
-                Log.d(TAG,"Cannot get package manager");
-            }
-
-        } catch (PackageManager.NameNotFoundException e) {
-        } catch (NoSuchAlgorithmException e) {
-        }
-        */
 
         /* debug support */
         messageReceiver = new BroadcastReceiver() {
