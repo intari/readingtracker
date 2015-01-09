@@ -2,8 +2,8 @@
 ## 1.7
 * TODO
 
-## 1.6.4
-* TODO
+## 1.6.7
+* new correctly looking black-and-white icon for notification
 
 ## 1.6
 * pages per minute counter and other statistic directly in notification
