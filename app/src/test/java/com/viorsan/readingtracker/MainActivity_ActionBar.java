@@ -28,7 +28,6 @@ import static com.viorsan.readingtracker.TestHelpers.SECONDS_30;
 import static com.viorsan.readingtracker.TestHelpers.screenshot;
 import static com.viorsan.readingtracker.TestHelpers.waitId;
 import static org.hamcrest.CoreMatchers.*;
-import static com.viorsan.readingtracker.CustomMatchers.withResourceName;
 
 import android.test.suitebuilder.annotation.LargeTest;
 import android.util.Log;
