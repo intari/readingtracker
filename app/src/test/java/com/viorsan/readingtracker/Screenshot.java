@@ -40,7 +40,7 @@ class Screenshot {
         //create if not exist
         directory.mkdirs();
 
-        File file=new File(directory,name+"_"+getTimestamp()+".png");
+        File file=new File(directory,getTimestamp()+"_"+name+".png");
         //capture
         capture(file,activity);
     }
