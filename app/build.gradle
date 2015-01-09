@@ -393,8 +393,8 @@ android {
 
 
                applicationId "com.viorsan.readingtracker.espresso"
-               buildConfigField "String","PARSE_APP_ID", "\""+parseAppIdForTestHarness+"\""
-               buildConfigField "String","PARSE_CLIENT_KEY","\""+parseClientKeyForTestHarness+"\""
+               buildConfigField "String","PARSE_APP_ID", "\""+parseAppId+"\""
+               buildConfigField "String","PARSE_CLIENT_KEY","\""+parseClientKey+"\""
                buildConfigField "String","HOCKEYAPP_APP_ID", "\""+hockeyAppAppId+"\""
                buildConfigField "String","BUILD_DATE_TIME","\""+buildDateTime+" UTC\""
                buildConfigField "String","PARSE_USERNAME_FOR_TEST_HARNESS","\""+parseUserNameForTestHarness+"\""

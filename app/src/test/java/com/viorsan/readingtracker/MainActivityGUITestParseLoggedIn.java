@@ -44,13 +44,21 @@ public class MainActivityGUITestParseLoggedIn extends MyInstrumentationTestCase 
         super.setUp();
         getActivity();
         //login to Parse
+        Log.d(TAG,"setUp() calling ParseUser.login()");
         ParseUser.logIn(BuildConfig.PARSE_USERNAME_FOR_TEST_HARNESS,BuildConfig.PARSE_PASSWORD_FOR_TEST_HARNESS);
+        Log.d(TAG,"setUp() done with ParseUser.login()");
+   }
+
+    public void testLoginOk() {
+        ParseUser currentUser=ParsePlatformUtils.getCurrentParseUser();
+        assertNotNull("Parse's currentUser should not be null after login",currentUser);
     }
 
     public void testCurrentlyReadingMessageDisplayed() {
         onView(withId(R.id.currentlyReadingMessage))
                 .check(matches(isDisplayed()));
     }
+
     public void testAccessGrantedDisplayed() {
         onView(withId(R.id.accessGranted))
                 .check(matches(isDisplayed()));

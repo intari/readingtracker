@@ -32,6 +32,10 @@ public class MyAnalytics {
     public static void init(MyApplication newApp,Context context) {
         Log.d(TAG,"init");
         app=newApp;
+        if (AppHelpers.isRunningTestBuild()) {
+            Log.d(TAG,"Automatically disabling analytics in test build");
+            MyApplication.setAnalyticsEnabled(false);
+        }
 
         if (MyApplication.isAnalyticsEnabled()) {
             Countly.sharedInstance().init(context, BuildConfig.COUNTLY_SERVER, BuildConfig.COUNTLY_APP_KEY);

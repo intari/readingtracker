@@ -578,7 +578,7 @@ public class MainActivity extends ActionBarActivity implements GoToAccessibility
             Intent intent=new Intent(AccessibilityRecorderService.ACTIVITY_MONITORING_STATUS_UPDATE_REQUEST);
             LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
 
-            if (!"testing".equals(BuildConfig.FLAVOR)) {
+            if (!AppHelpers.isRunningTestBuild()) {
                 //wait a little, so service will send us details
                 timerToWaitBeforeAskingForAccessibilitySettings.start();
             }
