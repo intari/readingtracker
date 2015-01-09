@@ -114,6 +114,7 @@ License: Creative commons
 You are free to use this icon for commercial purposes, to share or to modify it. In exchange, it's necessary to credit the author for the original creation.
 * [Parse Team (currently at Facebook)](https://parse.com/about) for Parse Platform (and ParseUI-Android)
 * [Mantano SAS](www.mantano.com/mantano-reading-platform/) for Mantano Premium. This is best E-Book reader I have so far, even accounting for occasional glitches with Cloud Service and crashes with badly formatted books. Current version of Reading Tracker only support Mantano as data source.
+* [AppThwack)(https://appthwack.com/) and Intel for [Ability to perform free AppThwack tests on Intel devices](http://blog.appthwack.com/free-app-testing-on-intel-devices/)
 
 
 
@@ -260,6 +261,7 @@ License: Creative commons
 You are free to use this icon for commercial purposes, to share or to modify it. In exchange, it's necessary to credit the author for the original creation.
 * [Parse Team (currently at Facebook)](https://parse.com/about) -  Parse Platform (and ParseUI-Android)
 * [Mantano SAS](www.mantano.com/mantano-reading-platform/) for Mantano Premium. This is best E-Book reader I have so far, even accounting for occasional glitches with Cloud Service and crashes with badly formatted books. Current version of Reading Tracker only support Mantano as data source.
+* [AppThwack)(https://appthwack.com/) and Intel for [Ability to perform free AppThwack tests on Intel devices](http://blog.appthwack.com/free-app-testing-on-intel-devices/)
 
 
 
