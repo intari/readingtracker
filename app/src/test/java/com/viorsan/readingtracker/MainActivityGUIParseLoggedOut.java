@@ -99,7 +99,7 @@ public class MainActivityGUIParseLoggedOut extends MyInstrumentationTestCase { /
         //TODO: use test build's account & test build auth
         //we are now in ParseUI's login activity
         onView(isRoot()).perform(waitId(R.id.parse_login, SECONDS_30));
-        onView(isRoot()).perform(screenshot(R.id.parse_login,TEST_TAG));
+        onView(isRoot()).perform(screenshot(R.id.parse_login,TEST_TAG+"_1"));
 
         onView(withId(R.id.login_username_input))
                 .perform(typeText(BuildConfig.PARSE_USERNAME_FOR_TEST_HARNESS)
@@ -111,7 +111,7 @@ public class MainActivityGUIParseLoggedOut extends MyInstrumentationTestCase { /
                         closeSoftKeyboard());
 
         //login data entered. let's try to login
-        onView(isRoot()).perform(screenshot(R.id.parse_login,TEST_TAG));
+        onView(isRoot()).perform(screenshot(R.id.parse_login,TEST_TAG+"_2"));
         onView(withId(R.id.parse_login_button))
                 .perform(click());
 
@@ -120,10 +120,10 @@ public class MainActivityGUIParseLoggedOut extends MyInstrumentationTestCase { /
         //but in logged in state
         Log.d(TAG,"Wait a little until we complete login");
         //TODO:'idling resources!'
-        onView(isRoot()).perform(waitId(R.id.MainActivity,SECONDS_30));
+        //onView(isRoot()).perform(waitId(R.id.MainActivity,SECONDS_30));
         Thread.sleep(DEFAULT_SLEEP_TIME,0);
         //we are now back in our activity.
-        onView(isRoot()).perform(screenshot(R.id.MainActivity,TEST_TAG));
+        onView(isRoot()).perform(screenshot(R.id.MainActivity,TEST_TAG+"_3"));
 
         Log.d(TAG,"Should now be logged in");
         ParseUser currentUser=ParsePlatformUtils.getCurrentParseUser();
@@ -137,7 +137,7 @@ public class MainActivityGUIParseLoggedOut extends MyInstrumentationTestCase { /
         onView(withId(R.id.login_or_logout_button))
                 .perform(click());
         //should be back in our activity
-        onView(isRoot()).perform(screenshot(R.id.MainActivity,TEST_TAG));
+        onView(isRoot()).perform(screenshot(R.id.MainActivity,TEST_TAG+"_4"));
 
 
     }

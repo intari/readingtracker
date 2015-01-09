@@ -89,7 +89,7 @@ public class MainActivityGUITestParseLoggedIn extends MyInstrumentationTestCase 
      */
     public void testGUILooksGood() {
         String TEST_TAG="testGUILooksGood";
-        onView(isRoot()).perform(screenshot(R.id.MainActivity,TEST_TAG));
+        onView(isRoot()).perform(screenshot(R.id.MainActivity,TEST_TAG+"_1"));
 
     }
 
