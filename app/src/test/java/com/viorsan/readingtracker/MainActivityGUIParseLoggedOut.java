@@ -104,14 +104,14 @@ public class MainActivityGUIParseLoggedOut extends MyInstrumentationTestCase { /
         onView(withId(R.id.login_username_input))
                 .perform(typeText(BuildConfig.PARSE_USERNAME_FOR_TEST_HARNESS)
                 );
-        Thread.sleep(DEFAULT_SLEEP_TIME,0);//on some devices test via appthwack.com shows we can have issues here
+        onView(isRoot()).perform(screenshot(R.id.parse_login,TEST_TAG+"_afterLogindEntered"));
 
         onView(withId(R.id.login_password_input))
                 .perform(typeText(BuildConfig.PARSE_PASSWORD_FOR_TEST_HARNESS),
                         closeSoftKeyboard());
 
         //login data entered. let's try to login
-        onView(isRoot()).perform(screenshot(R.id.parse_login,TEST_TAG+"_afterLoginAndPasswordEntered"));
+        onView(isRoot()).perform(screenshot(R.id.parse_login,TEST_TAG+"_afterPasswordEntered"));
 
         onView(withId(R.id.parse_login_button))
                 .perform(click());
