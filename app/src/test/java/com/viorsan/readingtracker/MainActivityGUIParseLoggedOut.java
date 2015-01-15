@@ -19,6 +19,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static com.viorsan.readingtracker.TestHelpers.SECONDS_30;
+import static com.viorsan.readingtracker.TestHelpers.screenshot;
 import static com.viorsan.readingtracker.TestHelpers.waitId;
 import static org.hamcrest.CoreMatchers.*;
 
@@ -82,7 +83,11 @@ public class MainActivityGUIParseLoggedOut extends MyInstrumentationTestCase { /
      * Check that login button actually works
      */
     public void testLoginButtonWorksInitialStateLoggedOut() throws InterruptedException {
+        String TEST_TAG="testLoginButtonWorks";
         Log.d(TAG,"Testing login button");
+        onView(isRoot()).perform(screenshot(R.id.MainActivity,TEST_TAG+"_initialState"));
+
+
         //check we not logged in
         onView(withId(R.id.login_or_logout_button))
                 .check(matches(withText(R.string.profile_login_button_label)));
@@ -92,28 +97,35 @@ public class MainActivityGUIParseLoggedOut extends MyInstrumentationTestCase { /
         Log.d(TAG,"Now entering login & password");
         // This view is in a different Activity, no need to tell Espresso.
         //TODO: use test build's account & test build auth
+        //we are now in ParseUI's login activity
+        onView(isRoot()).perform(waitId(R.id.parse_login, SECONDS_30));
+        onView(isRoot()).perform(screenshot(R.id.parse_login,TEST_TAG+"_afterLoginButtonPressed"));
+
         onView(withId(R.id.login_username_input))
                 .perform(typeText(BuildConfig.PARSE_USERNAME_FOR_TEST_HARNESS)
                 );
-        Thread.sleep(DEFAULT_SLEEP_TIME,0);//on some devices test via appthwack.com shows we can have issues here
+        onView(isRoot()).perform(screenshot(R.id.parse_login,TEST_TAG+"_afterLogindEntered"));
 
         onView(withId(R.id.login_password_input))
                 .perform(typeText(BuildConfig.PARSE_PASSWORD_FOR_TEST_HARNESS),
                         closeSoftKeyboard());
 
-        Log.d(TAG,"Login button pressed now checking");
-        onView(isRoot()).perform(waitId(R.id.parse_login, SECONDS_30));
-        Thread.sleep(DEFAULT_SLEEP_TIME,0);//Highscreen Boost IIse, or Android 4.3, or my stupidity but without this test will fail
-        Log.d(TAG,"Done sleeping. checking  button pressed now checking");
+        //login data entered. let's try to login
+        onView(isRoot()).perform(screenshot(R.id.parse_login,TEST_TAG+"_afterPasswordEntered"));
 
         onView(withId(R.id.parse_login_button))
                 .perform(click());
+
+        Log.d(TAG,"Login button pressed now checking");
         //we should now be on initial screen
         //but in logged in state
         Log.d(TAG,"Wait a little until we complete login");
         //TODO:'idling resources!'
-        onView(isRoot()).perform(waitId(R.id.MainActivity,SECONDS_30));
+        //onView(isRoot()).perform(waitId(R.id.MainActivity,SECONDS_30));
         Thread.sleep(DEFAULT_SLEEP_TIME,0);
+        //we are now back in our activity.
+        onView(isRoot()).perform(screenshot(R.id.MainActivity,TEST_TAG+"_afterLoginCompleted"));
+
         Log.d(TAG,"Should now be logged in");
         ParseUser currentUser=ParsePlatformUtils.getCurrentParseUser();
         assertNotNull("Parse's currentUser should not be null after login",currentUser);
@@ -125,6 +137,9 @@ public class MainActivityGUIParseLoggedOut extends MyInstrumentationTestCase { /
         Log.d(TAG,"Logging out");
         onView(withId(R.id.login_or_logout_button))
                 .perform(click());
+        //should be back in our activity
+        onView(isRoot()).perform(screenshot(R.id.MainActivity,TEST_TAG+"_afterLogoutButtonPressed"));
+
 
     }
 

@@ -11,6 +11,7 @@ import ly.count.android.api.Countly;
 
 /**
  * Created by Dmitriy Kazimirov, e-mail:dmitriy.kazimirov@viorsan.com on 02.01.15.
+ * Helper tools
  */
 public class AppHelpers {
 
@@ -29,6 +30,11 @@ public class AppHelpers {
             return true ;
         }
     }
+
+    /**
+     * Get short one-line build identification
+     * @return sort one line build identification
+     */
     public static String buildAuthority() {
         String authority = BuildConfig.APPLICATION_ID+".";
         authority += BuildConfig.FLAVOR;
@@ -37,6 +43,12 @@ public class AppHelpers {
         }
         return authority;
     }
+
+    /**
+     * Writes log banner with build details to logcat
+     * @param tag - which component of app requested banner (not currently used)
+     * @param context - context to use (not currently used)
+     */
     static public void writeLogBanner(String tag, Context context) {
         Log.i(TAG, " (c) Dmitriy Kazimirov 2013-2014");
         Log.i(TAG," e-mail: dmitriy.kazimirov@viorsan.com");

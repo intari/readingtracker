@@ -15,6 +15,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static com.viorsan.readingtracker.TestHelpers.SECONDS_15;
+import static com.viorsan.readingtracker.TestHelpers.screenshot;
 import static com.viorsan.readingtracker.TestHelpers.waitId;
 import static org.hamcrest.CoreMatchers.*;
 
@@ -81,6 +82,15 @@ public class MainActivityGUITestParseLoggedIn extends MyInstrumentationTestCase 
     public void testLoginLogoutButtonClickable() {
         onView(withId(R.id.login_or_logout_button))
                 .check(matches(isClickable()));
+    }
+
+    /**
+     * just make screenshot of GUI in logged in state
+     */
+    public void testGUILooksGood() {
+        String TEST_TAG="testGUILooksGood";
+        onView(isRoot()).perform(screenshot(R.id.MainActivity,TEST_TAG+"_1"));
+
     }
 
     /**
