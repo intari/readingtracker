@@ -3,7 +3,8 @@ Application to collect data on your reading habits. Which books you read. When y
 So you could analyze this data for yourself.
 
 # Current build status:
-* According to my Jenkinks instance:[![Build Status](http://jessica3.viorsan.com:8080/buildStatus/icon?job=ReadingTracker)](http://jessica3.viorsan.com:8080/job/ReadingTracker/)
+* According to my Jenkinks instance:master branch: [![Build Status](http://jessica3.viorsan.com:8080/buildStatus/icon?job=ReadingTracker - master)](http://jessica3.viorsan.com:8080/job/ReadingTracker%20-%20master/)
+* According to my Jenkinks instance: develop branch: [![Build Status](http://jessica3.viorsan.com:8080/buildStatus/icon?job=ReadingTracker - develop)](http://jessica3.viorsan.com:8080/job/ReadingTracker%20-%20develop/)
 
 # How it works? (Non-technical)
 In the beginning there was a phrase "The Amazon Kindle reports which pages of which books the user looks at, and when"...but I wanted this information too, for e-books I read using e-book readers I read.
@@ -17,7 +18,10 @@ In future various interesting graphs could be made once I collect enough statist
 # Application requirements
 * Android 4.3+ (last version of code with support for 4.2 is at https://github.com/intari/readingtracker/tree/Last_API_17_Android_4_2 , it's much easier to work at API Level 18)
 * Suppported e-book reader
-* Android tablet
+* Android tablet or phone
+
+# Android 5.0.1 Lollipop support
+* As of version 1.6.8 application should work correctly with Lollipop
 
 # Which e-book readers are supported?
 Currently all editions of Mantano Reader are supported (it's great. Please buy it. If you want to used it on multiple devices you should buy their cloud subscription too).
@@ -25,6 +29,8 @@ Others are not supported yet.
 
 Please note authors of ebook readers don't endorse this app.
 
+# YotaPhone2 support
+* Currently YotapPhone2 supported as regular device (no support for Mantano's ability to use e-ink screen). This will be fixed if/when I get access to YotaPhone2
 
 # How to use application (assuming you use Google Play version):
 * Install one of supported ebook readers
