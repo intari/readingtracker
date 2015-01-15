@@ -282,8 +282,10 @@ public class BookReadingsRecorder {
         //MyAnalytics.trackTimedEventStart("readingSession",dimensions);
 
         recordPageSwitch(context,timestamp,pageNumbers);
-        startedPage=Long.valueOf(currentPage);
-
+        //at least on 5.0.1 it's possible that recordPageSwitch will not parse currentPage on initial book opening so...
+        if (currentPage!=null) {
+            startedPage=Long.valueOf(currentPage);
+        }
     }
 
     /**
