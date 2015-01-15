@@ -2,6 +2,9 @@
 ## 1.7
 * TODO
 
+## 1.6.8
+* Fix for possible crash on Android 5.0.1
+
 ## 1.6.7
 * new correctly looking black-and-white icon for notification
 
