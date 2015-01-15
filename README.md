@@ -18,7 +18,7 @@ In future various interesting graphs could be made once I collect enough statist
 # Application requirements
 * Android 4.3+ (last version of code with support for 4.2 is at https://github.com/intari/readingtracker/tree/Last_API_17_Android_4_2 , it's much easier to work at API Level 18)
 * Suppported e-book reader
-* Android tablet
+* Android tablet or phone
 
 # Which e-book readers are supported?
 Currently all editions of Mantano Reader are supported (it's great. Please buy it. If you want to used it on multiple devices you should buy their cloud subscription too).
@@ -26,6 +26,8 @@ Others are not supported yet.
 
 Please note authors of ebook readers don't endorse this app.
 
+# YotaPhone2 support
+* Currently YotapPhone2 supported as regular device (no support for Mantano's ability to use e-ink screen). This will be fixed if/when I get access to YotaPhone2
 
 # How to use application (assuming you use Google Play version):
 * Install one of supported ebook readers
