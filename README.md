@@ -20,6 +20,9 @@ In future various interesting graphs could be made once I collect enough statist
 * Suppported e-book reader
 * Android tablet or phone
 
+# Android 5.0.1 Lollipop support
+* As of version 1.6.8 application should work correctly with Lollipop
+
 # Which e-book readers are supported?
 Currently all editions of Mantano Reader are supported (it's great. Please buy it. If you want to used it on multiple devices you should buy their cloud subscription too).
 Others are not supported yet.
