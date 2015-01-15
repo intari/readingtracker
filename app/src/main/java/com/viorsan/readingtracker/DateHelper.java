@@ -24,11 +24,24 @@ public class DateHelper {
     public final static String RFC822 = "EEE, dd MMM yyyy HH:mm:ss Z";
     public final static String SIMPLE = "MM/dd/yyyy hh:mm:ss a";
 
+    /**
+     * Converts date to string using US locale and specified format
+     * @param format format string to use
+     * @param date date to format
+     * @return date formatted as string
+     */
     public static String format ( String format, Date date ) {
         SimpleDateFormat sdf = new SimpleDateFormat(format, Locale.US);
         return sdf.format ( date );
 
     }
+
+    /**
+     * Converts date to string using US locale, specified format. forces GMT timezone
+     * @param format format string to use
+     * @param date date to format
+     * @return date formatted as string
+     */
     public static String formatGMT ( String format, Date date ) {
         SimpleDateFormat sdf = new SimpleDateFormat(format, Locale.US);
         sdf.setTimeZone(new SimpleTimeZone(0, "GMT"));
@@ -63,6 +76,13 @@ public class DateHelper {
         return parse ( DEFAULT,date );
     }
 
+    /**
+     * Parse string in some format to Date
+     * @param format format string to use
+     * @param date string to parse
+     * @return parse date
+     * @throws ParseException if parsing cannot be done
+     */
     public static Date parse ( String format, String date ) throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat(format, Locale.US);
         return sdf.parse ( date );
@@ -77,11 +97,15 @@ public class DateHelper {
         return parse ( ISO8601_NOMS,date );
     }
 
+    
     public static Date parseRFC822 ( String date ) throws ParseException {
         return parse ( RFC822,date );
     }
 
-
+    /**
+     * Returns current date
+     * @return current date
+     */
     public static Date Now () {
         return new Date();
     }
