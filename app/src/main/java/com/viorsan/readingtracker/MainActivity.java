@@ -490,32 +490,16 @@ public class MainActivity extends ActionBarActivity implements GoToAccessibility
     private boolean isSupportedEbookReaderInstalled()
     {
       return (
-              appInstalledOrNot(AccessibilityRecorderService.MANTANO_READER_PACKAGE_NAME)
-               ||
-              appInstalledOrNot(AccessibilityRecorderService.MANTANO_READER_ESSENTIALS_PACKAGE_NAME) ||
-              appInstalledOrNot(AccessibilityRecorderService.MANTANO_READER_LITE_PACKAGE_NAME)
+              AppHelpers.appInstalledOrNot(this,AccessibilityRecorderService.MANTANO_READER_PACKAGE_NAME) ||
+              AppHelpers.appInstalledOrNot(this,AccessibilityRecorderService.MANTANO_READER_ESSENTIALS_PACKAGE_NAME) ||
+              AppHelpers.appInstalledOrNot(this,AccessibilityRecorderService.MANTANO_READER_LITE_PACKAGE_NAME) ||
+              AppHelpers.appInstalledOrNot(this,AccessibilityRecorderService.FBREADER_PACKAGE_NAME)
 
       );
 
     };
 
-    /**
-     * Checks if package installed on device
-     * @param uri - package to check
-     * @return true if given package installed on device
-     */
-    private boolean appInstalledOrNot(String uri) {
-        PackageManager pm = getPackageManager();
-        boolean app_installed = false;
-        try {
-            pm.getPackageInfo(uri, PackageManager.GET_ACTIVITIES);
-            app_installed = true;
-        }
-        catch (PackageManager.NameNotFoundException e) {
-            app_installed = false;
-        }
-        return app_installed ;
-    }
+
     private void startService() {
         startService(new Intent(this, CoreService.class));
 

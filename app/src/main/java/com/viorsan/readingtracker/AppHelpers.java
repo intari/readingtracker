@@ -1,6 +1,7 @@
 package com.viorsan.readingtracker;
 
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.util.Log;
 
 import com.flurry.android.FlurryAgent;
@@ -44,6 +45,24 @@ public class AppHelpers {
         return authority;
     }
 
+    /**
+     * Checks if package installed on device
+     * @param uri  package to check
+     * @param context context to use for packageManager
+     * @return true if given package installed on device
+     */
+    public static boolean appInstalledOrNot(Context context,String uri) {
+        PackageManager pm = context.getPackageManager();
+        boolean app_installed = false;
+        try {
+            pm.getPackageInfo(uri, PackageManager.GET_ACTIVITIES);
+            app_installed = true;
+        }
+        catch (PackageManager.NameNotFoundException e) {
+            app_installed = false;
+        }
+        return app_installed ;
+    }
     /**
      * Writes log banner with build details to logcat
      * @param tag - which component of app requested banner (not currently used)
