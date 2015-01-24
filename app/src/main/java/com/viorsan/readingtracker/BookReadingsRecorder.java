@@ -35,6 +35,7 @@ public class BookReadingsRecorder {
     public static final String BOOK_AUTHOR = "bookAuthor";
     public static final String BOOK_TAGS = "bookTags";
     public static final String TOTAL_PAGES = "totalPages";
+    public static final String BOOK_PROGRESS = "bookProgress";
     public static final String CURRENT_PAGE = "currentPage";
     public static final String READING_APPLICATION = "readingApplication";
     public static final String DATA_SOURCE = "dataSource";
@@ -90,7 +91,8 @@ public class BookReadingsRecorder {
     //support vars
 
 
-    String currentPageNumbers;
+    String currentPageNumbers;//current page numbers, Mantano only
+    float currentProgress;//current progress,0.0..1.0, FBReader only right now
     String currentBookTitle;
     String currentBookAuthor;
     long currentTimestamp=0;
@@ -288,6 +290,59 @@ public class BookReadingsRecorder {
         }
     }
 
+    /**
+     * Records new book being read. Stores initial data about book. New version for FBReader
+     * @param context - context to use with writeLastBookInfo/recordPageSwitch
+     * @param timestamp - timestamp when this data were actual
+     * @param author - author or authors (can be , or & - separate)
+     * @param title - book title
+     * @param tags - genre tags
+     * @param progress  reading progress (0.0-1.0)
+     * @throws InvalidArgumentsException
+     */
+    public void recordNewBook(Context context,long timestamp, String author,String title, String tags,float progress) throws InvalidArgumentsException {
+
+        if (author==null) {
+            throw new InvalidArgumentsException("Author is null");
+        }
+        if (title==null) {
+            throw  new InvalidArgumentsException("Title is null");
+        }
+
+        if ((!author.equals(currentBookAuthor)) || (!title.equals(currentBookTitle))) {
+            //record switch
+            Log.i(TAG,"recordNewBook: author or title are different. recording switch away");
+            recordSwitchAwayFromBook(context,timestamp);
+
+        }
+        //may be it's not NEW book being opened...
+        currentBookAuthor=author;
+        currentBookTitle=title;
+        currentBookTags=tags;
+        currentBookKnown=true;
+        currentProgress=progress;
+        currentTimestamp=timestamp;
+        prevCurrentPage="";
+
+        writeLastBookInfo(context,timestamp, currentBookTitle, currentBookAuthor,currentBookTags);
+        numPagePageSwitches=0;
+
+
+
+
+        Map<String, String> dimensions = new HashMap<String, String>();
+        dimensions.put(BOOK_TITLE,currentBookTitle);
+        dimensions.put(BOOK_AUTHOR,currentBookAuthor);
+        dimensions.put(BOOK_TAGS,currentBookTags);
+
+        //TODO:describe this in privacy policy, and really think if we need THIS data in 3rd-party analytical systems
+        MyAnalytics.trackEvent("readingSessionStarted", dimensions);
+
+        //MyAnalytics.trackTimedEventStart("readingSession",dimensions);
+
+        recordProgressUpdate(context,timestamp,progress);
+
+    }
     /**
      * configured LocalBroadcastManager to listen for requests from UI to get status updates
      * @param outerContext - Context instance for use with LocalBroadcastManager
@@ -532,6 +587,90 @@ public class BookReadingsRecorder {
     }
 
     /**
+     * Records progress update (=new version of recordPageSwitch)
+     * sends analytics events
+     * sends information to Parse Platform
+     * sends status update to UI
+     *
+     * @param context - context to use with sendStatusUpdateToUI/ParsePlatformUtils
+     * @param timestamp - timestamp when this data were actual
+     * @param progress - new progress
+     * @throws InvalidArgumentsException
+     */
+    public void recordProgressUpdate(Context context,long timestamp, float progress) throws InvalidArgumentsException  {
+
+        long timePassed = 0;
+        timePassed=timestamp-currentTimestamp;
+
+        double timePassedInSeconds=timePassed/ MS_IN_SECOND;
+
+        totalTimeForCurrentBook=totalTimeForCurrentBook+timePassed;
+        currentTimestamp=timestamp;
+        currentProgress=progress;
+
+        numPagePageSwitches++;
+        //TODO:send analytics event
+
+        Log.i(TAG, "Title:" + currentBookTitle + ". author " + currentBookAuthor + ". tags:" + currentBookTags + ". Progress " + currentProgress*100.0 + "%% . " + timePassed/MS_IN_SECOND + " aka "+timePassedInSeconds +" seconds passed ( "+totalTimeForCurrentBook / MS_IN_SECOND + " seconds total for this book in this session)");
+
+        copyCurrentToLast();
+
+        //send status update UI so if user wants to look - s/he can
+        sendStatusUpdateToUI(context, true);
+
+        /*
+         * One page was read (or at least user switched pages. Possbile backwards!)
+         * Report details to Parse
+         */
+        ParseObject report=new ParseObject(REPORT_TYPE_BOOK_READING_PROGRESS_REPORT);
+        //Title of book currently read
+        report.put(BOOK_TITLE,currentBookTitle);
+        //Author of currenly read book
+        report.put(BOOK_AUTHOR,currentBookAuthor);
+        /*
+         * comma-separated list of tags, like:
+         * romance_sf, sf_space
+         * sf_action
+         * Development,iOS Development, Languages & Tools
+         * sci, sci_space
+         *
+         */
+        report.put(BOOK_TAGS,currentBookTags);
+        // time for which this page was read, in seconds
+        report.put(TIME_PASSED,timePassedInSeconds);
+        //Progress, 0.0..1.0 value
+        report.put(BOOK_PROGRESS,currentProgress);
+        //basic device information string
+        report.put(DEVICE_TYPE,deviceInfoString);
+        /*
+         * number of page turns which leads to this page. i.e. how much time user switched times. no direct relation to current page,e
+         * it's possible for user to go backwards or one on-screen page not be one 'page' in terms currentPages uses...see above
+         */
+        report.put(NUM_PAGE_SWITCHES,numPagePageSwitches);
+
+        ParsePlatformUtils.saveReportToParse(report,context);
+
+        Map<String, String> dimensions = new HashMap<String, String>();
+        dimensions.put(BOOK_TITLE,currentBookTitle);
+        dimensions.put(BOOK_AUTHOR,currentBookAuthor);
+        dimensions.put(BOOK_TAGS,currentBookTags);
+        dimensions.put(BOOK_PROGRESS,Float.valueOf(currentProgress).toString());
+        dimensions.put(NUM_PAGE_SWITCHES,Long.valueOf(numPagePageSwitches).toString());
+        dimensions.put(TIME_PASSED,Double.valueOf(timePassedInSeconds).toString());
+
+        /*
+         * One page was read (or at least user switched pages. Possbile backwards!)
+         * but report details to (possibly) 3rd-party analytics system(s)
+         * In future some of personal details will be masked
+         */
+        //MyAnalytics.trackEvent("pageRead",dimensions);
+
+
+
+        // Book Switches are taken care of in other places
+        // TODO:send update notifications if needed
+    }
+    /**
      * Checks if one if one of supported reading apps are active.
      * Records switchto/from app events.
      * Sends analytics events
@@ -551,7 +690,8 @@ public class BookReadingsRecorder {
         //For now only Mantano Reader is supported
         if (!(topActivity.equals(AccessibilityRecorderService.MANTANO_READER_PACKAGE_NAME)  ||
                 topActivity.equals(AccessibilityRecorderService.MANTANO_READER_ESSENTIALS_PACKAGE_NAME)||
-                topActivity.equals(AccessibilityRecorderService.MANTANO_READER_LITE_PACKAGE_NAME))
+                topActivity.equals(AccessibilityRecorderService.MANTANO_READER_LITE_PACKAGE_NAME) ||
+                topActivity.equals(AccessibilityRecorderService.FBREADER_PACKAGE_NAME))
                 ){
             Log.i(TAG, "current activity is not reading app. it's "+topActivity+"|");
             recordSwitchAwayFromBook(context, SystemClock.elapsedRealtime());
