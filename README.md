@@ -30,7 +30,7 @@ Others are not supported yet.
 Please note authors of ebook readers don't endorse this app.
 
 # YotaPhone2 support
-* Currently YotapPhone2 supported as regular device (no support for Mantano's ability to use e-ink screen). This will be fixed if/when I get access to YotaPhone2
+* Currently YotaPhone2 supported as regular device (no support for Mantano's ability to use e-ink screen). This will be fixed if/when I get access to YotaPhone2
 
 # How to use application (assuming you use Google Play version):
 * Install one of supported ebook readers
