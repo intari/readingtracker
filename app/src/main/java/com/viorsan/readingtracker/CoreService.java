@@ -95,6 +95,10 @@ public class CoreService extends Service implements ApiClientImplementation.Conn
      * Disconnect from FBReader
      */
     private void disconnectFromFBReader() {
+        if (myApi==null) {
+            Log.e(TAG,"FBReader API not initialized");
+            return;
+        }
         try {
             myApi.clearHighlighting();
         } catch (ApiException e) {
