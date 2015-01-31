@@ -381,10 +381,14 @@ public class BookReadingsRecorder {
             intent.putExtra(READING_SESSION_TIME,totalTimeForLastBook/ MS_IN_SECOND);
             intent.putExtra(CURRENT_PAGE,lastCurrentPage);
             intent.putExtra(TOTAL_PAGES,lastTotalPages);
-            long pagesRead=Long.valueOf(currentPage)-startedPage;
-            intent.putExtra(PAGES_READ,pagesRead);//pages read, as in 'endPage-startPage'
-            intent.putExtra(NUM_PAGE_SWITCHES,Long.valueOf(numPagePageSwitches));//number of times user switches page
-
+            if (currentPage==null) {
+                intent.putExtra(PAGES_READ,0);//pages read, as in 'endPage-startPage'
+            }
+            else {
+                long pagesRead=Long.valueOf(currentPage)-startedPage;
+                intent.putExtra(PAGES_READ,pagesRead);//pages read, as in 'endPage-startPage'
+            }
+            intent.putExtra(NUM_PAGE_SWITCHES, Long.valueOf(numPagePageSwitches));//number of times user switches page
             LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
 
         }
