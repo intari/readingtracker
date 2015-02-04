@@ -22,7 +22,7 @@ import java.util.List;
  * Created by Dmitriy Kazimirov, e-mail:dmitriy.kazimirov@viorsan.com on 23.05.14.
  */
 
-public class CoreService extends Service implements ApiClientImplementation.ConnectionListener  {
+public class CoreService extends Service implements ApiClientImplementation.ConnectionListener,ApiListener  {
 
 
     public static final String FAKEAPP_DEVICELOCKED = "com.viorsan.readingtracker.DeviceLocked";
@@ -139,6 +139,7 @@ public class CoreService extends Service implements ApiClientImplementation.Conn
     public void onConnected() {
         Log.d(TAG,"onConnected() to FBReader");
         connectedToFBReader=true;
+        myApi.addListener(this);//manually add listener
         showConnectedBookInfo();
 
     }
@@ -569,7 +570,7 @@ public class CoreService extends Service implements ApiClientImplementation.Conn
                 String currentPageS=intent.getStringExtra(BookReadingsRecorder.CURRENT_PAGE);
                 String totalPageS=intent.getStringExtra(BookReadingsRecorder.TOTAL_PAGES);
 
-                Long pagesRead=intent.getLongExtra(BookReadingsRecorder.PAGES_READ,0);
+                Integer pagesRead=intent.getIntExtra(BookReadingsRecorder.PAGES_READ,0);
                 Long numPagePageSwitches=intent.getLongExtra(BookReadingsRecorder.NUM_PAGE_SWITCHES,0);
 
                 double pagesPerSecond=pagesRead.doubleValue()/totalTime.doubleValue();
