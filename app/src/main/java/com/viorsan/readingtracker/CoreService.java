@@ -212,16 +212,31 @@ public class CoreService extends Service implements ApiClientImplementation.Conn
             Log.d(TAG,"book title:"+bookTitle);
             Log.d(TAG,"language:"+languageCode);
             StringBuilder tagStringBuilder=new StringBuilder();
-            for (String tag:bookTags) {
-                tagStringBuilder.append(",");
-                tagStringBuilder.append(tag);
-                Log.d(TAG,"Tag:"+tag);
+            if (bookTags.size()>1) {
+                for (String tag:bookTags) {
+                    tagStringBuilder.append(",");
+                    tagStringBuilder.append(tag);
+                    Log.d(TAG,"Tag:"+tag);
+                }
             }
+            else {
+                String tag=bookTags.get(0);
+                tagStringBuilder.append(tag);
+                Log.d(TAG,"(alone) tag:"+tag);
+            }
+
             StringBuilder authorStringBuilder=new StringBuilder();
-            for (String author:bookAuthors) {
-                authorStringBuilder.append(",");
+            if (bookAuthors.size()>1) {
+                for (String author:bookAuthors) {
+                    authorStringBuilder.append(",");
+                    authorStringBuilder.append(author);
+                    Log.d(TAG,"Author:"+author);
+                }
+            }
+            else {
+                String author=bookAuthors.get(0);
                 authorStringBuilder.append(author);
-                Log.d(TAG,"Author:"+author);
+                Log.d(TAG,"(alone) author:"+author);
             }
             Log.d(TAG,String.format("Progress:%f%%",bookProgress*100.0));
 
