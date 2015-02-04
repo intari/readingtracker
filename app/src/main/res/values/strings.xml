@@ -53,6 +53,9 @@
     <string name="guiCurrentlyReadingLong">Reading %1$s by %2$s (page %3$s of %4$s) for %5$.2f minutes at %6$.2f pages per minute</string>
     <string name="guiCurrentlyReadingLongZeroSpeed">Reading %1$s by %2$s (page %3$s of %4$s) for %5$.2f minutes</string>
 
+    <string name="guiCurrentlyReadingLongProgress">Reading %1$s by %2$s, %3$.2f%% for %4$.2f minutes</string>
+
+
     <string name="tapMeCurrentlyReadingLong">%5$.2f minutes @ %6$.2f pages per minute (%3$s/%4$s). %1$s by %2$s</string>
     <string name="tapMeCurrentlyReadingShort">%1$s by %2$s</string>
     <string name="tapMeCurrentlyReadingLongZeroSpeed">%5$.2f minutes (%3$s/%4$s) %1$s by %2$s</string>

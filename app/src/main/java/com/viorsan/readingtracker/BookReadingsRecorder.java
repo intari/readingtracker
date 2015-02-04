@@ -35,7 +35,6 @@ public class BookReadingsRecorder {
     public static final String BOOK_AUTHOR = "bookAuthor";
     public static final String BOOK_TAGS = "bookTags";
     public static final String TOTAL_PAGES = "totalPages";
-    public static final String BOOK_PROGRESS = "bookProgress";
     public static final String CURRENT_PAGE = "currentPage";
     public static final String READING_APPLICATION = "readingApplication";
     public static final String DATA_SOURCE = "dataSource";
@@ -55,6 +54,7 @@ public class BookReadingsRecorder {
     public static final String NUM_PAGE_SWITCHES = "numPageSwitchesSinceSessionStart";
     //new-style reporing
     public static final String READING_PROGRESS="readingProgress";
+    public static final String READING_PROGRESS_AT_SESSION_START = "ReadingProgressAtSessionStart";
 
 
     private static BookReadingsRecorder self=null;
@@ -94,7 +94,6 @@ public class BookReadingsRecorder {
 
 
     String currentPageNumbers;//current page numbers, Mantano only
-    float currentProgress;//current progress,0.0..1.0, FBReader only right now
     String currentBookTitle;
     String currentBookAuthor;
     long currentTimestamp=0;
@@ -124,8 +123,9 @@ public class BookReadingsRecorder {
 //    long startedPage=0;//starting page, using to calculate amount of pages read
 //    long numPagePageSwitches=0;//total number of page switches
 
-    float currentReadingProgress=0.0f;//how much time we read
+    float currentReadingProgress=0.0f;//how much time we read,current progress,0.0..1.0, FBReader only right now
     float lastReadingProgress=0.0f;
+    float readingProgressAtSessionStart=0.0f;
 
      /**
      * Get's 'deviceType' string for use in many reports
@@ -157,7 +157,7 @@ public class BookReadingsRecorder {
         editor.putString(BOOK_TITLE,new String(title));
         editor.putString(BOOK_AUTHOR,new String(author));
         editor.putString(BOOK_TAGS,new String(tags));
-        editor.putFloat(READING_PROGRESS,new Float(readingProgress));
+        editor.putFloat(READING_PROGRESS, new Float(readingProgress));
 
         editor.commit();
 
@@ -332,9 +332,9 @@ public class BookReadingsRecorder {
         currentBookTitle=title;
         currentBookTags=tags;
         currentBookKnown=true;
-        currentProgress=progress;
         currentTimestamp=timestamp;
         currentReadingProgress=progress;
+        readingProgressAtSessionStart=progress;
 
         writeLastBookInfo(context,timestamp, currentBookTitle, currentBookAuthor,currentBookTags,progress);
 
@@ -345,7 +345,7 @@ public class BookReadingsRecorder {
         dimensions.put(BOOK_TITLE,currentBookTitle);
         dimensions.put(BOOK_AUTHOR,currentBookAuthor);
         dimensions.put(BOOK_TAGS,currentBookTags);
-        dimensions.put(READING_PROGRESS,new Float(currentReadingProgress).toString());
+        dimensions.put(READING_PROGRESS,new Float(currentReadingProgress).toString());//reading progress at session start
 
         //TODO:describe this in privacy policy, and really think if we need THIS data in 3rd-party analytical systems
         MyAnalytics.trackEvent("readingSessionStarted", dimensions);
@@ -392,6 +392,7 @@ public class BookReadingsRecorder {
             intent.putExtra(BOOK_TAGS,lastBookTags);
             intent.putExtra(READING_SESSION_TIME,totalTimeForLastBook/ MS_IN_SECOND);
             intent.putExtra(READING_PROGRESS,currentReadingProgress);
+            intent.putExtra(READING_PROGRESS_AT_SESSION_START,readingProgressAtSessionStart);
 /*
             intent.putExtra(CURRENT_PAGE,lastCurrentPage);
             intent.putExtra(TOTAL_PAGES,lastTotalPages);
@@ -635,11 +636,11 @@ public class BookReadingsRecorder {
 
         totalTimeForCurrentBook=totalTimeForCurrentBook+timePassed;
         currentTimestamp=timestamp;
-        currentProgress=progress;
+        currentReadingProgress=progress;
 
         //TODO:send analytics event
 
-        Log.i(TAG, "Title:" + currentBookTitle + ". author " + currentBookAuthor + ". tags:" + currentBookTags + ". Progress " + currentProgress*100.0 + "%% . " + timePassed/MS_IN_SECOND + " aka "+timePassedInSeconds +" seconds passed ( "+totalTimeForCurrentBook / MS_IN_SECOND + " seconds total for this book in this session)");
+        Log.i(TAG, "recordProgressUpdate:Title:" + currentBookTitle + ". author " + currentBookAuthor + ". tags:" + currentBookTags + ". Progress " + currentReadingProgress*100.0 + "%% . " + timePassed/MS_IN_SECOND + " aka "+timePassedInSeconds +" seconds passed ( "+totalTimeForCurrentBook / MS_IN_SECOND + " seconds total for this book in this session)");
 
         copyCurrentToLast();
 
@@ -667,7 +668,9 @@ public class BookReadingsRecorder {
         // time for which this page was read, in seconds
         report.put(TIME_PASSED,timePassedInSeconds);
         //Progress, 0.0..1.0 value
-        report.put(BOOK_PROGRESS,currentProgress);
+        report.put(READING_PROGRESS,currentReadingProgress);
+        //Progress at start of reading session, 0.0..1.0 value
+        report.put(READING_PROGRESS_AT_SESSION_START,readingProgressAtSessionStart);
         //basic device information string
         report.put(DEVICE_TYPE,deviceInfoString);
         /*
@@ -681,7 +684,8 @@ public class BookReadingsRecorder {
         dimensions.put(BOOK_TITLE,currentBookTitle);
         dimensions.put(BOOK_AUTHOR,currentBookAuthor);
         dimensions.put(BOOK_TAGS,currentBookTags);
-        dimensions.put(BOOK_PROGRESS,Float.valueOf(currentProgress).toString());
+        dimensions.put(READING_PROGRESS,Float.valueOf(currentReadingProgress).toString());
+        dimensions.put(READING_PROGRESS_AT_SESSION_START,Float.valueOf(readingProgressAtSessionStart).toString());
         dimensions.put(TIME_PASSED,Double.valueOf(timePassedInSeconds).toString());
 
         /*
@@ -763,7 +767,8 @@ public class BookReadingsRecorder {
             return;
         }
         if ((currentBookTitle != null) && (currentBookAuthor != null)) {
-            Log.i(TAG, "Done reading " + currentBookTitle + " by " + currentBookAuthor + " with tags " + currentBookTags + ". Last page " + currentPage + " of " + currentTotalPages+". Session took "+totalTimeForCurrentBook/MS_IN_SECOND+" seconds");
+            float progressDelta=currentReadingProgress-readingProgressAtSessionStart;
+            Log.i(TAG, "Done reading " + currentBookTitle + " by " + currentBookAuthor + " with tags " + currentBookTags + ". Last page " + currentPage + " of " + currentTotalPages+". Session took "+totalTimeForCurrentBook/MS_IN_SECOND+" seconds."+progressDelta*100.0+" %% read");
 
 
             ParseObject report=new ParseObject(REPORT_TYPE_BOOK_READING_SESSION_COMPLETED);
@@ -774,6 +779,7 @@ public class BookReadingsRecorder {
             //report.put(READING_SESSION_TIME_MS,totalTimeForCurrentBook);
             report.put(READING_SESSION_TIME,totalTimeForCurrentBook/MS_IN_SECOND);
             report.put(DEVICE_TYPE,deviceInfoString);
+
             /*
             //Page on which reading session ended. same comments as for currentPage applies
             if (currentPage!=null) {
@@ -790,7 +796,8 @@ public class BookReadingsRecorder {
             */
             //TODO:report percentage read,likely using prevPercentageRead
 
-
+            ParsePlatformUtils.saveReportToParse(report,context);
+/*
             if (totalTimeForCurrentBook > MIN_SECONDS_TO_READ_PAGE) {
                 ParsePlatformUtils.saveReportToParse(report,context);
             }
@@ -799,6 +806,7 @@ public class BookReadingsRecorder {
                 Log.i(TAG,"BookReadingsRecorder:RecordSwitchAwayFromBooks:reading only "+totalTimeForCurrentBook+" seconds     is not really READING");
 
             }
+*/
             //report analytics
 
             dimensions.put(BOOK_TITLE,currentBookTitle);
@@ -821,6 +829,7 @@ public class BookReadingsRecorder {
             totalTimeForCurrentBook=0;
             prevCurrentPage="";
             currentReadingProgress=0.0f;
+            readingProgressAtSessionStart=0.0f;
 
 
 

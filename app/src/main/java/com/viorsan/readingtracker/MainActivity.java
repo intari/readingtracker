@@ -356,6 +356,7 @@ public class MainActivity extends ActionBarActivity implements GoToAccessibility
             public void onReceive(Context context, Intent intent) {
                 String bookTitle=intent.getStringExtra(BookReadingsRecorder.BOOK_TITLE);
                 String bookAuthor=intent.getStringExtra(BookReadingsRecorder.BOOK_AUTHOR);
+
                 String bookTags=intent.getStringExtra(BookReadingsRecorder.BOOK_TAGS);
                 Double totalTime=intent.getDoubleExtra(BookReadingsRecorder.READING_SESSION_TIME,0);
                 String currentPageS=intent.getStringExtra(BookReadingsRecorder.CURRENT_PAGE);
@@ -365,9 +366,17 @@ public class MainActivity extends ActionBarActivity implements GoToAccessibility
                 Long numPagePageSwitches=intent.getLongExtra(BookReadingsRecorder.NUM_PAGE_SWITCHES,0);
 
                 double pagesPerSecond=pagesRead.doubleValue()/totalTime.doubleValue();
+                float currentProgress=intent.getFloatExtra(BookReadingsRecorder.READING_PROGRESS,0);
 
 
                 String msg;
+                if (currentProgress>0.0) {
+                    msg=getResources().getString(R.string.guiCurrentlyReadingLongProgress,bookTitle,bookAuthor,currentProgress*100.0f,totalTime/60.0);
+
+                } else {
+                    msg=getResources().getString(R.string.guiCurrentlyReadingShort,bookTitle,bookAuthor);
+                }
+                /*
                 if (currentPageS!=null) {
                     if (pagesRead==0) {
                         msg=getResources().getString(R.string.guiCurrentlyReadingLongZeroSpeed,bookTitle,bookAuthor,currentPageS,totalPageS,totalTime/60.0);
@@ -383,8 +392,10 @@ public class MainActivity extends ActionBarActivity implements GoToAccessibility
                 {
                     //update
                     //msg=String.format("%s от %s",bookTitle,bookAuthor);
+
                     msg=getResources().getString(R.string.guiCurrentlyReadingShort,bookTitle,bookAuthor);
                 }
+                */
                 Log.i(TAG,"Got reading update:"+msg);
                 ParseUser currentUser=ParsePlatformUtils.getCurrentParseUser();
 

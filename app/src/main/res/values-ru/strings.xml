@@ -51,6 +51,7 @@
     <string name="readingTrackerVersionLineDefault">Загрузка…</string>
     <string name="readingTrackerVersion">Версия %1$s  (%2$s / %3$s) </string>
     <string name="readingTrackerCopyright">Reading Tracker © 2014,2015 Дмитрий Казимиров</string>
+    <string name="guiCurrentlyReadingLongProgress">Чтение %1$s от %2$s, %3$.2f%% уже %4$.2f минут</string>
 
 
 </resources>
