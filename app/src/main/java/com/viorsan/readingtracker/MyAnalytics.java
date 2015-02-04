@@ -25,7 +25,7 @@ public class MyAnalytics {
 
     private static HashMap<String, String> userData = new HashMap<String, String>();
 
-    private static final boolean flurryEnabled=false;
+    private static final boolean flurryEnabled=true;
 
     private static boolean countlyStarted=false;
     private static MyApplication app;
