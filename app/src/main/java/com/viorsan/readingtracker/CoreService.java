@@ -673,6 +673,7 @@ public class CoreService extends Service implements ApiClientImplementation.Conn
 
         stopReceivers();
         stopForeground(true);
+        myApi.removeListener(this);
         disconnectFromFBReader();
         Log.d(TAG,"Called stopForeground()");
         MyAnalytics.startAnalyticsWithContext(this);
