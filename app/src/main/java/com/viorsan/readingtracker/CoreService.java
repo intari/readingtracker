@@ -61,6 +61,7 @@ public class CoreService extends Service implements ApiClientImplementation.Conn
     //hash of last book
     private String fbReaderHash="";
     private boolean connectedToFBReader=false;
+    private boolean inReadingModeFBReader=false;
     //how much we read, if we don't knew yet...it's Not A Number. right?
     private float fbReadingProgress=Float.MIN_VALUE;
 
@@ -95,6 +96,7 @@ public class CoreService extends Service implements ApiClientImplementation.Conn
      * Disconnect from FBReader
      */
     private void disconnectFromFBReader() {
+        inReadingModeFBReader=false;
         if (myApi==null) {
             Log.e(TAG,"FBReader API not initialized");
             return;
@@ -139,29 +141,39 @@ public class CoreService extends Service implements ApiClientImplementation.Conn
     public void onConnected() {
         Log.d(TAG,"onConnected() to FBReader");
         connectedToFBReader=true;
+        inReadingModeFBReader=false;
         myApi.addListener(this);//manually add listener
         showConnectedBookInfo();
-
     }
     /**
      * implements ApiClientImplementation.OnEvent
      */
     public void onEvent(String event) {
         Log.d(TAG,"OnEvent:"+event+" FBReader");
-      /* if (event==ApiListener.EVENT_READ_MODE_OPENED) {
-           Log.d(TAG,"Book opened");
 
+       if (event.equals(ApiListener.EVENT_READ_MODE_OPENED)) {
+           Log.d(TAG,"Book opened");
+           inReadingModeFBReader=true;
+           updateInitialFBReaderReadingData();
+       } else if (event.equals(ApiListener.EVENT_READ_MODE_CLOSED)) {
+           Log.d(TAG,"Book closed");
+           inReadingModeFBReader=false;
+           BookReadingsRecorder.getBookReadingsRecorder(this).recordSwitchAwayFromBook(this,SystemClock.elapsedRealtime());
        }
-       */
+
 
     }
-    private void  pollFBReaderAPI() {
+    /* update FBReader's reading progress */
+    private void updateFBReaderProgress() {
         if (!isFBReaderTopActivity()) {
             return;
         }
         if (!connectedToFBReader) {
             disconnectFromFBReader();
             initFBReader();
+            return;
+        }
+        if (!inReadingModeFBReader) {
             return;
         }
         try {
@@ -184,14 +196,15 @@ public class CoreService extends Service implements ApiClientImplementation.Conn
                 //TODO:call for update
             }
 
-
+        }   catch (ApiException e) {
+            Log.d(TAG,"Error:"+e.toString());
+            e.printStackTrace();
+            disconnectFromFBReader();
+            initFBReader();
         }
-        catch (ApiException e) {
-                Log.d(TAG,"Error:"+e.toString());
-                e.printStackTrace();
-                disconnectFromFBReader();
-                initFBReader();
-            }
+    }
+    private void  updateInitialFBReaderReadingData() {
+        updateFBReaderProgress();
     }
     public void showConnectedBookInfo() {
         if (myApi==null) {
@@ -451,7 +464,7 @@ public class CoreService extends Service implements ApiClientImplementation.Conn
             //confugure FBReader poller
             new CountDownTimer(YEAR_IN_MS, FBREADER_POLL_INTERVAL_MILLIS) {
                 public void onTick(long msUntilFinish) {
-                    pollFBReaderAPI();
+                    updateFBReaderProgress();
                 }
 
                 public  void  onFinish() {}
