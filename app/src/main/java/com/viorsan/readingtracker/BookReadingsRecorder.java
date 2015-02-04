@@ -23,7 +23,7 @@ import java.util.regex.Pattern;
 public class BookReadingsRecorder {
     static final String TAG = "ReadingTracker::BookReadingsRecorder";
 
-    public static final String REPORT_TYPE_BOOK_READING_SESSION_COMPLETED = "BookReadingSesssionCompleted";
+    public static final String REPORT_TYPE_BOOK_READING_SESSION_COMPLETED = "BookReadingSesssionCompleted2015_1";
     public static final String READING_SESSION_TIME_MS = "readingSessionTimeMS";
     public static final String READING_SESSION_TIME = "readingSessionTime";
     //How we are report ourselves in our brodcasts
@@ -44,7 +44,7 @@ public class BookReadingsRecorder {
     public static final String BOOK_READING_PREFS="com.viorsan.LastReadBooks";
     public static final String TIME_PASSED = "TimePassed";
     public static final String TIME_PASSED_IN_SECONDS ="TimePassedInSeconds";
-    public static final String REPORT_TYPE_BOOK_READING_PROGRESS_REPORT = "BookReadingProgressReportV2";//non-V2 used time in ms and not seconds
+    public static final String REPORT_TYPE_BOOK_READING_PROGRESS_REPORT = "BookReadingProgressReport2015_1";//non-V2 used time in ms and not seconds
     public static final String DEVICE_TYPE = "deviceType";
     public static final double MIN_SECONDS_TO_READ_PAGE = 1.0;
     public static final double MAX_SECONDS_TO_READ_PAGE = 180.0;
@@ -53,6 +53,8 @@ public class BookReadingsRecorder {
     public static final String PAGES_READ = "pagesReadSinceSessionStart";
     public static final String END_PAGE = "endPage";
     public static final String NUM_PAGE_SWITCHES = "numPageSwitchesSinceSessionStart";
+    //new-style reporing
+    public static final String READING_PROGRESS="readingProgress";
 
 
     private static BookReadingsRecorder self=null;
@@ -99,14 +101,14 @@ public class BookReadingsRecorder {
     boolean currentBookKnown=false;
     String currentBookTags;
     Pattern pagenumberParsePattern=Pattern.compile("(\\d+)\\s*/\\s*(\\d+)");
-    String currentTotalPages;
-    String currentPage;
+    String currentTotalPages;//TODO:refactor so it's no longer needed
+    String currentPage;//TODO:refactor so it's no longer needed
     String prevBookTitle;
     String prevBookAuthor;
     long prevTimestamp;
     String prevBookTags;
-    String prevTotalPages;
-    String prevCurrentPage="";
+//    String prevTotalPages;
+    String prevCurrentPage="";//TODO:refactor so it's no longer needed
     long totalTimeForCurrentBook;
     String deviceInfoString=null;
 
@@ -114,13 +116,16 @@ public class BookReadingsRecorder {
     boolean lastReadBookKnown=false;
     String lastBookTitle;
     String lastBookAuthor;
-    String lastCurrentPage;
-    String lastTotalPages;
+    String lastCurrentPage;//TODO:refactor so it's no longer needed
+    String lastTotalPages;//TODO:refactor so it's no longer needed
     String lastBookTags;
     long  totalTimeForLastBook;
 
-    long startedPage=0;//starting page, using to calculate amount of pages read
-    long numPagePageSwitches=0;//total number of page switches
+//    long startedPage=0;//starting page, using to calculate amount of pages read
+//    long numPagePageSwitches=0;//total number of page switches
+
+    float currentReadingProgress=0.0f;//how much time we read
+    float lastReadingProgress=0.0f;
 
      /**
      * Get's 'deviceType' string for use in many reports
@@ -145,13 +150,14 @@ public class BookReadingsRecorder {
      * @param author - author or authors (can be , or & - separate)
      * @param tags - genre tags
      */
-    private void writeLastBookInfo(Context context, long timestamp, String title,String author, String tags) {
+    private void writeLastBookInfo(Context context, long timestamp, String title,String author, String tags,float readingProgress) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(BOOK_READING_PREFS, Context.MODE_PRIVATE);
 
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(BOOK_TITLE,new String(title));
         editor.putString(BOOK_AUTHOR,new String(author));
         editor.putString(BOOK_TAGS,new String(tags));
+        editor.putFloat(READING_PROGRESS,new Float(readingProgress));
 
         editor.commit();
 
@@ -166,6 +172,7 @@ public class BookReadingsRecorder {
             lastTotalPages=currentTotalPages;
             lastBookTags=currentBookTags;
             totalTimeForLastBook=totalTimeForCurrentBook;
+            lastReadingProgress=currentReadingProgress;
         }
     }
 
@@ -180,9 +187,10 @@ public class BookReadingsRecorder {
         currentBookTitle=sharedPreferences.getString(BOOK_TITLE,"Unknown");
         currentBookAuthor=sharedPreferences.getString(BOOK_AUTHOR,"Unknown");
         currentBookTags=sharedPreferences.getString(BOOK_TAGS,"");
+        currentReadingProgress=sharedPreferences.getFloat(READING_PROGRESS,0.0f);
         currentTimestamp= timestamp;
 
-        prevCurrentPage="";
+    //    prevCurrentPage="";
 
         currentBookKnown=true;
         copyCurrentToLast();
@@ -198,6 +206,7 @@ public class BookReadingsRecorder {
      * @param tags - - genre tags
      * @param pageNumbers - initial unprocessed version of current pagenumber(s). See recordPageSwitch()
      * @throws InvalidArgumentsException
+     * TODO:this function needs to be rewritten to correctly determine current progress from pageNumbers
      */
     public void recordNewBook(Context context,long timestamp, String author,String title, String tags,String pageNumbers) throws InvalidArgumentsException {
 
@@ -225,10 +234,10 @@ public class BookReadingsRecorder {
         currentBookKnown=true;
         currentPageNumbers=pageNumbers;
         currentTimestamp=timestamp;
-        prevCurrentPage="";
-
-        writeLastBookInfo(context,timestamp, currentBookTitle, currentBookAuthor,currentBookTags);
-        numPagePageSwitches=0;
+      //  prevCurrentPage="";
+        currentReadingProgress=0.0f;//TODO:determine correct progress
+        writeLastBookInfo(context,timestamp, currentBookTitle, currentBookAuthor,currentBookTags,currentReadingProgress);
+     //   numPagePageSwitches=0;
 
         /*
            subscribe to Parse Push channel for this author on this device, just for fun
@@ -285,9 +294,12 @@ public class BookReadingsRecorder {
 
         recordPageSwitch(context,timestamp,pageNumbers);
         //at least on 5.0.1 it's possible that recordPageSwitch will not parse currentPage on initial book opening so...
+/*
         if (currentPage!=null) {
             startedPage=Long.valueOf(currentPage);
         }
+        */
+
     }
 
     /**
@@ -322,10 +334,9 @@ public class BookReadingsRecorder {
         currentBookKnown=true;
         currentProgress=progress;
         currentTimestamp=timestamp;
-        prevCurrentPage="";
+        currentReadingProgress=progress;
 
-        writeLastBookInfo(context,timestamp, currentBookTitle, currentBookAuthor,currentBookTags);
-        numPagePageSwitches=0;
+        writeLastBookInfo(context,timestamp, currentBookTitle, currentBookAuthor,currentBookTags,progress);
 
 
 
@@ -334,6 +345,7 @@ public class BookReadingsRecorder {
         dimensions.put(BOOK_TITLE,currentBookTitle);
         dimensions.put(BOOK_AUTHOR,currentBookAuthor);
         dimensions.put(BOOK_TAGS,currentBookTags);
+        dimensions.put(READING_PROGRESS,new Float(currentReadingProgress).toString());
 
         //TODO:describe this in privacy policy, and really think if we need THIS data in 3rd-party analytical systems
         MyAnalytics.trackEvent("readingSessionStarted", dimensions);
@@ -379,6 +391,8 @@ public class BookReadingsRecorder {
             intent.putExtra(BOOK_AUTHOR,lastBookAuthor);
             intent.putExtra(BOOK_TAGS,lastBookTags);
             intent.putExtra(READING_SESSION_TIME,totalTimeForLastBook/ MS_IN_SECOND);
+            intent.putExtra(READING_PROGRESS,currentReadingProgress);
+/*
             intent.putExtra(CURRENT_PAGE,lastCurrentPage);
             intent.putExtra(TOTAL_PAGES,lastTotalPages);
             if (currentPage==null) {
@@ -389,6 +403,7 @@ public class BookReadingsRecorder {
                 intent.putExtra(PAGES_READ,pagesRead);//pages read, as in 'endPage-startPage'
             }
             intent.putExtra(NUM_PAGE_SWITCHES, Long.valueOf(numPagePageSwitches));//number of times user switches page
+*/
             LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
 
         }
@@ -410,6 +425,7 @@ public class BookReadingsRecorder {
      * @param timestamp - timestamp when this data were actual
      * @param pageNumbers - initial unprocessed version of current pagenumber(s).
      * @throws InvalidArgumentsException
+     * TODO:likely needs to be refactored
      */
     public void recordPageSwitch(Context context,long timestamp, String pageNumbers) throws InvalidArgumentsException  {
 
@@ -427,6 +443,15 @@ public class BookReadingsRecorder {
 
             String currPage = matcher.group(1);
             String totalPages = matcher.group(2);
+            try {
+                int page=Integer.valueOf(currPage);
+                int total=Integer.valueOf(totalPages);
+                currentReadingProgress=page/total;
+            } catch (Exception ex) {
+                Log.e(TAG,"cant't get reading progress:"+ex.toString());
+                return;
+            }
+
             if (!currentBookKnown) {
                 Log.i(TAG, "Reading last known book...");
                 readLastBookInfo(context,timestamp);
@@ -458,13 +483,13 @@ public class BookReadingsRecorder {
             //or if it took too long
 
             currentPage=currPage;
-            currentTotalPages=totalPages;
+            //currentTotalPages=totalPages;
             totalTimeForCurrentBook=totalTimeForCurrentBook+timePassed;
             currentTimestamp=timestamp;
 
             prevCurrentPage=pageNumbers;
 
-            numPagePageSwitches++;
+            //numPagePageSwitches++;
             if (timePassedInSeconds >MAX_SECONDS_TO_READ_PAGE) {
                 Log.i(TAG,"BookReadingsRecorder:RecordPageSwitch:read for more  than "+MAX_SECONDS_TO_READ_PAGE+" seconds. Only "+timePassedInSeconds+" seconds. Assuming user was away. Not recording.early exit");
                 //account for time used!
@@ -475,7 +500,7 @@ public class BookReadingsRecorder {
                 dimensions.put(BOOK_TAGS,currentBookTags);
                 dimensions.put(CURRENT_PAGE,currentPage);
                 dimensions.put(TOTAL_PAGES,totalPages);
-                dimensions.put(NUM_PAGE_SWITCHES,Long.valueOf(numPagePageSwitches).toString());
+              //  dimensions.put(NUM_PAGE_SWITCHES,Long.valueOf(numPagePageSwitches).toString());
                 dimensions.put(TIME_PASSED,Double.valueOf(timePassedInSeconds).toString());
 
                 /*
@@ -489,7 +514,7 @@ public class BookReadingsRecorder {
                 return;
             }
 
-            Log.i(TAG, "Title:" + currentBookTitle + ". author " + currentBookAuthor + ". tags:" + currentBookTags + ". page " + currentPage + " of " + currentTotalPages + ". " + timePassed/MS_IN_SECOND + " aka "+timePassedInSeconds +" seconds passed ( "+totalTimeForCurrentBook / MS_IN_SECOND + " seconds total for this book in this session)");
+            //Log.i(TAG, "Title:" + currentBookTitle + ". author " + currentBookAuthor + ". tags:" + currentBookTags + ". page " + currentPage + " of " + currentTotalPages + ". " + timePassed/MS_IN_SECOND + " aka "+timePassedInSeconds +" seconds passed ( "+totalTimeForCurrentBook / MS_IN_SECOND + " seconds total for this book in this session)");
 
 
             copyCurrentToLast();
@@ -501,7 +526,7 @@ public class BookReadingsRecorder {
              * One page was read (or at least user switched pages. Possbile backwards!)
              * Report details to Parse
              */
-            ParseObject report=new ParseObject(REPORT_TYPE_BOOK_READING_PROGRESS_REPORT);
+            ParseObject report=new ParseObject("OLD_UNREFOACTORD_PROGRESS_RTEPORTS");
             //Title of book currently read
             report.put(BOOK_TITLE,currentBookTitle);
             //Author of currenly read book
@@ -546,7 +571,7 @@ public class BookReadingsRecorder {
              * number of page turns which leads to this page. i.e. how much time user switched times. no direct relation to current page,e
              * it's possible for user to go backwards or one on-screen page not be one 'page' in terms currentPages uses...see above
              */
-            report.put(NUM_PAGE_SWITCHES,numPagePageSwitches);
+            //report.put(NUM_PAGE_SWITCHES,numPagePageSwitches);
 
             ParsePlatformUtils.saveReportToParse(report,context);
 
@@ -556,7 +581,7 @@ public class BookReadingsRecorder {
             dimensions.put(BOOK_TAGS,currentBookTags);
             dimensions.put(CURRENT_PAGE,currentPage);
             dimensions.put(TOTAL_PAGES,totalPages);
-            dimensions.put(NUM_PAGE_SWITCHES,Long.valueOf(numPagePageSwitches).toString());
+            //dimensions.put(NUM_PAGE_SWITCHES,Long.valueOf(numPagePageSwitches).toString());
             dimensions.put(TIME_PASSED,Double.valueOf(timePassedInSeconds).toString());
 
             /*
@@ -612,7 +637,6 @@ public class BookReadingsRecorder {
         currentTimestamp=timestamp;
         currentProgress=progress;
 
-        numPagePageSwitches++;
         //TODO:send analytics event
 
         Log.i(TAG, "Title:" + currentBookTitle + ". author " + currentBookAuthor + ". tags:" + currentBookTags + ". Progress " + currentProgress*100.0 + "%% . " + timePassed/MS_IN_SECOND + " aka "+timePassedInSeconds +" seconds passed ( "+totalTimeForCurrentBook / MS_IN_SECOND + " seconds total for this book in this session)");
@@ -650,7 +674,6 @@ public class BookReadingsRecorder {
          * number of page turns which leads to this page. i.e. how much time user switched times. no direct relation to current page,e
          * it's possible for user to go backwards or one on-screen page not be one 'page' in terms currentPages uses...see above
          */
-        report.put(NUM_PAGE_SWITCHES,numPagePageSwitches);
 
         ParsePlatformUtils.saveReportToParse(report,context);
 
@@ -659,7 +682,6 @@ public class BookReadingsRecorder {
         dimensions.put(BOOK_AUTHOR,currentBookAuthor);
         dimensions.put(BOOK_TAGS,currentBookTags);
         dimensions.put(BOOK_PROGRESS,Float.valueOf(currentProgress).toString());
-        dimensions.put(NUM_PAGE_SWITCHES,Long.valueOf(numPagePageSwitches).toString());
         dimensions.put(TIME_PASSED,Double.valueOf(timePassedInSeconds).toString());
 
         /*
@@ -745,20 +767,28 @@ public class BookReadingsRecorder {
 
 
             ParseObject report=new ParseObject(REPORT_TYPE_BOOK_READING_SESSION_COMPLETED);
+            Map<String, String> dimensions = new HashMap<String, String>(); //analytics
             report.put(BOOK_TITLE,currentBookTitle);
             report.put(BOOK_AUTHOR,currentBookAuthor);
             report.put(BOOK_TAGS,currentBookTags);
             //report.put(READING_SESSION_TIME_MS,totalTimeForCurrentBook);
             report.put(READING_SESSION_TIME,totalTimeForCurrentBook/MS_IN_SECOND);
             report.put(DEVICE_TYPE,deviceInfoString);
+            /*
             //Page on which reading session ended. same comments as for currentPage applies
-            report.put(END_PAGE,Long.valueOf(currentPage));
+            if (currentPage!=null) {
+                report.put(END_PAGE,Long.valueOf(currentPage));
+                Long pagesRead=Integer.valueOf(currentPage)-startedPage;
+                report.put(PAGES_READ,pagesRead);//pages read, as in 'endPage-startPage'
+                dimensions.put(PAGES_READ,Long.valueOf(pagesRead).toString());
+
+            }
+
 
             report.put(START_PAGE,startedPage);
-            long pagesRead=Long.valueOf(currentPage)-startedPage;
-            report.put(PAGES_READ,pagesRead);//pages read, as in 'endPage-startPage'
-            report.put(NUM_PAGE_SWITCHES,Long.valueOf(numPagePageSwitches));//number of times user switches page
-
+            report.put(NUM_PAGE_SWITCHES,numPagePageSwitches);//number of times user switches page
+            */
+            //TODO:report percentage read,likely using prevPercentageRead
 
 
             if (totalTimeForCurrentBook > MIN_SECONDS_TO_READ_PAGE) {
@@ -771,16 +801,12 @@ public class BookReadingsRecorder {
             }
             //report analytics
 
-            Map<String, String> dimensions = new HashMap<String, String>();
             dimensions.put(BOOK_TITLE,currentBookTitle);
             dimensions.put(BOOK_AUTHOR,currentBookAuthor);
             dimensions.put(BOOK_TAGS,currentBookTags);
-            dimensions.put(END_PAGE,currentPage);
+            //TODO:total percentage read
             Double totalReadingSessionTime=totalTimeForCurrentBook/MS_IN_SECOND;
             dimensions.put(READING_SESSION_TIME,totalReadingSessionTime.toString());
-            dimensions.put(START_PAGE,Long.valueOf(startedPage).toString());
-            dimensions.put(PAGES_READ,Long.valueOf(pagesRead).toString());
-            dimensions.put(NUM_PAGE_SWITCHES,Long.valueOf(numPagePageSwitches).toString());
 
             //TODO:describe this in privacy policy, and really think if we need THIS data in 3rd-party analytical systems
             MyAnalytics.trackEvent("readingSessionCompleted", dimensions);
@@ -794,6 +820,8 @@ public class BookReadingsRecorder {
             currentBookTags = "";
             totalTimeForCurrentBook=0;
             prevCurrentPage="";
+            currentReadingProgress=0.0f;
+
 
 
 

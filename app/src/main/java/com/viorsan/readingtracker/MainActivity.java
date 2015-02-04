@@ -361,7 +361,7 @@ public class MainActivity extends ActionBarActivity implements GoToAccessibility
                 String currentPageS=intent.getStringExtra(BookReadingsRecorder.CURRENT_PAGE);
                 String totalPageS=intent.getStringExtra(BookReadingsRecorder.TOTAL_PAGES);
 
-                Long pagesRead=intent.getLongExtra(BookReadingsRecorder.PAGES_READ,0);
+                Integer pagesRead=intent.getIntExtra(BookReadingsRecorder.PAGES_READ,0);
                 Long numPagePageSwitches=intent.getLongExtra(BookReadingsRecorder.NUM_PAGE_SWITCHES,0);
 
                 double pagesPerSecond=pagesRead.doubleValue()/totalTime.doubleValue();
