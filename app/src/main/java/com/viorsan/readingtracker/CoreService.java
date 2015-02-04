@@ -96,16 +96,22 @@ public class CoreService extends Service implements ApiClientImplementation.Conn
      * Disconnect from FBReader
      */
     private void disconnectFromFBReader() {
-        inReadingModeFBReader=false;
+        inReadingModeFBReader=false;//no we don't read any book now
+
         if (myApi==null) {
+            //don't disconnect if we don't connected
             Log.e(TAG,"FBReader API not initialized");
             return;
         }
         try {
+            //if we highlighted something, undo it (we usually don't but...)
             myApi.clearHighlighting();
         } catch (ApiException e) {
             e.printStackTrace();
         }
+        //remove api listener
+        myApi.removeListener(this);
+        //actually disconnect
         myApi.disconnect();
     }
     /**
@@ -142,7 +148,7 @@ public class CoreService extends Service implements ApiClientImplementation.Conn
         Log.d(TAG,"onConnected() to FBReader");
         connectedToFBReader=true;
         inReadingModeFBReader=false;
-        myApi.addListener(this);//manually add listener
+        myApi.addListener(this);//manually add listener (onEvent)
         showConnectedBookInfo();
     }
     /**
@@ -165,46 +171,58 @@ public class CoreService extends Service implements ApiClientImplementation.Conn
     }
     /* update FBReader's reading progress */
     private void updateFBReaderProgress() {
+        //FBReader is not foreground activity? do nothing
         if (!isFBReaderTopActivity()) {
             return;
         }
+        //Don't connected to FBReader? just init
         if (!connectedToFBReader) {
             disconnectFromFBReader();
             initFBReader();
             return;
         }
+        //not in 'reading mode'=no 'reading started' event ? do nothing
         if (!inReadingModeFBReader) {
             return;
         }
+        //get currently reading information
         try {
+            //get book identification hash
             String bookHash=myApi.getBookHash();
             if (bookHash==null) {
                 //null hash, no book or API error
                 Log.e(TAG," FBReader API returned empty hash");
                 return;
             }
+            //it's new book
             if (!bookHash.equals(fbReaderHash)) {
                 Log.d(TAG, "Hash not same, new book?");
+                //report to readingsRecorder & dump to logcat
                 showConnectedBookInfo();
                 fbReaderHash=bookHash;
             }
-            //same hash
+            //same hash or we update logcat, report progress
             float bookProgress=myApi.getBookProgress();
             if (Math.abs(bookProgress-fbReadingProgress)> MINIMAL_READING_PROGRESS_FBREADER) {
-                Log.d(TAG,String.format("Progress changed, old %f%%, new %f%%",fbReadingProgress*100.0,bookProgress*100.0));
+                Log.d(TAG,String.format("Progress changed, old %-5.2f%%, new %-5.2f%%",fbReadingProgress*100.0,bookProgress*100.0));
                 fbReadingProgress=bookProgress;
-                //TODO:call for update
+                BookReadingsRecorder.getBookReadingsRecorder(this).recordProgressUpdate(this,SystemClock.elapsedRealtime(),bookProgress);
             }
 
         }   catch (ApiException e) {
+            //API error? just re-init
             Log.d(TAG,"Error:"+e.toString());
             e.printStackTrace();
             disconnectFromFBReader();
             initFBReader();
+        } catch (BookReadingsRecorder.InvalidArgumentsException e) {
+            Log.d(TAG,"Error:"+e.toString());
+            e.printStackTrace();
         }
     }
     private void  updateInitialFBReaderReadingData() {
         updateFBReaderProgress();
+        showConnectedBookInfo();//will also update initial state
     }
     public void showConnectedBookInfo() {
         if (myApi==null) {
@@ -686,7 +704,7 @@ public class CoreService extends Service implements ApiClientImplementation.Conn
 
         stopReceivers();
         stopForeground(true);
-        myApi.removeListener(this);
+        //disconnect from FBReader
         disconnectFromFBReader();
         Log.d(TAG,"Called stopForeground()");
         MyAnalytics.startAnalyticsWithContext(this);
