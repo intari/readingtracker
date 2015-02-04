@@ -34,14 +34,15 @@ public class ApiClientImplementation implements ServiceConnection, Api, ApiMetho
 			if (myInterface == null || myApiListeners.size() == 0) {
 				return;
 			}
-			final int code = intent.getIntExtra(EVENT_TYPE, -1);
-			if (code != -1) {
-				synchronized (myApiListeners) {
-					for (ApiListener l : myApiListeners) {
-						l.onEvent(code);
-					}
-				}
-			}
+            final String code = intent.getStringExtra(EVENT_TYPE);
+            if (code!=null) {
+                synchronized  (myApiListeners) {
+                    for (ApiListener l:myApiListeners) {
+                        l.onEvent(code);
+                    }
+                }
+
+            }
 		}
 	};
 

@@ -145,7 +145,7 @@ public class CoreService extends Service implements ApiClientImplementation.Conn
     /**
      * implements ApiClientImplementation.OnEvent
      */
-    public void onEvent(int event) {
+    public void onEvent(String event) {
         Log.d(TAG,"OnEvent:"+event+" FBReader");
       /* if (event==ApiListener.EVENT_READ_MODE_OPENED) {
            Log.d(TAG,"Book opened");
