@@ -23,7 +23,7 @@ import java.util.regex.Pattern;
 public class BookReadingsRecorder {
     static final String TAG = "ReadingTracker::BookReadingsRecorder";
 
-    public static final String REPORT_TYPE_BOOK_READING_SESSION_COMPLETED = "BookReadingSesssionCompleted2015_1";
+    public static final String REPORT_TYPE_BOOK_READING_SESSION_COMPLETED = "BookReadingSesssionCompleted";
     public static final String READING_SESSION_TIME_MS = "readingSessionTimeMS";
     public static final String READING_SESSION_TIME = "readingSessionTime";
     //How we are report ourselves in our brodcasts
@@ -43,7 +43,7 @@ public class BookReadingsRecorder {
     public static final String BOOK_READING_PREFS="com.viorsan.LastReadBooks";
     public static final String TIME_PASSED = "TimePassed";
     public static final String TIME_PASSED_IN_SECONDS ="TimePassedInSeconds";
-    public static final String REPORT_TYPE_BOOK_READING_PROGRESS_REPORT = "BookReadingProgressReport2015_1";//non-V2 used time in ms and not seconds
+    public static final String REPORT_TYPE_BOOK_READING_PROGRESS_REPORT = "BookReadingProgressReport";
     public static final String DEVICE_TYPE = "deviceType";
     public static final double MIN_SECONDS_TO_READ_PAGE = 1.0;
     public static final double MAX_SECONDS_TO_READ_PAGE = 180.0;
