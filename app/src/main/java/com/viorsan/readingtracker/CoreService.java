@@ -240,6 +240,26 @@ public class CoreService extends Service implements ApiClientImplementation.Conn
             final String fbreaderVersion=myApi.getFBReaderVersion();
             // final Date  lastPageTurning=myApi.getBookLastTurningTime();
             Log.d(TAG,"FBReader version:"+fbreaderVersion);
+            //report connection state details (for debugging purposes)
+            if (isFBReaderTopActivity()) {
+                Log.d(TAG,"FBReader IS top activity");
+            }
+            else {
+                Log.d(TAG,"FBReader IS NOT top activity");
+            }
+            if (connectedToFBReader) {
+                Log.d(TAG,"Connected to FBReader");
+            }
+            else {
+                Log.d(TAG,"Not connected to FBReader");
+            }
+            if (inReadingModeFBReader) {
+                Log.d(TAG,"Reading mode active (=we got EVENT_READ_MODE_OPENED)");
+            }
+            else {
+                Log.d(TAG,"Reading mode inactive");
+            }
+
             Log.d(TAG,"hash:"+hash);
             Log.d(TAG,"book title:"+bookTitle);
             Log.d(TAG,"language:"+languageCode);
