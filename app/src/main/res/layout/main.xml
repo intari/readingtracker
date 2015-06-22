@@ -1,122 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:orientation="vertical"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
-              tools:context=".MainActivity"
-              android:id="@+id/MainActivity">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StatsPage">
 
+    <include android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+    <!-- Main content view -->
+    <!-- As the main content view, the view below consumes the entire
+         space available using match_parent in both dimensions. -->
 
     <LinearLayout
-        android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_weight="1"
-        android:orientation="vertical">
+        android:layout_height="fill_parent"
+        tools:context=".MainActivity"
+        android:layout_below="@id/toolbar"
+        android:id="@+id/MainActivity">
 
 
-        <TableLayout
+        <LinearLayout
+            android:layout_height="wrap_content"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+
+            <TableLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
 
 
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="@string/accessInAccessibilitySettings"
                         android:id="@+id/textView"/>
 
-                <TextView
+                    <TextView
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:text="@string/accessGrantedNotOk"
                         android:id="@+id/accessGranted"
                         />
-            </TableRow>
+                </TableRow>
 
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="fill_parent"
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="@string/supportedEbookReader"
+                        android:id="@+id/textViewMantanoInstalled"/>
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:text="@string/supportedEbookReaderNotInstalled"
+                        android:id="@+id/supportedEbookReaderInstalledStatus"
+                        />
+                </TableRow>
+
+
+                <RelativeLayout
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="@string/supportedEbookReader"
-                    android:id="@+id/textViewMantanoInstalled"/>
-
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="@string/supportedEbookReaderNotInstalled"
-                    android:id="@+id/supportedEbookReaderInstalledStatus"
-                    />
-            </TableRow>
-
-
-            <RelativeLayout
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:layout_marginBottom="25dip"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:id="@+id/currentlyReadingMessage"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="20dip"
-                    android:gravity="center_horizontal"
-                    ></TextView>
-
-
-            </RelativeLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.5"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/profile_title"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    style="@style/ParseLoginUI.TextView"
-                    android:text="@string/profile_title_logged_in" />
+                    android:layout_marginBottom="25dip"
+                    android:orientation="horizontal" >
 
-                <TextView
-                    android:id="@+id/profile_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    style="@style/ParseLoginUI.TextView" />
+                    <TextView
+                        android:id="@+id/currentlyReadingMessage"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="20dip"
+                        android:gravity="center_horizontal"
+                        ></TextView>
 
-                <TextView
-                    android:id="@+id/profile_email"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    style="@style/ParseLoginUI.TextView" />
 
-                <Button
-                    android:id="@+id/login_or_logout_button"
-                    style="@style/ParseLoginUI.Button"
-                    android:layout_marginTop="24dp"
-                    android:text="@string/profile_logout_button_label"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"/>
-            </LinearLayout>
-        </TableLayout>
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.5"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/profile_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/ParseLoginUI.TextView"
+                        android:text="@string/profile_title_logged_in" />
+
+                    <TextView
+                        android:id="@+id/profile_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/ParseLoginUI.TextView" />
+
+                    <TextView
+                        android:id="@+id/profile_email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/ParseLoginUI.TextView" />
+
+                    <Button
+                        android:id="@+id/login_or_logout_button"
+                        style="@style/ParseLoginUI.Button"
+                        android:layout_marginTop="24dp"
+                        android:text="@string/profile_logout_button_label"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+            </TableLayout>
+
+
+        </LinearLayout>
+
 
 
     </LinearLayout>
 
+    <!-- end of main content view -->
 
 
-</LinearLayout>
 
+</RelativeLayout>

@@ -1,11 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    tools:context=".MainActivity"
-    android:id="@+id/MainActivity">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StatsPage">
+
+    <include android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+    <!-- Main content view -->
+    <!-- As the main content view, the view below consumes the entire
+         space available using match_parent in both dimensions. -->
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        tools:context=".MainActivity"
+        android:layout_below="@id/toolbar"
+
+        android:id="@+id/MainActivity">
 
 
 
@@ -106,6 +119,14 @@
 
 
 
-</LinearLayout>
+    </LinearLayout>
+
+
+    <!-- end of main content view -->
+
+
+
+</RelativeLayout>
+
 
 

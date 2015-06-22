@@ -43,7 +43,7 @@ import butterknife.OnClick;
  * This Activity extends from {@link ActionBarActivity}, which provides all of the function
  * necessary to display a compatible Action Bar on devices running Android v2.1+.
  */
-public class MainActivity extends ActionBarActivity implements GoToAccessibilitySettingsDialogFragment.GoToAccessibilitySettingsDialogListener {
+public class MainActivity extends ActivityWithDrawer implements GoToAccessibilitySettingsDialogFragment.GoToAccessibilitySettingsDialogListener {
     public static final String FULL_USER_NAME = "name";
     public static final String USER_GENDER = "gender";
     public static final int TIME_BEFORE_ASKING_USER_TO_GO_TO_ACCESSIBILITY_SETTINGS = 5 * 1000;//5 seconds to wait before checking if we should ask user to go to Accessibility settings
@@ -89,6 +89,7 @@ public class MainActivity extends ActionBarActivity implements GoToAccessibility
         MyAnalytics.trackAppOpened(getIntent());
         setContentView(R.layout.main);
         ButterKnife.inject(this);
+        setupDrawer();
         init();
 
     }
@@ -560,13 +561,7 @@ public class MainActivity extends ActionBarActivity implements GoToAccessibility
         Intent intent = new Intent(android.provider.Settings.ACTION_ACCESSIBILITY_SETTINGS);
         startActivityForResult(intent, 0);
     }
-    /**
-     * Open About activity
-     */
-    private void openApplicationAbout() {
-        Intent intent=new Intent(this, AboutActivity.class);
-        startActivity(intent);
-    }
+
     /**
      *  Asks monitoring service if it was correctly connected
      */
