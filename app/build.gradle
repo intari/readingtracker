@@ -624,11 +624,6 @@ dependencies {
     androidTestCompile 'org.hamcrest:hamcrest-core:1.1'
     androidTestCompile 'org.hamcrest:hamcrest-library:1.1'
 
-    //MaterialDrawer
-    compile('com.mikepenz:materialdrawer:3.0.8@aar') {
-        transitive = true
-    }
-
 }
 
 //adr https://github.com/Forsety/android-drawable-resizer
