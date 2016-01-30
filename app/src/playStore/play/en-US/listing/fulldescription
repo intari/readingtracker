@@ -1,0 +1,17 @@
+Application to track books you read in supported e-book readers
+
+In the beginning there was a phrase "The Amazon Kindle reports which pages of which books the user looks at, and when"...but I want this information too, for e-books I read
+
+Now you also can have this information (if you use supported ebook reader)
+
+* only  Mantano Reader supported for now (support for FBReader is in development)
+
+Permissions
+- 'run at startup'  - to be able to catch moments when you start read
+- 'full network access' - communication with our server
+- 'view network connections - error reporting
+- 'read phone status and identity' - statistics
+* 'retrieve running apps' - to knew when you switch from supported reading app to something other
+* 'modify or delete the contents of your USB storage' - for application updates in some cases
+* WAKE_LOCK / VIBRATE / GET_ACCOUNTS - for push notifications
+* BIND_ACCESSIBILITY_SERVICE - main app functionality. you will be asked to provide access to 'Accessibility Services' on startup. You could refuse but you will not be able to get your statistics from this device

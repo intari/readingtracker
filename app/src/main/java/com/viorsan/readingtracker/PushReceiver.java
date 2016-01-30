@@ -8,10 +8,11 @@ import com.parse.ParsePushBroadcastReceiver;
 
 /**
  * Created by Dmitriy Kazimirov, e-mail:dmitriy.kazimirov@viorsan.com on 29.12.14.
+ * TODO:update to use new push service
  */
 public class PushReceiver  extends ParsePushBroadcastReceiver {
 
-    public static final String TAG = "ReadingTracker::PushReceiver";
+    public static final String TAG = "ReadingTracker::P.P.R.";
 
     /**
      * handler for https://parse.com/docs/push_guide#receiving-responding/Android

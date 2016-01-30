@@ -21,14 +21,15 @@ import java.util.*;
 public class CoreService extends Service  {
 
 
+    /*
     public static final String FAKEAPP_DEVICELOCKED = "com.viorsan.readingtracker.DeviceLocked";
     public static final String FAKEAPP_SCREENOFF = "com.viorsan.readingtracker.ScreenOff";
-
+    */
 
     public static final long YEAR_IN_MS = 365 * 86400 * 1000;
     public static final int PROCESSLIST_RESCAN_INTERVAL_MILLIS = 3000;//ONLY used to check if reader app is currently active
     public static final int REPORT_SENDING_RETRY_MILLIS = 3000;
-    public static final String TAG = "ReadingTracker::CoreService";
+    public static final String TAG = "ReadingTracker::C.S.";
     public static final String USER_LOGGED_OUT_REPORT = "com.viorsan.readingtracker.user_logged_out";
     public static final String ERRORID_NO_CURRENT_PARSE_USER = "NO_CURRENT_PARSE_USER";
     public static final String ERRORCLASS_PARSE_INTERFACE = "PARSE_INTERFACE";
@@ -40,7 +41,7 @@ public class CoreService extends Service  {
 
     CoreBroadcastReceiver broadcastReceiver = null;
 
-    private String previousForegroundTask;//can have 'fake' data
+    //private String previousForegroundTask;//can have 'fake' data
     private Boolean isDeviceLocked = false;
     private Boolean isDeviceScreenOff = false;
 
@@ -100,7 +101,7 @@ public class CoreService extends Service  {
 
     public void onDreamingStopped() {
 
-        Log.i(TAG,"Dreaming stopped");
+        Log.i(TAG, "Dreaming stopped");
         MyAnalytics.trackEvent("DreamingStopped");
 
     }
@@ -110,7 +111,7 @@ public class CoreService extends Service  {
         Log.i(TAG,"Screen is on");
 
         isDeviceScreenOff = false;
-        updateActiveProcessList();
+        //updateActiveProcessList();
         MyAnalytics.trackEvent("ScreenOn");
     }
 
@@ -119,9 +120,10 @@ public class CoreService extends Service  {
         BookReadingsRecorder.getBookReadingsRecorder(this).recordSwitchAwayFromBook(this,SystemClock.elapsedRealtime());
         MyAnalytics.trackEvent("ScreenOff");
         isDeviceScreenOff = true;
-        updateActiveProcessList();
+        //updateActiveProcessList();
     }
 
+    /*
     public synchronized void updateActiveProcessList() {
         updateActiveProcessListInner();
     }
@@ -146,14 +148,14 @@ public class CoreService extends Service  {
 
         if (!newForegroundTask.equals(previousForegroundTask)) {
 
-            /* Book Scrobbler logic */
+            // Book Scrobbler logic
             BookReadingsRecorder.getBookReadingsRecorder(this).checkIfReadingAppActive(this);
 
             previousForegroundTask = newForegroundTask;
 
         }
     }
-
+*/
 
 
 
@@ -185,7 +187,8 @@ public class CoreService extends Service  {
         MyAnalytics.startAnalyticsWithContext(this);
 
         //write our device id
-        ourDeviceID = new DeviceInfoManager().getDeviceId(this);
+        //TODO:modify to work on Android 6.0, disable until it's done
+        //ourDeviceID = new DeviceInfoManager().getDeviceId(this);
 
         //die if not user logged in
         ParseUser currentUser=ParseUser.getCurrentUser();
@@ -199,6 +202,9 @@ public class CoreService extends Service  {
         //configure icon
         configureForeground();
 
+
+        //No longer used in builds which support Android 6.0, in fact I could do without it anyway
+        /*
 
         //find out previous active task
         ActivityManager activityManager = (ActivityManager)getSystemService(ACTIVITY_SERVICE);
@@ -220,7 +226,7 @@ public class CoreService extends Service  {
 
             public  void  onFinish() {}
         }.start();
-
+        */
 
 
         broadcastReceiver = new CoreBroadcastReceiver();
@@ -324,18 +330,17 @@ public class CoreService extends Service  {
      * Performs configuration of App's notification icon to run forever
      */
     private void configureForeground() {
-        Notification note = new Notification(R.drawable.push_icon,
-                getResources().getString(R.string.app_started_notification),
-                System.currentTimeMillis());
 
         PendingIntent pi = PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), 0);
 
-        note.setLatestEventInfo(this, getResources().getText(R.string.app_name),
-                getResources().getText(R.string.tap_me), pi);
-        note.flags |= Notification.FLAG_NO_CLEAR;
-        note.flags |= Notification.FLAG_ONGOING_EVENT;
-
-        startForeground(R.drawable.push_icon, note);
+        Notification.Builder builder=new Notification.Builder(this);
+        builder.setSmallIcon(R.drawable.push_icon);
+        builder.setOngoing(true);
+        builder.setAutoCancel(false);
+        builder.setContentTitle(getString(R.string.app_name));
+        builder.setContentText(getString(R.string.tap_me));
+        builder.setContentIntent(pi);
+        startForeground(R.drawable.push_icon, builder.build());
     }
 
     /**
@@ -384,13 +389,19 @@ public class CoreService extends Service  {
 
                 PendingIntent pi = PendingIntent.getActivity(self, 0, new Intent(self, MainActivity.class), 0);
 
-                note.setLatestEventInfo(context, title,
-                        msg, pi);
-                note.flags |= Notification.FLAG_NO_CLEAR;
-                note.flags |= Notification.FLAG_ONGOING_EVENT;
+
+                Notification.Builder builder=new Notification.Builder(context);
+                builder.setSmallIcon(R.drawable.push_icon);
+                builder.setOngoing(true);
+                builder.setAutoCancel(false);
+                builder.setContentTitle(title);
+                builder.setContentText(msg);
+                builder.setContentIntent(pi);
+
+
                 //update notification
                 NotificationManager manager=(NotificationManager)context.getSystemService(NOTIFICATION_SERVICE);
-                manager.notify(R.drawable.push_icon,note);
+                manager.notify(R.drawable.push_icon,builder.build());
 
 
             }

@@ -7,6 +7,8 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:1.0.0'
         classpath 'de.felixschulze.gradle:gradle-hockeyapp-plugin:3.0'
+
+        classpath 'com.github.triplet.gradle:play-publisher:1.1.4'
     }
 }
 
@@ -19,10 +21,24 @@ allprojects {
 
 
 ext {
-    compileSdkVersion = "Google Inc.:Google APIs:21"
-    buildToolsVersion = "21.1.2"
+    compileSdkVersion = "Google Inc.:Google APIs:23" //21
+    buildToolsVersion = "23.0.2"
 
     minSdkVersion = 18
-    targetSdkVersion = 19
+    targetSdkVersion = 23 //19
+
+
+    supportVersion = '23.1.1'
+    support = [annotations: "com.android.support:support-annotations:$supportVersion",
+               appCompat  : "com.android.support:appcompat-v7:$supportVersion",
+               design     : "com.android.support:design:$supportVersion"
+    ]
+
+    assertJCore = 'org.assertj:assertj-core:1.7.1'
+    junit = 'junit:junit:4.12'
+    supportTest = [espressoCore: 'com.android.support.test.espresso:espresso-core:2.2.1',
+                   rules       : 'com.android.support.test:rules:0.4.1'
+    ]
+
 }
 

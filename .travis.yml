@@ -3,12 +3,17 @@
 language: android
 jdk: oraclejdk8
 env:
-  matrix:
+  global:
+  - ANDROID_TARGET=android-16  
+  - ANDROID_ABI=armeabi-v7a
+  - ADB_INSTALL_TIMEOUT=8 # minutes
+  
+#  matrix:
 #    - env: LOGGED_IN_TO_PARSE_PLATFORM=YES
 #    - env: LOGGED_IN_TO_PARSE_PLATFORM=NO    
-     - ANDROID_TARGET=android-19  ANDROID_ABI=armeabi-v7a
-     - ANDROID_TARGET=android-18  ANDROID_ABI=armeabi-v7a
-     - ANDROID_TARGET=android-21  ANDROID_ABI=armeabi-v7a
+#     - ANDROID_TARGET=android-19  ANDROID_ABI=armeabi-v7a
+#     - ANDROID_TARGET=android-18  ANDROID_ABI=armeabi-v7a
+#     - ANDROID_TARGET=android-21  ANDROID_ABI=armeabi-v7a
 
 # I want faster builds of course, http://blog.travis-ci.com/2014-12-17-faster-builds-with-container-based-infrastructure/
 sudo: false
@@ -37,17 +42,20 @@ android:
     - extra-google-google_play_services
     - extra-google-m2repository
     - extra-android-m2repository
+    - addon-google_apis-google-16
+    - addon-google_apis-google-17
     - addon-google_apis-google-18
     - addon-google_apis-google-19
     - addon-google_apis-google-21
 
     # Specify at least one system image,
     # if you need to run emulator(s) during your tests
-    - sys-img-armeabi-v7a-android-18
-    - sys-img-armeabi-v7a-android-19
-    - sys-img-armeabi-v7a-android-21
+    #- sys-img-armeabi-v7a-android-18
+    #- sys-img-armeabi-v7a-android-19
+    #- sys-img-armeabi-v7a-android-21
     #- sys-img-x86-android-19
-
+    - sys-img-${ANDROID_ABI}-${ANDROID_TARGET}
+ 
 
 
 before_install:
@@ -64,24 +72,20 @@ before_install:
   - cat local.properties
   
 
-  
-before_script:
-  # Create and start emulator
-  - echo no | android create avd --force -n test -t $ANDROID_TARGET --abi $ANDROID_ABI
-  - emulator -avd test -no-skin -no-audio -no-window &
-  - adb wait-for-device
-  - adb shell input keyevent 82 &
-
-install: 
-    - gradle clean 
-    - gradle build
-
-script: 
-    - gradle connectedAndroidTestTestingDebug
-    - gradle check
-
-
+script:
+    - gradle clean build check jacocoTestReport assembleAndroidTest
+    - echo no | android create avd --force -n test -t $ANDROID_TARGET --abi $ANDROID_ABI -s "1080x1920"
+    - emulator -avd test -no-skin -no-audio -no-window &
+    - android-wait-for-emulator
+    - adb shell setprop dalvik.vm.dexopt-flags v=n,o=v
+    - gradle connectedCheck
     
+  
+  
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+      
+
     
     
     

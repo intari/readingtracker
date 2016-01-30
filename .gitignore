@@ -41,4 +41,5 @@ app/manifest-merger-playstore-release-report.txt
 #ParseLoginUI/ParseLoginUI.iml
 ParseLoginUI/ParseLoginUI.iml
 app/app.iml
+facebook-sdk/facebook-sdk.iml
 facebook-sdk/facebook/facebook.iml

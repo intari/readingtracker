@@ -9,9 +9,12 @@ import android.util.Log;
 
 import com.parse.ParseObject;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -21,7 +24,7 @@ import java.util.regex.Pattern;
  *
  */
 public class BookReadingsRecorder {
-    static final String TAG = "ReadingTracker::BookReadingsRecorder";
+    static final String TAG = "ReadingTracker::B.R.R.";
 
     public static final String REPORT_TYPE_BOOK_READING_SESSION_COMPLETED = "BookReadingSesssionCompleted";
     public static final String READING_SESSION_TIME_MS = "readingSessionTimeMS";
@@ -132,7 +135,7 @@ public class BookReadingsRecorder {
         DeviceInfoManager deviceInfoManager = new DeviceInfoManager();
         //yes, this will result in denormalized data. but I need it. and need bpm much less here
         deviceInfoString=BookReadingsRecorder.getDeviceInfoString();
-        Log.i(TAG,"Device information string is "+deviceInfoString+"|");
+        Log.i(TAG, "Device information string is " + deviceInfoString + "|");
     }
 
     /**
@@ -531,6 +534,26 @@ public class BookReadingsRecorder {
 
     }
 
+    //based off http://stackoverflow.com/questions/24625936/getrunningtasks-doesnt-work-in-android-l
+    String[] getActivePackagesCompat(Context context,ActivityManager activityManager) {
+        final List<ActivityManager.RunningTaskInfo> taskInfo = activityManager.getRunningTasks(1);
+        final ComponentName componentName = taskInfo.get(0).topActivity;
+        final String[] activePackages = new String[1];
+        activePackages[0] = componentName.getPackageName();
+        return activePackages;
+    }
+    String[] getActivePackages(Context context,ActivityManager activityManager) {
+        final Set<String> activePackages = new HashSet<>();
+
+        final List<ActivityManager.RunningAppProcessInfo> processInfos = activityManager.getRunningAppProcesses();
+        for (ActivityManager.RunningAppProcessInfo processInfo : processInfos) {
+            if (processInfo.importance == ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND) {
+                activePackages.addAll(Arrays.asList(processInfo.pkgList));
+            }
+        }
+        return activePackages.toArray(new String[activePackages.size()]);
+    }
+
     /**
      * Checks if one if one of supported reading apps are active.
      * Records switchto/from app events.
@@ -546,8 +569,37 @@ public class BookReadingsRecorder {
             return;
 
         }
+
         List<ActivityManager.RunningTaskInfo> appProcesses = activityManager.getRunningTasks(1);
         String topActivity = appProcesses.get(0).topActivity.getPackageName();
+        /*
+        String[] activePackages;
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT_WATCH) {
+            activePackages = getActivePackages(context,activityManager);
+        } else {
+            activePackages = getActivePackagesCompat(context,activityManager);
+        }
+        boolean readerFound=false;
+        for (String act:activePackages) {
+            Log.d(TAG,"Package:"+act);
+            if (act.equals(AccessibilityRecorderService.MANTANO_READER_PACKAGE_NAME) ||
+                    act.equals(AccessibilityRecorderService.MANTANO_READER_ESSENTIALS_PACKAGE_NAME) ||
+                    act.equals(AccessibilityRecorderService.MANTANO_READER_LITE_PACKAGE_NAME)
+                    ) {
+                readerFound=true;
+                MyAnalytics.startAnalyticsWithContext(context);
+                MyAnalytics.trackEvent("userIsInSupportedReadingApp");
+            }
+
+        }
+        if (!readerFound) {
+            Log.i(TAG, "current activity is not reading app. |");
+            recordSwitchAwayFromBook(context, SystemClock.elapsedRealtime());
+            MyAnalytics.stopAnalyticsWithContext(context);
+        }
+        */
+
+
         //For now only Mantano Reader is supported
         if (!(topActivity.equals(AccessibilityRecorderService.MANTANO_READER_PACKAGE_NAME)  ||
                 topActivity.equals(AccessibilityRecorderService.MANTANO_READER_ESSENTIALS_PACKAGE_NAME)||
@@ -561,6 +613,7 @@ public class BookReadingsRecorder {
             MyAnalytics.startAnalyticsWithContext(context);
             MyAnalytics.trackEvent("userIsInSupportedReadingApp");
         }
+
 
     }
 

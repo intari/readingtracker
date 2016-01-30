@@ -11,6 +11,7 @@ import java.util.List;
 
 /**
  * Created by Dmitriy Kazimirov, e-mail:dmitriy.kazimirov@viorsan.com on 18.12.14.
+ * TODO:rewrite this to account for Parse's sunset
  */
 public class ParseConfigHelper {
     private static String TAG="ReadingTracker::ReadingTrackerParseConfig";
