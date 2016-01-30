@@ -10,7 +10,9 @@ import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.view.View;
@@ -72,7 +74,7 @@ public class MainActivity extends ActionBarActivity implements GoToAccessibility
     private BroadcastReceiver currentlyReadingMessageReceiver;
 
     private Activity self;
-    private static final String TAG = "ReadingTracker::MainActivity";
+    private static final String TAG = "ReadingTracker::M.A.";
 
     private static final int LOGIN_REQUEST = 0;
 
@@ -198,7 +200,9 @@ public class MainActivity extends ActionBarActivity implements GoToAccessibility
         ParseInstallation installation=ParseInstallation.getCurrentInstallation();
         DeviceInfoManager deviceInfoManager=new DeviceInfoManager();
 
-        installation.put("ourDeviceId",deviceInfoManager.getDeviceId(this));
+        //TODO:fix on Android 6.0, or just don't use this. We don't REALLY need this after all?
+        //installation.put("ourDeviceId",deviceInfoManager.getDeviceId(this));
+
         installation.put("runtime",deviceInfoManager.getCurrentRuntimeValue());
         String simOperatorName=deviceInfoManager.getSimOperatorName(this);
         if (simOperatorName!=null) {
@@ -252,7 +256,8 @@ public class MainActivity extends ActionBarActivity implements GoToAccessibility
         self = this;
 
         //init Parse Platform's push support
-        initPush();
+        //TODO:implement different solution after Parse's sunshine. Disable until this is done
+        //initPush();
         //update Installation class
         updateInstallationObject();
 

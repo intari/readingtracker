@@ -4,16 +4,17 @@
     android:packageNames="com.mantano.reader.android"
     |flagReportViewIds flag is API 18-only
 
+ android:packageNames="com.mantano.reader.android,com.mantano.reader.android.lite,com.mantano.reader.android.normal"
+                       android:notificationTimeout="0"
+
 -->
 <accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
 
                        android:accessibilityEventTypes="typeAllMask"
-                       android:packageNames="com.mantano.reader.android,com.mantano.reader.android.lite,com.mantano.reader.android.normal"
                        android:canRetrieveWindowContent="true"
                        android:description="@string/accessibilityDescription"
                        android:accessibilityFeedbackType="feedbackGeneric"
-                       android:accessibilityFlags="flagDefault|flagReportViewIds"
-                       android:notificationTimeout="0"
+                       android:accessibilityFlags="flagDefault|flagReportViewIds|flagIncludeNotImportantViews"
 
  />
 

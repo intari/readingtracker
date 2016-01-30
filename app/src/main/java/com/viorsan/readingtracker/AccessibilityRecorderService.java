@@ -2,7 +2,11 @@ package com.viorsan.readingtracker;
 
 
 import android.accessibilityservice.AccessibilityService;
+import android.accessibilityservice.AccessibilityServiceInfo;
 import android.content.*;
+import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.CountDownTimer;
 import android.os.SystemClock;
 import android.support.v4.content.LocalBroadcastManager;
@@ -21,7 +25,7 @@ import java.util.regex.Pattern;
 
 public class AccessibilityRecorderService extends AccessibilityService {
 
-    static final String TAG = "ReadingTracker::AccessibilityRecorderService";
+    static final String TAG = "ReadingTracker::A.R.S.";
 
     /* Mantano-specific things */
     /* if true - we are only scrobble readings
@@ -71,6 +75,8 @@ public class AccessibilityRecorderService extends AccessibilityService {
     long totalTimeForCurrentBook;
     String prevPageNumbers="";
     BroadcastReceiver statusRequestReceiver;
+    String currentActivity;
+    Boolean isInReadingApp=false;
 
 
 
@@ -156,14 +162,20 @@ public class AccessibilityRecorderService extends AccessibilityService {
     }
 
 
-
+    private ActivityInfo tryGetActivity(ComponentName componentName) {
+        try {
+            return getPackageManager().getActivityInfo(componentName, 0);
+        } catch (PackageManager.NameNotFoundException e) {
+            return null;
+        }
+    }
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
         int windowId=event.getWindowId();
         String eventType=getEventType(event);
         String eventClassName=event.getClassName().toString();
         String sourceViewId=getSourceViewId(event);
-        String packageName=event.getPackageName().toString();
+        final String packageName=event.getPackageName().toString();
         long eventTime=event.getEventTime();
         String eventText=getEventText(event);
         String sourceInfoText=getSourceInfoText(event);
@@ -182,6 +194,48 @@ public class AccessibilityRecorderService extends AccessibilityService {
         Log.v(TAG, String.format("onAccessibilityEvent:xtra info:[text] %s",
                 source.getText().toString())
         );  */
+
+        //just log current package and activity
+        //and report data as soon as possible
+        if (event.getEventType() == AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED) {
+
+            Log.i(TAG, "Current package "+packageName+" class name "+eventClassName);
+            boolean isInReadingAppNow=false;
+            if (packageName.equals(AccessibilityRecorderService.MANTANO_READER_PACKAGE_NAME) ||
+                    packageName.equals(AccessibilityRecorderService.MANTANO_READER_ESSENTIALS_PACKAGE_NAME) ||
+                    packageName.equals(AccessibilityRecorderService.MANTANO_READER_LITE_PACKAGE_NAME)) {
+                isInReadingAppNow=true;
+            } else {
+                isInReadingAppNow=false;
+            }
+            if ((isInReadingAppNow)&&(!isInReadingApp)) {
+                //prevent potential Mantano crash due to us take too much time
+                Thread reportThread=new Thread( new Runnable() {
+                    @Override
+                    public void run() {
+                        MyAnalytics.startAnalyticsWithContext(getBaseContext());
+                        MyAnalytics.trackEvent("userIsInSupportedReadingApp");
+                        Log.i(TAG,"Reading app "+packageName+" detected");
+                    }
+                });
+                reportThread.start();
+            }
+            if ((!isInReadingAppNow) && (isInReadingApp)) {
+                //prevent potential Mantano crash due to us take too much time
+                Thread reportThread=new Thread( new Runnable() {
+                    @Override
+                    public void run() {
+                        Log.i(TAG, "Sending 'switchAway' in async way.....");
+                        BookReadingsRecorder.getBookReadingsRecorder(getBaseContext()).recordSwitchAwayFromBook(getBaseContext(), SystemClock.elapsedRealtime());
+                        MyAnalytics.stopAnalyticsWithContext(getBaseContext());
+                        //TODO:trackEvent
+                        Log.i(TAG,"Sent 'switchAway' event in async way..");
+                    }
+                });
+                reportThread.start();
+            }
+            isInReadingApp=isInReadingAppNow;
+        }
 
         //Mantano-specific processing
         if (packageName.equals(MANTANO_READER_PACKAGE_NAME)||packageName.equals(MANTANO_READER_ESSENTIALS_PACKAGE_NAME)||packageName.equals(MANTANO_READER_LITE_PACKAGE_NAME)) {
@@ -313,9 +367,9 @@ public class AccessibilityRecorderService extends AccessibilityService {
 
             if (!ONLY_SCROBBLE) {
 
-                Log.d(TAG,"onAccessibilityEvent:eventText:"+eventText);
+                Log.d(TAG, "onAccessibilityEvent:eventText:"+eventText);
                 Log.d(TAG,"onAccessibilityEvent:sourceViewId:"+sourceViewId);
-                Log.d(TAG,"onAccessibilityEvent:sourceInfoText:"+sourceInfoText);
+                Log.d(TAG, "onAccessibilityEvent:sourceInfoText:" + sourceInfoText);
 
 
                 try {
@@ -443,7 +497,7 @@ public class AccessibilityRecorderService extends AccessibilityService {
 
              */
 
-        }
+        } // if mantano
 
     }
 
@@ -539,9 +593,9 @@ public class AccessibilityRecorderService extends AccessibilityService {
     @Override
     protected void onServiceConnected() {
         super.onServiceConnected();
-       Log.i(TAG, "onServiceConnected");
+        Log.i(TAG, "onServiceConnected");
         if (ONLY_SCROBBLE) {
-           Log.i(TAG, " scrobble-only mode");
+           Log.i(TAG, "scrobble-only mode");
         }
 
         statusRequestReceiver=new BroadcastReceiver() {
@@ -557,14 +611,6 @@ public class AccessibilityRecorderService extends AccessibilityService {
                 statusRequestReceiver,new IntentFilter(ACTIVITY_MONITORING_STATUS_UPDATE_REQUEST)
         );
 
-        /*
-        AccessibilityServiceInfo info = new AccessibilityServiceInfo();
-        info.flags = AccessibilityServiceInfo.DEFAULT;
-        info.eventTypes = AccessibilityEvent.TYPES_ALL_MASK;
-        info.feedbackType = AccessibilityServiceInfo.FEEDBACK_GENERIC;
-
-        setServiceInfo(info);
-        */
 
         Intent intent=new Intent(ACTIVITY_MONITORING_CONNECTED);
         LocalBroadcastManager.getInstance(this).sendBroadcast(intent);

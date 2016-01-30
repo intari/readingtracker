@@ -28,7 +28,7 @@ buildscript {
     dependencies {
         classpath 'com.parse.tools:gradle:1.+'
         //http://kotlinlang.org/docs/reference/using-gradle.html
-        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:0.10.195'
+        //classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:0.10.195'
         classpath 'com.github.forsety:adr:0.1'
 
     }
@@ -38,9 +38,11 @@ repositories {
         url "http://api.genymotion.com/repositories/releases/"
     }
 }
+/*
 dependencies {
     compile 'org.jetbrains.kotlin:kotlin-stdlib:0.10.195'
 }
+*/
 
 parse {
     if(project.hasProperty("apiKeysPath") ) {
@@ -80,7 +82,7 @@ parse {
 }
 
 apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
+//apply plugin: 'kotlin-android'
 /*
 compileKotlin {
     kotlinOptions.annotations = file('annotations')
@@ -389,10 +391,10 @@ android {
                 println "Building internal build "+myVersionName+" build "+myVersionCode+" with full sha1 "+gitSha
             }
            //Espresso testing
-           testing {
+           espressoTesting {
 
 
-               applicationId "com.viorsan.readingtracker.espresso"
+               applicationId "com.viorsan.readingtracker.espressoTesting"
                buildConfigField "String","PARSE_APP_ID", "\""+parseAppId+"\""
                buildConfigField "String","PARSE_CLIENT_KEY","\""+parseClientKey+"\""
                buildConfigField "String","HOCKEYAPP_APP_ID", "\""+hockeyAppAppId+"\""
@@ -476,7 +478,7 @@ android {
         }
     }
 
-
+/*
     sourceSets {
         androidTest {
             setRoot('src/test')
@@ -484,7 +486,7 @@ android {
         main.java.srcDirs += 'src/main/kotlin'
 
     }
-
+*/
     //code sign support
     //Load values used for application signing
     if(project.hasProperty("debugSigningPropertiesPath") && project.hasProperty("releaseSigningPropertiesPath")) {
@@ -552,7 +554,7 @@ def copyAndReplaceText(source, dest, Closure replaceText) {
 // Override Data in Manifest - This can be done using different Manifest files for each flavor, this way there's no need to modify the manifest
 android.applicationVariants.all { variant ->
 
-    if (variant.name.startsWith('testing')) { // Where dev is the one you'll use to run Espresso tests
+    if (variant.name.startsWith('espressoTesting')) { // Where dev is the one you'll use to run Espresso tests
         System.out.println("Not removing the SET_ANIMATION_SCALE permission for $variant.name")
         return
     }
@@ -581,6 +583,14 @@ gradle.projectsEvaluated {
     }
 }
 
+apply plugin: 'com.github.triplet.play'
+play {
+    //only on build systems
+    jsonFile = file(System.getenv('HOME')+'/.androidSigning/PlayStoreAccess.json')
+    track = 'alpha'
+}
+
+
 //our regular dependencies
 dependencies {
     compile 'com.google.code.gson:gson:2.2.2'
@@ -590,12 +600,30 @@ dependencies {
     compile files('libs/json-simple-1.1.1.jar')
     compile files('libs/jmdns-3.4.1.jar')
     compile files('libs/FlurryAnalytics-5.0.0.jar')
+
+    //TODO:update code to support new appCompat & design library
+    compile support.appCompat
+    compile support.design
+    //compile "com.android.support:support-v4:21.0.3"
+    //compile "com.android.support:appcompat-v7:21.0.3"
+    compile "com.android.support:multidex:1.0.+"
+
+    testCompile assertJCore
+    testCompile junit
+
+    androidTestCompile supportTest.espressoCore
+    androidTestCompile supportTest.rules
+
+    androidTestCompile support.annotations
+
+    testCompile 'org.robolectric:robolectric:3.0'
+
+    compile 'net.danlew:android.joda:2.7.1'
+
     compile 'com.jakewharton:butterknife:6.0.0' //https://jakewharton.github.io/butterknife/
     compile 'ly.count:sdk-android:+'
 
-    compile "com.android.support:support-v4:21.0.3"
-    compile "com.android.support:appcompat-v7:21.0.3"
-    compile "com.android.support:multidex:1.0.+"
+
 
     //Parse Platform
     compile 'com.parse.bolts:bolts-android:1.1.3'
@@ -610,19 +638,10 @@ dependencies {
     //Genymotion
     androidTestCompile 'com.genymotion.api:genymotion-api:1.0.1'
 
-    /*
-    androidTestCompile('junit:junit:4.11') {
-        exclude module: 'hamcrest-core'
-    }
-    */
-
-    //Espresso on-device tests
-    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.0'
-    androidTestCompile 'com.android.support.test:testing-support-lib:0.1'
-
     androidTestCompile 'org.hamcrest:hamcrest-integration:1.1'
     androidTestCompile 'org.hamcrest:hamcrest-core:1.1'
     androidTestCompile 'org.hamcrest:hamcrest-library:1.1'
+
 
 }
 

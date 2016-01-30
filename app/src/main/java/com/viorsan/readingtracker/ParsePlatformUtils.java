@@ -139,11 +139,14 @@ public class ParsePlatformUtils {
             return Boolean.FALSE;
         }
 
+        //TODO:do something on Android 6.0
+        /*
         if (ourDeviceId==null) {
             ourDeviceId =new DeviceInfoManager().getDeviceId(context);
         }
+        */
 
-        report.put("deviceId",ourDeviceId);
+        //report.put("deviceId",ourDeviceId);
 
 
         java.util.Date date = new java.util.Date();

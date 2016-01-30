@@ -15,7 +15,7 @@ import ly.count.android.api.Countly;
  */
 public class AppHelpers {
 
-    public static final String TAG = "ReadingTracker::AppHelpers";
+    public static final String TAG = "ReadingTracker::A.H.";
 
     /**
      * Checks if app runs 'testing' build. This is needed because test framework not always do what needs to be done
@@ -50,7 +50,7 @@ public class AppHelpers {
      * @param context - context to use (not currently used)
      */
     static public void writeLogBanner(String tag, Context context) {
-        Log.i(TAG, " (c) Dmitriy Kazimirov 2013-2014");
+        Log.i(TAG, " (c) Dmitriy Kazimirov 2013-2016");
         Log.i(TAG," e-mail: dmitriy.kazimirov@viorsan.com");
 
         Log.i(TAG," BuildAuthority:"+buildAuthority());
