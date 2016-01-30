@@ -382,6 +382,7 @@ android {
 
                 if (System.getenv('RUNNING_UNDER_INTERNAL_JENKINS')=='YES') {
                     buildConfigField "String","BUILDER_TYPE","\"jenkins\""
+
                 }
                 else
                 {
