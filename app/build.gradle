@@ -646,6 +646,7 @@ dependencies {
 }
 
 //adr https://github.com/Forsety/android-drawable-resizer
+/*
 apply plugin: 'com.github.forsety.adr'
 
 adr {
@@ -653,6 +654,7 @@ adr {
     baseDensity "xxxhdpi"
     generateTvDpi true
 }
+*/
 
 //Per  https://github.com/x2on/gradle-hockeyapp-plugin/issues/30 it's dependencies must be in root project
 apply plugin: 'de.felixschulze.gradle.hockeyapp'
