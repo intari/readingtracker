@@ -253,7 +253,8 @@ android {
 
             //test mode only
             //Espresso testing
-            testing {
+            /*
+            espressoTesting {
 
                 buildConfigField "String","PARSE_APP_ID", "\""+parseAppIdForTestHarness+"\""
                 buildConfigField "String","PARSE_CLIENT_KEY","\""+parseClientKeyForTestHarness+"\""
@@ -275,7 +276,7 @@ android {
                 buildConfigField "String","BUILD_USER", "\""+getUsername()+"\""
                 myVersionCode=0
                 println "Building Travis-CI-based build "+myVersionName+" build "+myVersionCode+" with full sha1 "+gitSha
-            }
+            } */
 
         }
         else { //internal or playStore, not Travis CI so we have files in their places
@@ -391,6 +392,7 @@ android {
                 println "Building internal build "+myVersionName+" build "+myVersionCode+" with full sha1 "+gitSha
             }
            //Espresso testing
+            /*
            espressoTesting {
 
 
@@ -420,7 +422,7 @@ android {
                buildConfigField "String","BUILD_HOST", "\""+getHostname()+"\""
                buildConfigField "String","BUILD_USER", "\""+getUsername()+"\""
                println "Building internal(automated tests) build "+myVersionName+" build "+myVersionCode+" with full sha1 "+gitSha
-           }
+           } */
            //builds for PlayStore
            playStore {
 
@@ -478,15 +480,6 @@ android {
         }
     }
 
-/*
-    sourceSets {
-        androidTest {
-            setRoot('src/test')
-        }
-        main.java.srcDirs += 'src/main/kotlin'
-
-    }
-*/
     //code sign support
     //Load values used for application signing
     if(project.hasProperty("debugSigningPropertiesPath") && project.hasProperty("releaseSigningPropertiesPath")) {
