@@ -479,6 +479,9 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
+        debug {
+            versionNameSuffix "-debug"
+        }
     }
 
     //code sign support
