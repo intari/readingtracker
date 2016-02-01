@@ -82,6 +82,8 @@ parse {
 }
 
 apply plugin: 'com.android.application'
+apply plugin: 'jacoco-android'
+
 //apply plugin: 'kotlin-android'
 /*
 compileKotlin {
@@ -465,6 +467,8 @@ android {
         versionCode myVersionCode
         versionName myVersionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        com.android.ddmlib.DdmPreferences.setTimeOut(5 * 60 * 1000); //5 minutes
+
     }
 
     packagingOptions {
@@ -481,9 +485,14 @@ android {
         }
         debug {
             versionNameSuffix "-debug"
+            testCoverageEnabled true
         }
     }
 
+    //https://stackoverflow.com/questions/33499046/android-project-automation-test-in-circleci-build-failed-with-an-exception
+    adbOptions {
+        timeOutInMs 5 * 60 * 1000 // 5 minutes
+    }
     //code sign support
     //Load values used for application signing
     if(project.hasProperty("debugSigningPropertiesPath") && project.hasProperty("releaseSigningPropertiesPath")) {

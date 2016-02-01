@@ -9,6 +9,8 @@ buildscript {
         classpath 'de.felixschulze.gradle:gradle-hockeyapp-plugin:3.0'
 
         classpath 'com.github.triplet.gradle:play-publisher:1.1.4'
+        classpath 'com.dicedmelon.gradle:jacoco-android:0.1.1'
+
     }
 }
 
