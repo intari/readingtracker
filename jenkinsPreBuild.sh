@@ -1,10 +1,11 @@
 #!/bin/bash
 echo "Performing initial tasks..."
-echo $ANDROID_TARGET="Google Inc.:Google APIs:22"
-echo $ANDROID_ABI=google_apis/armeabi-v7a
+#export $ANDROID_TARGET="Google Inc.:Google APIs:22"
+#export $ANDROID_ABI=google_apis/armeabi-v7a
 
-echo "Creating AVD..."
-android create avd --force -n myemulator-google -t $ANDROID_TARGET --abi $ANDROID_ABI
+echo "Creating Android Virtual Device..."
+android create avd --force -n myemulator-google -t "Google Inc.:Google APIs:22" --abi google_apis/armeabi-v7a
+
 echo "Starting emulator..."
 emulator64-arm -avd myemulator-google -no-audio -no-window &
 echo "Wait until emulator starts up"
