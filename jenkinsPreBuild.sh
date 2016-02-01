@@ -1,6 +1,5 @@
 #!/bin/bash
 echo "Performing initial tasks..."
-export TERM="dumb"
 export ADB_INSTALL_TIMEOUT=8 # minutes (2 minutes by default)
 adb start-server
 echo "Stopping old instances of android emulator"
