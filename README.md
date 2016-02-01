@@ -88,4 +88,3 @@ see end of  [README_old] (https://github.com/intari/readingtracker/blob/master/R
 
 # Badges
 [![GetBadges Game](https://intari-readingtracker.getbadges.io/shield/company/intari-readingtracker/user/2151)](https://intari-readingtracker.getbadges.io/?ref=shield-player)
-[![Build Status](http://jenkins.viorsan.com:8080/buildStatus/icon?job=ReadingTracker - master)](http://jenkins.viorsan.com:8080/job/ReadingTracker%20-%20master/)
