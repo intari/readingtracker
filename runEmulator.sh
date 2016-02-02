@@ -1,13 +1,30 @@
 #!/bin/bash
-#Runs Android emulator for testing purposes
-export ANDROID_TARGET=android-19
-export ANDROID_ABI=armeabi-v7a
-echo "Creating emulator..."
-echo no | android create avd --force -n test -t $ANDROID_TARGET --abi $ANDROID_ABI
+#prepare for running tests, normal machine assumed which can run x86-64 emulators
+echo "Performing initial tasks..."
+export ADB_INSTALL_TIMEOUT=8 # minutes (2 minutes by default)
+export EMULATOR=emulator
+#export ANDROID_ABI=google_apis/x86_64  # google_apis/armeabi-v7a
+#export ANDROID_TARGET="\"Google Inc.:Google APIs:22\""  #"\"Google Inc.:Google APIs:22\""
+#export EMULATOR_OPTIONS="-no-audio -no-window -gpu off -verbose" # -no-window -gpu off -no-audio
+export EMULATOR_OPTIONS="-verbose"
+#echo "Will be using target $ANDROID_TARGET with ABI $ANDROID_ABI"
+adb start-server
+echo "Stopping old instances of android emulator"
+killall emulator64-arm
+killall emulator-arm
+killall emulator
+killall emulator64-x86
+echo "Creating Android Virtual Device..."
+android create avd --force -n myemulator -t "Google Inc.:Google APIs:22" --abi google_apis/x86_64
 echo "Starting emulator..."
-emulator -avd test -no-skin -no-audio -no-window &
-echo "Emulator started. Waiting for startup to finish"
-adb wait-for-device
+$EMULATOR -avd myemulator $EMULATOR_OPTIONS &
+sleep 30
+echo "Wait until emulator starts up"
+./android-wait-for-emulator.sh
+#wait for emulator to go on login screen
+#unlock emulator screen
+sleep 60
 echo "Pressing menu in emulator"
-adb shell input keyevent 82 &
-echo "Android emulator ready"
+adb shell input keyevent 82
+
+
