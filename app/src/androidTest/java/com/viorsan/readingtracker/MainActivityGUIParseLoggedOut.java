@@ -82,6 +82,7 @@ public class MainActivityGUIParseLoggedOut extends MyInstrumentationTestCase { /
     /**
      * Check that login button actually works
      */
+    /*
     public void testLoginButtonWorksInitialStateLoggedOut() throws InterruptedException {
         String TEST_TAG="testLoginButtonWorks";
         Log.d(TAG,"Testing login button");
@@ -142,6 +143,6 @@ public class MainActivityGUIParseLoggedOut extends MyInstrumentationTestCase { /
 
 
     }
-
+*/
 }
 
