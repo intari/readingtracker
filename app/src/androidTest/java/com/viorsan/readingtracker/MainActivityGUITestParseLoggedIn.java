@@ -87,11 +87,13 @@ public class MainActivityGUITestParseLoggedIn extends MyInstrumentationTestCase 
     /**
      * just make screenshot of GUI in logged in state
      */
+    /*
     public void testGUILooksGood() {
         String TEST_TAG="testGUILooksGood";
         onView(isRoot()).perform(screenshot(R.id.MainActivity,TEST_TAG+"_1"));
 
     }
+    */
 
     /**
      * Test that LoginLogout correct in logged in state
