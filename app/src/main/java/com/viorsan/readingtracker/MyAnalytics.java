@@ -30,7 +30,7 @@ public class MyAnalytics {
     private static boolean countlyStarted=false;
     private static MyApplication app;
     public static void init(MyApplication newApp,Context context) {
-        Log.d(TAG,"init");
+        Log.d(TAG, "init");
         app=newApp;
         if (AppHelpers.isRunningTestBuild()) {
             Log.d(TAG,"Automatically disabling analytics in test build");
@@ -172,10 +172,15 @@ public class MyAnalytics {
         //don't track anything if this is disabled on global level
         if (MyApplication.isAnalyticsEnabled()) {
             Log.d(TAG,"Sending event "+name+" (with dimensions) to analytics service");
-            ParseAnalytics.trackEvent(name,dimensions);
-            Countly.sharedInstance().recordEvent(name,dimensions,1);
-            if (flurryEnabled) {
-                FlurryAgent.logEvent(name, dimensions);
+            try {
+                ParseAnalytics.trackEvent(name,dimensions);
+                Countly.sharedInstance().recordEvent(name,dimensions,1);
+                if (flurryEnabled) {
+                    FlurryAgent.logEvent(name, dimensions);
+                }
+            } catch (Exception ex) {
+                Log.d(TAG,"Failed to log event due to exception:"+ex.toString());
+                ex.printStackTrace();
             }
         }
         else {
