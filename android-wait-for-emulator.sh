@@ -1,6 +1,7 @@
 #!/bin/bash
 # based off https://github.com/travis-ci/travis-cookbooks/blob/62039b204699adcdf4b3365fac42d81246cb57fe/ci_environment/android-sdk/files/default/android-wait-for-emulator
 # Originally written by Ralf Kistner <ralf@embarkmobile.com>, but placed in the public domain
+# Modifications by Dmitriy Kazimirov <dmitriy.kazimirov@viorsan.com>
 
 set +e
 
@@ -10,7 +11,6 @@ timeout_in_sec=60
 
 until [[ "$bootanim" =~ "stopped" ]]; do
   bootanim=`adb -e shell getprop init.svc.bootanim 2>&1 &`
-  echo "Bootanim:$bootanim"
   if [[ "$bootanim" =~ "device not found" || "$bootanim" =~ "device offline" ]]; then
     let "failcounter += 1"
     echo "Waiting for emulator to start"
