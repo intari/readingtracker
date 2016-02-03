@@ -231,48 +231,6 @@ public class BookReadingsRecorder {
         writeLastBookInfo(context,timestamp, currentBookTitle, currentBookAuthor,currentBookTags);
         numPagePageSwitches=0;
 
-        /*
-           subscribe to Parse Push channel for this author on this device, just for fun
-           it's very likely user arleady subscribed so what?
-           sometimes we have >1 author so takes this into account too
-         */
-        /*
-        String[] authors = currentBookAuthor.split(",", -1);
-        for (String oneAuthor: authors) {
-            String trimmedAuthor=ParsePlatformUtils.makeChannelName(oneAuthor.trim());
-            Log.d(TAG,"Subscribing to "+trimmedAuthor);
-            ParsePush.subscribeInBackground(trimmedAuthor,new SaveCallback() {
-                public void done(ParseException e) {
-                    if (e == null) {
-                        Log.d(TAG,"Successfully subscribed to channel");
-                    } else {
-                        Log.d(TAG,"Failed to subscribe due to exception "+e.toString());
-                    }
-                }
-            });
-
-        }
-        */
-
-        /*
-          but also subscribe to genres (tags) channels
-         */
-        /*
-        String[] bookTags = currentBookTags.split(",", -1);
-        for (String tag: bookTags) {
-            String trimmedTag=ParsePlatformUtils.makeChannelName(tag.trim());
-            Log.d(TAG,"Subscribing to "+trimmedTag);
-            ParsePush.subscribeInBackground(trimmedTag,new SaveCallback() {
-                public void done(ParseException e) {
-                    if (e == null) {
-                        Log.d(TAG,"Successfully subscribed to channel");
-                    } else {
-                        Log.d(TAG,"Failed to subscribe due to exception "+e.toString());
-                    }
-                }
-            });
-        }
-        */
 
         Map<String, String> dimensions = new HashMap<String, String>();
         dimensions.put(BOOK_TITLE,currentBookTitle);

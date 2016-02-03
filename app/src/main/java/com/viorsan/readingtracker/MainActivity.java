@@ -172,36 +172,15 @@ public class MainActivity extends ActionBarActivity implements GoToAccessibility
         }
     }
 
-    /**
-     * Initializes push notification support from Parse Platform
-     * see https://parse.com/tutorials/android-push-notifications and https://parse.com/docs/push_guide#top/Android
-     */
-    private void initPush() {
-        ParsePush.subscribeInBackground("", new SaveCallback() {
-            @Override
-            public void done(ParseException e) {
-                if (e == null) {
-                    Log.d(TAG, "successfully subscribed to the broadcast channel.");
-                } else {
-                    Log.e(TAG, "failed to subscribe for push", e);
-                }
-            }
-        });
-
-    }
 
     /**
      * Updates current 'installation' object
-     * used to target Push Notifications
      * see https://parse.com/docs/push_guide#top/Android
      */
     private void updateInstallationObject() {
         //TODO:ParseInstallation also needs to be wrapped in ParsePlatformUtils
         ParseInstallation installation=ParseInstallation.getCurrentInstallation();
         DeviceInfoManager deviceInfoManager=new DeviceInfoManager();
-
-        //TODO:fix on Android 6.0, or just don't use this. We don't REALLY need this after all?
-        //installation.put("ourDeviceId",deviceInfoManager.getDeviceId(this));
 
         installation.put("runtime",deviceInfoManager.getCurrentRuntimeValue());
         String simOperatorName=deviceInfoManager.getSimOperatorName(this);
@@ -243,11 +222,6 @@ public class MainActivity extends ActionBarActivity implements GoToAccessibility
             ParseACL acl=new ParseACL(currentUser);
             installation.setACL(acl);
         }
-        //TODO: what else? some user groups?
-        //TODO: when we have 'user groups' use channels
-        //TODO:use genres user likes? or authors user likes?
-        //TODO:make it possible to target user and not device
-
 
         //save updated object
         ParseInstallation.getCurrentInstallation().saveInBackground();
@@ -255,9 +229,6 @@ public class MainActivity extends ActionBarActivity implements GoToAccessibility
     private void init(){
         self = this;
 
-        //init Parse Platform's push support
-        //TODO:implement different solution after Parse's sunshine. Disable until this is done
-        //initPush();
         //update Installation class
         updateInstallationObject();
 
