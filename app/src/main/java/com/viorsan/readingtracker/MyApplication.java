@@ -19,7 +19,11 @@ public class MyApplication extends android.app.Application {
     static protected boolean useParseCrashReporting=true;//should we activate Parse's crash reporting ourselves?
     static protected boolean initParse=true;//should we init Parse ourselves?
     static protected boolean analyticsEnabled=true;//true - no analytics should be used
+    static protected boolean espressoTestActive=false;//true - Espresso test is being run
 
+    public static boolean isEspressoTestActive() {
+        return isEspressoTestActive();
+    }
     public static boolean isAnalyticsEnabled() {
         return analyticsEnabled;
     }

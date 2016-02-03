@@ -200,19 +200,19 @@ public class MainActivity extends ActionBarActivity implements GoToAccessibility
             installation.put("networkCountryISO",networkCountryISO);
         }
         String language= Locale.getDefault().getLanguage();
-        installation.put("language",language);
+        installation.put("language", language);
         String country= Locale.getDefault().getCountry();
         installation.put("country",country);
         String locale=Locale.getDefault().toString();
         installation.put("locale",locale);
 
-        installation.put("appBuildFlavor",BuildConfig.FLAVOR);
+        installation.put("appBuildFlavor", BuildConfig.FLAVOR);
         //deviceType used in book readings reports
         installation.put("deviceInfoString", BookReadingsRecorder.getDeviceInfoString());
 
-        installation.put("deviceModel",Build.MODEL);
+        installation.put("deviceModel", Build.MODEL);
         installation.put("deviceManufacturer",Build.MANUFACTURER);
-        installation.put("deviceProduct",Build.PRODUCT);
+        installation.put("deviceProduct", Build.PRODUCT);
 
         // associate device with user
         ParseUser currentUser=ParsePlatformUtils.getCurrentParseUser();
@@ -395,15 +395,17 @@ public class MainActivity extends ActionBarActivity implements GoToAccessibility
             public  void  onFinish() {
                 Log.d(TAG,"check if it's time to ask user to enable our Accessibility Service");
                 if ((activityRecorderConnected==false) && (goToSettingsToEnableAccessibilityServiceDialogShown==false)) {
-                    Log.d(TAG,"yes it is - asking");
-                    goToSettingsToEnableAccessibilityServiceDialogShown=true;
-
-                    MyAnalytics.trackEvent("userAskedToGoToAccSettings");
-                    showGoToAccessibilitySettingsDialog();
-                    Log.d(TAG,"yes it is - asked");
+                    //it can cause...issues with Espresso tests
+                    if (!MyApplication.isEspressoTestActive()) {
+                        Log.d(TAG, "yes it is - asking");
+                        goToSettingsToEnableAccessibilityServiceDialogShown=true;
+                        MyAnalytics.trackEvent("userAskedToGoToAccSettings");
+                        showGoToAccessibilitySettingsDialog();
+                        Log.d(TAG,"yes it is - asked");
+                    }
                 }
                 else {
-                    Log.d(TAG,"Not it is not");
+                    Log.d(TAG, "Not it is not");
 
                 }
             }
