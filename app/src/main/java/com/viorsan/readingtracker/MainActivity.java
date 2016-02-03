@@ -403,6 +403,9 @@ public class MainActivity extends ActionBarActivity implements GoToAccessibility
                         showGoToAccessibilitySettingsDialog();
                         Log.d(TAG,"yes it is - asked");
                     }
+                    else {
+                        Log.d(TAG,"no, UI test is in progress");
+                    }
                 }
                 else {
                     Log.d(TAG, "Not it is not");
