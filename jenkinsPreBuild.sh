@@ -14,7 +14,7 @@ killall emulator
 killall emulator64-x86
 echo "Creating Android Virtual Device..."
 #android create avd --force -n myemulator -t "Google Inc.:Google APIs:22" --abi google_apis/armeabi-v7a -s "768x1280"
-android create avd --force -n myemulator -t android-22 --abi default/armeabi-v7a -s "768x1280"
+echo n|android create avd --force -n myemulator -t android-22 --abi default/armeabi-v7a -s "768x1280"
 echo "Starting emulator..."
 $EMULATOR -avd myemulator $EMULATOR_OPTIONS &
 sleep 60
