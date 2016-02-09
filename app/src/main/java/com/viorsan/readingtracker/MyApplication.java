@@ -22,7 +22,7 @@ public class MyApplication extends android.app.Application {
     static protected boolean espressoTestActive=false;//true - Espresso test is being run
 
     public static boolean isEspressoTestActive() {
-        return isEspressoTestActive();
+        return espressoTestActive;
     }
     public static boolean isAnalyticsEnabled() {
         return analyticsEnabled;
