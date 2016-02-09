@@ -1,4 +1,8 @@
 # What's new:
+## 1.8
+* Initial Support for Android 6.0
+* Many other fixes 
+
 ## 1.7
 * TODO
 
