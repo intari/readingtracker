@@ -24,8 +24,9 @@ public class MyTestApplication extends ApplicationTestCase<MyApplication> {
         Log.d(TAG,"setUp(), disabling Parse's crash reporting");
         MyApplication.setUseParseCrashReporting(false);
         MyApplication.setInitParse(false);
-        Parse.initialize(getSystemContext(),BuildConfig.PARSE_APP_ID,BuildConfig.PARSE_CLIENT_KEY);
+        Parse.initialize(getSystemContext(), BuildConfig.PARSE_APP_ID, BuildConfig.PARSE_CLIENT_KEY);
         MyApplication.setAnalyticsEnabled(false);
+        MyApplication.espressoTestActive=true;
         Log.d(TAG,"setUp(), will call createApplication()");
         createApplication();
         Log.d(TAG,"setUp(), called createApplication()");

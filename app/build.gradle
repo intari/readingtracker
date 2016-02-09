@@ -33,11 +33,6 @@ buildscript {
 
     }
 }
-repositories {
-    maven{
-        url "http://api.genymotion.com/repositories/releases/"
-    }
-}
 /*
 dependencies {
     compile 'org.jetbrains.kotlin:kotlin-stdlib:0.10.195'
@@ -82,6 +77,8 @@ parse {
 }
 
 apply plugin: 'com.android.application'
+apply plugin: 'jacoco-android'
+
 //apply plugin: 'kotlin-android'
 /*
 compileKotlin {
@@ -382,6 +379,7 @@ android {
 
                 if (System.getenv('RUNNING_UNDER_INTERNAL_JENKINS')=='YES') {
                     buildConfigField "String","BUILDER_TYPE","\"jenkins\""
+
                 }
                 else
                 {
@@ -464,6 +462,8 @@ android {
         versionCode myVersionCode
         versionName myVersionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        com.android.ddmlib.DdmPreferences.setTimeOut(5 * 60 * 1000); //5 minutes
+
     }
 
     packagingOptions {
@@ -478,8 +478,17 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
+        debug {
+            versionNameSuffix "-debug"
+            applicationIdSuffix ".debug"
+            testCoverageEnabled true
+        }
     }
 
+    //https://stackoverflow.com/questions/33499046/android-project-automation-test-in-circleci-build-failed-with-an-exception
+    adbOptions {
+        timeOutInMs 5 * 60 * 1000 // 5 minutes
+    }
     //code sign support
     //Load values used for application signing
     if(project.hasProperty("debugSigningPropertiesPath") && project.hasProperty("releaseSigningPropertiesPath")) {
@@ -594,7 +603,6 @@ dependencies {
     compile files('libs/jmdns-3.4.1.jar')
     compile files('libs/FlurryAnalytics-5.0.0.jar')
 
-    //TODO:update code to support new appCompat & design library
     compile support.appCompat
     compile support.design
     //compile "com.android.support:support-v4:21.0.3"
@@ -627,9 +635,6 @@ dependencies {
     //ParseUI
     compile 'com.facebook.android:facebook-android-sdk:3.21.0'
     compile project(':ParseLoginUI')
-
-    //Genymotion
-    androidTestCompile 'com.genymotion.api:genymotion-api:1.0.1'
 
     androidTestCompile 'org.hamcrest:hamcrest-integration:1.1'
     androidTestCompile 'org.hamcrest:hamcrest-core:1.1'

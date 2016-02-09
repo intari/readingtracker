@@ -21,11 +21,6 @@ import java.util.*;
 public class CoreService extends Service  {
 
 
-    /*
-    public static final String FAKEAPP_DEVICELOCKED = "com.viorsan.readingtracker.DeviceLocked";
-    public static final String FAKEAPP_SCREENOFF = "com.viorsan.readingtracker.ScreenOff";
-    */
-
     public static final long YEAR_IN_MS = 365 * 86400 * 1000;
     public static final int PROCESSLIST_RESCAN_INTERVAL_MILLIS = 3000;//ONLY used to check if reader app is currently active
     public static final int REPORT_SENDING_RETRY_MILLIS = 3000;
@@ -36,12 +31,8 @@ public class CoreService extends Service  {
 
     private BroadcastReceiver currentlyReadingMessageReceiver=null;
 
-    public static String ourDeviceID = "";
-
-
     CoreBroadcastReceiver broadcastReceiver = null;
 
-    //private String previousForegroundTask;//can have 'fake' data
     private Boolean isDeviceLocked = false;
     private Boolean isDeviceScreenOff = false;
 
@@ -77,7 +68,6 @@ public class CoreService extends Service  {
         Log.i(TAG,"Device unlocked");
 
         isDeviceLocked = false;
-        //updateActiveProcessList();
         MyAnalytics.trackEvent("DeviceUnlocked");
     }
 
@@ -88,7 +78,6 @@ public class CoreService extends Service  {
         MyAnalytics.trackEvent("DeviceLocked");
 
         isDeviceLocked = true;
-        //updateActiveProcessList();
     }
 
     public void onDreamingStarted() {
@@ -111,7 +100,6 @@ public class CoreService extends Service  {
         Log.i(TAG,"Screen is on");
 
         isDeviceScreenOff = false;
-        //updateActiveProcessList();
         MyAnalytics.trackEvent("ScreenOn");
     }
 
@@ -120,48 +108,7 @@ public class CoreService extends Service  {
         BookReadingsRecorder.getBookReadingsRecorder(this).recordSwitchAwayFromBook(this,SystemClock.elapsedRealtime());
         MyAnalytics.trackEvent("ScreenOff");
         isDeviceScreenOff = true;
-        //updateActiveProcessList();
     }
-
-    /*
-    public synchronized void updateActiveProcessList() {
-        updateActiveProcessListInner();
-    }
-
-    private void updateActiveProcessListInner() {
-
-        ActivityManager activityManager = (ActivityManager)this.getSystemService(ACTIVITY_SERVICE);
-
-        if (activityManager == null) {
-            Log.i(TAG, "updateProcessList:null activity manager");
-            return;
-        }
-
-        List<ActivityManager.RunningTaskInfo> appProcesses = activityManager.getRunningTasks(1);
-        String newForegroundTask = appProcesses.get(0).topActivity.getPackageName();
-
-        if (isDeviceLocked) {
-            newForegroundTask = FAKEAPP_DEVICELOCKED;
-        } else if (isDeviceScreenOff) {
-            newForegroundTask = FAKEAPP_SCREENOFF;
-        }
-
-        if (!newForegroundTask.equals(previousForegroundTask)) {
-
-            // Book Scrobbler logic
-            BookReadingsRecorder.getBookReadingsRecorder(this).checkIfReadingAppActive(this);
-
-            previousForegroundTask = newForegroundTask;
-
-        }
-    }
-*/
-
-
-
-
-
-
 
 
 
@@ -186,10 +133,6 @@ public class CoreService extends Service  {
 
         MyAnalytics.startAnalyticsWithContext(this);
 
-        //write our device id
-        //TODO:modify to work on Android 6.0, disable until it's done
-        //ourDeviceID = new DeviceInfoManager().getDeviceId(this);
-
         //die if not user logged in
         ParseUser currentUser=ParseUser.getCurrentUser();
         if (currentUser==null) {
@@ -201,32 +144,6 @@ public class CoreService extends Service  {
 
         //configure icon
         configureForeground();
-
-
-        //No longer used in builds which support Android 6.0, in fact I could do without it anyway
-        /*
-
-        //find out previous active task
-        ActivityManager activityManager = (ActivityManager)getSystemService(ACTIVITY_SERVICE);
-        if (activityManager == null) {
-            previousForegroundTask = BuildConfig.APPLICATION_ID;
-        } else {
-            List<ActivityManager.RunningTaskInfo> appProcesses = activityManager.getRunningTasks(1);
-            previousForegroundTask = appProcesses.get(0).topActivity.getPackageName();
-        }
-
-
-
-        //confugure process list updater
-        new CountDownTimer(YEAR_IN_MS, PROCESSLIST_RESCAN_INTERVAL_MILLIS) {
-            public void onTick(long msUntilFinish) {
-
-                updateActiveProcessList();
-            }
-
-            public  void  onFinish() {}
-        }.start();
-        */
 
 
         broadcastReceiver = new CoreBroadcastReceiver();
@@ -383,12 +300,7 @@ public class CoreService extends Service  {
 
                 Log.i(TAG,"Got reading update:"+msg);
 
-                Notification note = new Notification(R.drawable.push_icon,
-                        getResources().getString(R.string.app_started_notification),
-                        System.currentTimeMillis());
-
                 PendingIntent pi = PendingIntent.getActivity(self, 0, new Intent(self, MainActivity.class), 0);
-
 
                 Notification.Builder builder=new Notification.Builder(context);
                 builder.setSmallIcon(R.drawable.push_icon);

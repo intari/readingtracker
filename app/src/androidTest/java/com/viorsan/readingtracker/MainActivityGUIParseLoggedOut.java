@@ -82,10 +82,11 @@ public class MainActivityGUIParseLoggedOut extends MyInstrumentationTestCase { /
     /**
      * Check that login button actually works
      */
+    /*
     public void testLoginButtonWorksInitialStateLoggedOut() throws InterruptedException {
         String TEST_TAG="testLoginButtonWorks";
         Log.d(TAG,"Testing login button");
-        onView(isRoot()).perform(screenshot(R.id.MainActivity,TEST_TAG+"_initialState"));
+        //onView(isRoot()).perform(screenshot(R.id.MainActivity,TEST_TAG+"_initialState"));
 
 
         //check we not logged in
@@ -99,19 +100,19 @@ public class MainActivityGUIParseLoggedOut extends MyInstrumentationTestCase { /
         //TODO: use test build's account & test build auth
         //we are now in ParseUI's login activity
         onView(isRoot()).perform(waitId(R.id.parse_login, SECONDS_30));
-        onView(isRoot()).perform(screenshot(R.id.parse_login,TEST_TAG+"_afterLoginButtonPressed"));
+        //onView(isRoot()).perform(screenshot(R.id.parse_login,TEST_TAG+"_afterLoginButtonPressed"));
 
         onView(withId(R.id.login_username_input))
                 .perform(typeText(BuildConfig.PARSE_USERNAME_FOR_TEST_HARNESS)
                 );
-        onView(isRoot()).perform(screenshot(R.id.parse_login,TEST_TAG+"_afterLogindEntered"));
+        //onView(isRoot()).perform(screenshot(R.id.parse_login,TEST_TAG+"_afterLogindEntered"));
 
         onView(withId(R.id.login_password_input))
                 .perform(typeText(BuildConfig.PARSE_PASSWORD_FOR_TEST_HARNESS),
                         closeSoftKeyboard());
 
         //login data entered. let's try to login
-        onView(isRoot()).perform(screenshot(R.id.parse_login,TEST_TAG+"_afterPasswordEntered"));
+       // onView(isRoot()).perform(screenshot(R.id.parse_login,TEST_TAG+"_afterPasswordEntered"));
 
         onView(withId(R.id.parse_login_button))
                 .perform(click());
@@ -124,7 +125,7 @@ public class MainActivityGUIParseLoggedOut extends MyInstrumentationTestCase { /
         //onView(isRoot()).perform(waitId(R.id.MainActivity,SECONDS_30));
         Thread.sleep(DEFAULT_SLEEP_TIME,0);
         //we are now back in our activity.
-        onView(isRoot()).perform(screenshot(R.id.MainActivity,TEST_TAG+"_afterLoginCompleted"));
+        //onView(isRoot()).perform(screenshot(R.id.MainActivity,TEST_TAG+"_afterLoginCompleted"));
 
         Log.d(TAG,"Should now be logged in");
         ParseUser currentUser=ParsePlatformUtils.getCurrentParseUser();
@@ -138,10 +139,10 @@ public class MainActivityGUIParseLoggedOut extends MyInstrumentationTestCase { /
         onView(withId(R.id.login_or_logout_button))
                 .perform(click());
         //should be back in our activity
-        onView(isRoot()).perform(screenshot(R.id.MainActivity,TEST_TAG+"_afterLogoutButtonPressed"));
+        //onView(isRoot()).perform(screenshot(R.id.MainActivity,TEST_TAG+"_afterLogoutButtonPressed"));
 
 
     }
-
+*/
 }
 

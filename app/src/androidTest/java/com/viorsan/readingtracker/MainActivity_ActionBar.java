@@ -60,7 +60,7 @@ public class MainActivity_ActionBar extends MyInstrumentationTestCase { // Activ
     public void testAboutButtonWorks() {
         String TEST_TAG="testAboutButtonWorks";
         //screenshot initial state
-        onView(isRoot()).perform(screenshot(R.id.MainActivity,TEST_TAG+"_ActionBarTests_initialState"));
+        //onView(isRoot()).perform(screenshot(R.id.MainActivity,TEST_TAG+"_ActionBarTests_initialState"));
         // Open the overflow menu from action bar
         openActionBarOverflowOrOptionsMenu(getInstrumentation().getTargetContext());
 
@@ -72,7 +72,7 @@ public class MainActivity_ActionBar extends MyInstrumentationTestCase { // Activ
         onView(withId(R.id.readingTrackerSlogan))
                 .check(matches(withText(R.string.readingTrackerSlogan)));
         //screenshot about activity too
-        onView(isRoot()).perform(screenshot(R.id.AboutActivity,TEST_TAG+"_ActionBarTests_AboutActivity"));
+        //onView(isRoot()).perform(screenshot(R.id.AboutActivity,TEST_TAG+"_ActionBarTests_AboutActivity"));
 
 
     }

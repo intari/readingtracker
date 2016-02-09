@@ -50,7 +50,7 @@
     <string name="readingTrackerBuildOn">Собрано %2$s на %1$s в %3$s</string>
     <string name="readingTrackerVersionLineDefault">Загрузка…</string>
     <string name="readingTrackerVersion">Версия %1$s  (%2$s / %3$s) </string>
-    <string name="readingTrackerCopyright">Reading Tracker © 2014,2015 Дмитрий Казимиров</string>
+    <string name="readingTrackerCopyright">Reading Tracker © 2014-2016 Дмитрий Казимиров</string>
 
 
 </resources>
