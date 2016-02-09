@@ -173,7 +173,12 @@ public class AccessibilityRecorderService extends AccessibilityService {
     public void onAccessibilityEvent(AccessibilityEvent event) {
         int windowId=event.getWindowId();
         String eventType=getEventType(event);
-        String eventClassName=event.getClassName().toString();
+        CharSequence eCN=event.getClassName();
+        if (eCN==null) {
+            Log.e(TAG,"event's ClassName is null. it's possible that Reader Application is frozen. exiting early");
+            return;
+        }
+        String eventClassName=eCN.toString();
         String sourceViewId=getSourceViewId(event);
         final String packageName=event.getPackageName().toString();
         long eventTime=event.getEventTime();

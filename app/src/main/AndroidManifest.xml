@@ -43,6 +43,7 @@
         android:allowBackup="true"
         android:icon="@drawable/readingtracker"
         android:label="@string/app_name"
+        android:largeHeap = "true"
         android:theme="@style/Theme.AppCompat" >
         <activity android:name="net.hockeyapp.android.UpdateActivity" />
         <activity
@@ -132,15 +133,6 @@
                   IMPORTANT: Change "com.parse.tutorials.pushnotifications" to match your app's package name.
                 -->
                 <category android:name="com.viorsan.readingtracker" />
-            </intent-filter>
-        </receiver>
-        <receiver
-            android:name="com.viorsan.readingtracker.PushReceiver"
-            android:exported="false" >
-            <intent-filter>
-                <action android:name="com.parse.push.intent.RECEIVE" />
-                <action android:name="com.parse.push.intent.DELETE" />
-                <action android:name="com.parse.push.intent.OPEN" />
             </intent-filter>
         </receiver>
     </application>
