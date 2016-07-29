@@ -24,8 +24,10 @@ In future various interesting graphs could be made once I collect enough statist
 * As of version 1.6.8 application should work correctly with Lollipop
 
 # Android 6.0 Marshmallow support
-* Current release version doesn't work with Android 6.0 at all. it just doesn't work. Alpha version with Android 6.0 support is available. (visit https://play.google.com/apps/testing/com.viorsan.readingtracker to opt-in)
+* Version 1.8.1 works with Android 6.0
 
+* Android 7.0 support
+* Not even tested yet
 
 # Which e-book readers are supported?
 Currently all editions of Mantano Reader are supported (it's great. Please buy it. If you want to used it on multiple devices you should buy their cloud subscription too).
@@ -59,7 +61,7 @@ Ability to setup integration with [Zapier](zapier.com) web-hooks (support for [E
   * GET_TASKS - to knew when you switch from supported reading app to something other (Version for Android 6.0 doesn't need this)
   * WRITE_EXTERNAL_STORAGE - automatic updates of non-PlayStore versions using HockeyApp
   * BIND_ACCESSIBILITY_SERVICE - main app functionality. you will be asked to provide access to 'Accessibility Services' on startup. You could refuse but you will not be able to get your statistics from this device
-  * WAKE_LOCK / VIBRATE / GET_ACCOUNTS - Parse-based push notifications (Version for Android 6.0 doesn't need this)
+  * WAKE_LOCK / VIBRATE / GET_ACCOUNTS - Parse-based push notifications (Version for Android 6.0 doesn't need them anymore)
   
 
 # Licenses
@@ -78,7 +80,8 @@ Data collected by application will only be used to provide services to app user.
 Collected data won't be sold, used for spam or other bad things.
 I reserve right to  provide data collected by app from you if applicable goverment authority asks for your data.
 
-Application uses several 3rd-party services (Parse, Mandrill, Countly) to provide some functionality.
+Application uses several 3rd-party services (Parse, Mailgun, Countly,etc) to provide some functionality. 
+Main database is now hosted in EU
 
 # Where are sources for CloudCode part?
 Not in this repository yet

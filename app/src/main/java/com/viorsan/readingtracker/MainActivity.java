@@ -20,7 +20,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.facebook.AppEventsLogger;
+//import com.facebook.AppEventsLogger;
 import com.parse.*;
 import com.parse.ui.ParseLoginBuilder;
 
@@ -580,7 +580,7 @@ public class MainActivity extends ActionBarActivity implements GoToAccessibility
         Log.d(TAG,"onResume");
         updateUserLoggedInState();
         // Logs 'install' and 'app activate' App Events.
-        AppEventsLogger.activateApp(this);
+        //AppEventsLogger.activateApp(this);
         checkForUpdates();
         goToSettingsToEnableAccessibilityServiceDialogShown=false;//may be user changed her mind? we really can't work without!
         askForActivityMonitoringUpdate();
@@ -592,7 +592,7 @@ public class MainActivity extends ActionBarActivity implements GoToAccessibility
         super.onPause();
         Log.d(TAG,"onPause");
         // Logs 'app deactivate' App Event.
-        AppEventsLogger.deactivateApp(this);
+        //AppEventsLogger.deactivateApp(this);
         timerToWaitBeforeAskingForAccessibilitySettings.cancel();
     }
 
