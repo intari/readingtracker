@@ -77,6 +77,7 @@ public class MyApplication extends android.app.Application {
             );
             //enable automatic user support support
             //ParseUser.enableAutomaticUser();
+            ParseFacebookUtils.initialize(this);
         }
         else {
             Log.d(TAG,"Don't performing Parse's initialization. ");
@@ -92,13 +93,6 @@ public class MyApplication extends android.app.Application {
 
         super.onCreate();
 
-        if (!isRoboUnitTest()) {
-            if (MyApplication.isAnalyticsEnabled()) {
-                MyAnalytics.init(this,getApplicationContext());
-                MyAnalytics.startAnalytics();
-
-            }
-        }
 
     }
     @Override public void onTerminate() {
