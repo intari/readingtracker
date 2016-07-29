@@ -169,7 +169,7 @@ public class ParsePlatformUtils {
         report.saveEventually(new SaveCallback() {
             public void done(ParseException e) {
                 if (e == null) {
-                    //Log.i(TAG, "Saved report "+reportClass+" to parse. heartrate "+mCurrentHeartRate);
+                    Log.i(TAG, "Saved report "+reportClass+" to parse");
                 } else {
                     Log.i(TAG, "Not saved report "+reportClass+"to parse: " + e.toString());
                 }
