@@ -186,7 +186,6 @@ def getVersionCodeFromNetwork(auth,url) {
  */
 def getVersionCodeFromNetworkReal(auth,url) {
     def cmd='curl -X GET https://'+auth+'@'+url
-    println cmd
     return cmd.execute().text.trim()
 }
 
@@ -219,8 +218,9 @@ android {
         def countlyServer=""
         def countlyAppKey=""
 
-        //Flurry
-        def flurryApiKey=""
+
+        //Mixpanel
+        def mixpanelToken=""
 
         //full sha1 of build version
         def gitSha=gitSha()
@@ -231,6 +231,7 @@ android {
             parseClientKey=System.getenv('PARSE_CLIENT_KEY_TRAVIS')
             hockeyAppAppId=System.getenv('HOCKEYAPP_APP_ID_TRAVIS')
             apiServer=System.getenv('API_SERVER')
+            mixpanelToken=System.getenv('MIXPANEL_TOKEN')
 
 
             parseAppIdForTestHarness=System.getenv('PARSE_APP_ID_FOR_TEST_HARNESS_TRAVIS')
@@ -257,7 +258,6 @@ android {
                 buildConfigField "String","COUNTLY_SERVER", "\""+countlyServer+"\""
                 buildConfigField "String","COUNTLY_APP_KEY","\""+countlyAppKey+"\""
 
-                buildConfigField "String","FLURRY_API_KEY","\""+flurryApiKey+"\""
 
                 buildConfigField "String","BUILD_GIT_SHA1", "\""+gitSha+"\""
 
@@ -287,16 +287,13 @@ android {
                     parseClientKeyForTestHarness=apiKeysProps['PARSE_CLIENT_KEY_FOR_TEST_HARNESS'];
                     parseUserNameForTestHarness=apiKeysProps['PARSE_USERNAME_FOR_TEST_HARNESS'];
                     parsePasswordForTestHarness=apiKeysProps['PARSE_PASSWORD_FOR_TEST_HARNESS'];
-
+                    mixpanelToken=apiKeysProps['MIXPANEL_TOKEN'];
 
 
                     //Count.ly analytics
                     countlyServer=apiKeysProps['COUNTLY_SERVER']
                     countlyAppKey=apiKeysProps['COUNTLY_APPKEY']
                     print countlyServer
-
-                    //Flurry
-                    flurryApiKey=apiKeysProps['FLURRY_APIKEY']
 
 
                     //prevent empty values
@@ -332,6 +329,10 @@ android {
                     if (countlyAppKey==null) {
                         throw new GradleException("Count.ly App Key not configured not configured but API Key file was here");
                     }
+                    if (mixpanelToken==null) {
+                        throw new GradleException("Mixpanel Token not configured not configured but API Key file was here");
+                    }
+
                     /*
                     if (versionCodeNetworkURL==null) {
                         throw new GradleException("network url for version code updates was not configured but API Key file was here");
@@ -372,7 +373,7 @@ android {
                 buildConfigField "String","COUNTLY_SERVER", "\""+countlyServer+"\""
                 buildConfigField "String","COUNTLY_APP_KEY","\""+countlyAppKey+"\""
 
-                buildConfigField "String","FLURRY_API_KEY","\""+flurryApiKey+"\""
+                buildConfigField "String","MIXPANEL_TOKEN","\""+mixpanelToken+"\""
 
 
                 buildConfigField "String","BUILD_GIT_SHA1", "\""+gitSha+"\""
@@ -405,7 +406,6 @@ android {
                buildConfigField "String","COUNTLY_SERVER", "\""+countlyServer+"\""
                buildConfigField "String","COUNTLY_APP_KEY","\""+countlyAppKey+"\""
 
-               buildConfigField "String","FLURRY_API_KEY","\""+flurryApiKey+"\""
 
 
                buildConfigField "String","BUILD_GIT_SHA1", "\""+gitSha+"\""
@@ -432,7 +432,8 @@ android {
 
                buildConfigField "String","COUNTLY_SERVER", "\""+countlyServer+"\""
                buildConfigField "String","COUNTLY_APP_KEY","\""+countlyAppKey+"\""
-               buildConfigField "String","FLURRY_API_KEY","\""+flurryApiKey+"\""
+
+               buildConfigField "String","MIXPANEL_TOKEN","\""+mixpanelToken+"\""
 
 
                buildConfigField "String","BUILD_GIT_SHA1", "\""+gitSha+"\""
@@ -602,13 +603,16 @@ dependencies {
     compile files('libs/acra-4.4.0.jar')
     compile files('libs/json-simple-1.1.1.jar')
     compile files('libs/jmdns-3.4.1.jar')
-    compile files('libs/FlurryAnalytics-5.0.0.jar')
 
     compile support.appCompat
     compile support.design
     //compile "com.android.support:support-v4:21.0.3"
     //compile "com.android.support:appcompat-v7:21.0.3"
     compile "com.android.support:multidex:1.0.+"
+
+
+    compile "com.mixpanel.android:mixpanel-android:4.+"
+    compile "com.google.android.gms:play-services:3.1+"
 
     testCompile assertJCore
     testCompile junit

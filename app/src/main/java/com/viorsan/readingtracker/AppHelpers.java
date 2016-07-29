@@ -3,7 +3,6 @@ package com.viorsan.readingtracker;
 import android.content.Context;
 import android.util.Log;
 
-import com.flurry.android.FlurryAgent;
 
 import java.util.Locale;
 
@@ -68,7 +67,6 @@ public class AppHelpers {
         }
         Log.i(TAG," BuilderType:"+BuildConfig.BUILDER_TYPE);
         Log.i(TAG," Built on "+BuildConfig.BUILD_HOST+ " of type "+BuildConfig.BUILDER_TYPE+ " by user "+ BuildConfig.BUILD_USER+" at "+BuildConfig.BUILD_DATE_TIME);
-        Log.i(TAG," Flurry release:"+ FlurryAgent.getReleaseVersion());
         Log.i(TAG," Countly version:"+ Countly.COUNTLY_SDK_VERSION_STRING);
         //log extra device details
         DeviceInfoManager deviceInfoManager=new DeviceInfoManager();

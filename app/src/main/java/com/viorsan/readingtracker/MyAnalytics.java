@@ -4,17 +4,19 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.flurry.android.FlurryAgent;
 import com.parse.ParseAnalytics;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import ly.count.android.api.Countly;
+import com.mixpanel.android.mpmetrics.MixpanelAPI;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * Created by Dmitriy Kazimirov, e-mail:dmitriy.kazimirov@viorsan.com on 21.12.14.
- * Wrapper for Parse Analytics and (in future) other analytics systems
+ * Wrapper for Mixpanel and (in future) other analytics systems
  * Also takes in account running in situations where analytics should be disabled
  *
  */
@@ -24,8 +26,6 @@ public class MyAnalytics {
     public static final String APP_OPENED = "appOpened";
 
     private static HashMap<String, String> userData = new HashMap<String, String>();
-
-    private static final boolean flurryEnabled=false;
 
     private static boolean countlyStarted=false;
     private static MyApplication app;
@@ -40,18 +40,8 @@ public class MyAnalytics {
         if (MyApplication.isAnalyticsEnabled()) {
             Countly.sharedInstance().init(context, BuildConfig.COUNTLY_SERVER, BuildConfig.COUNTLY_APP_KEY);
 
-            if (flurryEnabled) {
-                Log.d(TAG,"Flurry Analytics enabled");
-                // configure Flurry
-                FlurryAgent.setCaptureUncaughtExceptions(false);//Parse will do this for us and in correct way
-                FlurryAgent.setLogEnabled(true);
-                FlurryAgent.setLogEvents(true);
-                // init Flurry
-                FlurryAgent.init(context, BuildConfig.FLURRY_API_KEY);
-            }
-            else {
-                Log.d(TAG,"Flurry Analytics not enabled");
-            }
+            //Mixpanel
+            MixpanelAPI mixpanel = MixpanelAPI.getInstance(context,BuildConfig.MIXPANEL_TOKEN);
         }
 
     }
@@ -60,7 +50,8 @@ public class MyAnalytics {
     }
     public static void setUserId(String userId) {
         if (MyApplication.isAnalyticsEnabled()) {
-            FlurryAgent.setUserId(userId);
+            MixpanelAPI mixpanel = MixpanelAPI.getInstance(app,BuildConfig.MIXPANEL_TOKEN);
+            mixpanel.identify(userId);
         }
     }
     public static void sendUserData() {
@@ -80,9 +71,6 @@ public class MyAnalytics {
     public static void startAnalyticsWithContext(Context context) {
         if (MyApplication.isAnalyticsEnabled()) {
             Log.d(TAG,"startAnalyticsWithContext()");
-            if (flurryEnabled) {
-                FlurryAgent.onStartSession(context);
-            }
         }
         startAnalytics();
     }
@@ -94,9 +82,6 @@ public class MyAnalytics {
     public static void stopAnalyticsWithContext(Context context) {
         if (MyApplication.isAnalyticsEnabled()) {
             Log.d(TAG,"stopAnalyticsWithContext()");
-            if (flurryEnabled) {
-                FlurryAgent.onEndSession(context);
-            }
         }
         stopAnalytics();
     }
@@ -121,6 +106,9 @@ public class MyAnalytics {
                 Countly.sharedInstance().onStop();
                 countlyStarted=false;
             }
+            MixpanelAPI mixpanel = MixpanelAPI.getInstance(app,BuildConfig.MIXPANEL_TOKEN);
+            mixpanel.flush();
+
         }
     }
 
@@ -148,10 +136,6 @@ public class MyAnalytics {
             if (intent.getType()!=null) {
                 dimensions.put("type",intent.getType());
             }
-            //TODO:put extras?
-            if (flurryEnabled) {
-                FlurryAgent.logEvent(APP_OPENED, dimensions);
-            }
             Countly.sharedInstance().recordEvent(APP_OPENED,dimensions,1);
         }
         else {
@@ -173,11 +157,18 @@ public class MyAnalytics {
         if (MyApplication.isAnalyticsEnabled()) {
             Log.d(TAG,"Sending event "+name+" (with dimensions) to analytics service");
             try {
+
                 ParseAnalytics.trackEvent(name,dimensions);
                 Countly.sharedInstance().recordEvent(name,dimensions,1);
-                if (flurryEnabled) {
-                    FlurryAgent.logEvent(name, dimensions);
+                MixpanelAPI mixpanel = MixpanelAPI.getInstance(app,BuildConfig.MIXPANEL_TOKEN);
+                JSONObject props = new JSONObject();
+                //convert to mixpanel's format
+                for (Map.Entry<String, String> entry : dimensions.entrySet())
+                {
+                    props.put(entry.getKey(),entry.getValue());
                 }
+                mixpanel.track(name, props);
+
             } catch (Exception ex) {
                 Log.d(TAG,"Failed to log event due to exception:"+ex.toString());
                 ex.printStackTrace();
@@ -190,7 +181,7 @@ public class MyAnalytics {
 
     /**
      * Signals start of timed event to 3rd-party analytics systems.
-     * Currently only Flurry is supported (not Count.ly)
+     * Currently only Mixpanel is supported (not Count.ly)
      * @param name - event name
      */
     public static void trackTimedEventStart(String name) {
@@ -201,11 +192,9 @@ public class MyAnalytics {
         //don't track anything if this is disabled on global level
         if (MyApplication.isAnalyticsEnabled()) {
             Log.d(TAG,"Sending start of event "+name+"  to analytics service");
-            //ParseAnalytics.trackEvent(name,dimensions);
             //Countly.sharedInstance().recordEvent(name,dimensions,1);
-            if (flurryEnabled) {
-                FlurryAgent.logEvent(name, true);
-            }
+            MixpanelAPI mixpanel = MixpanelAPI.getInstance(app,BuildConfig.MIXPANEL_TOKEN);
+            mixpanel.timeEvent(name);
         }
         else {
             Log.d(TAG,"trackTimedEventStart not sending event " + name + "  to analytics service");
@@ -214,7 +203,7 @@ public class MyAnalytics {
 
     /**
      * Signals start of timed event to 3rd-party analytics systems.
-     * Currently only Flurry is supported (not Count.ly)
+     * Currently only Mixpanel is supported (not Count.ly)
      * @param name - event name
      * @param dimensions - additional event information
      */
@@ -226,11 +215,8 @@ public class MyAnalytics {
         //don't track anything if this is disabled on global level
         if (MyApplication.isAnalyticsEnabled()) {
             Log.d(TAG,"Sending start of event "+name+" (with dimensions) to analytics service");
-            //ParseAnalytics.trackEvent(name,dimensions);
             //Countly.sharedInstance().recordEvent(name,dimensions,1);
-            if (flurryEnabled) {
-                FlurryAgent.logEvent(name, dimensions, true);
-            }
+
         }
         else {
            Log.d(TAG,"trackTimedEventStart not sending event " + name + " (with dimensions) to analytics service");
@@ -249,11 +235,9 @@ public class MyAnalytics {
         //don't track anything if this is disabled on global level
         if (MyApplication.isAnalyticsEnabled()) {
             Log.d(TAG,"Sending stop of event "+name+" (with dimensions) to analytics service");
-            //ParseAnalytics.trackEvent(name,dimensions);
             //Countly.sharedInstance().recordEvent(name,dimensions,1);
-            if (flurryEnabled) {
-                FlurryAgent.endTimedEvent(name);
-            }
+            MixpanelAPI mixpanel = MixpanelAPI.getInstance(app,BuildConfig.MIXPANEL_TOKEN);
+            mixpanel.track(name);
         }
         else {
             Log.d(TAG, "trackTimedEventStop not sending event " + name + " (with dimensions) to analytics service");
@@ -273,11 +257,20 @@ public class MyAnalytics {
         //don't track anything if this is disabled on global level
         if (MyApplication.isAnalyticsEnabled()) {
             Log.d(TAG,"Sending stop of event "+name+" (with dimensions) to analytics service");
-            //ParseAnalytics.trackEvent(name,dimensions);
             //Countly.sharedInstance().recordEvent(name,dimensions,1);
-            if (flurryEnabled) {
-                FlurryAgent.endTimedEvent(name, dimensions);
+            MixpanelAPI mixpanel = MixpanelAPI.getInstance(app,BuildConfig.MIXPANEL_TOKEN);
+            try {
+                JSONObject props = new JSONObject();
+                //convert to mixpanel's format
+                for (Map.Entry<String, String> entry : dimensions.entrySet())
+                {
+                    props.put(entry.getKey(),entry.getValue());
+                }
+                mixpanel.track(name, props);
+            } catch (JSONException e) {
+                Log.e(TAG, "Unable to add properties to JSONObject", e);
             }
+
         }
         else {
             Log.d(TAG,"trackTimedEventStop not sending event " + name + " (with dimensions) to analytics service" );
@@ -295,11 +288,9 @@ public class MyAnalytics {
         //don't track anything if this is disabled on global level
         if (MyApplication.isAnalyticsEnabled()) {
             Log.d(TAG,"Sending event "+name+" to analytics service");
-            ParseAnalytics.trackEvent(name);
             Countly.sharedInstance().recordEvent(name,1);
-            if (flurryEnabled) {
-                FlurryAgent.logEvent(name);
-            }
+            MixpanelAPI mixpanel = MixpanelAPI.getInstance(app,BuildConfig.MIXPANEL_TOKEN);
+            mixpanel.track(name);
         }
         else {
             Log.d(TAG, "trackEvent not sending event " + name + " to analytics service");
