@@ -7,6 +7,8 @@ import android.util.Log;
 import java.util.Locale;
 
 import ly.count.android.api.Countly;
+import com.mixpanel.android.mpmetrics.MixpanelAPI;
+
 
 /**
  * Created by Dmitriy Kazimirov, e-mail:dmitriy.kazimirov@viorsan.com on 02.01.15.
@@ -68,6 +70,7 @@ public class AppHelpers {
         Log.i(TAG," BuilderType:"+BuildConfig.BUILDER_TYPE);
         Log.i(TAG," Built on "+BuildConfig.BUILD_HOST+ " of type "+BuildConfig.BUILDER_TYPE+ " by user "+ BuildConfig.BUILD_USER+" at "+BuildConfig.BUILD_DATE_TIME);
         Log.i(TAG," Countly version:"+ Countly.COUNTLY_SDK_VERSION_STRING);
+        Log.i(TAG," Mixpanel version:"+com.mixpanel.android.BuildConfig.MIXPANEL_VERSION);
         //log extra device details
         DeviceInfoManager deviceInfoManager=new DeviceInfoManager();
         Log.i(TAG," Language:"+ Locale.getDefault().getLanguage());

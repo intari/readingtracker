@@ -88,6 +88,14 @@ public class MainActivity extends ActionBarActivity implements GoToAccessibility
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (!MyApplication.isRoboUnitTest()) {
+            if (MyApplication.isAnalyticsEnabled()) {
+                MyAnalytics.init(getMyApp(),this);
+                MyAnalytics.startAnalytics();
+
+            }
+        }
+
         MyAnalytics.trackAppOpened(getIntent());
         setContentView(R.layout.main);
         ButterKnife.inject(this);

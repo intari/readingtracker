@@ -29,9 +29,12 @@ public class MyAnalytics {
 
     private static boolean countlyStarted=false;
     private static MyApplication app;
+    private static String storedUserId;
+    private static Context storedContext;
     public static void init(MyApplication newApp,Context context) {
         Log.d(TAG, "init");
         app=newApp;
+        storedContext=context;
         if (AppHelpers.isRunningTestBuild()) {
             Log.d(TAG,"Automatically disabling analytics in test build");
             MyApplication.setAnalyticsEnabled(false);
@@ -41,7 +44,7 @@ public class MyAnalytics {
             Countly.sharedInstance().init(context, BuildConfig.COUNTLY_SERVER, BuildConfig.COUNTLY_APP_KEY);
 
             //Mixpanel
-            MixpanelAPI mixpanel = MixpanelAPI.getInstance(context,BuildConfig.MIXPANEL_TOKEN);
+            MixpanelAPI mixpanel = MixpanelAPI.getInstance(storedContext,BuildConfig.MIXPANEL_TOKEN);
         }
 
     }
@@ -50,15 +53,22 @@ public class MyAnalytics {
     }
     public static void setUserId(String userId) {
         if (MyApplication.isAnalyticsEnabled()) {
-            MixpanelAPI mixpanel = MixpanelAPI.getInstance(app,BuildConfig.MIXPANEL_TOKEN);
+            storedUserId=userId;
+            MixpanelAPI mixpanel = MixpanelAPI.getInstance(storedContext,BuildConfig.MIXPANEL_TOKEN);
             mixpanel.identify(userId);
         }
     }
     public static void sendUserData() {
         if (MyApplication.isAnalyticsEnabled()) {
+            /*
+              Prepare and send data for both Count.ly and Mixpanel
+             */
+            MixpanelAPI mixpanel = MixpanelAPI.getInstance(storedContext, BuildConfig.MIXPANEL_TOKEN);
+            mixpanel.getPeople().identify(storedUserId);
             Bundle bundle=new Bundle();
             for (String key:userData.keySet()) {
                 bundle.putString(key,userData.get(key));
+                mixpanel.getPeople().set(key,userData.get(key));
             }
             Countly.sharedInstance().setUserData(bundle);
 
@@ -106,7 +116,7 @@ public class MyAnalytics {
                 Countly.sharedInstance().onStop();
                 countlyStarted=false;
             }
-            MixpanelAPI mixpanel = MixpanelAPI.getInstance(app,BuildConfig.MIXPANEL_TOKEN);
+            MixpanelAPI mixpanel = MixpanelAPI.getInstance(storedContext,BuildConfig.MIXPANEL_TOKEN);
             mixpanel.flush();
 
         }
@@ -160,7 +170,7 @@ public class MyAnalytics {
 
                 ParseAnalytics.trackEvent(name,dimensions);
                 Countly.sharedInstance().recordEvent(name,dimensions,1);
-                MixpanelAPI mixpanel = MixpanelAPI.getInstance(app,BuildConfig.MIXPANEL_TOKEN);
+                MixpanelAPI mixpanel = MixpanelAPI.getInstance(storedContext,BuildConfig.MIXPANEL_TOKEN);
                 JSONObject props = new JSONObject();
                 //convert to mixpanel's format
                 for (Map.Entry<String, String> entry : dimensions.entrySet())
@@ -193,7 +203,7 @@ public class MyAnalytics {
         if (MyApplication.isAnalyticsEnabled()) {
             Log.d(TAG,"Sending start of event "+name+"  to analytics service");
             //Countly.sharedInstance().recordEvent(name,dimensions,1);
-            MixpanelAPI mixpanel = MixpanelAPI.getInstance(app,BuildConfig.MIXPANEL_TOKEN);
+            MixpanelAPI mixpanel = MixpanelAPI.getInstance(storedContext,BuildConfig.MIXPANEL_TOKEN);
             mixpanel.timeEvent(name);
         }
         else {
@@ -236,7 +246,7 @@ public class MyAnalytics {
         if (MyApplication.isAnalyticsEnabled()) {
             Log.d(TAG,"Sending stop of event "+name+" (with dimensions) to analytics service");
             //Countly.sharedInstance().recordEvent(name,dimensions,1);
-            MixpanelAPI mixpanel = MixpanelAPI.getInstance(app,BuildConfig.MIXPANEL_TOKEN);
+            MixpanelAPI mixpanel = MixpanelAPI.getInstance(storedContext,BuildConfig.MIXPANEL_TOKEN);
             mixpanel.track(name);
         }
         else {
@@ -258,7 +268,7 @@ public class MyAnalytics {
         if (MyApplication.isAnalyticsEnabled()) {
             Log.d(TAG,"Sending stop of event "+name+" (with dimensions) to analytics service");
             //Countly.sharedInstance().recordEvent(name,dimensions,1);
-            MixpanelAPI mixpanel = MixpanelAPI.getInstance(app,BuildConfig.MIXPANEL_TOKEN);
+            MixpanelAPI mixpanel = MixpanelAPI.getInstance(storedContext,BuildConfig.MIXPANEL_TOKEN);
             try {
                 JSONObject props = new JSONObject();
                 //convert to mixpanel's format
@@ -289,7 +299,7 @@ public class MyAnalytics {
         if (MyApplication.isAnalyticsEnabled()) {
             Log.d(TAG,"Sending event "+name+" to analytics service");
             Countly.sharedInstance().recordEvent(name,1);
-            MixpanelAPI mixpanel = MixpanelAPI.getInstance(app,BuildConfig.MIXPANEL_TOKEN);
+            MixpanelAPI mixpanel = MixpanelAPI.getInstance(storedContext,BuildConfig.MIXPANEL_TOKEN);
             mixpanel.track(name);
         }
         else {
