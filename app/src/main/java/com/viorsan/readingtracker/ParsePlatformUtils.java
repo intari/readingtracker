@@ -4,7 +4,6 @@ import android.content.Context;
 import android.os.Handler;
 import android.util.Log;
 
-import com.flurry.android.FlurryAgent;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
@@ -135,7 +134,8 @@ public class ParsePlatformUtils {
         if (currentUser==null) {
             Log.d(TAG, "User is not logged in. Will not send reports");
             Log.i(TAG, "Cannot save report to Parse. No current user. Report type was "+report.getClassName());
-            FlurryAgent.onError(ERRORID_NO_CURRENT_PARSE_USER, "cannot save object of class " + report.getClassName() + " - no current user!", ERRORCLASS_PARSE_INTERFACE);
+            //TODO:do this on mixpanel
+            //FlurryAgent.onError(ERRORID_NO_CURRENT_PARSE_USER, "cannot save object of class " + report.getClassName() + " - no current user!", ERRORCLASS_PARSE_INTERFACE);
             return Boolean.FALSE;
         }
 
