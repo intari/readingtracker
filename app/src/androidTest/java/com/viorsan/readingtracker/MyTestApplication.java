@@ -21,8 +21,7 @@ public class MyTestApplication extends ApplicationTestCase<MyApplication> {
 
     @Override
     protected void setUp() throws Exception {
-        Log.d(TAG,"setUp(), disabling Parse's crash reporting");
-        MyApplication.setUseParseCrashReporting(false);
+        Log.d(TAG,"setUp()");
         MyApplication.setInitParse(false);
         Parse.initialize(getSystemContext(), BuildConfig.PARSE_APP_ID, BuildConfig.PARSE_CLIENT_KEY);
         MyApplication.setAnalyticsEnabled(false);
