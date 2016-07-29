@@ -15,31 +15,21 @@ def myVersionName=getVersionName()
 //default version code
 def myVersionCode=0
 
-apply plugin: 'com.parse'
+//apply plugin: 'com.parse'
 
 buildscript {
     repositories {
         mavenCentral()
         jcenter()
-        maven {
-            url 'https://maven.parse.com/repo'
-        }
     }
     dependencies {
-        classpath 'com.parse.tools:gradle:1.+'
-        //http://kotlinlang.org/docs/reference/using-gradle.html
-        //classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:0.10.195'
+        //classpath 'com.parse.tools:gradle:1.+'
         classpath 'com.github.forsety:adr:0.1'
 
     }
 }
-/*
-dependencies {
-    compile 'org.jetbrains.kotlin:kotlin-stdlib:0.10.195'
-}
-*/
 
-parse {
+/*parse {
     if(project.hasProperty("apiKeysPath") ) {
         File apiKeysFile = new File(System.getenv('HOME') + "/" + project.property("apiKeysPath"))
         if (apiKeysFile.canRead()) {
@@ -74,7 +64,7 @@ parse {
 
     uploadSymbols true //upload symobls if ProGuard was used!
 
-}
+}*/
 
 apply plugin: 'com.android.application'
 apply plugin: 'jacoco-android'
@@ -196,6 +186,7 @@ def getVersionCodeFromNetwork(auth,url) {
  */
 def getVersionCodeFromNetworkReal(auth,url) {
     def cmd='curl -X GET https://'+auth+'@'+url
+    println cmd
     return cmd.execute().text.trim()
 }
 
@@ -216,6 +207,7 @@ android {
         def parseAppId=""
         def parseClientKey=""
         def hockeyAppAppId=""
+        def apiServer=""
 
         //Load API Keys for usage by test system
         def parseAppIdForTestHarness= ""
@@ -238,6 +230,8 @@ android {
             parseAppId=System.getenv('PARSE_APP_ID_TRAVIS')
             parseClientKey=System.getenv('PARSE_CLIENT_KEY_TRAVIS')
             hockeyAppAppId=System.getenv('HOCKEYAPP_APP_ID_TRAVIS')
+            apiServer=System.getenv('API_SERVER')
+
 
             parseAppIdForTestHarness=System.getenv('PARSE_APP_ID_FOR_TEST_HARNESS_TRAVIS')
             parseClientKeyForTestHarness=System.getenv('PARSE_CLIENT_KEY_FOR_TEST_HARNESS_TRAVIS')
@@ -285,8 +279,9 @@ android {
                     apiKeysProps.load(new FileInputStream(apiKeysFile))
                     parseAppId= apiKeysProps['PARSE_APP_ID'];
                     parseClientKey=apiKeysProps['PARSE_CLIENT_KEY'];
+                    apiServer=apiKeysProps['API_SERVER'];
+                    //println parseClientKey2;
                     hockeyAppAppId=apiKeysProps['HOCKEYAPP_APP_ID'];
-
                     //Load API Keys for usage by test system
                     parseAppIdForTestHarness= apiKeysProps['PARSE_APP_ID_FOR_TEST_HARNESS'];
                     parseClientKeyForTestHarness=apiKeysProps['PARSE_CLIENT_KEY_FOR_TEST_HARNESS'];
@@ -298,6 +293,7 @@ android {
                     //Count.ly analytics
                     countlyServer=apiKeysProps['COUNTLY_SERVER']
                     countlyAppKey=apiKeysProps['COUNTLY_APPKEY']
+                    print countlyServer
 
                     //Flurry
                     flurryApiKey=apiKeysProps['FLURRY_APIKEY']
@@ -309,6 +305,9 @@ android {
                     }
                     if (parseClientKey==null) {
                         throw new GradleException("Parse CLIENT KEY not configured but API Key file was here");
+                    }
+                    if (apiServer==null) {
+                        throw new GradleException("API Server not configured but API Key file was here");
                     }
                     if (hockeyAppAppId==null) {
                         throw new GradleException("HockeyApp APP ID not configured but API Key file was here");
@@ -364,6 +363,7 @@ android {
             internal {
                 buildConfigField "String","PARSE_APP_ID", "\""+parseAppId+"\""
                 buildConfigField "String","PARSE_CLIENT_KEY","\""+parseClientKey+"\""
+                buildConfigField "String","API_SERVER","\""+apiServer+"\""
                 buildConfigField "String","HOCKEYAPP_APP_ID", "\""+hockeyAppAppId+"\""
                 buildConfigField "String","BUILD_DATE_TIME","\""+buildDateTime+" UTC\""
                 buildConfigField "String","PARSE_USERNAME_FOR_TEST_HARNESS","\""+parseUserNameForTestHarness+"\""
@@ -426,6 +426,7 @@ android {
 
                buildConfigField "String","PARSE_APP_ID", "\""+parseAppId+"\""
                buildConfigField "String","PARSE_CLIENT_KEY","\""+parseClientKey+"\""
+               buildConfigField "String","API_SERVER","\""+apiServer+"\""
                buildConfigField "String","HOCKEYAPP_APP_ID", "\""+hockeyAppAppId+"\""
                buildConfigField "String","BUILD_DATE_TIME","\""+buildDateTime+" UTC\""
 
@@ -627,14 +628,30 @@ dependencies {
 
 
     //Parse Platform
-    compile 'com.parse.bolts:bolts-android:1.1.3'
+    //compile 'com.parse.bolts:bolts-android:1.1.3'
 
-    compile fileTree(dir: '../libs', include: 'Parse-*.jar')
-    compile fileTree(dir: '../libs', include: 'ParseCrashReporting-*.jar')
+    //compile fileTree(dir: '../libs', include: 'Parse-*.jar')
+    //compile fileTree(dir: '../libs', include: 'ParseCrashReporting-*.jar')
+
+    //Opensource one from https://github.com/ParsePlatform/Parse-SDK-Android
+    compile 'com.parse:parse-android:1.13.1'
 
     //ParseUI
-    compile 'com.facebook.android:facebook-android-sdk:3.21.0'
-    compile project(':ParseLoginUI')
+    //compile 'com.facebook.android:facebook-android-sdk:3.21.0'
+    //compile project(':ParseLoginUI')
+
+    //https://github.com/ParsePlatform/ParseUI-Android
+
+    // Module dependency on ParseUI libraries sources
+    compile 'com.parse:parseui-login-android:0.0.1'
+    compile 'com.parse:parseui-widget-android:0.0.1'
+
+    // use idea from https://stackoverflow.com/questions/35138908/unable-to-execute-dex-multiple-dex-files-define-lbolts-aggregateexception
+    compile ('com.facebook.android:facebook-android-sdk:4.6.0'){
+        exclude group: 'com.parse.bolts', module: 'bolts-android'
+    }
+    compile 'com.parse:parsefacebookutils-v4-android:1.10.3@aar'
+    //compile 'com.parse:parsetwitterutils-android:1.10.3'
 
     androidTestCompile 'org.hamcrest:hamcrest-integration:1.1'
     androidTestCompile 'org.hamcrest:hamcrest-core:1.1'

@@ -16,7 +16,6 @@ import com.parse.*;
 public class MyApplication extends android.app.Application {
     public static final String TAG = "ReadingTracker::MyApp";
 
-    static protected boolean useParseCrashReporting=true;//should we activate Parse's crash reporting ourselves?
     static protected boolean initParse=true;//should we init Parse ourselves?
     static protected boolean analyticsEnabled=true;//true - no analytics should be used
     static protected boolean espressoTestActive=false;//true - Espresso test is being run
@@ -26,15 +25,6 @@ public class MyApplication extends android.app.Application {
     }
     public static boolean isAnalyticsEnabled() {
         return analyticsEnabled;
-    }
-    public static void setUseParseCrashReporting(boolean newValue) {
-        useParseCrashReporting=newValue;
-        if (useParseCrashReporting) {
-            Log.d(TAG,"Parse crash reporting enabled by higher forces");
-        }
-        else {
-            Log.d(TAG,"Parse crash reporting disabled by higher forces");
-        }
     }
     public static void setInitParse(boolean newValue) {
         initParse=newValue;
@@ -66,15 +56,7 @@ public class MyApplication extends android.app.Application {
         if (isRoboUnitTest()) {
             Log.d(TAG, "Don't activating Parse's crash reporting on Robolectric tests");
         } else {
-            //Espresso Test harness could disallow us to do this
-            if (MyApplication.useParseCrashReporting) {
-                // Enable Parse-based Crash Reporting
-                Log.d(TAG,"Activating Parse's crash reporting");
-                ParseCrashReporting.enable(this);
-            }
-            else {
-                Log.d(TAG,"Don't activating Parse's crash reporting.");
-            }
+            //Espresso Test harness could disallow us to do crash reporting
         }
 
         AppHelpers.writeLogBanner("", getApplicationContext());
@@ -84,7 +66,15 @@ public class MyApplication extends android.app.Application {
             //enable local datastore (we are write-mostly anyway)
             //Parse.enableLocalDatastore(this);
             //init Parse
-            Parse.initialize(this,BuildConfig.PARSE_APP_ID,BuildConfig.PARSE_CLIENT_KEY);
+            //Parse.initialize(this,BuildConfig.PARSE_APP_ID,BuildConfig.PARSE_CLIENT_KEY);
+            //https://github.com/ParsePlatform/parse-server/wiki/Parse-Server-Guide#using-parse-sdks-with-parse-server
+            Parse.initialize(new Parse.Configuration.Builder(this)
+                    .applicationId(BuildConfig.PARSE_APP_ID)
+                    .clientKey(BuildConfig.PARSE_CLIENT_KEY)
+                    //.clientKey(null)
+                    .server(BuildConfig.API_SERVER)
+            .build()
+            );
             //enable automatic user support support
             //ParseUser.enableAutomaticUser();
         }
