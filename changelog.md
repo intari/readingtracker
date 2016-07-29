@@ -1,4 +1,7 @@
 # What's new:
+## 1.8.1
+* Initial ground work for 2.0
+
 ## 1.8
 * Initial Support for Android 6.0
 * Many other fixes 
