@@ -144,7 +144,7 @@ public class ParsePlatformUtils {
             //FlurryAgent.onError(ERRORID_NO_CURRENT_PARSE_USER, "cannot save object of class " + report.getClassName() + " - no current user!", ERRORCLASS_PARSE_INTERFACE);
             return Boolean.FALSE;
         }
-
+        Log.d(TAG,"Preparing report with type "+report.getClassName());
         //TODO:do something on Android 6.0
         /*
         if (ourDeviceId==null) {
@@ -172,6 +172,7 @@ public class ParsePlatformUtils {
 
 
         final String reportClass=report.getClassName();
+        Log.d(TAG,"Saving report with type "+reportClass);
         report.saveEventually(new SaveCallback() {
             public void done(ParseException e) {
                 if (e == null) {
