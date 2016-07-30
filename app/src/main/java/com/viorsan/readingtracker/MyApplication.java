@@ -79,7 +79,7 @@ public class MyApplication extends android.app.Application {
                     .server(BuildConfig.API_SERVER)
             .build()
             );
-            //enable revocable sessions (we don't actually have a choice on Parse Server)
+            //enable revocable sessions (we don't actually have a choice on Parse Server so let's consider we still have it and enable manually -:)
             //https://parse.com/tutorials/session-migration-tutorial
             ParseUser.enableRevocableSessionInBackground();
 
