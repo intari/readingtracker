@@ -3,6 +3,7 @@ package com.viorsan.readingtracker;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
@@ -14,6 +15,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -73,6 +75,7 @@ public class MainActivity extends ActionBarActivity implements GoToAccessibility
     private BroadcastReceiver messageReceiver;
     private BroadcastReceiver activityMonitoringMessageReceiver;
     private BroadcastReceiver currentlyReadingMessageReceiver;
+    private BroadcastReceiver sessionChangeReceiver;
 
     private Activity self;
     private static final String TAG = "ReadingTracker::M.A.";
@@ -171,19 +174,22 @@ public class MainActivity extends ActionBarActivity implements GoToAccessibility
         } else {
             // User clicked to log in.
             MyAnalytics.trackEvent("userClickedLoginButton");
-            ParseLoginBuilder loginBuilder = new ParseLoginBuilder(
-                    MainActivity.this);
+            performLogin();
+        }
+    }
+
+    public void performLogin() {
+        ParseLoginBuilder loginBuilder = new ParseLoginBuilder(
+                MainActivity.this);
             /*loginBuilder
                     .setFacebookLoginEnabled(true)
                     .setParseLoginEnabled(true);
                     //.setFacebookLoginPermissions(Arrays.asList("user_status", "read_stream"));
             */
 
-            startActivityForResult(loginBuilder.build(), LOGIN_REQUEST);
-        }
+        startActivityForResult(loginBuilder.build(), LOGIN_REQUEST);
+
     }
-
-
     /**
      * Updates current 'installation' object
      * see https://parse.com/docs/push_guide#top/Android
@@ -259,7 +265,7 @@ public class MainActivity extends ActionBarActivity implements GoToAccessibility
             } catch (ParseException ex)
             {
                 Log.d(TAG,"Parse Exception "+ex.toString());
-                Rollbar.reportException(ex, "warning", "Failed to fetch current user");
+                ParseErrorHandler.handleParseError(this,ex,"Failed to fetch current user");
             }
 
             //user can be automatic. allow for this in future
@@ -305,14 +311,54 @@ public class MainActivity extends ActionBarActivity implements GoToAccessibility
                         Log.d(TAG,"Successfully updated user information");
                     } else {
                         Log.e(TAG,"Failed to subscribe due to exception "+e.toString());
-                        Rollbar.reportException(e, "warning", "Failed to save current user");
+                        ParseErrorHandler.handleParseError(self,e,"Failed to get session");
                     }
                 }
             });
+            Log.d(TAG,"Asking for current session");
+            ParseSession.getCurrentSessionInBackground(new GetCallback<ParseSession>() {
+                @Override
+                public void done(ParseSession object, ParseException e) {
+                    if (e==null) {
+                        Log.d(TAG,"Got session");
+                        if (object.has("installationId")) {
+                            Log.d(TAG,"Session arleady has installation id");
+                        } else {
+                            object.put("installationId",ParseInstallation.getCurrentInstallation());
+                            object.saveEventually();
+                            Log.d(TAG,"Session will now have installation id");
 
+                        }
+                    } else {
+                        Log.e(TAG,"Failed to get session due to "+e.toString());
+                        ParseErrorHandler.handleParseError(self,e,"Failed to get session");
+                    }
+                }
+            });
         }
 
-        checkForUpdates();
+        /* session update support */
+        sessionChangeReceiver = new BroadcastReceiver() {
+
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                Log.d(TAG, "Asking user for re-login due to invalid current session" );
+                new AlertDialog.Builder(self)
+                        .setMessage("Session is no longer valid, please log out and log in again.")
+                        .setCancelable(false)
+                        .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Log.d(TAG, "Requesting re-login due to invalid current session" );
+                                ParseUser.logOut();
+                                Log.d(TAG, "Forced logout, now asking for login" );
+                                performLogin();
+                            }
+                        }).show();
+            }
+        };
+        LocalBroadcastManager.getInstance(this).registerReceiver(
+                sessionChangeReceiver, new IntentFilter(ParseErrorHandler.SESSION_IS_INVALID));
 
 
         /* debug support */
@@ -598,7 +644,6 @@ public class MainActivity extends ActionBarActivity implements GoToAccessibility
         updateUserLoggedInState();
         // Logs 'install' and 'app activate' App Events.
         //AppEventsLogger.activateApp(this);
-        checkForUpdates();
         goToSettingsToEnableAccessibilityServiceDialogShown=false;//may be user changed her mind? we really can't work without!
         askForActivityMonitoringUpdate();
         updateReaderStatus();
@@ -613,29 +658,6 @@ public class MainActivity extends ActionBarActivity implements GoToAccessibility
         timerToWaitBeforeAskingForAccessibilitySettings.cancel();
     }
 
-    /**
-     * Register handlers for update checking from Hockeyapp
-     * needed for non-playstore debug builds
-     */
-    private void checkForUpdates() {
-        UpdateManager.register(this, BuildConfig.HOCKEYAPP_APP_ID, new UpdateManagerListener() {
-            public void onUpdateAvailable() {
-                // Something you want to do when an update is available, e.g.
-                // enable a button to install the update. Note that the manager
-                // shows an alert dialog after the method returns.
-                Log.d(TAG, "Update is available");
-
-
-                Toast.makeText(self, R.string.update_is_available, Toast.LENGTH_LONG).show();
-            }
-
-            public void onNoUpdateAvailable() {
-                Log.d(TAG, "No updates found");
-                Toast.makeText(self, R.string.update_is_not_available, Toast.LENGTH_SHORT).show();
-            }
-        });
-
-    }
 
     protected void onStop()
     {
