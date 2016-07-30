@@ -171,7 +171,7 @@ public class ParsePlatformUtils {
                 if (e == null) {
                     Log.i(TAG, "Saved report "+reportClass+" to parse");
                 } else {
-                    Log.i(TAG, "Not saved report "+reportClass+"to parse: " + e.toString());
+                    Log.i(TAG, "Not saved report "+reportClass+" to parse: " + e.toString());
                 }
             }
         });
