@@ -8,6 +8,7 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
+import com.rollbar.android.Rollbar;
 
 /**
  * Created by Dmitriy Kazimirov, e-mail:dmitriy.kazimirov@viorsan.com on 22.12.14.
@@ -15,7 +16,7 @@ import com.parse.SaveCallback;
  * and to wrap some commonly used (by me) Parse functions
  * */
 public class ParsePlatformUtils {
-    public static final String TAG = "ReadingTracker::ParsePlatformUtils";
+    public static final String TAG = "ReadingTracker::P.P.U.";
 
     private static final int REPORT_SENDING_RETRY_MILLIS = 3000;
 
@@ -171,7 +172,8 @@ public class ParsePlatformUtils {
                 if (e == null) {
                     Log.i(TAG, "Saved report "+reportClass+" to parse");
                 } else {
-                    Log.i(TAG, "Not saved report "+reportClass+" to parse: " + e.toString());
+                    Log.w(TAG, "Not saved report "+reportClass+" to parse: " + e.toString());
+                    Rollbar.reportException(e, "warning", "Not save report "+reportClass+" to server");
                 }
             }
         });

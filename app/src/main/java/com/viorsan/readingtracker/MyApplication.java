@@ -4,6 +4,8 @@ import android.os.Build;
 import android.util.Log;
 
 import com.parse.*;
+import com.rollbar.*;
+import com.rollbar.android.Rollbar;
 
 
 /**
@@ -59,6 +61,8 @@ public class MyApplication extends android.app.Application {
             //Espresso Test harness could disallow us to do crash reporting
         }
 
+        Rollbar.init(this, BuildConfig.ROLLBAR_API_KEY, "production");
+        Rollbar.setIncludeLogcat(true);
         AppHelpers.writeLogBanner("", getApplicationContext());
 
         if (MyApplication.initParse) {
