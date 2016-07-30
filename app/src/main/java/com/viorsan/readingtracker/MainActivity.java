@@ -327,7 +327,6 @@ public class MainActivity extends ActionBarActivity implements GoToAccessibility
                             object.put("installationId",ParseInstallation.getCurrentInstallation());
                             object.saveEventually();
                             Log.d(TAG,"Session will now have installation id");
-
                         }
                     } else {
                         Log.e(TAG,"Failed to get session due to "+e.toString());
