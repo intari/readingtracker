@@ -10,6 +10,7 @@ import com.parse.ParseUser;
 import com.parse.SaveCallback;
 import com.rollbar.android.Rollbar;
 
+
 /**
  * Created by Dmitriy Kazimirov, e-mail:dmitriy.kazimirov@viorsan.com on 22.12.14.
  * Wrapper for some Parse Platform functions. mainly to make it easy to test my programs
@@ -130,7 +131,7 @@ public class ParsePlatformUtils {
      * @param context - context to use
      * @return was it ok
      */
-    private static Boolean saveReportToParseReal(ParseObject report,Context context) {
+    private static Boolean saveReportToParseReal(ParseObject report,final Context context) {
         ParseUser currentUser=ParseUser.getCurrentUser();
         if (currentUser==null) {
             Log.d(TAG, "User is not logged in. Will not send reports");
@@ -173,7 +174,7 @@ public class ParsePlatformUtils {
                     Log.i(TAG, "Saved report "+reportClass+" to parse");
                 } else {
                     Log.w(TAG, "Not saved report "+reportClass+" to parse: " + e.toString());
-                    Rollbar.reportException(e, "warning", "Not save report "+reportClass+" to server");
+                    ParseErrorHandler.handleParseError(context,e,"Not save report "+reportClass+" to server");
                 }
             }
         });

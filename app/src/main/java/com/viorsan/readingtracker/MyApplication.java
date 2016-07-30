@@ -79,6 +79,10 @@ public class MyApplication extends android.app.Application {
                     .server(BuildConfig.API_SERVER)
             .build()
             );
+            //enable revocable sessions (we don't actually have a choice on Parse Server)
+            //https://parse.com/tutorials/session-migration-tutorial
+            ParseUser.enableRevocableSessionInBackground();
+
             //enable automatic user support support
             //ParseUser.enableAutomaticUser();
             ParseFacebookUtils.initialize(this);
