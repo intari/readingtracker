@@ -24,11 +24,9 @@ import android.widget.Toast;
 import com.parse.*;
 import com.parse.ui.ParseLoginBuilder;
 import com.rollbar.android.Rollbar;
-import net.hockeyapp.android.*;
 
 import net.hockeyapp.android.UpdateManager;
 import net.hockeyapp.android.UpdateManagerListener;
-import net.hockeyapp.android.metrics.MetricsManager;
 
 import java.util.HashMap;
 import java.util.Locale;
@@ -241,11 +239,6 @@ public class MainActivity extends ActionBarActivity implements GoToAccessibility
     }
     private void init(){
         self = this;
-
-        //update HockeyApp's metrics
-        if (!BuildConfig.DEBUG) {
-            MetricsManager.register(this, getApplication(),BuildConfig.HOCKEYAPP_APP_ID);
-        }
 
         //update Installation class
         updateInstallationObject();
