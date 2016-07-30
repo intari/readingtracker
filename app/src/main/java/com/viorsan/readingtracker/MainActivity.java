@@ -243,7 +243,9 @@ public class MainActivity extends ActionBarActivity implements GoToAccessibility
         self = this;
 
         //update HockeyApp's metrics
-        MetricsManager.register(this, getApplication(),BuildConfig.HOCKEYAPP_APP_ID);
+        if (!BuildConfig.DEBUG) {
+            MetricsManager.register(this, getApplication(),BuildConfig.HOCKEYAPP_APP_ID);
+        }
 
         //update Installation class
         updateInstallationObject();
