@@ -96,6 +96,7 @@ public class ParsePlatformUtils {
                     Log.i(TAG, "Save report to Parse failed. Will retry. Report type was " + reportToSend.getClassName());
                     if (delayReporter==null) {
                         Log.i(TAG, "Cannot retry. DelayReporter is null");
+                        Rollbar.reportMessage("Cannot retry. DelayReporter is nil", "info");
                         return;
 
                     }
@@ -136,6 +137,9 @@ public class ParsePlatformUtils {
         if (currentUser==null) {
             Log.d(TAG, "User is not logged in. Will not send reports");
             Log.i(TAG, "Cannot save report to Parse. No current user. Report type was "+report.getClassName());
+
+            //should this be mixpanel-level error?
+            Rollbar.reportMessage("Cannot save report to Parse. No current user. Report type was "+report.getClassName(), "warning");
             //TODO:do this on mixpanel
             //FlurryAgent.onError(ERRORID_NO_CURRENT_PARSE_USER, "cannot save object of class " + report.getClassName() + " - no current user!", ERRORCLASS_PARSE_INTERFACE);
             return Boolean.FALSE;
