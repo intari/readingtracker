@@ -10,6 +10,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
+import com.rollbar.android.Rollbar;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -103,8 +105,18 @@ public class MyAnalytics {
     public static void stopAnalytics() {
         if (MyApplication.isAnalyticsEnabled()) {
             Log.d(TAG,"stopAnalytics()");
+            if (storedContext==null) {
+                Log.d(TAG,"null storedContext");
+                return;
+            }
             MixpanelAPI mixpanel = MixpanelAPI.getInstance(storedContext,BuildConfig.MIXPANEL_TOKEN);
-            mixpanel.flush();
+            if (mixpanel==null) {
+                Log.d(TAG,"null mixpanel?!");
+                Rollbar.reportMessage("stopAnalytics() - mixpanel is null", "info");
+            }
+            else {
+                mixpanel.flush();
+            }
 
         }
     }
