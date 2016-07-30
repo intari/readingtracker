@@ -23,9 +23,12 @@ import android.widget.Toast;
 //import com.facebook.AppEventsLogger;
 import com.parse.*;
 import com.parse.ui.ParseLoginBuilder;
+import com.rollbar.android.Rollbar;
+import net.hockeyapp.android.*;
 
 import net.hockeyapp.android.UpdateManager;
 import net.hockeyapp.android.UpdateManagerListener;
+import net.hockeyapp.android.metrics.MetricsManager;
 
 import java.util.HashMap;
 import java.util.Locale;
@@ -135,6 +138,8 @@ public class MainActivity extends ActionBarActivity implements GoToAccessibility
                 MyAnalytics.provideUserdata(COUNTLY_FULLNAME,fullName);
             }
             MyAnalytics.sendUserData();
+            //prepare data for Rollbar
+            Rollbar.setPersonData(currentUser.getObjectId(),currentUser.getUsername(), currentUser.getEmail());
         }
         else
         {
@@ -237,6 +242,9 @@ public class MainActivity extends ActionBarActivity implements GoToAccessibility
     private void init(){
         self = this;
 
+        //update HockeyApp's metrics
+        MetricsManager.register(this, getApplication(),BuildConfig.HOCKEYAPP_APP_ID);
+
         //update Installation class
         updateInstallationObject();
 
@@ -256,6 +264,7 @@ public class MainActivity extends ActionBarActivity implements GoToAccessibility
             } catch (ParseException ex)
             {
                 Log.d(TAG,"Parse Exception "+ex.toString());
+                Rollbar.reportException(ex, "warning", "Failed to fetch current user");
             }
 
             //user can be automatic. allow for this in future
@@ -270,6 +279,10 @@ public class MainActivity extends ActionBarActivity implements GoToAccessibility
                 Log.i(TAG, "ParseUser here. NOT Authenticated. ");
                 MyAnalytics.trackEvent("userLoggedInWithoutAuth");//in case I forget and re-enable anonymous users
             }
+            //provide data for Rollbar here too. in case we failed saving of current user
+            //prepare data for Rollbar
+            Rollbar.setPersonData(currentUser.getObjectId(),currentUser.getUsername(), currentUser.getEmail());
+
             //update user's locale settings
             //it's likely every user's device will have same data (or at least country be same)
             Locale locale=Locale.getDefault();
@@ -297,6 +310,7 @@ public class MainActivity extends ActionBarActivity implements GoToAccessibility
                         Log.d(TAG,"Successfully updated user information");
                     } else {
                         Log.e(TAG,"Failed to subscribe due to exception "+e.toString());
+                        Rollbar.reportException(e, "warning", "Failed to save current user");
                     }
                 }
             });
