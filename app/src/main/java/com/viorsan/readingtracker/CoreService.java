@@ -11,8 +11,6 @@ import android.widget.Toast;
 
 import com.parse.*;
 
-import java.util.*;
-
 
 /**
  * Created by Dmitriy Kazimirov, e-mail:dmitriy.kazimirov@viorsan.com on 23.05.14.
@@ -128,10 +126,9 @@ public class CoreService extends Service  {
 
         Log.i(TAG,"Book reading tracker main service starting up");
 
+
         //initialize updates for server-side configs
         ParseConfigHelper.refreshConfig();
-
-        MyAnalytics.startAnalyticsWithContext(this);
 
         //die if not user logged in
         ParseUser currentUser=ParseUser.getCurrentUser();
@@ -141,6 +138,27 @@ public class CoreService extends Service  {
             return;
         }
 
+        //init analytics if allowed
+
+        if (!MyApplication.isRoboUnitTest()) {
+            if (MyApplication.isAnalyticsEnabled()) {
+                MyAnalytics.init((MyApplication)this.getApplication(),this);
+                MyAnalytics.startAnalytics();
+            }
+        }
+        MyAnalytics.startAnalyticsWithContext(this);
+
+        //init analytics context
+        MyAnalytics.setUserId(currentUser.getUsername());
+        MyAnalytics.provideUserdata(MyAnalytics.USER_USERNAME,currentUser.getUsername());
+        if (currentUser.getEmail()!=null) {
+            MyAnalytics.provideUserdata(MyAnalytics.USER_EMAIL,currentUser.getEmail());
+        }
+        String fullName = currentUser.getString(MyAnalytics.USER_FULLNAME);
+        if (fullName != null) {
+            MyAnalytics.provideUserdata(MyAnalytics.USER_FULLNAME,fullName);
+        }
+        MyAnalytics.sendUserData();
 
         //configure icon
         configureForeground();
@@ -169,12 +187,16 @@ public class CoreService extends Service  {
                 userLoggedOutReceiver,new IntentFilter(USER_LOGGED_OUT_REPORT)
         );
 
-
+        //track 'app started' event directl for mixpanel
+        MyAnalytics.trackEvent(MyAnalytics.APP_STARTED);
 
         //ask for registration for reading updates
         registerForReadingUpdates();
 
         showToast(getResources().getString(R.string.app_started_notification));
+
+        MyAnalytics.trackEvent(MyAnalytics.APP_STARTED);
+
     }
 
 
