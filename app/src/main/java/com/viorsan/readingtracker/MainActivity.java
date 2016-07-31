@@ -343,9 +343,9 @@ public class MainActivity extends ActionBarActivity implements GoToAccessibility
             public void onReceive(Context context, Intent intent) {
                 Log.d(TAG, "Asking user for re-login due to invalid current session" );
                 new AlertDialog.Builder(self)
-                        .setMessage("Session is no longer valid, please log out and log in again.")
+                        .setMessage(R.string.sessionNoLongerValid)
                         .setCancelable(false)
-                        .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        .setPositiveButton(R.string.sessionNoLongerValidOk, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 Log.d(TAG, "Requesting re-login due to invalid current session" );
