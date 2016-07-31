@@ -45,11 +45,12 @@ Please note authors of ebook readers don't endorse this app.
 * open & read books from reader's Library view
 * you could confirm everything was detecred correctly by opening app again and checking if it  saw details
 * when you close book you will get e-mail from my bot intari@viorsan.com.
-Bot's message will be in Russian if bot thinks you are speak Russian or in English.
+Bot's message will be in Russian if bot thinks you are speak Russian or in English in other cases.
 
-# What about analytics, Evernote integration?
+# What about analytics, Evernote integration, E-Mail support?
 Analytics will be possible in future versions.
-Ability to setup integration with [Zapier](zapier.com) web-hooks (support for [Evernote](evernote.com) was done this way) is not yet available in application's interface
+Ability to setup integration with [Zapier](zapier.com) web-hooks (support for [Evernote](evernote.com) was done this way) is not yet available in application's interface but available by requesting author.
+
 
 
 # Which Android Permissions are used and why
@@ -80,11 +81,14 @@ Data collected by application will only be used to provide services to app user.
 Collected data won't be sold, used for spam or other bad things.
 I reserve right to  provide data collected by app from you if applicable goverment authority asks for your data.
 
-Application uses several 3rd-party services (Parse, Mailgun, Countly,etc) to provide some functionality. 
+Application uses several 3rd-party services (Parse, Mailgun, Mixpanel,etc) to provide some functionality. 
 Main database is now hosted in EU
 
-# Where are sources for CloudCode part?
-Not in this repository yet
+# Where are sources for Reading Tracker Server?
+* Not in this repository. Basic logic works without it. 
+
+# Do I have to create account/login?
+* No, you don't have to. Notification with data will be shown anyway if that's you need.
 
 # Requirements for building
 see end of  [README_old] (https://github.com/intari/readingtracker/blob/master/README_old.md)

@@ -25,6 +25,10 @@ public class MyAnalytics {
 
     public static final String TAG = "ReadingTracker::Anal";
     public static final String APP_OPENED = "appOpened";
+    public static final String APP_STARTED = "AppStarted";
+    public static final String USER_USERNAME = "username";
+    public static final String USER_EMAIL = "email";
+    public static final String USER_FULLNAME = "name";
 
     private static HashMap<String, String> userData = new HashMap<String, String>();
 

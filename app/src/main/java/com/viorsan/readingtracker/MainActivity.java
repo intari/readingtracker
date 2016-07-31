@@ -11,24 +11,18 @@ import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 //import com.facebook.AppEventsLogger;
 import com.parse.*;
 import com.parse.ui.ParseLoginBuilder;
 import com.rollbar.android.Rollbar;
-
-import net.hockeyapp.android.UpdateManager;
-import net.hockeyapp.android.UpdateManagerListener;
 
 import java.util.HashMap;
 import java.util.Locale;
@@ -53,9 +47,6 @@ public class MainActivity extends ActionBarActivity implements GoToAccessibility
     public static final String USER_GENDER = "gender";
     public static final int TIME_BEFORE_ASKING_USER_TO_GO_TO_ACCESSIBILITY_SETTINGS = 5 * 1000;//5 seconds to wait before checking if we should ask user to go to Accessibility settings
     public static final int TIME_BEFORE_ASKING_FOR_MONITORING_STATUS_UPDATE = 5 * 1000;
-    public static final String COUNTLY_USERNAME = "username";
-    public static final String COUNTLY_EMAIL = "email";
-    public static final String COUNTLY_FULLNAME = "name";
     public static final String LANGUAGE = "language";
     public static final String COUNTRY = "country";
     public static final String LOCALE = "locale";
@@ -92,13 +83,7 @@ public class MainActivity extends ActionBarActivity implements GoToAccessibility
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (!MyApplication.isRoboUnitTest()) {
-            if (MyApplication.isAnalyticsEnabled()) {
-                MyAnalytics.init(getMyApp(),this);
-                MyAnalytics.startAnalytics();
 
-            }
-        }
 
         MyAnalytics.trackAppOpened(getIntent());
         setContentView(R.layout.main);
@@ -130,13 +115,13 @@ public class MainActivity extends ActionBarActivity implements GoToAccessibility
                see http://support.count.ly/discussions/questions/5624-userdata-vs-cloud-edition
 
              */
-            MyAnalytics.provideUserdata(COUNTLY_USERNAME,currentUser.getUsername());
+            MyAnalytics.provideUserdata(MyAnalytics.USER_USERNAME,currentUser.getUsername());
             if (currentUser.getEmail()!=null) {
-                MyAnalytics.provideUserdata(COUNTLY_EMAIL,currentUser.getEmail());
+                MyAnalytics.provideUserdata(MyAnalytics.USER_EMAIL,currentUser.getEmail());
             }
             String fullName = currentUser.getString(FULL_USER_NAME);
             if (fullName != null) {
-                MyAnalytics.provideUserdata(COUNTLY_FULLNAME,fullName);
+                MyAnalytics.provideUserdata(MyAnalytics.USER_FULLNAME,fullName);
             }
             MyAnalytics.sendUserData();
             //prepare data for Rollbar
