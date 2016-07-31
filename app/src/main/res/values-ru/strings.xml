@@ -30,6 +30,9 @@
     <string name="tapMeCurrentlyReadingLongZeroSpeed">%5$.2f минут(%3$s/%4$s) %1$s от %2$s</string>
     <string name="titleCurrentlyReading">%1$s от %2$s</string>
 
+    <string name="sessionNoLongerValid">Сессия более не верна. Требуется выход и повторный вход.</string>
+    <string name="sessionNoLongerValidOk">Ok</string>
+
 
     <string name="goToAccessibilitySettingsMessage">Вы хотите открыть \'Специальные Возможности\' и разрешить доступ для \'Reading Tracker\'?</string>
     <string name="goToAccessibilitySettingsOK">Да, пожалуйста</string>

@@ -58,7 +58,8 @@
     <string name="tapMeCurrentlyReadingLongZeroSpeed">%5$.2f minutes (%3$s/%4$s) %1$s by %2$s</string>
     <string name="titleCurrentlyReading">%1$s by %2$s</string>
 
-
+    <string name="sessionNoLongerValid">Session is no longer valid, please log out and log in again.</string>
+    <string name="sessionNoLongerValidOk">Ok</string>
 
     <string name="goToAccessibilitySettingsMessage">Do you want to open \'Accessibility Settings\' and allow access for  \'Reading Tracker\' here?</string>
     <string name="goToAccessibilitySettingsOK">Yes, please</string>
