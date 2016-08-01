@@ -57,6 +57,10 @@
             android:label="@string/app_name"
             android:launchMode="singleTop" >
             <meta-data
+                android:name="com.parse.ui.ParseLoginActivity.APP_LOGO"
+                android:resource="@drawable/logo"
+                />
+            <meta-data
                 android:name="com.parse.ui.ParseLoginActivity.PARSE_LOGIN_ENABLED"
                 android:value="true" />
             <meta-data
