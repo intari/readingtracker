@@ -1,4 +1,10 @@
 # What's new:
+## 1.8.15
+* More ground work for 2.0
+* Ability to login via Twitter
+* Crash fixes
+* Localization fixes
+
 ## 1.8.8.1
 * More initial work for 2.0. We are sorry but you must logout from app and login again
 
