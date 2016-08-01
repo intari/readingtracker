@@ -109,6 +109,7 @@ public class MainActivity extends ActionBarActivity implements GoToAccessibility
         ParseUser currentUser=ParsePlatformUtils.getCurrentParseUser();
 
         if (currentUser!=null) {
+            Log.d(TAG,"Providing updates for analytics because user was logged in");
             MyAnalytics.setUserId(currentUser.getUsername());
             /* Countly Community does not support those data
                It's currently Countly Enterprise but it's planned to be in Cloud

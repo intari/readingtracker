@@ -220,6 +220,10 @@ android {
         //Rollbar
         def rollbarApiKey=""
 
+        //Twitter
+        def twitterConsumerKey=""
+        def twitterConsumerSecret=""
+
         //full sha1 of build version
         def gitSha=gitSha()
 
@@ -230,6 +234,9 @@ android {
             apiServer=System.getenv('API_SERVER')
             mixpanelToken=System.getenv('MIXPANEL_TOKEN')
             rollbarApiKey=System.getenv('ROLLBAR_API_KEY')
+            twitterConsumerKey=System.getenv('TWITTER_CONSUMER_KEY')
+            twitterConsumerSecret=System.getenv('TWITTER_CONSUMER_SECRET')
+
 
 
             parseAppIdForTestHarness=System.getenv('PARSE_APP_ID_FOR_TEST_HARNESS_TRAVIS')
@@ -283,6 +290,8 @@ android {
                     parsePasswordForTestHarness=apiKeysProps['PARSE_PASSWORD_FOR_TEST_HARNESS'];
                     mixpanelToken=apiKeysProps['MIXPANEL_TOKEN'];
                     rollbarApiKey=apiKeysProps['ROLLBAR_API_KEY'];
+                    twitterConsumerKey=apiKeysProps['TWITTER_CONSUMER_KEY'];
+                    twitterConsumerSecret=apiKeysProps['TWITTER_CONSUMER_SECRET'];
 
                     //prevent empty values
                     if (parseAppId==null) {
@@ -314,6 +323,14 @@ android {
                     if (rollbarApiKey==null) {
                         throw new GradleException("Rollbar API Key not configured not configured but API Key file was here");
                     }
+                    if (twitterConsumerKey==null) {
+                        throw new GradleException("Twitter Consumer Key not configured not configured but API Key file was here");
+                    }
+                    if (twitterConsumerSecret==null) {
+                        throw new GradleException("Twitter Consumer Secret not configured not configured but API Key file was here");
+                    }
+
+
 
                     /*
                     if (versionCodeNetworkURL==null) {
@@ -353,6 +370,8 @@ android {
 
                 buildConfigField "String","MIXPANEL_TOKEN","\""+mixpanelToken+"\""
                 buildConfigField "String","ROLLBAR_API_KEY","\""+rollbarApiKey+"\""
+                buildConfigField "String","TWITTER_CONSUMER_KEY","\""+twitterConsumerKey+"\""
+                buildConfigField "String","TWITTER_CONSUMER_SECRET","\""+twitterConsumerSecret+"\""
 
 
                 buildConfigField "String","BUILD_GIT_SHA1", "\""+gitSha+"\""
@@ -406,6 +425,8 @@ android {
 
                buildConfigField "String","MIXPANEL_TOKEN","\""+mixpanelToken+"\""
                buildConfigField "String","ROLLBAR_API_KEY","\""+rollbarApiKey+"\""
+               buildConfigField "String","TWITTER_CONSUMER_KEY","\""+twitterConsumerKey+"\""
+               buildConfigField "String","TWITTER_CONSUMER_SECRET","\""+twitterConsumerSecret+"\""
 
 
                buildConfigField "String","BUILD_GIT_SHA1", "\""+gitSha+"\""
@@ -418,6 +439,7 @@ android {
 
                buildConfigField "String","BUILD_HOST", "\""+getHostname()+"\""
                buildConfigField "String","BUILD_USER", "\""+getUsername()+"\""
+
 
                println "Building playStore build "+myVersionName+"  build "+myVersionCode+" with full sha1 "+gitSha
            } //playStore
@@ -620,7 +642,10 @@ dependencies {
         exclude group: 'com.parse.bolts', module: 'bolts-android'
     }
     compile 'com.parse:parsefacebookutils-v4-android:1.10.3@aar'
-    //compile 'com.parse:parsetwitterutils-android:1.10.3'
+    compile 'com.parse:parsetwitterutils-android:1.10.5'
+    //compile 'com.squareup.okhttp:okhttp-urlconnection:2.7.2' //so Twitter access work - see https://github.com/ParsePlatform/ParseUI-Android/issues/122
+
+
 
     androidTestCompile 'org.hamcrest:hamcrest-integration:1.1'
     androidTestCompile 'org.hamcrest:hamcrest-core:1.1'

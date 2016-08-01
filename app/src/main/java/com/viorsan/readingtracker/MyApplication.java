@@ -65,6 +65,13 @@ public class MyApplication extends android.app.Application {
         Rollbar.setIncludeLogcat(true);
         AppHelpers.writeLogBanner("", getApplicationContext());
 
+        Log.d(TAG,"Initing analytics");
+        //init analytics so we have at least some data, it MAY BE possible that we later will be called from main gui, or may be not
+        MyAnalytics.init(this,this.getApplicationContext());
+
+        //activate extra logging to debug login system
+        Parse.setLogLevel(Parse.LOG_LEVEL_DEBUG);
+
         if (MyApplication.initParse) {
             Log.d(TAG,"Performing Parse's initialization");
             //enable local datastore (we are write-mostly anyway)
@@ -86,13 +93,12 @@ public class MyApplication extends android.app.Application {
             //enable automatic user support support
             //ParseUser.enableAutomaticUser();
             ParseFacebookUtils.initialize(this);
+            ParseTwitterUtils.initialize(BuildConfig.TWITTER_CONSUMER_KEY, BuildConfig.TWITTER_CONSUMER_SECRET);
         }
         else {
             Log.d(TAG,"Don't performing Parse's initialization. ");
         }
 
-        //activate extra logging to debug login system
-        Parse.setLogLevel(Parse.LOG_LEVEL_DEBUG);
 
         //init ACLs
         //Dropbox-style-only-this-user-can-access-this
