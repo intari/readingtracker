@@ -37,8 +37,13 @@ public class MyAnalytics {
     private static Context storedContext;
     public static void init(MyApplication newApp,Context context) {
         Log.d(TAG, "init");
-        app=newApp;
-        storedContext=context;
+        //we sometimes gets called twice (from app startup and from main activity)
+        if (app==null) {
+            app=newApp;
+        }
+        if (storedContext==null) {
+            storedContext=context;
+        }
         if (AppHelpers.isRunningTestBuild()) {
             Log.d(TAG,"Automatically disabling analytics in test build");
             MyApplication.setAnalyticsEnabled(false);
@@ -54,6 +59,9 @@ public class MyAnalytics {
         userData.put(key,value);
     }
     public static void setUserId(String userId) {
+        if (userId==null) {
+            return;
+        }
         if (MyApplication.isAnalyticsEnabled()) {
             storedUserId=userId;
             MixpanelAPI mixpanel = MixpanelAPI.getInstance(storedContext,BuildConfig.MIXPANEL_TOKEN);
