@@ -11,11 +11,11 @@ import java.util.List;
 
 /**
  * Created by Dmitriy Kazimirov, e-mail:dmitriy.kazimirov@viorsan.com on 18.12.14.
- * TODO:rewrite this to account for Parse's sunset
+ * 
  */
 public class ParseConfigHelper {
     private static String TAG="ReadingTracker::ReadingTrackerParseConfig";
-    public static final long configRefreshInterval = 5*60*1000; //every 5 minutes //2 * 60 * 60 * 1000;//every hour
+    public static final long configRefreshInterval = 3*60*60*1000; //every 3 hours
 
     public static final String SERVER_CONFIG_KEY_DEV_USER_LOGINS = "devUserLogins";
     private static long lastFetchedTime;
