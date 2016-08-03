@@ -64,50 +64,43 @@ public class CoreService extends Service  {
     /* TODO: make it use keyguard */
     public void onDeviceUnlock() {
         Log.i(TAG,"Device unlocked");
-
         isDeviceLocked = false;
-        MyAnalytics.trackEvent("DeviceUnlocked");
+        //MyAnalytics.trackEvent("DeviceUnlocked");
     }
 
     /* TODO: make it use keyguard */
     public void onDeviceLock() {
         Log.i(TAG,"Device locked");
         BookReadingsRecorder.getBookReadingsRecorder(this).recordSwitchAwayFromBook(this,SystemClock.elapsedRealtime());
-        MyAnalytics.trackEvent("DeviceLocked");
-
+        //MyAnalytics.trackEvent("DeviceLocked");
         isDeviceLocked = true;
     }
 
     public void onDreamingStarted() {
-
         Log.i(TAG,"Dreaming started");
         BookReadingsRecorder.getBookReadingsRecorder(this).recordSwitchAwayFromBook(this,SystemClock.elapsedRealtime());
-        MyAnalytics.trackEvent("DreamingStarted");
-
+        //MyAnalytics.trackEvent("DreamingStarted");
     }
 
     public void onDreamingStopped() {
 
         Log.i(TAG, "Dreaming stopped");
-        MyAnalytics.trackEvent("DreamingStopped");
-
+        //MyAnalytics.trackEvent("DreamingStopped");
     }
 
     public void onScreenOn() {
 
         Log.i(TAG,"Screen is on");
-
         isDeviceScreenOff = false;
-        MyAnalytics.trackEvent("ScreenOn");
+        //MyAnalytics.trackEvent("ScreenOn");
     }
 
     public void onScreenOff() {
         Log.i(TAG,"Screen is off");
         BookReadingsRecorder.getBookReadingsRecorder(this).recordSwitchAwayFromBook(this,SystemClock.elapsedRealtime());
-        MyAnalytics.trackEvent("ScreenOff");
+        //MyAnalytics.trackEvent("ScreenOff");
         isDeviceScreenOff = true;
     }
-
 
 
     protected void showToast(String message) {
@@ -187,7 +180,7 @@ public class CoreService extends Service  {
                 userLoggedOutReceiver,new IntentFilter(USER_LOGGED_OUT_REPORT)
         );
 
-        //track 'app started' event directl for mixpanel
+        //track 'app started' event directy for mixpanel
         MyAnalytics.trackEvent(MyAnalytics.APP_STARTED);
 
         //ask for registration for reading updates
@@ -195,7 +188,6 @@ public class CoreService extends Service  {
 
         showToast(getResources().getString(R.string.app_started_notification));
 
-        MyAnalytics.trackEvent(MyAnalytics.APP_STARTED);
 
     }
 
