@@ -52,6 +52,7 @@ public class MainActivity extends ActionBarActivity implements GoToAccessibility
     public static final String LOCALE = "locale";
     public static final String USER_LOCALE_SETTINGS = "userLocaleSettings";
     public static final String USERNAME = "username";
+    public static final String MAIN_ACTIVITY_ON_SCREEN = "MainActivityOnScreen";
     @InjectView(R.id.currentlyReadingMessage) TextView currentlyReadingTextView;
     @InjectView(R.id.accessGranted) TextView accessGrantedTextView;
     @InjectView(R.id.supportedEbookReaderInstalledStatus) TextView supportedEbookReaderInstalledTextView;
@@ -647,6 +648,7 @@ public class MainActivity extends ActionBarActivity implements GoToAccessibility
     protected void onStop()
     {
         Log.d(TAG,"onStop");
+        MyAnalytics.trackTimedEventStop(MAIN_ACTIVITY_ON_SCREEN);
         MyAnalytics.stopAnalyticsWithContext(this);
         super.onStop();
     }
@@ -655,6 +657,7 @@ public class MainActivity extends ActionBarActivity implements GoToAccessibility
         super.onStart();
         Log.d(TAG, "onStart");
         MyAnalytics.startAnalyticsWithContext(this);
+        MyAnalytics.trackTimedEventStart(MAIN_ACTIVITY_ON_SCREEN);
     }
 
     /**

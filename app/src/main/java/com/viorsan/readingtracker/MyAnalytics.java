@@ -221,25 +221,6 @@ public class MyAnalytics {
     }
 
     /**
-     * Signals start of timed event to 3rd-party analytics systems.
-     * Currently only Mixpanel is supported
-     * @param name - event name
-     * @param dimensions - additional event information
-     */
-    public static void trackTimedEventStart(String name, java.util.Map<java.lang.String,java.lang.String> dimensions) {
-        if (app==null) {
-            Log.e(TAG,"trackTimedEventStart (with dimensions): app is null");
-            return;
-        }
-        //don't track anything if this is disabled on global level
-        if (MyApplication.isAnalyticsEnabled()) {
-            Log.d(TAG,"Sending start of event "+name+" (with dimensions) to analytics service");
-        }
-        else {
-           Log.d(TAG,"trackTimedEventStart not sending event " + name + " (with dimensions) to analytics service");
-        }
-    }
-    /**
      * Signals stop of timed event to 3rd-party analytics systems.
      * Currently only Mixpanel is supported
      * @param name - event name
@@ -285,7 +266,6 @@ public class MyAnalytics {
             } catch (JSONException e) {
                 Log.e(TAG, "Unable to add properties to JSONObject", e);
             }
-
         }
         else {
             Log.d(TAG,"trackTimedEventStop not sending event " + name + " (with dimensions) to analytics service" );
