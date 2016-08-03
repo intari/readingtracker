@@ -599,7 +599,7 @@ public class BookReadingsRecorder {
     /**
      * Records switch away from current book due device sleep, user switch to other app or just user switching to reader app's library
      * This mean that:
-     * 'ReadingSessionCompleted' is being sent to Parse Platform
+     * 'BookReadingSesssionCompleted' is being sent to Parse Platform
      * Analytics events are sent
      * @param context
      * @param timestamp - timestamp when this data were actual
