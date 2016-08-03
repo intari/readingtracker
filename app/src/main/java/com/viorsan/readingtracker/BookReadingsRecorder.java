@@ -55,6 +55,7 @@ public class BookReadingsRecorder {
     public static final String PAGES_READ = "pagesReadSinceSessionStart";
     public static final String END_PAGE = "endPage";
     public static final String NUM_PAGE_SWITCHES = "numPageSwitchesSinceSessionStart";
+    public static final String READING_SESSION = "readingSession";
 
 
     private static BookReadingsRecorder self=null;
@@ -232,16 +233,17 @@ public class BookReadingsRecorder {
         numPagePageSwitches=0;
 
 
+        /*
         Map<String, String> dimensions = new HashMap<String, String>();
         dimensions.put(BOOK_TITLE,currentBookTitle);
         dimensions.put(BOOK_AUTHOR,currentBookAuthor);
         dimensions.put(BOOK_TAGS,currentBookTags);
+        */
 
         //TODO:describe this in privacy policy, and really think if we need THIS data in 3rd-party analytical systems
-        MyAnalytics.trackEvent("readingSessionStarted", dimensions);
-
-        //MyAnalytics.trackTimedEventStart("readingSession",dimensions);
-
+        //MyAnalytics.trackEvent("readingSessionStarted", dimensions);
+        MyAnalytics.trackTimedEventStart(READING_SESSION);
+        
         recordPageSwitch(context,timestamp,pageNumbers);
         //at least on 5.0.1 it's possible that recordPageSwitch will not parse currentPage on initial book opening so...
         if (currentPage!=null) {
@@ -656,8 +658,8 @@ public class BookReadingsRecorder {
             dimensions.put(NUM_PAGE_SWITCHES,Long.valueOf(numPagePageSwitches).toString());
 
             //TODO:describe this in privacy policy, and really think if we need THIS data in 3rd-party analytical systems
-            MyAnalytics.trackEvent("readingSessionCompleted", dimensions);
-            //MyAnalytics.trackTimedEventStop("readingSession",dimensions);
+            //MyAnalytics.trackEvent("readingSessionCompleted", dimensions);
+            MyAnalytics.trackTimedEventStop(READING_SESSION,dimensions);
 
             //clear data
 
