@@ -1,4 +1,7 @@
 # What's new:
+## 1.8.21
+* Migration from parse.com to one of alternatives
+
 ## 1.8.8.1
 * More initial work for 2.0. We are sorry but you must logout from app and login again
 
