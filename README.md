@@ -12,7 +12,7 @@ After that e-mails are send to me using [Mandrill](mandrillapp.com) and record i
 In future various interesting graphs could be made once I collect enough statistics
 
 # Plans for future
-* Make it possible to view your stats data locally
+* Make it possible to actually view your stats data using on-device interface and not only in e-mails
 
 
 # Application requirements
@@ -34,10 +34,6 @@ Currently all editions of Mantano Reader are supported (it's great. Please buy i
 Others are not supported yet.
 Please note authors of ebook readers don't endorse this app.
 
-# YotaPhone2 support
-* Currently YotapPhone2 supported as regular device (no support for Mantano's ability to use e-ink screen). This will be fixed if/when I get access to YotaPhone2. You are welcome to sponsor it -:)
-
-
 # How to use application (assuming you use Google Play version):
 * Install one of supported ebook readers
 * Install this app
@@ -51,18 +47,13 @@ Bot's message will be in Russian if bot thinks you are speak Russian or in Engli
 Analytics will be possible in future versions.
 Ability to setup integration with [Zapier](zapier.com) web-hooks (support for [Evernote](evernote.com) was done this way) is not yet available in application's interface but available by requesting author.
 
-
-
 # Which Android Permissions are used and why
   Permissions for currently released version.
   * RECEIVE_BOOT_COMPLETED  - to be able to catch moments when you start read
   * INTERNET - communication with our server
   * ACCESS_NETWORK_STATE - usage analytics and error reporting.
-  * READ_PHONE_STATE - statistics (Version for Android 6.0 doesn't need this)
-  * GET_TASKS - to knew when you switch from supported reading app to something other (Version for Android 6.0 doesn't need this)
   * WRITE_EXTERNAL_STORAGE - automatic updates of non-PlayStore versions using HockeyApp
   * BIND_ACCESSIBILITY_SERVICE - main app functionality. you will be asked to provide access to 'Accessibility Services' on startup. You could refuse but you will not be able to get your statistics from this device
-  * WAKE_LOCK / VIBRATE / GET_ACCOUNTS - Parse-based push notifications (Version for Android 6.0 doesn't need them anymore)
   
 
 # Licenses
