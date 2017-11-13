@@ -13,6 +13,7 @@
                        android:accessibilityEventTypes="typeAllMask"
                        android:canRetrieveWindowContent="true"
                        android:description="@string/accessibilityDescription"
+                       android:summary="@string/accessibilityDescription"
                        android:accessibilityFeedbackType="feedbackGeneric"
                        android:accessibilityFlags="flagDefault|flagReportViewIds|flagIncludeNotImportantViews"
 

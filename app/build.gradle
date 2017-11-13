@@ -346,7 +346,8 @@ android {
                     versionCodeNetworkURL=apiKeysProps['VERSION_CODE_URL']
                     versionCodeNetworkAuth=apiKeysProps['VERSION_CODE_AUTH']
                     //we now have all info, ask for version code
-                    myVersionCode=getVersionCodeFromNetwork(versionCodeNetworkAuth,versionCodeNetworkURL).toInteger()
+                    //TODO:update with new builds
+                    myVersionCode=2699  //getVersionCodeFromNetwork(versionCodeNetworkAuth,versionCodeNetworkURL).toInteger()
 
 
 
