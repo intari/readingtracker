@@ -1,3 +1,6 @@
+# Update 2023+:
+- Mantano reader is ancient and no longer works on modern versions of android anyway.
+- License modification: If you develop reading app for andorid (or android and other platforms) - you can use all my code from this repo for any purpose you want (even if you reader is closed-source), it would be nice if you send me link to your app.
 # What's this?
 Application to collect data on your reading habits. Which books you read. When you read. How much you read.
 So you could analyze this data for yourself.
